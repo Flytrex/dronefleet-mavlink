@@ -28,6 +28,12 @@ public enum MavMissionType {
     MAV_MISSION_TYPE_RALLY,
 
     /**
+     * The contingency mission; executed when the GCS disconnects from the FC. 
+     */
+    @MavlinkEntryInfo(254)
+    MAV_MISSION_TYPE_FALLBACK,
+
+    /**
      * Only used in {@link io.dronefleet.mavlink.common.MissionClearAll MISSION_CLEAR_ALL} to clear all mission types. 
      */
     @MavlinkEntryInfo(255)
