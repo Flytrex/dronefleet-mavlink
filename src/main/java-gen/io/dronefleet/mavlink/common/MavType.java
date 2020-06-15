@@ -212,5 +212,11 @@ public enum MavType {
      * Servo 
      */
     @MavlinkEntryInfo(33)
-    MAV_TYPE_SERVO
+    MAV_TYPE_SERVO,
+
+    /**
+     * Flight Termination System 
+     */
+    @MavlinkEntryInfo(40)
+    MAV_TYPE_FTS
 }
