@@ -1618,5 +1618,31 @@
       <field type="uint16_t[4]" name="rpm" units="rpm">RPM (eRPM).</field>
       <field type="uint16_t[4]" name="count">count of telemetry packets received (wraps at 65535).</field>
     </message>
+
+    <!-- Flyhawk specific messages -->
+    <message id="198" name="FLYHAWK_SMART_BATTERY_STATUS">
+      <description>Smart Battery Status</description>
+      <field type="uint8_t" name="id">Battery ID</field>
+      <field type="uint16_t" name="temperature" units="cdegC">Temperature of the battery. UINT16_MAX for unknown temperature.</field>
+      <field type="uint16_t" name="overall_voltage" units="mV">Overall battery voltage.</field>
+      <field type="uint16_t[6]" name="voltages" units="mV">Individual cell voltages. Index values above the valid cell count for this battery should have the UINT16_MAX value.</field>
+      <field type="int32_t" name="current1" units="cA">Battery current (through all cells/loads). Positive if discharging, negative if charging. INT32_MAX: field not provided.</field>
+      <field type="int32_t" name="current2" units="cA">Battery current (through all cells/loads). Positive if discharging, negative if charging. INT32_MAX: field not provided.</field>
+      <field type="int8_t" name="capacity_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
+      <field type="int8_t" name="is_shutting_down" units="">Boolean indicating if the battery is currently in shutting down mode.</field>
+      <field type="int8_t" name="is_on" units="">Boolean indicating if the battery is currently on.</field>
+    </message>
+    <message id="199" name="FLYHAWK_SMART_BATTERY_INFO">
+    <description>Smart Battery Info</description>
+      <field type="uint8_t" name="id">Battery ID</field>
+      <field type="uint16_t" name="capacity_full_specification" units="mAh">Capacity when full according to manufacturer, -1: field not provided.</field>
+      <field type="uint16_t" name="capacity_full" units="mAh">Capacity when full (accounting for battery degradation), -1: field not provided.</field>
+      <field type="uint16_t" name="cycle_count" units="">Charge/discharge cycle count. -1: field not provided.</field>
+      <field type="char[14]" name="serial_number" units="">Serial number</field>
+      <field type="char[50]" name="device_name" units="">Static device name. Encode as manufacturer and product names separated using an underscore.</field>
+      <field type="char[15]" name="firmware_id" units="">Firmware ID</field>
+      <field type="uint8_t" name="lifetime" units="%">Lifetime. Values: [0-100], -1: field not provided.</field>
+      <field type="uint16_t" name="made_year" units="">Made year</field>
+    </message>
   </messages>
 </mavlink>

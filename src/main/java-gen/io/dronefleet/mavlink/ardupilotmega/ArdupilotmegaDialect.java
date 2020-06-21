@@ -18,8 +18,8 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
      */
     private static final List<MavlinkDialect> dependencies = Arrays.asList(
             new CommonDialect(),
-            new IcarousDialect(),
-            new UavionixDialect());
+            new UavionixDialect(),
+            new IcarousDialect());
 
     /**
      * A list of all message types supported by this dialect.
@@ -85,6 +85,8 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
             .put(11030, EscTelemetry1To4.class)
             .put(11031, EscTelemetry5To8.class)
             .put(11032, EscTelemetry9To12.class)
+            .put(198, FlyhawkSmartBatteryStatus.class)
+            .put(199, FlyhawkSmartBatteryInfo.class)
             .build();
 
     public ArdupilotmegaDialect() {

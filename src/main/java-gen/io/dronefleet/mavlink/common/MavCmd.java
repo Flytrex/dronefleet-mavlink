@@ -3610,91 +3610,6 @@ public enum MavCmd {
     MAV_CMD_USER_5,
 
     /**
-     * Orbit a waypoint. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>Orbit radius in meters</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>Loiter time in decimal seconds</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>Maximum horizontal speed in m/s</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>Desired yaw angle at waypoint</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>Latitude</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>Longitude</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>Altitude</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(1)
-    MAV_CMD_AQ_NAV_LEG_ORBIT,
-
-    /**
-     * Start/stop AutoQuad telemetry values stream. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>Start or stop (1 or 0)</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>Stream frequency in us</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>Dataset ID (refer to aq_mavlink.h::mavlinkCustomDataSets enum in AQ flight controller 
-     * code)</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>Empty</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(2)
-    MAV_CMD_AQ_TELEMETRY,
-
-    /**
-     * Request AutoQuad firmware version number. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>Empty</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>Empty</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(4)
-    MAV_CMD_AQ_REQUEST_VERSION,
-
-    /**
      * Mission command to operate EPM gripper. 
      * <dl>
      *   <dt>param1</dt>
@@ -4441,6 +4356,91 @@ public enum MavCmd {
      */
     @MavlinkEntryInfo(40002)
     MAV_CMD_PAYLOAD_CONTROL,
+
+    /**
+     * Orbit a waypoint. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Orbit radius in meters</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Loiter time in decimal seconds</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Maximum horizontal speed in m/s</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Desired yaw angle at waypoint</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Latitude</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Longitude</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Altitude</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(1)
+    MAV_CMD_AQ_NAV_LEG_ORBIT,
+
+    /**
+     * Start/stop AutoQuad telemetry values stream. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Start or stop (1 or 0)</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Stream frequency in us</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Dataset ID (refer to aq_mavlink.h::mavlinkCustomDataSets enum in AQ flight controller 
+     * code)</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(2)
+    MAV_CMD_AQ_TELEMETRY,
+
+    /**
+     * Request AutoQuad firmware version number. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(4)
+    MAV_CMD_AQ_REQUEST_VERSION,
 
     /**
      * Request storage of different parameter values and logs. This command will be only accepted if 
