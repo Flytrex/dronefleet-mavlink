@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.matrixpilot;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -31,10 +29,10 @@ public final class FlexifunctionBufferFunction {
 
     private final int dataSize;
 
-    private final List<Integer> data;
+    private final byte[] data;
 
     private FlexifunctionBufferFunction(int targetSystem, int targetComponent, int funcIndex,
-            int funcCount, int dataAddress, int dataSize, List<Integer> data) {
+            int funcCount, int dataAddress, int dataSize, byte[] data) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.funcIndex = funcIndex;
@@ -134,7 +132,7 @@ public final class FlexifunctionBufferFunction {
             signed = true,
             description = "Settings data"
     )
-    public final List<Integer> data() {
+    public final byte[] data() {
         return this.data;
     }
 
@@ -190,7 +188,7 @@ public final class FlexifunctionBufferFunction {
 
         private int dataSize;
 
-        private List<Integer> data;
+        private byte[] data;
 
         /**
          * System ID 
@@ -280,7 +278,7 @@ public final class FlexifunctionBufferFunction {
                 signed = true,
                 description = "Settings data"
         )
-        public final Builder data(List<Integer> data) {
+        public final Builder data(byte[] data) {
             this.data = data;
             return this;
         }

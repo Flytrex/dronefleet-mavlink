@@ -5,13 +5,11 @@ import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
 import io.dronefleet.mavlink.util.EnumValue;
 import java.lang.Enum;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.math.BigInteger;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,7 +26,7 @@ public final class ObstacleDistance {
 
     private final EnumValue<MavDistanceSensor> sensorType;
 
-    private final List<Integer> distances;
+    private final short[] distances;
 
     private final int increment;
 
@@ -43,8 +41,8 @@ public final class ObstacleDistance {
     private final EnumValue<MavFrame> frame;
 
     private ObstacleDistance(BigInteger timeUsec, EnumValue<MavDistanceSensor> sensorType,
-            List<Integer> distances, int increment, int minDistance, int maxDistance,
-            float incrementF, float angleOffset, EnumValue<MavFrame> frame) {
+            short[] distances, int increment, int minDistance, int maxDistance, float incrementF,
+            float angleOffset, EnumValue<MavFrame> frame) {
         this.timeUsec = timeUsec;
         this.sensorType = sensorType;
         this.distances = distances;
@@ -102,7 +100,7 @@ public final class ObstacleDistance {
             arraySize = 72,
             description = "Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm."
     )
-    public final List<Integer> distances() {
+    public final short[] distances() {
         return this.distances;
     }
 
@@ -238,7 +236,7 @@ public final class ObstacleDistance {
 
         private EnumValue<MavDistanceSensor> sensorType;
 
-        private List<Integer> distances;
+        private short[] distances;
 
         private int increment;
 
@@ -313,7 +311,7 @@ public final class ObstacleDistance {
                 arraySize = 72,
                 description = "Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm."
         )
-        public final Builder distances(List<Integer> distances) {
+        public final Builder distances(short[] distances) {
             this.distances = distances;
             return this;
         }

@@ -3,12 +3,9 @@ package io.dronefleet.mavlink.autoquad;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
-import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -44,16 +41,16 @@ public final class AqEscTelemetry {
 
     private final byte[] escid;
 
-    private final List<Integer> statusAge;
+    private final short[] statusAge;
 
     private final byte[] dataVersion;
 
-    private final List<Long> data0;
+    private final int[] data0;
 
-    private final List<Long> data1;
+    private final int[] data1;
 
     private AqEscTelemetry(long timeBootMs, int seq, int numMotors, int numInSeq, byte[] escid,
-            List<Integer> statusAge, byte[] dataVersion, List<Long> data0, List<Long> data1) {
+            short[] statusAge, byte[] dataVersion, int[] data0, int[] data1) {
         this.timeBootMs = timeBootMs;
         this.seq = seq;
         this.numMotors = numMotors;
@@ -145,7 +142,7 @@ public final class AqEscTelemetry {
             arraySize = 4,
             description = "Age of each ESC telemetry reading in ms compared to boot time. A value of 0xFFFF means timeout/no data."
     )
-    public final List<Integer> statusAge() {
+    public final short[] statusAge() {
         return this.statusAge;
     }
 
@@ -171,7 +168,7 @@ public final class AqEscTelemetry {
             arraySize = 4,
             description = "Data bits 1-32 for each ESC."
     )
-    public final List<Long> data0() {
+    public final int[] data0() {
         return this.data0;
     }
 
@@ -184,7 +181,7 @@ public final class AqEscTelemetry {
             arraySize = 4,
             description = "Data bits 33-64 for each ESC."
     )
-    public final List<Long> data1() {
+    public final int[] data1() {
         return this.data1;
     }
 
@@ -244,13 +241,13 @@ public final class AqEscTelemetry {
 
         private byte[] escid;
 
-        private List<Integer> statusAge;
+        private short[] statusAge;
 
         private byte[] dataVersion;
 
-        private List<Long> data0;
+        private int[] data0;
 
-        private List<Long> data1;
+        private int[] data1;
 
         /**
          * Timestamp of the component clock since boot time in ms. 
@@ -329,7 +326,7 @@ public final class AqEscTelemetry {
                 arraySize = 4,
                 description = "Age of each ESC telemetry reading in ms compared to boot time. A value of 0xFFFF means timeout/no data."
         )
-        public final Builder statusAge(List<Integer> statusAge) {
+        public final Builder statusAge(short[] statusAge) {
             this.statusAge = statusAge;
             return this;
         }
@@ -357,7 +354,7 @@ public final class AqEscTelemetry {
                 arraySize = 4,
                 description = "Data bits 1-32 for each ESC."
         )
-        public final Builder data0(List<Long> data0) {
+        public final Builder data0(int[] data0) {
             this.data0 = data0;
             return this;
         }
@@ -371,7 +368,7 @@ public final class AqEscTelemetry {
                 arraySize = 4,
                 description = "Data bits 33-64 for each ESC."
         )
-        public final Builder data1(List<Long> data1) {
+        public final Builder data1(int[] data1) {
             this.data1 = data1;
             return this;
         }

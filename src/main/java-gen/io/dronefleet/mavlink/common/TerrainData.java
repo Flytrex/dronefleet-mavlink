@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,9 +26,9 @@ public final class TerrainData {
 
     private final int gridbit;
 
-    private final List<Integer> data;
+    private final short[] data;
 
-    private TerrainData(int lat, int lon, int gridSpacing, int gridbit, List<Integer> data) {
+    private TerrainData(int lat, int lon, int gridSpacing, int gridbit, short[] data) {
         this.lat = lat;
         this.lon = lon;
         this.gridSpacing = gridSpacing;
@@ -106,7 +104,7 @@ public final class TerrainData {
             signed = true,
             description = "Terrain data MSL"
     )
-    public final List<Integer> data() {
+    public final short[] data() {
         return this.data;
     }
 
@@ -152,7 +150,7 @@ public final class TerrainData {
 
         private int gridbit;
 
-        private List<Integer> data;
+        private short[] data;
 
         /**
          * Latitude of SW corner of first grid 
@@ -218,7 +216,7 @@ public final class TerrainData {
                 signed = true,
                 description = "Terrain data MSL"
         )
-        public final Builder data(List<Integer> data) {
+        public final Builder data(short[] data) {
             this.data = data;
             return this;
         }

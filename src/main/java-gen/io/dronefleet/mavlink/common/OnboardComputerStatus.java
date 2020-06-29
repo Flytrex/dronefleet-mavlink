@@ -4,13 +4,10 @@ import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
 import java.lang.Deprecated;
-import java.lang.Integer;
-import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.math.BigInteger;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -44,36 +41,35 @@ public final class OnboardComputerStatus {
 
     private final int temperatureBoard;
 
-    private final List<Integer> temperatureCore;
+    private final byte[] temperatureCore;
 
-    private final List<Integer> fanSpeed;
+    private final short[] fanSpeed;
 
     private final long ramUsage;
 
     private final long ramTotal;
 
-    private final List<Long> storageType;
+    private final int[] storageType;
 
-    private final List<Long> storageUsage;
+    private final int[] storageUsage;
 
-    private final List<Long> storageTotal;
+    private final int[] storageTotal;
 
-    private final List<Long> linkType;
+    private final int[] linkType;
 
-    private final List<Long> linkTxRate;
+    private final int[] linkTxRate;
 
-    private final List<Long> linkRxRate;
+    private final int[] linkRxRate;
 
-    private final List<Long> linkTxMax;
+    private final int[] linkTxMax;
 
-    private final List<Long> linkRxMax;
+    private final int[] linkRxMax;
 
     private OnboardComputerStatus(BigInteger timeUsec, long uptime, int type, byte[] cpuCores,
             byte[] cpuCombined, byte[] gpuCores, byte[] gpuCombined, int temperatureBoard,
-            List<Integer> temperatureCore, List<Integer> fanSpeed, long ramUsage, long ramTotal,
-            List<Long> storageType, List<Long> storageUsage, List<Long> storageTotal,
-            List<Long> linkType, List<Long> linkTxRate, List<Long> linkRxRate, List<Long> linkTxMax,
-            List<Long> linkRxMax) {
+            byte[] temperatureCore, short[] fanSpeed, long ramUsage, long ramTotal,
+            int[] storageType, int[] storageUsage, int[] storageTotal, int[] linkType,
+            int[] linkTxRate, int[] linkRxRate, int[] linkTxMax, int[] linkRxMax) {
         this.timeUsec = timeUsec;
         this.uptime = uptime;
         this.type = type;
@@ -223,7 +219,7 @@ public final class OnboardComputerStatus {
             signed = true,
             description = "Temperature of the CPU core. A value of INT8_MAX implies the field is unused."
     )
-    public final List<Integer> temperatureCore() {
+    public final byte[] temperatureCore() {
         return this.temperatureCore;
     }
 
@@ -237,7 +233,7 @@ public final class OnboardComputerStatus {
             signed = true,
             description = "Fan speeds. A value of INT16_MAX implies the field is unused."
     )
-    public final List<Integer> fanSpeed() {
+    public final short[] fanSpeed() {
         return this.fanSpeed;
     }
 
@@ -275,7 +271,7 @@ public final class OnboardComputerStatus {
             arraySize = 4,
             description = "Storage type: 0: HDD, 1: SSD, 2: EMMC, 3: SD card (non-removable), 4: SD card (removable). A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> storageType() {
+    public final int[] storageType() {
         return this.storageType;
     }
 
@@ -289,7 +285,7 @@ public final class OnboardComputerStatus {
             arraySize = 4,
             description = "Amount of used storage space on the component system. A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> storageUsage() {
+    public final int[] storageUsage() {
         return this.storageUsage;
     }
 
@@ -303,7 +299,7 @@ public final class OnboardComputerStatus {
             arraySize = 4,
             description = "Total amount of storage space on the component system. A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> storageTotal() {
+    public final int[] storageTotal() {
         return this.storageTotal;
     }
 
@@ -317,7 +313,7 @@ public final class OnboardComputerStatus {
             arraySize = 6,
             description = "Link type: 0-9: UART, 10-19: Wired network, 20-29: Wifi, 30-39: Point-to-point proprietary, 40-49: Mesh proprietary"
     )
-    public final List<Long> linkType() {
+    public final int[] linkType() {
         return this.linkType;
     }
 
@@ -330,7 +326,7 @@ public final class OnboardComputerStatus {
             arraySize = 6,
             description = "Network traffic from the component system. A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> linkTxRate() {
+    public final int[] linkTxRate() {
         return this.linkTxRate;
     }
 
@@ -343,7 +339,7 @@ public final class OnboardComputerStatus {
             arraySize = 6,
             description = "Network traffic to the component system. A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> linkRxRate() {
+    public final int[] linkRxRate() {
         return this.linkRxRate;
     }
 
@@ -356,7 +352,7 @@ public final class OnboardComputerStatus {
             arraySize = 6,
             description = "Network capacity from the component system. A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> linkTxMax() {
+    public final int[] linkTxMax() {
         return this.linkTxMax;
     }
 
@@ -369,7 +365,7 @@ public final class OnboardComputerStatus {
             arraySize = 6,
             description = "Network capacity to the component system. A value of UINT32_MAX implies the field is unused."
     )
-    public final List<Long> linkRxMax() {
+    public final int[] linkRxMax() {
         return this.linkRxMax;
     }
 
@@ -468,29 +464,29 @@ public final class OnboardComputerStatus {
 
         private int temperatureBoard;
 
-        private List<Integer> temperatureCore;
+        private byte[] temperatureCore;
 
-        private List<Integer> fanSpeed;
+        private short[] fanSpeed;
 
         private long ramUsage;
 
         private long ramTotal;
 
-        private List<Long> storageType;
+        private int[] storageType;
 
-        private List<Long> storageUsage;
+        private int[] storageUsage;
 
-        private List<Long> storageTotal;
+        private int[] storageTotal;
 
-        private List<Long> linkType;
+        private int[] linkType;
 
-        private List<Long> linkTxRate;
+        private int[] linkTxRate;
 
-        private List<Long> linkRxRate;
+        private int[] linkRxRate;
 
-        private List<Long> linkTxMax;
+        private int[] linkTxMax;
 
-        private List<Long> linkRxMax;
+        private int[] linkRxMax;
 
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
@@ -619,7 +615,7 @@ public final class OnboardComputerStatus {
                 signed = true,
                 description = "Temperature of the CPU core. A value of INT8_MAX implies the field is unused."
         )
-        public final Builder temperatureCore(List<Integer> temperatureCore) {
+        public final Builder temperatureCore(byte[] temperatureCore) {
             this.temperatureCore = temperatureCore;
             return this;
         }
@@ -634,7 +630,7 @@ public final class OnboardComputerStatus {
                 signed = true,
                 description = "Fan speeds. A value of INT16_MAX implies the field is unused."
         )
-        public final Builder fanSpeed(List<Integer> fanSpeed) {
+        public final Builder fanSpeed(short[] fanSpeed) {
             this.fanSpeed = fanSpeed;
             return this;
         }
@@ -675,7 +671,7 @@ public final class OnboardComputerStatus {
                 arraySize = 4,
                 description = "Storage type: 0: HDD, 1: SSD, 2: EMMC, 3: SD card (non-removable), 4: SD card (removable). A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder storageType(List<Long> storageType) {
+        public final Builder storageType(int[] storageType) {
             this.storageType = storageType;
             return this;
         }
@@ -690,7 +686,7 @@ public final class OnboardComputerStatus {
                 arraySize = 4,
                 description = "Amount of used storage space on the component system. A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder storageUsage(List<Long> storageUsage) {
+        public final Builder storageUsage(int[] storageUsage) {
             this.storageUsage = storageUsage;
             return this;
         }
@@ -705,7 +701,7 @@ public final class OnboardComputerStatus {
                 arraySize = 4,
                 description = "Total amount of storage space on the component system. A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder storageTotal(List<Long> storageTotal) {
+        public final Builder storageTotal(int[] storageTotal) {
             this.storageTotal = storageTotal;
             return this;
         }
@@ -720,7 +716,7 @@ public final class OnboardComputerStatus {
                 arraySize = 6,
                 description = "Link type: 0-9: UART, 10-19: Wired network, 20-29: Wifi, 30-39: Point-to-point proprietary, 40-49: Mesh proprietary"
         )
-        public final Builder linkType(List<Long> linkType) {
+        public final Builder linkType(int[] linkType) {
             this.linkType = linkType;
             return this;
         }
@@ -734,7 +730,7 @@ public final class OnboardComputerStatus {
                 arraySize = 6,
                 description = "Network traffic from the component system. A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder linkTxRate(List<Long> linkTxRate) {
+        public final Builder linkTxRate(int[] linkTxRate) {
             this.linkTxRate = linkTxRate;
             return this;
         }
@@ -748,7 +744,7 @@ public final class OnboardComputerStatus {
                 arraySize = 6,
                 description = "Network traffic to the component system. A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder linkRxRate(List<Long> linkRxRate) {
+        public final Builder linkRxRate(int[] linkRxRate) {
             this.linkRxRate = linkRxRate;
             return this;
         }
@@ -762,7 +758,7 @@ public final class OnboardComputerStatus {
                 arraySize = 6,
                 description = "Network capacity from the component system. A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder linkTxMax(List<Long> linkTxMax) {
+        public final Builder linkTxMax(int[] linkTxMax) {
             this.linkTxMax = linkTxMax;
             return this;
         }
@@ -776,7 +772,7 @@ public final class OnboardComputerStatus {
                 arraySize = 6,
                 description = "Network capacity to the component system. A value of UINT32_MAX implies the field is unused."
         )
-        public final Builder linkRxMax(List<Long> linkRxMax) {
+        public final Builder linkRxMax(int[] linkRxMax) {
             this.linkRxMax = linkRxMax;
             return this;
         }

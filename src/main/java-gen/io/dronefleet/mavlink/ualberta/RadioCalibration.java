@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.ualberta;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -19,20 +17,20 @@ import java.util.Objects;
         description = "Complete set of calibration parameters for the radio"
 )
 public final class RadioCalibration {
-    private final List<Integer> aileron;
+    private final short[] aileron;
 
-    private final List<Integer> elevator;
+    private final short[] elevator;
 
-    private final List<Integer> rudder;
+    private final short[] rudder;
 
-    private final List<Integer> gyro;
+    private final short[] gyro;
 
-    private final List<Integer> pitch;
+    private final short[] pitch;
 
-    private final List<Integer> throttle;
+    private final short[] throttle;
 
-    private RadioCalibration(List<Integer> aileron, List<Integer> elevator, List<Integer> rudder,
-            List<Integer> gyro, List<Integer> pitch, List<Integer> throttle) {
+    private RadioCalibration(short[] aileron, short[] elevator, short[] rudder, short[] gyro,
+            short[] pitch, short[] throttle) {
         this.aileron = aileron;
         this.elevator = elevator;
         this.rudder = rudder;
@@ -58,7 +56,7 @@ public final class RadioCalibration {
             arraySize = 3,
             description = "Aileron setpoints: left, center, right"
     )
-    public final List<Integer> aileron() {
+    public final short[] aileron() {
         return this.aileron;
     }
 
@@ -71,7 +69,7 @@ public final class RadioCalibration {
             arraySize = 3,
             description = "Elevator setpoints: nose down, center, nose up"
     )
-    public final List<Integer> elevator() {
+    public final short[] elevator() {
         return this.elevator;
     }
 
@@ -84,7 +82,7 @@ public final class RadioCalibration {
             arraySize = 3,
             description = "Rudder setpoints: nose left, center, nose right"
     )
-    public final List<Integer> rudder() {
+    public final short[] rudder() {
         return this.rudder;
     }
 
@@ -97,7 +95,7 @@ public final class RadioCalibration {
             arraySize = 2,
             description = "Tail gyro mode/gain setpoints: heading hold, rate mode"
     )
-    public final List<Integer> gyro() {
+    public final short[] gyro() {
         return this.gyro;
     }
 
@@ -110,7 +108,7 @@ public final class RadioCalibration {
             arraySize = 5,
             description = "Pitch curve setpoints (every 25%)"
     )
-    public final List<Integer> pitch() {
+    public final short[] pitch() {
         return this.pitch;
     }
 
@@ -123,7 +121,7 @@ public final class RadioCalibration {
             arraySize = 5,
             description = "Throttle curve setpoints (every 25%)"
     )
-    public final List<Integer> throttle() {
+    public final short[] throttle() {
         return this.throttle;
     }
 
@@ -164,17 +162,17 @@ public final class RadioCalibration {
     }
 
     public static final class Builder {
-        private List<Integer> aileron;
+        private short[] aileron;
 
-        private List<Integer> elevator;
+        private short[] elevator;
 
-        private List<Integer> rudder;
+        private short[] rudder;
 
-        private List<Integer> gyro;
+        private short[] gyro;
 
-        private List<Integer> pitch;
+        private short[] pitch;
 
-        private List<Integer> throttle;
+        private short[] throttle;
 
         /**
          * Aileron setpoints: left, center, right 
@@ -185,7 +183,7 @@ public final class RadioCalibration {
                 arraySize = 3,
                 description = "Aileron setpoints: left, center, right"
         )
-        public final Builder aileron(List<Integer> aileron) {
+        public final Builder aileron(short[] aileron) {
             this.aileron = aileron;
             return this;
         }
@@ -199,7 +197,7 @@ public final class RadioCalibration {
                 arraySize = 3,
                 description = "Elevator setpoints: nose down, center, nose up"
         )
-        public final Builder elevator(List<Integer> elevator) {
+        public final Builder elevator(short[] elevator) {
             this.elevator = elevator;
             return this;
         }
@@ -213,7 +211,7 @@ public final class RadioCalibration {
                 arraySize = 3,
                 description = "Rudder setpoints: nose left, center, nose right"
         )
-        public final Builder rudder(List<Integer> rudder) {
+        public final Builder rudder(short[] rudder) {
             this.rudder = rudder;
             return this;
         }
@@ -227,7 +225,7 @@ public final class RadioCalibration {
                 arraySize = 2,
                 description = "Tail gyro mode/gain setpoints: heading hold, rate mode"
         )
-        public final Builder gyro(List<Integer> gyro) {
+        public final Builder gyro(short[] gyro) {
             this.gyro = gyro;
             return this;
         }
@@ -241,7 +239,7 @@ public final class RadioCalibration {
                 arraySize = 5,
                 description = "Pitch curve setpoints (every 25%)"
         )
-        public final Builder pitch(List<Integer> pitch) {
+        public final Builder pitch(short[] pitch) {
             this.pitch = pitch;
             return this;
         }
@@ -255,7 +253,7 @@ public final class RadioCalibration {
                 arraySize = 5,
                 description = "Throttle curve setpoints (every 25%)"
         )
-        public final Builder throttle(List<Integer> throttle) {
+        public final Builder throttle(short[] throttle) {
             this.throttle = throttle;
             return this;
         }

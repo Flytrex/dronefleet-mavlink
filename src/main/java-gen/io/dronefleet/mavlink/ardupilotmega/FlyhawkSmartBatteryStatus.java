@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.ardupilotmega;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,7 +23,7 @@ public final class FlyhawkSmartBatteryStatus {
 
     private final int overallVoltage;
 
-    private final List<Integer> voltages;
+    private final short[] voltages;
 
     private final int current1;
 
@@ -37,9 +35,8 @@ public final class FlyhawkSmartBatteryStatus {
 
     private final int isOn;
 
-    private FlyhawkSmartBatteryStatus(int id, int temperature, int overallVoltage,
-            List<Integer> voltages, int current1, int current2, int capacityRemaining,
-            int isShuttingDown, int isOn) {
+    private FlyhawkSmartBatteryStatus(int id, int temperature, int overallVoltage, short[] voltages,
+            int current1, int current2, int capacityRemaining, int isShuttingDown, int isOn) {
         this.id = id;
         this.temperature = temperature;
         this.overallVoltage = overallVoltage;
@@ -105,7 +102,7 @@ public final class FlyhawkSmartBatteryStatus {
             arraySize = 6,
             description = "Individual cell voltages. Index values above the valid cell count for this battery should have the UINT16_MAX value."
     )
-    public final List<Integer> voltages() {
+    public final short[] voltages() {
         return this.voltages;
     }
 
@@ -229,7 +226,7 @@ public final class FlyhawkSmartBatteryStatus {
 
         private int overallVoltage;
 
-        private List<Integer> voltages;
+        private short[] voltages;
 
         private int current1;
 
@@ -290,7 +287,7 @@ public final class FlyhawkSmartBatteryStatus {
                 arraySize = 6,
                 description = "Individual cell voltages. Index values above the valid cell count for this battery should have the UINT16_MAX value."
         )
-        public final Builder voltages(List<Integer> voltages) {
+        public final Builder voltages(short[] voltages) {
             this.voltages = voltages;
             return this;
         }

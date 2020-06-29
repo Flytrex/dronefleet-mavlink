@@ -5,12 +5,10 @@ import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
 import io.dronefleet.mavlink.util.EnumValue;
 import java.lang.Enum;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -31,7 +29,7 @@ public final class BatteryStatus {
 
     private final int temperature;
 
-    private final List<Integer> voltages;
+    private final short[] voltages;
 
     private final int currentBattery;
 
@@ -46,9 +44,9 @@ public final class BatteryStatus {
     private final EnumValue<MavBatteryChargeState> chargeState;
 
     private BatteryStatus(int id, EnumValue<MavBatteryFunction> batteryFunction,
-            EnumValue<MavBatteryType> type, int temperature, List<Integer> voltages,
-            int currentBattery, int currentConsumed, int energyConsumed, int batteryRemaining,
-            int timeRemaining, EnumValue<MavBatteryChargeState> chargeState) {
+            EnumValue<MavBatteryType> type, int temperature, short[] voltages, int currentBattery,
+            int currentConsumed, int energyConsumed, int batteryRemaining, int timeRemaining,
+            EnumValue<MavBatteryChargeState> chargeState) {
         this.id = id;
         this.batteryFunction = batteryFunction;
         this.type = type;
@@ -131,7 +129,7 @@ public final class BatteryStatus {
             arraySize = 10,
             description = "Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value."
     )
-    public final List<Integer> voltages() {
+    public final short[] voltages() {
         return this.voltages;
     }
 
@@ -276,7 +274,7 @@ public final class BatteryStatus {
 
         private int temperature;
 
-        private List<Integer> voltages;
+        private short[] voltages;
 
         private int currentBattery;
 
@@ -397,7 +395,7 @@ public final class BatteryStatus {
                 arraySize = 10,
                 description = "Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value."
         )
-        public final Builder voltages(List<Integer> voltages) {
+        public final Builder voltages(short[] voltages) {
             this.voltages = voltages;
             return this;
         }

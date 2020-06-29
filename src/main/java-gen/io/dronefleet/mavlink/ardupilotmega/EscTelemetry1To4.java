@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.ardupilotmega;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -21,18 +19,18 @@ import java.util.Objects;
 public final class EscTelemetry1To4 {
     private final byte[] temperature;
 
-    private final List<Integer> voltage;
+    private final short[] voltage;
 
-    private final List<Integer> current;
+    private final short[] current;
 
-    private final List<Integer> totalcurrent;
+    private final short[] totalcurrent;
 
-    private final List<Integer> rpm;
+    private final short[] rpm;
 
-    private final List<Integer> count;
+    private final short[] count;
 
-    private EscTelemetry1To4(byte[] temperature, List<Integer> voltage, List<Integer> current,
-            List<Integer> totalcurrent, List<Integer> rpm, List<Integer> count) {
+    private EscTelemetry1To4(byte[] temperature, short[] voltage, short[] current,
+            short[] totalcurrent, short[] rpm, short[] count) {
         this.temperature = temperature;
         this.voltage = voltage;
         this.current = current;
@@ -71,7 +69,7 @@ public final class EscTelemetry1To4 {
             arraySize = 4,
             description = "Voltage."
     )
-    public final List<Integer> voltage() {
+    public final short[] voltage() {
         return this.voltage;
     }
 
@@ -84,7 +82,7 @@ public final class EscTelemetry1To4 {
             arraySize = 4,
             description = "Current."
     )
-    public final List<Integer> current() {
+    public final short[] current() {
         return this.current;
     }
 
@@ -97,7 +95,7 @@ public final class EscTelemetry1To4 {
             arraySize = 4,
             description = "Total current."
     )
-    public final List<Integer> totalcurrent() {
+    public final short[] totalcurrent() {
         return this.totalcurrent;
     }
 
@@ -110,7 +108,7 @@ public final class EscTelemetry1To4 {
             arraySize = 4,
             description = "RPM (eRPM)."
     )
-    public final List<Integer> rpm() {
+    public final short[] rpm() {
         return this.rpm;
     }
 
@@ -123,7 +121,7 @@ public final class EscTelemetry1To4 {
             arraySize = 4,
             description = "count of telemetry packets received (wraps at 65535)."
     )
-    public final List<Integer> count() {
+    public final short[] count() {
         return this.count;
     }
 
@@ -166,15 +164,15 @@ public final class EscTelemetry1To4 {
     public static final class Builder {
         private byte[] temperature;
 
-        private List<Integer> voltage;
+        private short[] voltage;
 
-        private List<Integer> current;
+        private short[] current;
 
-        private List<Integer> totalcurrent;
+        private short[] totalcurrent;
 
-        private List<Integer> rpm;
+        private short[] rpm;
 
-        private List<Integer> count;
+        private short[] count;
 
         /**
          * Temperature. 
@@ -199,7 +197,7 @@ public final class EscTelemetry1To4 {
                 arraySize = 4,
                 description = "Voltage."
         )
-        public final Builder voltage(List<Integer> voltage) {
+        public final Builder voltage(short[] voltage) {
             this.voltage = voltage;
             return this;
         }
@@ -213,7 +211,7 @@ public final class EscTelemetry1To4 {
                 arraySize = 4,
                 description = "Current."
         )
-        public final Builder current(List<Integer> current) {
+        public final Builder current(short[] current) {
             this.current = current;
             return this;
         }
@@ -227,7 +225,7 @@ public final class EscTelemetry1To4 {
                 arraySize = 4,
                 description = "Total current."
         )
-        public final Builder totalcurrent(List<Integer> totalcurrent) {
+        public final Builder totalcurrent(short[] totalcurrent) {
             this.totalcurrent = totalcurrent;
             return this;
         }
@@ -241,7 +239,7 @@ public final class EscTelemetry1To4 {
                 arraySize = 4,
                 description = "RPM (eRPM)."
         )
-        public final Builder rpm(List<Integer> rpm) {
+        public final Builder rpm(short[] rpm) {
             this.rpm = rpm;
             return this;
         }
@@ -255,7 +253,7 @@ public final class EscTelemetry1To4 {
                 arraySize = 4,
                 description = "count of telemetry packets received (wraps at 65535)."
         )
-        public final Builder count(List<Integer> count) {
+        public final Builder count(short[] count) {
             this.count = count;
             return this;
         }

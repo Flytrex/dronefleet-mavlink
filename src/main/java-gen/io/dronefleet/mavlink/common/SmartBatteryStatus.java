@@ -6,12 +6,10 @@ import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
 import io.dronefleet.mavlink.util.EnumValue;
 import java.lang.Deprecated;
 import java.lang.Enum;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -44,11 +42,11 @@ public final class SmartBatteryStatus {
 
     private final int cellOffset;
 
-    private final List<Integer> voltages;
+    private final short[] voltages;
 
     private SmartBatteryStatus(int id, int capacityRemaining, int current, int temperature,
             EnumValue<MavSmartBatteryFault> faultBitmask, int timeRemaining, int cellOffset,
-            List<Integer> voltages) {
+            short[] voltages) {
         this.id = id;
         this.capacityRemaining = capacityRemaining;
         this.current = current;
@@ -170,7 +168,7 @@ public final class SmartBatteryStatus {
             arraySize = 16,
             description = "Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value."
     )
-    public final List<Integer> voltages() {
+    public final short[] voltages() {
         return this.voltages;
     }
 
@@ -231,7 +229,7 @@ public final class SmartBatteryStatus {
 
         private int cellOffset;
 
-        private List<Integer> voltages;
+        private short[] voltages;
 
         /**
          * Battery ID 
@@ -364,7 +362,7 @@ public final class SmartBatteryStatus {
                 arraySize = 16,
                 description = "Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value."
         )
-        public final Builder voltages(List<Integer> voltages) {
+        public final Builder voltages(short[] voltages) {
             this.voltages = voltages;
             return this;
         }

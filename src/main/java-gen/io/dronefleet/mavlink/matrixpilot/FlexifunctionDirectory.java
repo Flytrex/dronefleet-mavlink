@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.matrixpilot;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -29,10 +27,10 @@ public final class FlexifunctionDirectory {
 
     private final int count;
 
-    private final List<Integer> directoryData;
+    private final byte[] directoryData;
 
     private FlexifunctionDirectory(int targetSystem, int targetComponent, int directoryType,
-            int startIndex, int count, List<Integer> directoryData) {
+            int startIndex, int count, byte[] directoryData) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.directoryType = directoryType;
@@ -119,7 +117,7 @@ public final class FlexifunctionDirectory {
             signed = true,
             description = "Settings data"
     )
-    public final List<Integer> directoryData() {
+    public final byte[] directoryData() {
         return this.directoryData;
     }
 
@@ -170,7 +168,7 @@ public final class FlexifunctionDirectory {
 
         private int count;
 
-        private List<Integer> directoryData;
+        private byte[] directoryData;
 
         /**
          * System ID 
@@ -247,7 +245,7 @@ public final class FlexifunctionDirectory {
                 signed = true,
                 description = "Settings data"
         )
-        public final Builder directoryData(List<Integer> directoryData) {
+        public final Builder directoryData(byte[] directoryData) {
             this.directoryData = directoryData;
             return this;
         }

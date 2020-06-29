@@ -3,11 +3,9 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -26,9 +24,9 @@ public final class MemoryVect {
 
     private final int type;
 
-    private final List<Integer> value;
+    private final byte[] value;
 
-    private MemoryVect(int address, int ver, int type, List<Integer> value) {
+    private MemoryVect(int address, int ver, int type, byte[] value) {
         this.address = address;
         this.ver = ver;
         this.type = type;
@@ -90,7 +88,7 @@ public final class MemoryVect {
             signed = true,
             description = "Memory contents at specified address"
     )
-    public final List<Integer> value() {
+    public final byte[] value() {
         return this.value;
     }
 
@@ -131,7 +129,7 @@ public final class MemoryVect {
 
         private int type;
 
-        private List<Integer> value;
+        private byte[] value;
 
         /**
          * Starting address of the debug variables 
@@ -183,7 +181,7 @@ public final class MemoryVect {
                 signed = true,
                 description = "Memory contents at specified address"
         )
-        public final Builder value(List<Integer> value) {
+        public final Builder value(byte[] value) {
             this.value = value;
             return this;
         }
