@@ -9,17 +9,36 @@ import io.dronefleet.mavlink.util.EnumValue;
 import io.dronefleet.mavlink.util.WireFieldInfoComparator;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class ReflectionPayloadDeserializer implements MavlinkPayloadDeserializer {
 
     private static final WireFieldInfoComparator wireComparator = new WireFieldInfoComparator();
+
+    private static final Map<Class<?>, List<Method>> builderMethodsCache = Collections.synchronizedMap(new HashMap<>());
+
+
+    private static List<Method> getBuilderMethods(Class<?> builderClass){
+        return builderMethodsCache.computeIfAbsent(builderClass, (c) -> Arrays.stream(c.getMethods())
+                .filter(m -> m.isAnnotationPresent(MavlinkFieldInfo.class))
+                .sorted((a, b) -> {
+                    MavlinkFieldInfo fa = a.getAnnotation(MavlinkFieldInfo.class);
+                    MavlinkFieldInfo fb = b.getAnnotation(MavlinkFieldInfo.class);
+                    return wireComparator.compare(fa, fb);
+                }).collect(Collectors.toList()));
+    }
 
     @Override
     public <T> T deserialize(byte[] payload, Class<T> messageType) {
@@ -38,14 +57,8 @@ public class ReflectionPayloadDeserializer implements MavlinkPayloadDeserializer
                     .invoke(null);
 
             AtomicInteger nextOffset = new AtomicInteger();
-            Arrays.stream(builder.getClass().getMethods())
-                    .filter(m -> m.isAnnotationPresent(MavlinkFieldInfo.class))
-                    .sorted((a, b) -> {
-                        MavlinkFieldInfo fa = a.getAnnotation(MavlinkFieldInfo.class);
-                        MavlinkFieldInfo fb = b.getAnnotation(MavlinkFieldInfo.class);
-                        return wireComparator.compare(fa, fb);
-                    })
-                    .forEach(method -> {
+            List<Method> builderMethods = getBuilderMethods(builder.getClass());
+            builderMethods.forEach(method -> {
                         MavlinkFieldInfo field = method.getAnnotation(MavlinkFieldInfo.class);
 
                         int length = field.unitSize() * Math.max(field.arraySize(), 1);
