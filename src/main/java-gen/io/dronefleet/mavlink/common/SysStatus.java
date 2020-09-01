@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 @MavlinkMessageInfo(
         id = 1,
-        crc = 254,
+        crc = 124,
         description = "The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The NAV_MODE defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout."
 )
 public final class SysStatus {
@@ -44,8 +44,6 @@ public final class SysStatus {
 
     private final int batteryRemaining;
 
-    private final int failsafe;
-
     private final int dropRateComm;
 
     private final int errorsComm;
@@ -58,12 +56,13 @@ public final class SysStatus {
 
     private final int errorsCount4;
 
+    private final int failsafe;
+
     private SysStatus(EnumValue<MavSysStatusSensor> onboardControlSensorsPresent,
             EnumValue<MavSysStatusSensor> onboardControlSensorsEnabled,
             EnumValue<MavSysStatusSensor> onboardControlSensorsHealth, int load, int voltageBattery,
-            int currentBattery, int batteryRemaining, int failsafe, int dropRateComm,
-            int errorsComm, int errorsCount1, int errorsCount2, int errorsCount3,
-            int errorsCount4) {
+            int currentBattery, int batteryRemaining, int dropRateComm, int errorsComm,
+            int errorsCount1, int errorsCount2, int errorsCount3, int errorsCount4, int failsafe) {
         this.onboardControlSensorsPresent = onboardControlSensorsPresent;
         this.onboardControlSensorsEnabled = onboardControlSensorsEnabled;
         this.onboardControlSensorsHealth = onboardControlSensorsHealth;
@@ -71,13 +70,13 @@ public final class SysStatus {
         this.voltageBattery = voltageBattery;
         this.currentBattery = currentBattery;
         this.batteryRemaining = batteryRemaining;
-        this.failsafe = failsafe;
         this.dropRateComm = dropRateComm;
         this.errorsComm = errorsComm;
         this.errorsCount1 = errorsCount1;
         this.errorsCount2 = errorsCount2;
         this.errorsCount3 = errorsCount3;
         this.errorsCount4 = errorsCount4;
+        this.failsafe = failsafe;
     }
 
     /**
@@ -181,24 +180,11 @@ public final class SysStatus {
     }
 
     /**
-     * failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, 
-     * bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb) 
-     */
-    @MavlinkFieldInfo(
-            position = 8,
-            unitSize = 1,
-            description = "failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)"
-    )
-    public final int failsafe() {
-        return this.failsafe;
-    }
-
-    /**
      * Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that 
      * were corrupted on reception on the MAV) 
      */
     @MavlinkFieldInfo(
-            position = 9,
+            position = 8,
             unitSize = 2,
             description = "Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)"
     )
@@ -211,7 +197,7 @@ public final class SysStatus {
      * corrupted on reception on the MAV) 
      */
     @MavlinkFieldInfo(
-            position = 10,
+            position = 9,
             unitSize = 2,
             description = "Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)"
     )
@@ -223,7 +209,7 @@ public final class SysStatus {
      * Autopilot-specific errors 
      */
     @MavlinkFieldInfo(
-            position = 11,
+            position = 10,
             unitSize = 2,
             description = "Autopilot-specific errors"
     )
@@ -235,7 +221,7 @@ public final class SysStatus {
      * Autopilot-specific errors 
      */
     @MavlinkFieldInfo(
-            position = 12,
+            position = 11,
             unitSize = 2,
             description = "Autopilot-specific errors"
     )
@@ -247,7 +233,7 @@ public final class SysStatus {
      * Autopilot-specific errors 
      */
     @MavlinkFieldInfo(
-            position = 13,
+            position = 12,
             unitSize = 2,
             description = "Autopilot-specific errors"
     )
@@ -259,12 +245,26 @@ public final class SysStatus {
      * Autopilot-specific errors 
      */
     @MavlinkFieldInfo(
-            position = 14,
+            position = 13,
             unitSize = 2,
             description = "Autopilot-specific errors"
     )
     public final int errorsCount4() {
         return this.errorsCount4;
+    }
+
+    /**
+     * failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, 
+     * bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb) 
+     */
+    @MavlinkFieldInfo(
+            position = 15,
+            unitSize = 1,
+            extension = true,
+            description = "failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)"
+    )
+    public final int failsafe() {
+        return this.failsafe;
     }
 
     @Override
@@ -279,13 +279,13 @@ public final class SysStatus {
         if (!Objects.deepEquals(voltageBattery, other.voltageBattery)) return false;
         if (!Objects.deepEquals(currentBattery, other.currentBattery)) return false;
         if (!Objects.deepEquals(batteryRemaining, other.batteryRemaining)) return false;
-        if (!Objects.deepEquals(failsafe, other.failsafe)) return false;
         if (!Objects.deepEquals(dropRateComm, other.dropRateComm)) return false;
         if (!Objects.deepEquals(errorsComm, other.errorsComm)) return false;
         if (!Objects.deepEquals(errorsCount1, other.errorsCount1)) return false;
         if (!Objects.deepEquals(errorsCount2, other.errorsCount2)) return false;
         if (!Objects.deepEquals(errorsCount3, other.errorsCount3)) return false;
         if (!Objects.deepEquals(errorsCount4, other.errorsCount4)) return false;
+        if (!Objects.deepEquals(failsafe, other.failsafe)) return false;
         return true;
     }
 
@@ -299,13 +299,13 @@ public final class SysStatus {
         result = 31 * result + Objects.hashCode(voltageBattery);
         result = 31 * result + Objects.hashCode(currentBattery);
         result = 31 * result + Objects.hashCode(batteryRemaining);
-        result = 31 * result + Objects.hashCode(failsafe);
         result = 31 * result + Objects.hashCode(dropRateComm);
         result = 31 * result + Objects.hashCode(errorsComm);
         result = 31 * result + Objects.hashCode(errorsCount1);
         result = 31 * result + Objects.hashCode(errorsCount2);
         result = 31 * result + Objects.hashCode(errorsCount3);
         result = 31 * result + Objects.hashCode(errorsCount4);
+        result = 31 * result + Objects.hashCode(failsafe);
         return result;
     }
 
@@ -318,13 +318,13 @@ public final class SysStatus {
                  + ", voltageBattery=" + voltageBattery
                  + ", currentBattery=" + currentBattery
                  + ", batteryRemaining=" + batteryRemaining
-                 + ", failsafe=" + failsafe
                  + ", dropRateComm=" + dropRateComm
                  + ", errorsComm=" + errorsComm
                  + ", errorsCount1=" + errorsCount1
                  + ", errorsCount2=" + errorsCount2
                  + ", errorsCount3=" + errorsCount3
-                 + ", errorsCount4=" + errorsCount4 + "}";
+                 + ", errorsCount4=" + errorsCount4
+                 + ", failsafe=" + failsafe + "}";
     }
 
     public static final class Builder {
@@ -342,8 +342,6 @@ public final class SysStatus {
 
         private int batteryRemaining;
 
-        private int failsafe;
-
         private int dropRateComm;
 
         private int errorsComm;
@@ -355,6 +353,8 @@ public final class SysStatus {
         private int errorsCount3;
 
         private int errorsCount4;
+
+        private int failsafe;
 
         /**
          * Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. 
@@ -531,25 +531,11 @@ public final class SysStatus {
         }
 
         /**
-         * failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, 
-         * bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb) 
-         */
-        @MavlinkFieldInfo(
-                position = 8,
-                unitSize = 1,
-                description = "failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)"
-        )
-        public final Builder failsafe(int failsafe) {
-            this.failsafe = failsafe;
-            return this;
-        }
-
-        /**
          * Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that 
          * were corrupted on reception on the MAV) 
          */
         @MavlinkFieldInfo(
-                position = 9,
+                position = 8,
                 unitSize = 2,
                 description = "Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)"
         )
@@ -563,7 +549,7 @@ public final class SysStatus {
          * corrupted on reception on the MAV) 
          */
         @MavlinkFieldInfo(
-                position = 10,
+                position = 9,
                 unitSize = 2,
                 description = "Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)"
         )
@@ -576,7 +562,7 @@ public final class SysStatus {
          * Autopilot-specific errors 
          */
         @MavlinkFieldInfo(
-                position = 11,
+                position = 10,
                 unitSize = 2,
                 description = "Autopilot-specific errors"
         )
@@ -589,7 +575,7 @@ public final class SysStatus {
          * Autopilot-specific errors 
          */
         @MavlinkFieldInfo(
-                position = 12,
+                position = 11,
                 unitSize = 2,
                 description = "Autopilot-specific errors"
         )
@@ -602,7 +588,7 @@ public final class SysStatus {
          * Autopilot-specific errors 
          */
         @MavlinkFieldInfo(
-                position = 13,
+                position = 12,
                 unitSize = 2,
                 description = "Autopilot-specific errors"
         )
@@ -615,7 +601,7 @@ public final class SysStatus {
          * Autopilot-specific errors 
          */
         @MavlinkFieldInfo(
-                position = 14,
+                position = 13,
                 unitSize = 2,
                 description = "Autopilot-specific errors"
         )
@@ -624,8 +610,23 @@ public final class SysStatus {
             return this;
         }
 
+        /**
+         * failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, 
+         * bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb) 
+         */
+        @MavlinkFieldInfo(
+                position = 15,
+                unitSize = 1,
+                extension = true,
+                description = "failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)"
+        )
+        public final Builder failsafe(int failsafe) {
+            this.failsafe = failsafe;
+            return this;
+        }
+
         public final SysStatus build() {
-            return new SysStatus(onboardControlSensorsPresent, onboardControlSensorsEnabled, onboardControlSensorsHealth, load, voltageBattery, currentBattery, batteryRemaining, failsafe, dropRateComm, errorsComm, errorsCount1, errorsCount2, errorsCount3, errorsCount4);
+            return new SysStatus(onboardControlSensorsPresent, onboardControlSensorsEnabled, onboardControlSensorsHealth, load, voltageBattery, currentBattery, batteryRemaining, dropRateComm, errorsComm, errorsCount1, errorsCount2, errorsCount3, errorsCount4, failsafe);
         }
     }
 }

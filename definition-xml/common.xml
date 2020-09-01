@@ -4107,13 +4107,14 @@
       <field type="uint16_t" name="voltage_battery" units="mV">Battery voltage, UINT16_MAX: Voltage not sent by autopilot</field>
       <field type="int16_t" name="current_battery" units="cA">Battery current, -1: Current not sent by autopilot</field>
       <field type="int8_t" name="battery_remaining" units="%">Battery energy remaining, -1: Battery remaining energy not sent by autopilot</field>
-      <field type="uint8_t" name="failsafe">failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)</field>
       <field type="uint16_t" name="drop_rate_comm" units="c%">Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)</field>
       <field type="uint16_t" name="errors_comm">Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)</field>
       <field type="uint16_t" name="errors_count1">Autopilot-specific errors</field>
       <field type="uint16_t" name="errors_count2">Autopilot-specific errors</field>
       <field type="uint16_t" name="errors_count3">Autopilot-specific errors</field>
       <field type="uint16_t" name="errors_count4">Autopilot-specific errors</field>
+      <extensions/>
+      <field type="uint8_t" name="failsafe">failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)</field>
     </message>
     <message id="2" name="SYSTEM_TIME">
       <description>The system time is the time of the master clock, typically the computer clock of the main onboard computer.</description>
@@ -4200,7 +4201,6 @@
     <message id="24" name="GPS_RAW_INT">
       <description>The global position, as returned by the Global Positioning System (GPS). This is
                 NOT the global position estimate of the system, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate.</description>
-      <field type="uint8_t" name="id">GPS ID.</field>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</field>
       <field type="uint8_t" name="fix_type" enum="GPS_FIX_TYPE">GPS fix type.</field>
       <field type="int32_t" name="lat" units="degE7">Latitude (WGS84, EGM96 ellipsoid)</field>
@@ -4211,13 +4211,14 @@
       <field type="uint16_t" name="vel" units="cm/s">GPS ground speed. If unknown, set to: UINT16_MAX</field>
       <field type="uint16_t" name="cog" units="cdeg">Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</field>
       <field type="uint8_t" name="satellites_visible">Number of satellites visible. If unknown, set to 255</field>
-      <field type="uint8_t" name="is_primary">Boolean indicating whether this GPS is primary (currently used for navigation) or not (primary: 1, not primary: 0).</field>
       <extensions/>
       <field type="int32_t" name="alt_ellipsoid" units="mm">Altitude (above WGS84, EGM96 ellipsoid). Positive for up.</field>
       <field type="uint32_t" name="h_acc" units="mm">Position uncertainty. Positive for up.</field>
       <field type="uint32_t" name="v_acc" units="mm">Altitude uncertainty. Positive for up.</field>
       <field type="uint32_t" name="vel_acc" units="mm">Speed uncertainty. Positive for up.</field>
       <field type="uint32_t" name="hdg_acc" units="degE5">Heading / track uncertainty</field>
+      <field type="uint8_t" name="id">GPS ID.</field>
+      <field type="uint8_t" name="is_primary">Boolean indicating whether this GPS is primary (currently used for navigation) or not (primary: 1, not primary: 0).</field>
     </message>
     <message id="25" name="GPS_STATUS">
       <description>The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message GLOBAL_POSITION for the global position estimate. This message can contain information for up to 20 satellites.</description>
