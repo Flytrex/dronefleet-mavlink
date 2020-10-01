@@ -18,10 +18,9 @@ import java.lang.Deprecated;
 @MavlinkEnum
 public enum MavComponent {
     /**
-     * Target id (target_component) used to broadcast messages to all components of the receiving 
-     * system. Components should attempt to process messages with this component ID and forward to 
-     * components on any other interfaces. Note: This is not a valid *source* component id for a 
-     * message. 
+     * Used to broadcast messages to all components of the receiving system. Components should 
+     * attempt to process messages with this component ID and forward to components on any other 
+     * interfaces. 
      */
     @MavlinkEntryInfo(0)
     MAV_COMP_ID_ALL,
@@ -780,12 +779,6 @@ public enum MavComponent {
     MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY,
 
     /**
-     * Component that manages pairing of vehicle and GCS. 
-     */
-    @MavlinkEntryInfo(198)
-    MAV_COMP_ID_PAIRING_MANAGER,
-
-    /**
      * Inertial Measurement Unit (IMU) #1. 
      */
     @MavlinkEntryInfo(200)
@@ -826,12 +819,6 @@ public enum MavComponent {
      */
     @MavlinkEntryInfo(241)
     MAV_COMP_ID_UART_BRIDGE,
-
-    /**
-     * Component handling {@link io.dronefleet.mavlink.common.Tunnel TUNNEL} messages (e.g. vendor specific GUI of a component). 
-     */
-    @MavlinkEntryInfo(242)
-    MAV_COMP_ID_TUNNEL_NODE,
 
     /**
      * Component for handling system messages (e.g. to ARM, takeoff, etc.). 

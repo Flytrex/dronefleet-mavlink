@@ -3,23 +3,19 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
 
 /**
- * Control vehicle tone generation (buzzer). 
- * @deprecated Since 2019-10, replaced by PLAY_TUNE_V2. New version explicitly defines 
- * format. More interoperable. 
+ * Control vehicle tone generation (buzzer) 
  */
 @MavlinkMessageInfo(
         id = 258,
         crc = 187,
-        description = "Control vehicle tone generation (buzzer)."
+        description = "Control vehicle tone generation (buzzer)"
 )
-@Deprecated
 public final class PlayTune {
     private final int targetSystem;
 
@@ -48,7 +44,7 @@ public final class PlayTune {
      * System ID 
      */
     @MavlinkFieldInfo(
-            position = 2,
+            position = 1,
             unitSize = 1,
             description = "System ID"
     )
@@ -60,7 +56,7 @@ public final class PlayTune {
      * Component ID 
      */
     @MavlinkFieldInfo(
-            position = 3,
+            position = 2,
             unitSize = 1,
             description = "Component ID"
     )
@@ -72,7 +68,7 @@ public final class PlayTune {
      * tune in board specific format 
      */
     @MavlinkFieldInfo(
-            position = 4,
+            position = 3,
             unitSize = 1,
             arraySize = 30,
             description = "tune in board specific format"
@@ -85,7 +81,7 @@ public final class PlayTune {
      * tune extension (appended to tune) 
      */
     @MavlinkFieldInfo(
-            position = 6,
+            position = 5,
             unitSize = 1,
             arraySize = 200,
             extension = true,
@@ -138,7 +134,7 @@ public final class PlayTune {
          * System ID 
          */
         @MavlinkFieldInfo(
-                position = 2,
+                position = 1,
                 unitSize = 1,
                 description = "System ID"
         )
@@ -151,7 +147,7 @@ public final class PlayTune {
          * Component ID 
          */
         @MavlinkFieldInfo(
-                position = 3,
+                position = 2,
                 unitSize = 1,
                 description = "Component ID"
         )
@@ -164,7 +160,7 @@ public final class PlayTune {
          * tune in board specific format 
          */
         @MavlinkFieldInfo(
-                position = 4,
+                position = 3,
                 unitSize = 1,
                 arraySize = 30,
                 description = "tune in board specific format"
@@ -178,7 +174,7 @@ public final class PlayTune {
          * tune extension (appended to tune) 
          */
         @MavlinkFieldInfo(
-                position = 6,
+                position = 5,
                 unitSize = 1,
                 arraySize = 200,
                 extension = true,

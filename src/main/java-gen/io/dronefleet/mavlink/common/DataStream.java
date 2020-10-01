@@ -3,7 +3,6 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -11,14 +10,12 @@ import java.util.Objects;
 
 /**
  * Data stream status information. 
- * @deprecated Since 2015-08, replaced by {@link io.dronefleet.mavlink.common.MessageInterval MESSAGE_INTERVAL}. 
  */
 @MavlinkMessageInfo(
         id = 67,
         crc = 21,
         description = "Data stream status information."
 )
-@Deprecated
 public final class DataStream {
     private final int streamId;
 
@@ -44,7 +41,7 @@ public final class DataStream {
      * The ID of the requested data stream 
      */
     @MavlinkFieldInfo(
-            position = 2,
+            position = 1,
             unitSize = 1,
             description = "The ID of the requested data stream"
     )
@@ -56,7 +53,7 @@ public final class DataStream {
      * The message rate 
      */
     @MavlinkFieldInfo(
-            position = 3,
+            position = 2,
             unitSize = 2,
             description = "The message rate"
     )
@@ -68,7 +65,7 @@ public final class DataStream {
      * 1 stream is enabled, 0 stream is stopped. 
      */
     @MavlinkFieldInfo(
-            position = 4,
+            position = 3,
             unitSize = 1,
             description = "1 stream is enabled, 0 stream is stopped."
     )
@@ -114,7 +111,7 @@ public final class DataStream {
          * The ID of the requested data stream 
          */
         @MavlinkFieldInfo(
-                position = 2,
+                position = 1,
                 unitSize = 1,
                 description = "The ID of the requested data stream"
         )
@@ -127,7 +124,7 @@ public final class DataStream {
          * The message rate 
          */
         @MavlinkFieldInfo(
-                position = 3,
+                position = 2,
                 unitSize = 2,
                 description = "The message rate"
         )
@@ -140,7 +137,7 @@ public final class DataStream {
          * 1 stream is enabled, 0 stream is stopped. 
          */
         @MavlinkFieldInfo(
-                position = 4,
+                position = 3,
                 unitSize = 1,
                 description = "1 stream is enabled, 0 stream is stopped."
         )

@@ -15,7 +15,7 @@ public enum RtkBaselineCoordinateSystem {
     RTK_BASELINE_COORDINATE_SYSTEM_ECEF,
 
     /**
-     * RTK basestation centered, north, east, down 
+     * North, East, Down 
      */
     @MavlinkEntryInfo(1)
     RTK_BASELINE_COORDINATE_SYSTEM_NED

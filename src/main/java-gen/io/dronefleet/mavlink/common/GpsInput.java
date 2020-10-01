@@ -230,36 +230,36 @@ public final class GpsInput {
     }
 
     /**
-     * GPS velocity in north direction in earth-fixed NED frame 
+     * GPS velocity in NORTH direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 12,
             unitSize = 4,
-            description = "GPS velocity in north direction in earth-fixed NED frame"
+            description = "GPS velocity in NORTH direction in earth-fixed NED frame"
     )
     public final float vn() {
         return this.vn;
     }
 
     /**
-     * GPS velocity in east direction in earth-fixed NED frame 
+     * GPS velocity in EAST direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 13,
             unitSize = 4,
-            description = "GPS velocity in east direction in earth-fixed NED frame"
+            description = "GPS velocity in EAST direction in earth-fixed NED frame"
     )
     public final float ve() {
         return this.ve;
     }
 
     /**
-     * GPS velocity in down direction in earth-fixed NED frame 
+     * GPS velocity in DOWN direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 14,
             unitSize = 4,
-            description = "GPS velocity in down direction in earth-fixed NED frame"
+            description = "GPS velocity in DOWN direction in earth-fixed NED frame"
     )
     public final float vd() {
         return this.vd;
@@ -314,13 +314,13 @@ public final class GpsInput {
     }
 
     /**
-     * Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
+     * Yaw of vehicle, zero means not available, use 36000 for north 
      */
     @MavlinkFieldInfo(
             position = 20,
             unitSize = 2,
             extension = true,
-            description = "Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north"
+            description = "Yaw of vehicle, zero means not available, use 36000 for north"
     )
     public final int yaw() {
         return this.yaw;
@@ -609,12 +609,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS velocity in north direction in earth-fixed NED frame 
+         * GPS velocity in NORTH direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 12,
                 unitSize = 4,
-                description = "GPS velocity in north direction in earth-fixed NED frame"
+                description = "GPS velocity in NORTH direction in earth-fixed NED frame"
         )
         public final Builder vn(float vn) {
             this.vn = vn;
@@ -622,12 +622,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS velocity in east direction in earth-fixed NED frame 
+         * GPS velocity in EAST direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 13,
                 unitSize = 4,
-                description = "GPS velocity in east direction in earth-fixed NED frame"
+                description = "GPS velocity in EAST direction in earth-fixed NED frame"
         )
         public final Builder ve(float ve) {
             this.ve = ve;
@@ -635,12 +635,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS velocity in down direction in earth-fixed NED frame 
+         * GPS velocity in DOWN direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 14,
                 unitSize = 4,
-                description = "GPS velocity in down direction in earth-fixed NED frame"
+                description = "GPS velocity in DOWN direction in earth-fixed NED frame"
         )
         public final Builder vd(float vd) {
             this.vd = vd;
@@ -700,13 +700,13 @@ public final class GpsInput {
         }
 
         /**
-         * Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
+         * Yaw of vehicle, zero means not available, use 36000 for north 
          */
         @MavlinkFieldInfo(
                 position = 20,
                 unitSize = 2,
                 extension = true,
-                description = "Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north"
+                description = "Yaw of vehicle, zero means not available, use 36000 for north"
         )
         public final Builder yaw(int yaw) {
             this.yaw = yaw;

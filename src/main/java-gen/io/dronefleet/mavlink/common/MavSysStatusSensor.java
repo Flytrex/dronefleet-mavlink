@@ -177,20 +177,8 @@ public enum MavSysStatusSensor {
     MAV_SYS_STATUS_SENSOR_SATCOM,
 
     /**
-     * 0x10000000 2nd GPS 
+     * 0x10000000 pre-arm check status. Always healthy when armed 
      */
     @MavlinkEntryInfo(268435456)
-    MAV_SYS_STATUS_SENSOR_GPS2,
-
-    /**
-     * 0x20000000 3rd 3D gyro 
-     */
-    @MavlinkEntryInfo(536870912)
-    MAV_SYS_STATUS_SENSOR_3D_GYRO3,
-
-    /**
-     * 0x40000000 3rd 3D accelerometer 
-     */
-    @MavlinkEntryInfo(1073741824)
-    MAV_SYS_STATUS_SENSOR_3D_ACCEL3
+    MAV_SYS_STATUS_PREARM_CHECK
 }

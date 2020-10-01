@@ -12,13 +12,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message 
- * supersedes {@link io.dronefleet.mavlink.common.ServoOutputRaw SERVO_OUTPUT_RAW}. 
+ * The raw values of the actuator outputs. 
  */
 @MavlinkMessageInfo(
         id = 375,
         crc = 251,
-        description = "The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message supersedes SERVO_OUTPUT_RAW."
+        description = "The raw values of the actuator outputs."
 )
 public final class ActuatorOutputStatus {
     private final BigInteger timeUsec;

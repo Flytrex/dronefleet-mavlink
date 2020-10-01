@@ -28,15 +28,12 @@ public final class FenceStatus {
 
     private final long breachTime;
 
-    private final EnumValue<FenceMitigate> breachMitigation;
-
     private FenceStatus(int breachStatus, int breachCount, EnumValue<FenceBreach> breachType,
-            long breachTime, EnumValue<FenceMitigate> breachMitigation) {
+            long breachTime) {
         this.breachStatus = breachStatus;
         this.breachCount = breachCount;
         this.breachType = breachType;
         this.breachTime = breachTime;
-        this.breachMitigation = breachMitigation;
     }
 
     /**
@@ -96,20 +93,6 @@ public final class FenceStatus {
         return this.breachTime;
     }
 
-    /**
-     * Active action to prevent fence breach 
-     */
-    @MavlinkFieldInfo(
-            position = 6,
-            unitSize = 1,
-            enumType = FenceMitigate.class,
-            extension = true,
-            description = "Active action to prevent fence breach"
-    )
-    public final EnumValue<FenceMitigate> breachMitigation() {
-        return this.breachMitigation;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -119,7 +102,6 @@ public final class FenceStatus {
         if (!Objects.deepEquals(breachCount, other.breachCount)) return false;
         if (!Objects.deepEquals(breachType, other.breachType)) return false;
         if (!Objects.deepEquals(breachTime, other.breachTime)) return false;
-        if (!Objects.deepEquals(breachMitigation, other.breachMitigation)) return false;
         return true;
     }
 
@@ -130,7 +112,6 @@ public final class FenceStatus {
         result = 31 * result + Objects.hashCode(breachCount);
         result = 31 * result + Objects.hashCode(breachType);
         result = 31 * result + Objects.hashCode(breachTime);
-        result = 31 * result + Objects.hashCode(breachMitigation);
         return result;
     }
 
@@ -139,8 +120,7 @@ public final class FenceStatus {
         return "FenceStatus{breachStatus=" + breachStatus
                  + ", breachCount=" + breachCount
                  + ", breachType=" + breachType
-                 + ", breachTime=" + breachTime
-                 + ", breachMitigation=" + breachMitigation + "}";
+                 + ", breachTime=" + breachTime + "}";
     }
 
     public static final class Builder {
@@ -151,8 +131,6 @@ public final class FenceStatus {
         private EnumValue<FenceBreach> breachType;
 
         private long breachTime;
-
-        private EnumValue<FenceMitigate> breachMitigation;
 
         /**
          * Breach status (0 if currently inside fence, 1 if outside). 
@@ -228,44 +206,8 @@ public final class FenceStatus {
             return this;
         }
 
-        /**
-         * Active action to prevent fence breach 
-         */
-        @MavlinkFieldInfo(
-                position = 6,
-                unitSize = 1,
-                enumType = FenceMitigate.class,
-                extension = true,
-                description = "Active action to prevent fence breach"
-        )
-        public final Builder breachMitigation(EnumValue<FenceMitigate> breachMitigation) {
-            this.breachMitigation = breachMitigation;
-            return this;
-        }
-
-        /**
-         * Active action to prevent fence breach 
-         */
-        public final Builder breachMitigation(FenceMitigate entry) {
-            return breachMitigation(EnumValue.of(entry));
-        }
-
-        /**
-         * Active action to prevent fence breach 
-         */
-        public final Builder breachMitigation(Enum... flags) {
-            return breachMitigation(EnumValue.create(flags));
-        }
-
-        /**
-         * Active action to prevent fence breach 
-         */
-        public final Builder breachMitigation(Collection<Enum> flags) {
-            return breachMitigation(EnumValue.create(flags));
-        }
-
         public final FenceStatus build() {
-            return new FenceStatus(breachStatus, breachCount, breachType, breachTime, breachMitigation);
+            return new FenceStatus(breachStatus, breachCount, breachType, breachTime);
         }
     }
 }
