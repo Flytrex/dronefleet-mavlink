@@ -285,7 +285,7 @@ public final class SysStatus {
      */
     @MavlinkFieldInfo(
             position = 16,
-            unitSize = 4,
+            unitSize = 2,
             enumType = MavSysStatusSensorExtension.class,
             extension = true,
             description = "Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present."
@@ -300,7 +300,7 @@ public final class SysStatus {
      */
     @MavlinkFieldInfo(
             position = 17,
-            unitSize = 4,
+            unitSize = 2,
             enumType = MavSysStatusSensorExtension.class,
             extension = true,
             description = "Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled."
@@ -315,7 +315,7 @@ public final class SysStatus {
      */
     @MavlinkFieldInfo(
             position = 18,
-            unitSize = 4,
+            unitSize = 2,
             enumType = MavSysStatusSensorExtension.class,
             extension = true,
             description = "Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy."
@@ -703,7 +703,7 @@ public final class SysStatus {
          */
         @MavlinkFieldInfo(
                 position = 16,
-                unitSize = 4,
+                unitSize = 2,
                 enumType = MavSysStatusSensorExtension.class,
                 extension = true,
                 description = "Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present."
@@ -745,7 +745,7 @@ public final class SysStatus {
          */
         @MavlinkFieldInfo(
                 position = 17,
-                unitSize = 4,
+                unitSize = 2,
                 enumType = MavSysStatusSensorExtension.class,
                 extension = true,
                 description = "Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled."
@@ -787,7 +787,7 @@ public final class SysStatus {
          */
         @MavlinkFieldInfo(
                 position = 18,
-                unitSize = 4,
+                unitSize = 2,
                 enumType = MavSysStatusSensorExtension.class,
                 extension = true,
                 description = "Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy."

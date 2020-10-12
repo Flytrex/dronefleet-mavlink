@@ -3274,9 +3274,9 @@
       <field type="uint16_t" name="errors_count4">Autopilot-specific errors</field>
       <extensions/>
       <field type="uint8_t" name="failsafe">failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GCS, bit3:EKF, bit4:terrain, bit5:adsb)</field>
-      <field type="uint32_t" name="onboard_control_sensors_extension_present" enum="MAV_SYS_STATUS_SENSOR_EXTENSION" display="bitmask" print_format="0x%04x">Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.</field>
-      <field type="uint32_t" name="onboard_control_sensors_extension_enabled" enum="MAV_SYS_STATUS_SENSOR_EXTENSION" display="bitmask" print_format="0x%04x">Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.</field>
-      <field type="uint32_t" name="onboard_control_sensors_extension_health" enum="MAV_SYS_STATUS_SENSOR_EXTENSION" display="bitmask" print_format="0x%04x">Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy.</field>
+      <field type="uint16_t" name="onboard_control_sensors_extension_present" enum="MAV_SYS_STATUS_SENSOR_EXTENSION" display="bitmask" print_format="0x%02x">Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.</field>
+      <field type="uint16_t" name="onboard_control_sensors_extension_enabled" enum="MAV_SYS_STATUS_SENSOR_EXTENSION" display="bitmask" print_format="0x%02x">Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.</field>
+      <field type="uint16_t" name="onboard_control_sensors_extension_health" enum="MAV_SYS_STATUS_SENSOR_EXTENSION" display="bitmask" print_format="0x%02x">Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy.</field>
     </message>
     <message id="2" name="SYSTEM_TIME">
       <description>The system time is the time of the master clock, typically the computer clock of the main onboard computer.</description>
