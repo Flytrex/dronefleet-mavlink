@@ -3,6 +3,7 @@ package io.dronefleet.mavlink.serialization.payload.reflection;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
+import io.dronefleet.mavlink.common.LogData;
 import io.dronefleet.mavlink.serialization.MavlinkSerializationException;
 import io.dronefleet.mavlink.serialization.payload.MavlinkPayloadDeserializer;
 import io.dronefleet.mavlink.util.EnumValue;
@@ -46,6 +47,23 @@ public class ReflectionPayloadDeserializer implements MavlinkPayloadDeserializer
         if (message == null) {
             throw new IllegalArgumentException(String.format(
                     "class %s is not annotated with @MavlinkMessageInfo", messageType.getName()));
+        }
+
+        if (LogData.class.equals(messageType)){
+            ByteBuffer input = ByteBuffer.wrap(payload).order(ByteOrder.LITTLE_ENDIAN);
+            long ofs = Integer.toUnsignedLong(input.getInt());
+            int id = Short.toUnsignedInt(input.getShort());
+            int count = Byte.toUnsignedInt(input.get());
+            byte[] data = new byte[90];
+            int remaining = input.remaining();
+            input.get(data, 0, Math.min(data.length, remaining));
+
+            return messageType.cast(new LogData.Builder()
+                    .id(id)
+                    .ofs(ofs)
+                    .count(count)
+                    .data(data)
+                    .build());
         }
 
         try {
