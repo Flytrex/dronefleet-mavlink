@@ -1631,6 +1631,12 @@
       <field type="int8_t" name="capacity_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
       <field type="int8_t" name="is_shutting_down" units="">Boolean indicating if the battery is currently in shutting down mode.</field>
       <field type="int8_t" name="is_on" units="">Boolean indicating if the battery is currently on.</field>
+      <extensions/>
+      <field type="uint8_t" name="unk1">Unknown field 1</field>
+      <field type="uint8_t" name="unk2">Unknown field 2</field>
+      <field type="uint16_t" name="unk3">Unknown field 3</field>
+      <field type="uint8_t" name="unk4">Unknown field 4</field>
+      <field type="uint8_t" name="unk5">Unknown field 5</field>
     </message>
     <message id="199" name="FLYHAWK_SMART_BATTERY_INFO">
     <description>Smart Battery Info</description>
@@ -1643,6 +1649,15 @@
       <field type="char[15]" name="firmware_id" units="">Firmware ID</field>
       <field type="uint8_t" name="lifetime" units="%">Lifetime. Values: [0-100], -1: field not provided.</field>
       <field type="uint16_t" name="made_year" units="">Made year</field>
+      <extensions/>
+      <field type="uint8_t" name="info_unk1">Unknown field 1 in info message</field>
+      <field type="uint16_t" name="info_unk2">Unknown field 2 in info message</field>
+      <field type="uint16_t" name="info_unk3">Unknown field 3 in info message</field>
+      <field type="uint32_t" name="info_serial">Serial in info message</field>
+      <field type="uint8_t[8]" name="info_unk4">Unknown field 4 in info message</field>
+      <field type="uint8_t[5]" name="info_unk5">Unknown field 5 in info message</field>
+      <field type="uint16_t" name="version_unk1">Unknown field 1 in version message</field>
+      <field type="uint8_t[6]" name="version_unk2">Unknown field 2 in version message</field>
     </message>
   </messages>
 </mavlink>
