@@ -35,9 +35,26 @@ public final class FlyhawkSmartBatteryInfo {
 
     private final int madeYear;
 
+    private final int infoUnk1;
+
+    private final int infoUnk2;
+
+    private final int infoUnk3;
+
+    private final long infoSerial;
+
+    private final byte[] infoUnk4;
+
+    private final byte[] infoUnk5;
+
+    private final int versionUnk1;
+
+    private final byte[] versionUnk2;
+
     private FlyhawkSmartBatteryInfo(int id, int capacityFullSpecification, int capacityFull,
             int cycleCount, String serialNumber, String deviceName, String firmwareId, int lifetime,
-            int madeYear) {
+            int madeYear, int infoUnk1, int infoUnk2, int infoUnk3, long infoSerial,
+            byte[] infoUnk4, byte[] infoUnk5, int versionUnk1, byte[] versionUnk2) {
         this.id = id;
         this.capacityFullSpecification = capacityFullSpecification;
         this.capacityFull = capacityFull;
@@ -47,6 +64,14 @@ public final class FlyhawkSmartBatteryInfo {
         this.firmwareId = firmwareId;
         this.lifetime = lifetime;
         this.madeYear = madeYear;
+        this.infoUnk1 = infoUnk1;
+        this.infoUnk2 = infoUnk2;
+        this.infoUnk3 = infoUnk3;
+        this.infoSerial = infoSerial;
+        this.infoUnk4 = infoUnk4;
+        this.infoUnk5 = infoUnk5;
+        this.versionUnk1 = versionUnk1;
+        this.versionUnk2 = versionUnk2;
     }
 
     /**
@@ -168,6 +193,113 @@ public final class FlyhawkSmartBatteryInfo {
         return this.madeYear;
     }
 
+    /**
+     * Unknown field 1 in info message 
+     */
+    @MavlinkFieldInfo(
+            position = 11,
+            unitSize = 1,
+            extension = true,
+            description = "Unknown field 1 in info message"
+    )
+    public final int infoUnk1() {
+        return this.infoUnk1;
+    }
+
+    /**
+     * Unknown field 2 in info message 
+     */
+    @MavlinkFieldInfo(
+            position = 12,
+            unitSize = 2,
+            extension = true,
+            description = "Unknown field 2 in info message"
+    )
+    public final int infoUnk2() {
+        return this.infoUnk2;
+    }
+
+    /**
+     * Unknown field 3 in info message 
+     */
+    @MavlinkFieldInfo(
+            position = 13,
+            unitSize = 2,
+            extension = true,
+            description = "Unknown field 3 in info message"
+    )
+    public final int infoUnk3() {
+        return this.infoUnk3;
+    }
+
+    /**
+     * Serial in info message 
+     */
+    @MavlinkFieldInfo(
+            position = 14,
+            unitSize = 4,
+            extension = true,
+            description = "Serial in info message"
+    )
+    public final long infoSerial() {
+        return this.infoSerial;
+    }
+
+    /**
+     * Unknown field 4 in info message 
+     */
+    @MavlinkFieldInfo(
+            position = 15,
+            unitSize = 1,
+            arraySize = 8,
+            extension = true,
+            description = "Unknown field 4 in info message"
+    )
+    public final byte[] infoUnk4() {
+        return this.infoUnk4;
+    }
+
+    /**
+     * Unknown field 5 in info message 
+     */
+    @MavlinkFieldInfo(
+            position = 16,
+            unitSize = 1,
+            arraySize = 5,
+            extension = true,
+            description = "Unknown field 5 in info message"
+    )
+    public final byte[] infoUnk5() {
+        return this.infoUnk5;
+    }
+
+    /**
+     * Unknown field 1 in version message 
+     */
+    @MavlinkFieldInfo(
+            position = 17,
+            unitSize = 2,
+            extension = true,
+            description = "Unknown field 1 in version message"
+    )
+    public final int versionUnk1() {
+        return this.versionUnk1;
+    }
+
+    /**
+     * Unknown field 2 in version message 
+     */
+    @MavlinkFieldInfo(
+            position = 18,
+            unitSize = 1,
+            arraySize = 6,
+            extension = true,
+            description = "Unknown field 2 in version message"
+    )
+    public final byte[] versionUnk2() {
+        return this.versionUnk2;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -182,6 +314,14 @@ public final class FlyhawkSmartBatteryInfo {
         if (!Objects.deepEquals(firmwareId, other.firmwareId)) return false;
         if (!Objects.deepEquals(lifetime, other.lifetime)) return false;
         if (!Objects.deepEquals(madeYear, other.madeYear)) return false;
+        if (!Objects.deepEquals(infoUnk1, other.infoUnk1)) return false;
+        if (!Objects.deepEquals(infoUnk2, other.infoUnk2)) return false;
+        if (!Objects.deepEquals(infoUnk3, other.infoUnk3)) return false;
+        if (!Objects.deepEquals(infoSerial, other.infoSerial)) return false;
+        if (!Objects.deepEquals(infoUnk4, other.infoUnk4)) return false;
+        if (!Objects.deepEquals(infoUnk5, other.infoUnk5)) return false;
+        if (!Objects.deepEquals(versionUnk1, other.versionUnk1)) return false;
+        if (!Objects.deepEquals(versionUnk2, other.versionUnk2)) return false;
         return true;
     }
 
@@ -197,6 +337,14 @@ public final class FlyhawkSmartBatteryInfo {
         result = 31 * result + Objects.hashCode(firmwareId);
         result = 31 * result + Objects.hashCode(lifetime);
         result = 31 * result + Objects.hashCode(madeYear);
+        result = 31 * result + Objects.hashCode(infoUnk1);
+        result = 31 * result + Objects.hashCode(infoUnk2);
+        result = 31 * result + Objects.hashCode(infoUnk3);
+        result = 31 * result + Objects.hashCode(infoSerial);
+        result = 31 * result + Objects.hashCode(infoUnk4);
+        result = 31 * result + Objects.hashCode(infoUnk5);
+        result = 31 * result + Objects.hashCode(versionUnk1);
+        result = 31 * result + Objects.hashCode(versionUnk2);
         return result;
     }
 
@@ -210,7 +358,15 @@ public final class FlyhawkSmartBatteryInfo {
                  + ", deviceName=" + deviceName
                  + ", firmwareId=" + firmwareId
                  + ", lifetime=" + lifetime
-                 + ", madeYear=" + madeYear + "}";
+                 + ", madeYear=" + madeYear
+                 + ", infoUnk1=" + infoUnk1
+                 + ", infoUnk2=" + infoUnk2
+                 + ", infoUnk3=" + infoUnk3
+                 + ", infoSerial=" + infoSerial
+                 + ", infoUnk4=" + infoUnk4
+                 + ", infoUnk5=" + infoUnk5
+                 + ", versionUnk1=" + versionUnk1
+                 + ", versionUnk2=" + versionUnk2 + "}";
     }
 
     public static final class Builder {
@@ -231,6 +387,22 @@ public final class FlyhawkSmartBatteryInfo {
         private int lifetime;
 
         private int madeYear;
+
+        private int infoUnk1;
+
+        private int infoUnk2;
+
+        private int infoUnk3;
+
+        private long infoSerial;
+
+        private byte[] infoUnk4;
+
+        private byte[] infoUnk5;
+
+        private int versionUnk1;
+
+        private byte[] versionUnk2;
 
         /**
          * Battery ID 
@@ -352,8 +524,123 @@ public final class FlyhawkSmartBatteryInfo {
             return this;
         }
 
+        /**
+         * Unknown field 1 in info message 
+         */
+        @MavlinkFieldInfo(
+                position = 11,
+                unitSize = 1,
+                extension = true,
+                description = "Unknown field 1 in info message"
+        )
+        public final Builder infoUnk1(int infoUnk1) {
+            this.infoUnk1 = infoUnk1;
+            return this;
+        }
+
+        /**
+         * Unknown field 2 in info message 
+         */
+        @MavlinkFieldInfo(
+                position = 12,
+                unitSize = 2,
+                extension = true,
+                description = "Unknown field 2 in info message"
+        )
+        public final Builder infoUnk2(int infoUnk2) {
+            this.infoUnk2 = infoUnk2;
+            return this;
+        }
+
+        /**
+         * Unknown field 3 in info message 
+         */
+        @MavlinkFieldInfo(
+                position = 13,
+                unitSize = 2,
+                extension = true,
+                description = "Unknown field 3 in info message"
+        )
+        public final Builder infoUnk3(int infoUnk3) {
+            this.infoUnk3 = infoUnk3;
+            return this;
+        }
+
+        /**
+         * Serial in info message 
+         */
+        @MavlinkFieldInfo(
+                position = 14,
+                unitSize = 4,
+                extension = true,
+                description = "Serial in info message"
+        )
+        public final Builder infoSerial(long infoSerial) {
+            this.infoSerial = infoSerial;
+            return this;
+        }
+
+        /**
+         * Unknown field 4 in info message 
+         */
+        @MavlinkFieldInfo(
+                position = 15,
+                unitSize = 1,
+                arraySize = 8,
+                extension = true,
+                description = "Unknown field 4 in info message"
+        )
+        public final Builder infoUnk4(byte[] infoUnk4) {
+            this.infoUnk4 = infoUnk4;
+            return this;
+        }
+
+        /**
+         * Unknown field 5 in info message 
+         */
+        @MavlinkFieldInfo(
+                position = 16,
+                unitSize = 1,
+                arraySize = 5,
+                extension = true,
+                description = "Unknown field 5 in info message"
+        )
+        public final Builder infoUnk5(byte[] infoUnk5) {
+            this.infoUnk5 = infoUnk5;
+            return this;
+        }
+
+        /**
+         * Unknown field 1 in version message 
+         */
+        @MavlinkFieldInfo(
+                position = 17,
+                unitSize = 2,
+                extension = true,
+                description = "Unknown field 1 in version message"
+        )
+        public final Builder versionUnk1(int versionUnk1) {
+            this.versionUnk1 = versionUnk1;
+            return this;
+        }
+
+        /**
+         * Unknown field 2 in version message 
+         */
+        @MavlinkFieldInfo(
+                position = 18,
+                unitSize = 1,
+                arraySize = 6,
+                extension = true,
+                description = "Unknown field 2 in version message"
+        )
+        public final Builder versionUnk2(byte[] versionUnk2) {
+            this.versionUnk2 = versionUnk2;
+            return this;
+        }
+
         public final FlyhawkSmartBatteryInfo build() {
-            return new FlyhawkSmartBatteryInfo(id, capacityFullSpecification, capacityFull, cycleCount, serialNumber, deviceName, firmwareId, lifetime, madeYear);
+            return new FlyhawkSmartBatteryInfo(id, capacityFullSpecification, capacityFull, cycleCount, serialNumber, deviceName, firmwareId, lifetime, madeYear, infoUnk1, infoUnk2, infoUnk3, infoSerial, infoUnk4, infoUnk5, versionUnk1, versionUnk2);
         }
     }
 }

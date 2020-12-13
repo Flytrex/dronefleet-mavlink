@@ -35,8 +35,19 @@ public final class FlyhawkSmartBatteryStatus {
 
     private final int isOn;
 
+    private final int unk1;
+
+    private final int unk2;
+
+    private final int unk3;
+
+    private final int unk4;
+
+    private final int unk5;
+
     private FlyhawkSmartBatteryStatus(int id, int temperature, int overallVoltage, short[] voltages,
-            int current1, int current2, int capacityRemaining, int isShuttingDown, int isOn) {
+            int current1, int current2, int capacityRemaining, int isShuttingDown, int isOn,
+            int unk1, int unk2, int unk3, int unk4, int unk5) {
         this.id = id;
         this.temperature = temperature;
         this.overallVoltage = overallVoltage;
@@ -46,6 +57,11 @@ public final class FlyhawkSmartBatteryStatus {
         this.capacityRemaining = capacityRemaining;
         this.isShuttingDown = isShuttingDown;
         this.isOn = isOn;
+        this.unk1 = unk1;
+        this.unk2 = unk2;
+        this.unk3 = unk3;
+        this.unk4 = unk4;
+        this.unk5 = unk5;
     }
 
     /**
@@ -174,6 +190,71 @@ public final class FlyhawkSmartBatteryStatus {
         return this.isOn;
     }
 
+    /**
+     * Unknown field 1 
+     */
+    @MavlinkFieldInfo(
+            position = 11,
+            unitSize = 1,
+            extension = true,
+            description = "Unknown field 1"
+    )
+    public final int unk1() {
+        return this.unk1;
+    }
+
+    /**
+     * Unknown field 2 
+     */
+    @MavlinkFieldInfo(
+            position = 12,
+            unitSize = 1,
+            extension = true,
+            description = "Unknown field 2"
+    )
+    public final int unk2() {
+        return this.unk2;
+    }
+
+    /**
+     * Unknown field 3 
+     */
+    @MavlinkFieldInfo(
+            position = 13,
+            unitSize = 2,
+            extension = true,
+            description = "Unknown field 3"
+    )
+    public final int unk3() {
+        return this.unk3;
+    }
+
+    /**
+     * Unknown field 4 
+     */
+    @MavlinkFieldInfo(
+            position = 14,
+            unitSize = 1,
+            extension = true,
+            description = "Unknown field 4"
+    )
+    public final int unk4() {
+        return this.unk4;
+    }
+
+    /**
+     * Unknown field 5 
+     */
+    @MavlinkFieldInfo(
+            position = 15,
+            unitSize = 1,
+            extension = true,
+            description = "Unknown field 5"
+    )
+    public final int unk5() {
+        return this.unk5;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -188,6 +269,11 @@ public final class FlyhawkSmartBatteryStatus {
         if (!Objects.deepEquals(capacityRemaining, other.capacityRemaining)) return false;
         if (!Objects.deepEquals(isShuttingDown, other.isShuttingDown)) return false;
         if (!Objects.deepEquals(isOn, other.isOn)) return false;
+        if (!Objects.deepEquals(unk1, other.unk1)) return false;
+        if (!Objects.deepEquals(unk2, other.unk2)) return false;
+        if (!Objects.deepEquals(unk3, other.unk3)) return false;
+        if (!Objects.deepEquals(unk4, other.unk4)) return false;
+        if (!Objects.deepEquals(unk5, other.unk5)) return false;
         return true;
     }
 
@@ -203,6 +289,11 @@ public final class FlyhawkSmartBatteryStatus {
         result = 31 * result + Objects.hashCode(capacityRemaining);
         result = 31 * result + Objects.hashCode(isShuttingDown);
         result = 31 * result + Objects.hashCode(isOn);
+        result = 31 * result + Objects.hashCode(unk1);
+        result = 31 * result + Objects.hashCode(unk2);
+        result = 31 * result + Objects.hashCode(unk3);
+        result = 31 * result + Objects.hashCode(unk4);
+        result = 31 * result + Objects.hashCode(unk5);
         return result;
     }
 
@@ -216,7 +307,12 @@ public final class FlyhawkSmartBatteryStatus {
                  + ", current2=" + current2
                  + ", capacityRemaining=" + capacityRemaining
                  + ", isShuttingDown=" + isShuttingDown
-                 + ", isOn=" + isOn + "}";
+                 + ", isOn=" + isOn
+                 + ", unk1=" + unk1
+                 + ", unk2=" + unk2
+                 + ", unk3=" + unk3
+                 + ", unk4=" + unk4
+                 + ", unk5=" + unk5 + "}";
     }
 
     public static final class Builder {
@@ -237,6 +333,16 @@ public final class FlyhawkSmartBatteryStatus {
         private int isShuttingDown;
 
         private int isOn;
+
+        private int unk1;
+
+        private int unk2;
+
+        private int unk3;
+
+        private int unk4;
+
+        private int unk5;
 
         /**
          * Battery ID 
@@ -365,8 +471,78 @@ public final class FlyhawkSmartBatteryStatus {
             return this;
         }
 
+        /**
+         * Unknown field 1 
+         */
+        @MavlinkFieldInfo(
+                position = 11,
+                unitSize = 1,
+                extension = true,
+                description = "Unknown field 1"
+        )
+        public final Builder unk1(int unk1) {
+            this.unk1 = unk1;
+            return this;
+        }
+
+        /**
+         * Unknown field 2 
+         */
+        @MavlinkFieldInfo(
+                position = 12,
+                unitSize = 1,
+                extension = true,
+                description = "Unknown field 2"
+        )
+        public final Builder unk2(int unk2) {
+            this.unk2 = unk2;
+            return this;
+        }
+
+        /**
+         * Unknown field 3 
+         */
+        @MavlinkFieldInfo(
+                position = 13,
+                unitSize = 2,
+                extension = true,
+                description = "Unknown field 3"
+        )
+        public final Builder unk3(int unk3) {
+            this.unk3 = unk3;
+            return this;
+        }
+
+        /**
+         * Unknown field 4 
+         */
+        @MavlinkFieldInfo(
+                position = 14,
+                unitSize = 1,
+                extension = true,
+                description = "Unknown field 4"
+        )
+        public final Builder unk4(int unk4) {
+            this.unk4 = unk4;
+            return this;
+        }
+
+        /**
+         * Unknown field 5 
+         */
+        @MavlinkFieldInfo(
+                position = 15,
+                unitSize = 1,
+                extension = true,
+                description = "Unknown field 5"
+        )
+        public final Builder unk5(int unk5) {
+            this.unk5 = unk5;
+            return this;
+        }
+
         public final FlyhawkSmartBatteryStatus build() {
-            return new FlyhawkSmartBatteryStatus(id, temperature, overallVoltage, voltages, current1, current2, capacityRemaining, isShuttingDown, isOn);
+            return new FlyhawkSmartBatteryStatus(id, temperature, overallVoltage, voltages, current1, current2, capacityRemaining, isShuttingDown, isOn, unk1, unk2, unk3, unk4, unk5);
         }
     }
 }
