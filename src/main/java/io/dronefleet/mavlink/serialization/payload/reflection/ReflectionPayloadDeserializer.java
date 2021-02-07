@@ -12,6 +12,7 @@ import io.dronefleet.mavlink.util.WireFieldInfoComparator;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
+import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
@@ -51,12 +52,20 @@ public class ReflectionPayloadDeserializer implements MavlinkPayloadDeserializer
 
         if (LogData.class.equals(messageType)){
             ByteBuffer input = ByteBuffer.wrap(payload).order(ByteOrder.LITTLE_ENDIAN);
-            long ofs = Integer.toUnsignedLong(input.getInt());
-            int id = Short.toUnsignedInt(input.getShort());
-            int count = Byte.toUnsignedInt(input.get());
+            long ofs = 0;
+            int id = 0;
+            int count = 0;
             byte[] data = new byte[90];
-            int remaining = input.remaining();
-            input.get(data, 0, Math.min(data.length, remaining));
+
+            try{
+                // It seems that the buffer ends as soon as all remaining fields are 0
+                // For example, if count==0, the buffer will end after the id
+                ofs = Integer.toUnsignedLong(input.getInt());
+                id = Short.toUnsignedInt(input.getShort());
+                count = Byte.toUnsignedInt(input.get());
+                int remaining = input.remaining();
+                input.get(data, 0, Math.min(data.length, remaining));
+            } catch (BufferUnderflowException ignored){}
 
             return messageType.cast(new LogData.Builder()
                     .id(id)
