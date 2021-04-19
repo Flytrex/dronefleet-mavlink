@@ -1684,6 +1684,16 @@
         <param index="6">Empty</param>
         <param index="7">Empty</param>
       </entry>
+      <entry value="239" name="MAV_CMD_DO_FALLBACK_MISSION" hasLocation="false" isDestination="false">
+        <description>Replace the current mission with fallback mission and run the fallback mission</description>
+        <param index="1">Empty</param>
+        <param index="2">Empty</param>
+        <param index="3">Empty</param>
+        <param index="4">Empty</param>
+        <param index="5">Empty</param>
+        <param index="6">Empty</param>
+        <param index="7">Empty</param>
+      </entry>
       <entry value="240" name="MAV_CMD_DO_LAST" hasLocation="false" isDestination="false">
         <description>NOP - This command is only used to mark the upper limit of the DO commands in the enumeration</description>
         <param index="1">Empty</param>

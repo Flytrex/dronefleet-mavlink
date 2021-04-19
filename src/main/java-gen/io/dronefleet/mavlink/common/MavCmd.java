@@ -1951,6 +1951,34 @@ public enum MavCmd {
     MAV_CMD_DO_SET_MISSION_CURRENT,
 
     /**
+     * Replace the current mission with fallback mission and run the fallback mission 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(239)
+    MAV_CMD_DO_FALLBACK_MISSION,
+
+    /**
      * NOP - This command is only used to mark the upper limit of the DO commands in the enumeration 
      * <dl>
      *   <dt>param1</dt>
