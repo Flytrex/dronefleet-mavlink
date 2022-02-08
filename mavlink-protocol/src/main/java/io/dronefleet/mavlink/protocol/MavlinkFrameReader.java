@@ -21,12 +21,18 @@ public class MavlinkFrameReader {
     private final TransactionalInputStream in;
 
     /**
+     * Counts how many bytes were dropped.
+     */
+    private int bytesDropped;
+
+    /**
      * Creates a mavlink frame reader for the specified input stream.
      *
      * @param in The input stream to read mavlink frames from.
      */
     public MavlinkFrameReader(InputStream in) {
         this.in = new TransactionalInputStream(in, 280);
+        bytesDropped = 0;
     }
 
     /**
@@ -78,5 +84,13 @@ public class MavlinkFrameReader {
         in.rollback();
         in.skip(1);
         in.commit();
+        bytesDropped++;
+    }
+
+    /**
+     * @return the amount of bytes dropped.
+     */
+    public int getBytesDropped() {
+        return bytesDropped;
     }
 }

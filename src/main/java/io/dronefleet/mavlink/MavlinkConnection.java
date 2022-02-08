@@ -407,4 +407,11 @@ public class MavlinkConnection {
         }
         return null;
     }
+
+    /**
+     * @return the amount of bytes dropped by the reader.
+     */
+    public int getBytesDropped() {
+        return reader.getBytesDropped();
+    }
 }
