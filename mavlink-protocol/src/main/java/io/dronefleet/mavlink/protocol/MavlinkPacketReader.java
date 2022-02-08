@@ -55,4 +55,11 @@ public class MavlinkPacketReader {
     public void drop() throws IOException {
         in.drop();
     }
+
+    /**
+     * @return the amount of bytes dropped.
+     */
+    public int getBytesDropped() {
+        return in.getBytesDropped();
+    }
 }
