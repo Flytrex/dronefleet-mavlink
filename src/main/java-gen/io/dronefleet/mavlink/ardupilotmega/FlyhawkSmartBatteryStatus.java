@@ -12,7 +12,7 @@ import java.util.Objects;
  * Smart Battery Status 
  */
 @MavlinkMessageInfo(
-        id = 198,
+        id = 12000,
         crc = 244,
         description = "Smart Battery Status"
 )
