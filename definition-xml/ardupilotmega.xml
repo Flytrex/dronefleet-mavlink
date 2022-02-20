@@ -1625,7 +1625,7 @@
       <field type="uint8_t" name="target_system">System ID</field>
       <field type="uint8_t" name="target_component">Component ID</field>
     </message>
-    <message id="198" name="FLYHAWK_SMART_BATTERY_STATUS">
+    <message id="12000" name="FLYHAWK_SMART_BATTERY_STATUS">
       <description>Smart Battery Status</description>
       <field type="uint8_t" name="id">Battery ID</field>
       <field type="uint16_t" name="temperature" units="cdegC">Temperature of the battery. UINT16_MAX for unknown temperature.</field>
@@ -1643,7 +1643,7 @@
       <field type="uint8_t" name="unk4">Unknown field 4</field>
       <field type="uint8_t" name="unk5">Unknown field 5</field>
     </message>
-    <message id="199" name="FLYHAWK_SMART_BATTERY_INFO">
+    <message id="12001" name="FLYHAWK_SMART_BATTERY_INFO">
     <description>Smart Battery Info</description>
       <field type="uint8_t" name="id">Battery ID</field>
       <field type="uint16_t" name="capacity_full_specification" units="mAh">Capacity when full according to manufacturer, -1: field not provided.</field>
@@ -1663,6 +1663,31 @@
       <field type="uint8_t[5]" name="info_unk5">Unknown field 5 in info message</field>
       <field type="uint16_t" name="version_unk1">Unknown field 1 in version message</field>
       <field type="uint8_t[6]" name="version_unk2">Unknown field 2 in version message</field>
+    </message>
+    <message id="12100" name="SET_LOG_LABEL">
+      <description>Mark the current log with a specific label</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <field type="char[50]" name="label">Label to apply to the current log, NULL terminated</field>
+    </message>
+    <message id="12101" name="LOG_REQUEST_DATA_BY_LABEL">
+      <description>Request a chunk of a log, by a preset label</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <field type="char[50]" name="label">Log label (preset with SET_LOG_LABEL), NULL terminated</field>
+      <field type="uint32_t" name="ofs">Offset into the log</field>
+      <field type="uint32_t" name="count" units="bytes">Number of bytes</field>
+    </message>
+    <message id="12102" name="LOG_REQUEST_LABEL_LIST">
+      <description>Request a list of available logs, by label. On some systems calling this may stop on-board logging until LOG_REQUEST_END is called.</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+    </message>
+    <message id="12103" name="LOG_LABEL">
+      <description>Reply to LOG_REQUEST_LABEL_LIST</description>
+      <field type="uint16_t" name="label_index">Log index within the list of LOG_LABEL messages been sent in a batch</field>
+      <field type="char[50]" name="label">Log label, null terminated</field>
+      <field type="uint16_t" name="num_logs">Total number of labeled logs</field>
     </message>
   </messages>
 </mavlink>
