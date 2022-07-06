@@ -33,7 +33,7 @@ public enum MavMissionResult {
     MAV_MISSION_UNSUPPORTED,
 
     /**
-     * Mission item exceeds storage space. 
+     * Mission items exceed storage space. 
      */
     @MavlinkEntryInfo(4)
     MAV_MISSION_NO_SPACE,
@@ -102,5 +102,11 @@ public enum MavMissionResult {
      * Current mission operation cancelled (e.g. mission upload, mission download). 
      */
     @MavlinkEntryInfo(15)
-    MAV_MISSION_OPERATION_CANCELLED
+    MAV_MISSION_OPERATION_CANCELLED,
+
+    /**
+     * Not receiving and expecting items right now. 
+     */
+    @MavlinkEntryInfo(16)
+    MAV_MISSION_NOT_RECEIVING
 }

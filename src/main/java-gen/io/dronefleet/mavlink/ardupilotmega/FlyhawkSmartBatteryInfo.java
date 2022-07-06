@@ -182,12 +182,11 @@ public final class FlyhawkSmartBatteryInfo {
     }
 
     /**
-     * Made year 
+     *  
      */
     @MavlinkFieldInfo(
             position = 9,
-            unitSize = 2,
-            description = "Made year"
+            unitSize = 2
     )
     public final int madeYear() {
         return this.madeYear;
@@ -512,12 +511,11 @@ public final class FlyhawkSmartBatteryInfo {
         }
 
         /**
-         * Made year 
+         *  
          */
         @MavlinkFieldInfo(
                 position = 9,
-                unitSize = 2,
-                description = "Made year"
+                unitSize = 2
         )
         public final Builder madeYear(int madeYear) {
             this.madeYear = madeYear;

@@ -12,12 +12,14 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Information about a captured image 
+ * Information about a captured image. This is emitted every time a message is captured. It may be 
+ * re-requested using MAV_CMD_REQUEST_MESSAGE, using param2 to indicate the sequence number 
+ * for the missing image. 
  */
 @MavlinkMessageInfo(
         id = 263,
         crc = 133,
-        description = "Information about a captured image"
+        description = "Information about a captured image. This is emitted every time a message is captured. It may be re-requested using MAV_CMD_REQUEST_MESSAGE, using param2 to indicate the sequence number for the missing image."
 )
 public final class CameraImageCaptured {
     private final long timeBootMs;
@@ -91,12 +93,12 @@ public final class CameraImageCaptured {
     }
 
     /**
-     * Camera ID (1 for first, 2 for second, etc.) 
+     * Deprecated/unused. Component IDs are used to differentiate multiple cameras. 
      */
     @MavlinkFieldInfo(
             position = 3,
             unitSize = 1,
-            description = "Camera ID (1 for first, 2 for second, etc.)"
+            description = "Deprecated/unused. Component IDs are used to differentiate multiple cameras."
     )
     public final int cameraId() {
         return this.cameraId;
@@ -155,26 +157,27 @@ public final class CameraImageCaptured {
     }
 
     /**
-     * Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0) 
+     * Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
      */
     @MavlinkFieldInfo(
             position = 8,
             unitSize = 4,
             arraySize = 4,
-            description = "Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0)"
+            description = "Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)"
     )
     public final List<Float> q() {
         return this.q;
     }
 
     /**
-     * Zero based index of this image (image count since armed -1) 
+     * Zero based index of this image (i.e. a new image will have index {@link io.dronefleet.mavlink.common.CameraCaptureStatus CAMERA_CAPTURE_STATUS}.image 
+     * count -1) 
      */
     @MavlinkFieldInfo(
             position = 9,
             unitSize = 4,
             signed = true,
-            description = "Zero based index of this image (image count since armed -1)"
+            description = "Zero based index of this image (i.e. a new image will have index CAMERA_CAPTURE_STATUS.image count -1)"
     )
     public final int imageIndex() {
         return this.imageIndex;
@@ -308,12 +311,12 @@ public final class CameraImageCaptured {
         }
 
         /**
-         * Camera ID (1 for first, 2 for second, etc.) 
+         * Deprecated/unused. Component IDs are used to differentiate multiple cameras. 
          */
         @MavlinkFieldInfo(
                 position = 3,
                 unitSize = 1,
-                description = "Camera ID (1 for first, 2 for second, etc.)"
+                description = "Deprecated/unused. Component IDs are used to differentiate multiple cameras."
         )
         public final Builder cameraId(int cameraId) {
             this.cameraId = cameraId;
@@ -377,13 +380,13 @@ public final class CameraImageCaptured {
         }
 
         /**
-         * Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0) 
+         * Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
          */
         @MavlinkFieldInfo(
                 position = 8,
                 unitSize = 4,
                 arraySize = 4,
-                description = "Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0)"
+                description = "Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)"
         )
         public final Builder q(List<Float> q) {
             this.q = q;
@@ -391,13 +394,14 @@ public final class CameraImageCaptured {
         }
 
         /**
-         * Zero based index of this image (image count since armed -1) 
+         * Zero based index of this image (i.e. a new image will have index {@link io.dronefleet.mavlink.common.CameraCaptureStatus CAMERA_CAPTURE_STATUS}.image 
+         * count -1) 
          */
         @MavlinkFieldInfo(
                 position = 9,
                 unitSize = 4,
                 signed = true,
-                description = "Zero based index of this image (image count since armed -1)"
+                description = "Zero based index of this image (i.e. a new image will have index CAMERA_CAPTURE_STATUS.image count -1)"
         )
         public final Builder imageIndex(int imageIndex) {
             this.imageIndex = imageIndex;

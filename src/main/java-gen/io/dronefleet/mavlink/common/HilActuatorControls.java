@@ -3,6 +3,7 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
+import io.dronefleet.mavlink.minimal.MavModeFlag;
 import io.dronefleet.mavlink.util.EnumValue;
 import java.lang.Enum;
 import java.lang.Float;
@@ -50,12 +51,12 @@ public final class HilActuatorControls {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 8,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final BigInteger timeUsec() {
         return this.timeUsec;
@@ -88,12 +89,12 @@ public final class HilActuatorControls {
     }
 
     /**
-     * Flags as bitfield, reserved for future use. 
+     * Flags as bitfield, 1: indicate simulation using lockstep. 
      */
     @MavlinkFieldInfo(
             position = 4,
             unitSize = 8,
-            description = "Flags as bitfield, reserved for future use."
+            description = "Flags as bitfield, 1: indicate simulation using lockstep."
     )
     public final BigInteger flags() {
         return this.flags;
@@ -140,12 +141,12 @@ public final class HilActuatorControls {
 
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 8,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(BigInteger timeUsec) {
             this.timeUsec = timeUsec;
@@ -202,12 +203,12 @@ public final class HilActuatorControls {
         }
 
         /**
-         * Flags as bitfield, reserved for future use. 
+         * Flags as bitfield, 1: indicate simulation using lockstep. 
          */
         @MavlinkFieldInfo(
                 position = 4,
                 unitSize = 8,
-                description = "Flags as bitfield, reserved for future use."
+                description = "Flags as bitfield, 1: indicate simulation using lockstep."
         )
         public final Builder flags(BigInteger flags) {
             this.flags = flags;

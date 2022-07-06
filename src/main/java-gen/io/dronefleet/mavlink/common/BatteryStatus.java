@@ -42,10 +42,12 @@ public final class BatteryStatus {
 
     private final EnumValue<MavBatteryChargeState> chargeState;
 
+    private final short[] voltagesExt;
+
     private BatteryStatus(int id, EnumValue<MavBatteryFunction> batteryFunction,
             EnumValue<MavBatteryType> type, int temperature, short[] voltages, int currentBattery,
             int currentConsumed, int energyConsumed, int batteryRemaining, int timeRemaining,
-            EnumValue<MavBatteryChargeState> chargeState) {
+            EnumValue<MavBatteryChargeState> chargeState, short[] voltagesExt) {
         this.id = id;
         this.batteryFunction = batteryFunction;
         this.type = type;
@@ -57,6 +59,7 @@ public final class BatteryStatus {
         this.batteryRemaining = batteryRemaining;
         this.timeRemaining = timeRemaining;
         this.chargeState = chargeState;
+        this.voltagesExt = voltagesExt;
     }
 
     /**
@@ -119,14 +122,19 @@ public final class BatteryStatus {
     }
 
     /**
-     * Battery voltage of cells. Cells above the valid cell count for this battery should have the 
-     * UINT16_MAX value. 
+     * Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above 
+     * the valid cell count for this battery should have the UINT16_MAX value. If individual cell 
+     * voltages are unknown or not measured for this battery, then the overall battery voltage should 
+     * be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater 
+     * than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining 
+     * voltage. This can be extended to multiple cells if the total voltage is greater than 2 * 
+     * (UINT16_MAX - 1). 
      */
     @MavlinkFieldInfo(
             position = 5,
             unitSize = 2,
             arraySize = 10,
-            description = "Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value."
+            description = "Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1)."
     )
     public final short[] voltages() {
         return this.voltages;
@@ -213,6 +221,23 @@ public final class BatteryStatus {
         return this.chargeState;
     }
 
+    /**
+     * Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should 
+     * have a value of 0, where zero indicates not supported (note, this is different than for the 
+     * voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be 
+     * sent instead. 
+     */
+    @MavlinkFieldInfo(
+            position = 13,
+            unitSize = 2,
+            arraySize = 4,
+            extension = true,
+            description = "Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead."
+    )
+    public final short[] voltagesExt() {
+        return this.voltagesExt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -229,6 +254,7 @@ public final class BatteryStatus {
         if (!Objects.deepEquals(batteryRemaining, other.batteryRemaining)) return false;
         if (!Objects.deepEquals(timeRemaining, other.timeRemaining)) return false;
         if (!Objects.deepEquals(chargeState, other.chargeState)) return false;
+        if (!Objects.deepEquals(voltagesExt, other.voltagesExt)) return false;
         return true;
     }
 
@@ -246,6 +272,7 @@ public final class BatteryStatus {
         result = 31 * result + Objects.hashCode(batteryRemaining);
         result = 31 * result + Objects.hashCode(timeRemaining);
         result = 31 * result + Objects.hashCode(chargeState);
+        result = 31 * result + Objects.hashCode(voltagesExt);
         return result;
     }
 
@@ -261,7 +288,8 @@ public final class BatteryStatus {
                  + ", energyConsumed=" + energyConsumed
                  + ", batteryRemaining=" + batteryRemaining
                  + ", timeRemaining=" + timeRemaining
-                 + ", chargeState=" + chargeState + "}";
+                 + ", chargeState=" + chargeState
+                 + ", voltagesExt=" + voltagesExt + "}";
     }
 
     public static final class Builder {
@@ -286,6 +314,8 @@ public final class BatteryStatus {
         private int timeRemaining;
 
         private EnumValue<MavBatteryChargeState> chargeState;
+
+        private short[] voltagesExt;
 
         /**
          * Battery ID 
@@ -385,14 +415,19 @@ public final class BatteryStatus {
         }
 
         /**
-         * Battery voltage of cells. Cells above the valid cell count for this battery should have the 
-         * UINT16_MAX value. 
+         * Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above 
+         * the valid cell count for this battery should have the UINT16_MAX value. If individual cell 
+         * voltages are unknown or not measured for this battery, then the overall battery voltage should 
+         * be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater 
+         * than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining 
+         * voltage. This can be extended to multiple cells if the total voltage is greater than 2 * 
+         * (UINT16_MAX - 1). 
          */
         @MavlinkFieldInfo(
                 position = 5,
                 unitSize = 2,
                 arraySize = 10,
-                description = "Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value."
+                description = "Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1)."
         )
         public final Builder voltages(short[] voltages) {
             this.voltages = voltages;
@@ -507,8 +542,26 @@ public final class BatteryStatus {
             return chargeState(EnumValue.create(flags));
         }
 
+        /**
+         * Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should 
+         * have a value of 0, where zero indicates not supported (note, this is different than for the 
+         * voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be 
+         * sent instead. 
+         */
+        @MavlinkFieldInfo(
+                position = 13,
+                unitSize = 2,
+                arraySize = 4,
+                extension = true,
+                description = "Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead."
+        )
+        public final Builder voltagesExt(short[] voltagesExt) {
+            this.voltagesExt = voltagesExt;
+            return this;
+        }
+
         public final BatteryStatus build() {
-            return new BatteryStatus(id, batteryFunction, type, temperature, voltages, currentBattery, currentConsumed, energyConsumed, batteryRemaining, timeRemaining, chargeState);
+            return new BatteryStatus(id, batteryFunction, type, temperature, voltages, currentBattery, currentConsumed, energyConsumed, batteryRemaining, timeRemaining, chargeState, voltagesExt);
         }
     }
 }

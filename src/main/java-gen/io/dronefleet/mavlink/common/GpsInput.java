@@ -95,12 +95,12 @@ public final class GpsInput {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 8,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final BigInteger timeUsec() {
         return this.timeUsec;
@@ -206,60 +206,60 @@ public final class GpsInput {
     }
 
     /**
-     * GPS HDOP horizontal dilution of position 
+     * GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX 
      */
     @MavlinkFieldInfo(
             position = 10,
             unitSize = 4,
-            description = "GPS HDOP horizontal dilution of position"
+            description = "GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX"
     )
     public final float hdop() {
         return this.hdop;
     }
 
     /**
-     * GPS VDOP vertical dilution of position 
+     * GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX 
      */
     @MavlinkFieldInfo(
             position = 11,
             unitSize = 4,
-            description = "GPS VDOP vertical dilution of position"
+            description = "GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX"
     )
     public final float vdop() {
         return this.vdop;
     }
 
     /**
-     * GPS velocity in NORTH direction in earth-fixed NED frame 
+     * GPS velocity in north direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 12,
             unitSize = 4,
-            description = "GPS velocity in NORTH direction in earth-fixed NED frame"
+            description = "GPS velocity in north direction in earth-fixed NED frame"
     )
     public final float vn() {
         return this.vn;
     }
 
     /**
-     * GPS velocity in EAST direction in earth-fixed NED frame 
+     * GPS velocity in east direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 13,
             unitSize = 4,
-            description = "GPS velocity in EAST direction in earth-fixed NED frame"
+            description = "GPS velocity in east direction in earth-fixed NED frame"
     )
     public final float ve() {
         return this.ve;
     }
 
     /**
-     * GPS velocity in DOWN direction in earth-fixed NED frame 
+     * GPS velocity in down direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 14,
             unitSize = 4,
-            description = "GPS velocity in DOWN direction in earth-fixed NED frame"
+            description = "GPS velocity in down direction in earth-fixed NED frame"
     )
     public final float vd() {
         return this.vd;
@@ -314,13 +314,13 @@ public final class GpsInput {
     }
 
     /**
-     * Yaw of vehicle, zero means not available, use 36000 for north 
+     * Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
      */
     @MavlinkFieldInfo(
             position = 20,
             unitSize = 2,
             extension = true,
-            description = "Yaw of vehicle, zero means not available, use 36000 for north"
+            description = "Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north"
     )
     public final int yaw() {
         return this.yaw;
@@ -442,12 +442,12 @@ public final class GpsInput {
 
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 8,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(BigInteger timeUsec) {
             this.timeUsec = timeUsec;
@@ -583,12 +583,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS HDOP horizontal dilution of position 
+         * GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX 
          */
         @MavlinkFieldInfo(
                 position = 10,
                 unitSize = 4,
-                description = "GPS HDOP horizontal dilution of position"
+                description = "GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX"
         )
         public final Builder hdop(float hdop) {
             this.hdop = hdop;
@@ -596,12 +596,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS VDOP vertical dilution of position 
+         * GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX 
          */
         @MavlinkFieldInfo(
                 position = 11,
                 unitSize = 4,
-                description = "GPS VDOP vertical dilution of position"
+                description = "GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX"
         )
         public final Builder vdop(float vdop) {
             this.vdop = vdop;
@@ -609,12 +609,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS velocity in NORTH direction in earth-fixed NED frame 
+         * GPS velocity in north direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 12,
                 unitSize = 4,
-                description = "GPS velocity in NORTH direction in earth-fixed NED frame"
+                description = "GPS velocity in north direction in earth-fixed NED frame"
         )
         public final Builder vn(float vn) {
             this.vn = vn;
@@ -622,12 +622,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS velocity in EAST direction in earth-fixed NED frame 
+         * GPS velocity in east direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 13,
                 unitSize = 4,
-                description = "GPS velocity in EAST direction in earth-fixed NED frame"
+                description = "GPS velocity in east direction in earth-fixed NED frame"
         )
         public final Builder ve(float ve) {
             this.ve = ve;
@@ -635,12 +635,12 @@ public final class GpsInput {
         }
 
         /**
-         * GPS velocity in DOWN direction in earth-fixed NED frame 
+         * GPS velocity in down direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 14,
                 unitSize = 4,
-                description = "GPS velocity in DOWN direction in earth-fixed NED frame"
+                description = "GPS velocity in down direction in earth-fixed NED frame"
         )
         public final Builder vd(float vd) {
             this.vd = vd;
@@ -700,13 +700,13 @@ public final class GpsInput {
         }
 
         /**
-         * Yaw of vehicle, zero means not available, use 36000 for north 
+         * Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
          */
         @MavlinkFieldInfo(
                 position = 20,
                 unitSize = 2,
                 extension = true,
-                description = "Yaw of vehicle, zero means not available, use 36000 for north"
+                description = "Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north"
         )
         public final Builder yaw(int yaw) {
             this.yaw = yaw;

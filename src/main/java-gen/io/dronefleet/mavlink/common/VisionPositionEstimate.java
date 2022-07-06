@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Global position/attitude estimate from a vision source. 
+ * Local position/attitude estimate from a vision source. 
  */
 @MavlinkMessageInfo(
         id = 102,
         crc = 158,
-        description = "Global position/attitude estimate from a vision source."
+        description = "Local position/attitude estimate from a vision source."
 )
 public final class VisionPositionEstimate {
     private final BigInteger usec;
@@ -72,36 +72,36 @@ public final class VisionPositionEstimate {
     }
 
     /**
-     * Global X position 
+     * Local X position 
      */
     @MavlinkFieldInfo(
             position = 2,
             unitSize = 4,
-            description = "Global X position"
+            description = "Local X position"
     )
     public final float x() {
         return this.x;
     }
 
     /**
-     * Global Y position 
+     * Local Y position 
      */
     @MavlinkFieldInfo(
             position = 3,
             unitSize = 4,
-            description = "Global Y position"
+            description = "Local Y position"
     )
     public final float y() {
         return this.y;
     }
 
     /**
-     * Global Z position 
+     * Local Z position 
      */
     @MavlinkFieldInfo(
             position = 4,
             unitSize = 4,
-            description = "Global Z position"
+            description = "Local Z position"
     )
     public final float z() {
         return this.z;
@@ -252,12 +252,12 @@ public final class VisionPositionEstimate {
         }
 
         /**
-         * Global X position 
+         * Local X position 
          */
         @MavlinkFieldInfo(
                 position = 2,
                 unitSize = 4,
-                description = "Global X position"
+                description = "Local X position"
         )
         public final Builder x(float x) {
             this.x = x;
@@ -265,12 +265,12 @@ public final class VisionPositionEstimate {
         }
 
         /**
-         * Global Y position 
+         * Local Y position 
          */
         @MavlinkFieldInfo(
                 position = 3,
                 unitSize = 4,
-                description = "Global Y position"
+                description = "Local Y position"
         )
         public final Builder y(float y) {
             this.y = y;
@@ -278,12 +278,12 @@ public final class VisionPositionEstimate {
         }
 
         /**
-         * Global Z position 
+         * Local Z position 
          */
         @MavlinkFieldInfo(
                 position = 4,
                 unitSize = 4,
-                description = "Global Z position"
+                description = "Local Z position"
         )
         public final Builder z(float z) {
             this.z = z;

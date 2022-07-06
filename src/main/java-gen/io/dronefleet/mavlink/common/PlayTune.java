@@ -9,12 +9,12 @@ import java.lang.String;
 import java.util.Objects;
 
 /**
- * Control vehicle tone generation (buzzer) 
+ * Control vehicle tone generation (buzzer). 
  */
 @MavlinkMessageInfo(
         id = 258,
         crc = 187,
-        description = "Control vehicle tone generation (buzzer)"
+        description = "Control vehicle tone generation (buzzer)."
 )
 public final class PlayTune {
     private final int targetSystem;

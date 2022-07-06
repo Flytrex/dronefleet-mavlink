@@ -12,12 +12,12 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Information about a camera 
+ * Information about a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command. 
  */
 @MavlinkMessageInfo(
         id = 259,
         crc = 92,
-        description = "Information about a camera"
+        description = "Information about a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command."
 )
 public final class CameraInformation {
     private final long timeBootMs;
@@ -112,13 +112,13 @@ public final class CameraInformation {
     }
 
     /**
-     * Version of the camera firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 
-     * 0xff = Major) 
+     * Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 
+     * 0xff) &lt;&lt; 8 | (Major &amp; 0xff) 
      */
     @MavlinkFieldInfo(
             position = 4,
             unitSize = 4,
-            description = "Version of the camera firmware (v << 24 & 0xff = Dev, v << 16 & 0xff = Patch, v << 8 & 0xff = Minor, v & 0xff = Major)"
+            description = "Version of the camera firmware, encoded as: (Dev & 0xff) << 24 | (Patch & 0xff) << 16 | (Minor & 0xff) << 8 | (Major & 0xff)"
     )
     public final long firmwareVersion() {
         return this.firmwareVersion;
@@ -362,13 +362,13 @@ public final class CameraInformation {
         }
 
         /**
-         * Version of the camera firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 
-         * 0xff = Major) 
+         * Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 
+         * 0xff) &lt;&lt; 8 | (Major &amp; 0xff) 
          */
         @MavlinkFieldInfo(
                 position = 4,
                 unitSize = 4,
-                description = "Version of the camera firmware (v << 24 & 0xff = Dev, v << 16 & 0xff = Patch, v << 8 & 0xff = Minor, v & 0xff = Major)"
+                description = "Version of the camera firmware, encoded as: (Dev & 0xff) << 24 | (Patch & 0xff) << 16 | (Minor & 0xff) << 8 | (Major & 0xff)"
         )
         public final Builder firmwareVersion(long firmwareVersion) {
             this.firmwareVersion = firmwareVersion;

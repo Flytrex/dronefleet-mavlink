@@ -58,9 +58,11 @@ public final class GpsRawInt {
 
     private final int isPrimary;
 
+    private final int yaw;
+
     private GpsRawInt(BigInteger timeUsec, EnumValue<GpsFixType> fixType, int lat, int lon, int alt,
             int eph, int epv, int vel, int cog, int satellitesVisible, int altEllipsoid, long hAcc,
-            long vAcc, long velAcc, long hdgAcc, int id, int isPrimary) {
+            long vAcc, long velAcc, long hdgAcc, int id, int isPrimary, int yaw) {
         this.timeUsec = timeUsec;
         this.fixType = fixType;
         this.lat = lat;
@@ -78,6 +80,7 @@ public final class GpsRawInt {
         this.hdgAcc = hdgAcc;
         this.id = id;
         this.isPrimary = isPrimary;
+        this.yaw = yaw;
     }
 
     /**
@@ -90,12 +93,12 @@ public final class GpsRawInt {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 8,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final BigInteger timeUsec() {
         return this.timeUsec;
@@ -230,39 +233,39 @@ public final class GpsRawInt {
     }
 
     /**
-     * Position uncertainty. Positive for up. 
+     * Position uncertainty. 
      */
     @MavlinkFieldInfo(
             position = 13,
             unitSize = 4,
             extension = true,
-            description = "Position uncertainty. Positive for up."
+            description = "Position uncertainty."
     )
     public final long hAcc() {
         return this.hAcc;
     }
 
     /**
-     * Altitude uncertainty. Positive for up. 
+     * Altitude uncertainty. 
      */
     @MavlinkFieldInfo(
             position = 14,
             unitSize = 4,
             extension = true,
-            description = "Altitude uncertainty. Positive for up."
+            description = "Altitude uncertainty."
     )
     public final long vAcc() {
         return this.vAcc;
     }
 
     /**
-     * Speed uncertainty. Positive for up. 
+     * Speed uncertainty. 
      */
     @MavlinkFieldInfo(
             position = 15,
             unitSize = 4,
             extension = true,
-            description = "Speed uncertainty. Positive for up."
+            description = "Speed uncertainty."
     )
     public final long velAcc() {
         return this.velAcc;
@@ -308,6 +311,20 @@ public final class GpsRawInt {
         return this.isPrimary;
     }
 
+    /**
+     * Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is 
+     * configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
+     */
+    @MavlinkFieldInfo(
+            position = 19,
+            unitSize = 2,
+            extension = true,
+            description = "Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north."
+    )
+    public final int yaw() {
+        return this.yaw;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -330,6 +347,7 @@ public final class GpsRawInt {
         if (!Objects.deepEquals(hdgAcc, other.hdgAcc)) return false;
         if (!Objects.deepEquals(id, other.id)) return false;
         if (!Objects.deepEquals(isPrimary, other.isPrimary)) return false;
+        if (!Objects.deepEquals(yaw, other.yaw)) return false;
         return true;
     }
 
@@ -353,6 +371,7 @@ public final class GpsRawInt {
         result = 31 * result + Objects.hashCode(hdgAcc);
         result = 31 * result + Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(isPrimary);
+        result = 31 * result + Objects.hashCode(yaw);
         return result;
     }
 
@@ -374,7 +393,8 @@ public final class GpsRawInt {
                  + ", velAcc=" + velAcc
                  + ", hdgAcc=" + hdgAcc
                  + ", id=" + id
-                 + ", isPrimary=" + isPrimary + "}";
+                 + ", isPrimary=" + isPrimary
+                 + ", yaw=" + yaw + "}";
     }
 
     public static final class Builder {
@@ -412,14 +432,16 @@ public final class GpsRawInt {
 
         private int isPrimary;
 
+        private int yaw;
+
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 8,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(BigInteger timeUsec) {
             this.timeUsec = timeUsec;
@@ -586,13 +608,13 @@ public final class GpsRawInt {
         }
 
         /**
-         * Position uncertainty. Positive for up. 
+         * Position uncertainty. 
          */
         @MavlinkFieldInfo(
                 position = 13,
                 unitSize = 4,
                 extension = true,
-                description = "Position uncertainty. Positive for up."
+                description = "Position uncertainty."
         )
         public final Builder hAcc(long hAcc) {
             this.hAcc = hAcc;
@@ -600,13 +622,13 @@ public final class GpsRawInt {
         }
 
         /**
-         * Altitude uncertainty. Positive for up. 
+         * Altitude uncertainty. 
          */
         @MavlinkFieldInfo(
                 position = 14,
                 unitSize = 4,
                 extension = true,
-                description = "Altitude uncertainty. Positive for up."
+                description = "Altitude uncertainty."
         )
         public final Builder vAcc(long vAcc) {
             this.vAcc = vAcc;
@@ -614,13 +636,13 @@ public final class GpsRawInt {
         }
 
         /**
-         * Speed uncertainty. Positive for up. 
+         * Speed uncertainty. 
          */
         @MavlinkFieldInfo(
                 position = 15,
                 unitSize = 4,
                 extension = true,
-                description = "Speed uncertainty. Positive for up."
+                description = "Speed uncertainty."
         )
         public final Builder velAcc(long velAcc) {
             this.velAcc = velAcc;
@@ -670,8 +692,23 @@ public final class GpsRawInt {
             return this;
         }
 
+        /**
+         * Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is 
+         * configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
+         */
+        @MavlinkFieldInfo(
+                position = 19,
+                unitSize = 2,
+                extension = true,
+                description = "Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north."
+        )
+        public final Builder yaw(int yaw) {
+            this.yaw = yaw;
+            return this;
+        }
+
         public final GpsRawInt build() {
-            return new GpsRawInt(timeUsec, fixType, lat, lon, alt, eph, epv, vel, cog, satellitesVisible, altEllipsoid, hAcc, vAcc, velAcc, hdgAcc, id, isPrimary);
+            return new GpsRawInt(timeUsec, fixType, lat, lon, alt, eph, epv, vel, cog, satellitesVisible, altEllipsoid, hAcc, vAcc, velAcc, hdgAcc, id, isPrimary, yaw);
         }
     }
 }

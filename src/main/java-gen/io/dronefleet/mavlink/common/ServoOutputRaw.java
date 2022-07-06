@@ -9,14 +9,14 @@ import java.lang.String;
 import java.util.Objects;
 
 /**
- * The RAW values of the servo outputs (for RC input from the remote, use the {@link io.dronefleet.mavlink.common.RcChannels RC_CHANNELS} 
- * messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 
- * microseconds: 100%. 
+ * Superseded by {@link io.dronefleet.mavlink.common.ActuatorOutputStatus ACTUATOR_OUTPUT_STATUS}. The RAW values of the servo outputs (for RC input from 
+ * the remote, use the {@link io.dronefleet.mavlink.common.RcChannels RC_CHANNELS} messages). The standard PPM modulation is as follows: 1000 
+ * microseconds: 0%, 2000 microseconds: 100%. 
  */
 @MavlinkMessageInfo(
         id = 36,
         crc = 222,
-        description = "The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%."
+        description = "Superseded by ACTUATOR_OUTPUT_STATUS. The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%."
 )
 public final class ServoOutputRaw {
     private final long timeUsec;
@@ -89,12 +89,12 @@ public final class ServoOutputRaw {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 4,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final long timeUsec() {
         return this.timeUsec;
@@ -424,12 +424,12 @@ public final class ServoOutputRaw {
 
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 4,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(long timeUsec) {
             this.timeUsec = timeUsec;

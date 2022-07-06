@@ -39,8 +39,14 @@ public enum MavMountMode {
     MAV_MOUNT_MODE_GPS_POINT,
 
     /**
-     * Follow system ID 
+     * Gimbal tracks system with specified system ID 
      */
     @MavlinkEntryInfo(5)
-    MAV_MOUNT_MODE_SYSID_TARGET
+    MAV_MOUNT_MODE_SYSID_TARGET,
+
+    /**
+     * Gimbal tracks home location 
+     */
+    @MavlinkEntryInfo(6)
+    MAV_MOUNT_MODE_HOME_LOCATION
 }

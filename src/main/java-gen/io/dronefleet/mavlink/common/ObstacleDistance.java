@@ -64,12 +64,12 @@ public final class ObstacleDistance {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 8,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final BigInteger timeUsec() {
         return this.timeUsec;
@@ -89,7 +89,7 @@ public final class ObstacleDistance {
     }
 
     /**
-     * Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, 
+     * Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, 
      * unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is 
      * practically touching the sensor. A value of max_distance +1 means no obstacle is present. A 
      * value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm. 
@@ -98,7 +98,7 @@ public final class ObstacleDistance {
             position = 3,
             unitSize = 2,
             arraySize = 72,
-            description = "Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm."
+            description = "Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm."
     )
     public final short[] distances() {
         return this.distances;
@@ -172,7 +172,7 @@ public final class ObstacleDistance {
 
     /**
      * Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to 
-     * MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use 
+     * MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use 
      * MAV_FRAME_BODY_FRD, which is vehicle front aligned. 
      */
     @MavlinkFieldInfo(
@@ -180,7 +180,7 @@ public final class ObstacleDistance {
             unitSize = 1,
             enumType = MavFrame.class,
             extension = true,
-            description = "Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned."
+            description = "Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned."
     )
     public final EnumValue<MavFrame> frame() {
         return this.frame;
@@ -252,12 +252,12 @@ public final class ObstacleDistance {
 
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 8,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(BigInteger timeUsec) {
             this.timeUsec = timeUsec;
@@ -300,7 +300,7 @@ public final class ObstacleDistance {
         }
 
         /**
-         * Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, 
+         * Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, 
          * unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is 
          * practically touching the sensor. A value of max_distance +1 means no obstacle is present. A 
          * value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm. 
@@ -309,7 +309,7 @@ public final class ObstacleDistance {
                 position = 3,
                 unitSize = 2,
                 arraySize = 72,
-                description = "Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm."
+                description = "Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm."
         )
         public final Builder distances(short[] distances) {
             this.distances = distances;
@@ -389,7 +389,7 @@ public final class ObstacleDistance {
 
         /**
          * Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to 
-         * MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use 
+         * MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use 
          * MAV_FRAME_BODY_FRD, which is vehicle front aligned. 
          */
         @MavlinkFieldInfo(
@@ -397,7 +397,7 @@ public final class ObstacleDistance {
                 unitSize = 1,
                 enumType = MavFrame.class,
                 extension = true,
-                description = "Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned."
+                description = "Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned."
         )
         public final Builder frame(EnumValue<MavFrame> frame) {
             this.frame = frame;
@@ -406,7 +406,7 @@ public final class ObstacleDistance {
 
         /**
          * Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to 
-         * MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use 
+         * MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use 
          * MAV_FRAME_BODY_FRD, which is vehicle front aligned. 
          */
         public final Builder frame(MavFrame entry) {
@@ -415,7 +415,7 @@ public final class ObstacleDistance {
 
         /**
          * Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to 
-         * MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use 
+         * MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use 
          * MAV_FRAME_BODY_FRD, which is vehicle front aligned. 
          */
         public final Builder frame(Enum... flags) {
@@ -424,7 +424,7 @@ public final class ObstacleDistance {
 
         /**
          * Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to 
-         * MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use 
+         * MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use 
          * MAV_FRAME_BODY_FRD, which is vehicle front aligned. 
          */
         public final Builder frame(Collection<Enum> flags) {

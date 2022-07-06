@@ -24,5 +24,11 @@ public enum MavSysStatusSensorExtension {
      * 0x04 3rd 3D accelerometer 
      */
     @MavlinkEntryInfo(4)
-    MAV_SYS_STATUS_SENSOR_3D_ACCEL3
+    MAV_SYS_STATUS_SENSOR_3D_ACCEL3,
+
+    /**
+     * 0x08 low vibrations 
+     */
+    @MavlinkEntryInfo(8)
+    MAV_SYS_STATUS_VIBRATIONS
 }

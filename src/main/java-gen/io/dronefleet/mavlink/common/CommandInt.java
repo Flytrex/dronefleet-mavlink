@@ -125,24 +125,24 @@ public final class CommandInt {
     }
 
     /**
-     * false:0, true:1 
+     * Not used. 
      */
     @MavlinkFieldInfo(
             position = 5,
             unitSize = 1,
-            description = "false:0, true:1"
+            description = "Not used."
     )
     public final int current() {
         return this.current;
     }
 
     /**
-     * autocontinue to next wp 
+     * Not used (set 0). 
      */
     @MavlinkFieldInfo(
             position = 6,
             unitSize = 1,
-            description = "autocontinue to next wp"
+            description = "Not used (set 0)."
     )
     public final int autocontinue() {
         return this.autocontinue;
@@ -415,12 +415,12 @@ public final class CommandInt {
         }
 
         /**
-         * false:0, true:1 
+         * Not used. 
          */
         @MavlinkFieldInfo(
                 position = 5,
                 unitSize = 1,
-                description = "false:0, true:1"
+                description = "Not used."
         )
         public final Builder current(int current) {
             this.current = current;
@@ -428,12 +428,12 @@ public final class CommandInt {
         }
 
         /**
-         * autocontinue to next wp 
+         * Not used (set 0). 
          */
         @MavlinkFieldInfo(
                 position = 6,
                 unitSize = 1,
-                description = "autocontinue to next wp"
+                description = "Not used (set 0)."
         )
         public final Builder autocontinue(int autocontinue) {
             this.autocontinue = autocontinue;

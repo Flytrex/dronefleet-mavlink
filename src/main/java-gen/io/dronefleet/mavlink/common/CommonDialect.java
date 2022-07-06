@@ -2,10 +2,11 @@ package io.dronefleet.mavlink.common;
 
 import io.dronefleet.mavlink.AbstractMavlinkDialect;
 import io.dronefleet.mavlink.MavlinkDialect;
+import io.dronefleet.mavlink.minimal.MinimalDialect;
 import io.dronefleet.mavlink.util.UnmodifiableMapBuilder;
 import java.lang.Class;
 import java.lang.Integer;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,13 +14,13 @@ public final class CommonDialect extends AbstractMavlinkDialect {
     /**
      * A list of all of the dependencies of this dialect.
      */
-    private static final List<MavlinkDialect> dependencies = Collections.emptyList();
+    private static final List<MavlinkDialect> dependencies = Arrays.asList(
+            new MinimalDialect());
 
     /**
      * A list of all message types supported by this dialect.
      */
     private static final Map<Integer, Class> messages = new UnmodifiableMapBuilder<Integer, Class>()
-            .put(0, Heartbeat.class)
             .put(1, SysStatus.class)
             .put(2, SystemTime.class)
             .put(4, Ping.class)
@@ -137,11 +138,14 @@ public final class CommonDialect extends AbstractMavlinkDialect {
             .put(148, AutopilotVersion.class)
             .put(149, LandingTarget.class)
             .put(162, FenceStatus.class)
+            .put(192, MagCalReport.class)
+            .put(225, EfiStatus.class)
             .put(230, EstimatorStatus.class)
             .put(231, WindCov.class)
             .put(232, GpsInput.class)
             .put(233, GpsRtcmData.class)
             .put(234, HighLatency.class)
+            .put(235, HighLatency2.class)
             .put(241, Vibration.class)
             .put(242, HomePosition.class)
             .put(243, SetHomePosition.class)
@@ -169,16 +173,23 @@ public final class CommonDialect extends AbstractMavlinkDialect {
             .put(266, LoggingData.class)
             .put(267, LoggingDataAcked.class)
             .put(268, LoggingAck.class)
+            .put(269, VideoStreamInformation.class)
+            .put(270, VideoStreamStatus.class)
             .put(299, WifiConfigAp.class)
+            .put(301, AisVessel.class)
             .put(310, UavcanNodeStatus.class)
             .put(311, UavcanNodeInfo.class)
             .put(330, ObstacleDistance.class)
             .put(331, Odometry.class)
             .put(335, IsbdLinkStatus.class)
+            .put(339, RawRpm.class)
+            .put(340, UtmGlobalPosition.class)
             .put(350, DebugFloatArray.class)
-            .put(365, StatustextLong.class)
+            .put(370, SmartBatteryInfo.class)
+            .put(373, GeneratorStatus.class)
             .put(375, ActuatorOutputStatus.class)
             .put(9000, WheelDistance.class)
+            .put(9005, WinchStatus.class)
             .build();
 
     public CommonDialect() {

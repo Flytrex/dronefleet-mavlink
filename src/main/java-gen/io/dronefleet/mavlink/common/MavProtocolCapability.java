@@ -2,6 +2,7 @@ package io.dronefleet.mavlink.common;
 
 import io.dronefleet.mavlink.annotations.MavlinkEntryInfo;
 import io.dronefleet.mavlink.annotations.MavlinkEnum;
+import java.lang.Deprecated;
 
 /**
  * Bitmask of (optional) autopilot capabilities (64 bit). If a bit is set, the autopilot supports 
@@ -22,9 +23,13 @@ public enum MavProtocolCapability {
     MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT,
 
     /**
-     * Autopilot supports MISSION_INT scaled integer message type. 
+     * Autopilot supports {@link io.dronefleet.mavlink.common.MissionItemInt MISSION_ITEM_INT} scaled integer message type. 
+     * @deprecated Since 2020-06, replaced by . This flag must always be set if missions are 
+     * supported, because missions must always use {@link io.dronefleet.mavlink.common.MissionItemInt MISSION_ITEM_INT} (rather than {@link io.dronefleet.mavlink.common.MissionItem MISSION_ITEM}, 
+     * which is deprecated). 
      */
     @MavlinkEntryInfo(4)
+    @Deprecated
     MAV_PROTOCOL_CAPABILITY_MISSION_INT,
 
     /**

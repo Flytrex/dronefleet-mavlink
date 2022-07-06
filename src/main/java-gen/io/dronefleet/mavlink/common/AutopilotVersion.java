@@ -13,13 +13,13 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Version and capability of autopilot software. This should be emitted in response to a 
- * MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES command. 
+ * Version and capability of autopilot software. This should be emitted in response to a request 
+ * with MAV_CMD_REQUEST_MESSAGE. 
  */
 @MavlinkMessageInfo(
         id = 148,
         crc = 178,
-        description = "Version and capability of autopilot software. This should be emitted in response to a MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES command."
+        description = "Version and capability of autopilot software. This should be emitted in response to a request with MAV_CMD_REQUEST_MESSAGE."
 )
 public final class AutopilotVersion {
     private final EnumValue<MavProtocolCapability> capabilities;

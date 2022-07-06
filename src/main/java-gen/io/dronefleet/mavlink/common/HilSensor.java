@@ -48,9 +48,11 @@ public final class HilSensor {
 
     private final long fieldsUpdated;
 
+    private final int id;
+
     private HilSensor(BigInteger timeUsec, float xacc, float yacc, float zacc, float xgyro,
             float ygyro, float zgyro, float xmag, float ymag, float zmag, float absPressure,
-            float diffPressure, float pressureAlt, float temperature, long fieldsUpdated) {
+            float diffPressure, float pressureAlt, float temperature, long fieldsUpdated, int id) {
         this.timeUsec = timeUsec;
         this.xacc = xacc;
         this.yacc = yacc;
@@ -66,6 +68,7 @@ public final class HilSensor {
         this.pressureAlt = pressureAlt;
         this.temperature = temperature;
         this.fieldsUpdated = fieldsUpdated;
+        this.id = id;
     }
 
     /**
@@ -78,12 +81,12 @@ public final class HilSensor {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 8,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final BigInteger timeUsec() {
         return this.timeUsec;
@@ -258,6 +261,19 @@ public final class HilSensor {
         return this.fieldsUpdated;
     }
 
+    /**
+     * Sensor ID (zero indexed). Used for multiple sensor inputs 
+     */
+    @MavlinkFieldInfo(
+            position = 17,
+            unitSize = 1,
+            extension = true,
+            description = "Sensor ID (zero indexed). Used for multiple sensor inputs"
+    )
+    public final int id() {
+        return this.id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -278,6 +294,7 @@ public final class HilSensor {
         if (!Objects.deepEquals(pressureAlt, other.pressureAlt)) return false;
         if (!Objects.deepEquals(temperature, other.temperature)) return false;
         if (!Objects.deepEquals(fieldsUpdated, other.fieldsUpdated)) return false;
+        if (!Objects.deepEquals(id, other.id)) return false;
         return true;
     }
 
@@ -299,6 +316,7 @@ public final class HilSensor {
         result = 31 * result + Objects.hashCode(pressureAlt);
         result = 31 * result + Objects.hashCode(temperature);
         result = 31 * result + Objects.hashCode(fieldsUpdated);
+        result = 31 * result + Objects.hashCode(id);
         return result;
     }
 
@@ -318,7 +336,8 @@ public final class HilSensor {
                  + ", diffPressure=" + diffPressure
                  + ", pressureAlt=" + pressureAlt
                  + ", temperature=" + temperature
-                 + ", fieldsUpdated=" + fieldsUpdated + "}";
+                 + ", fieldsUpdated=" + fieldsUpdated
+                 + ", id=" + id + "}";
     }
 
     public static final class Builder {
@@ -352,14 +371,16 @@ public final class HilSensor {
 
         private long fieldsUpdated;
 
+        private int id;
+
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 8,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(BigInteger timeUsec) {
             this.timeUsec = timeUsec;
@@ -549,8 +570,22 @@ public final class HilSensor {
             return this;
         }
 
+        /**
+         * Sensor ID (zero indexed). Used for multiple sensor inputs 
+         */
+        @MavlinkFieldInfo(
+                position = 17,
+                unitSize = 1,
+                extension = true,
+                description = "Sensor ID (zero indexed). Used for multiple sensor inputs"
+        )
+        public final Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
         public final HilSensor build() {
-            return new HilSensor(timeUsec, xacc, yacc, zacc, xgyro, ygyro, zgyro, xmag, ymag, zmag, absPressure, diffPressure, pressureAlt, temperature, fieldsUpdated);
+            return new HilSensor(timeUsec, xacc, yacc, zacc, xgyro, ygyro, zgyro, xmag, ymag, zmag, absPressure, diffPressure, pressureAlt, temperature, fieldsUpdated, id);
         }
     }
 }

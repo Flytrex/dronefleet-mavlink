@@ -47,8 +47,12 @@ public final class HilGps {
 
     private final int satellitesVisible;
 
+    private final int id;
+
+    private final int yaw;
+
     private HilGps(BigInteger timeUsec, int fixType, int lat, int lon, int alt, int eph, int epv,
-            int vel, int vn, int ve, int vd, int cog, int satellitesVisible) {
+            int vel, int vn, int ve, int vd, int cog, int satellitesVisible, int id, int yaw) {
         this.timeUsec = timeUsec;
         this.fixType = fixType;
         this.lat = lat;
@@ -62,6 +66,8 @@ public final class HilGps {
         this.vd = vd;
         this.cog = cog;
         this.satellitesVisible = satellitesVisible;
+        this.id = id;
+        this.yaw = yaw;
     }
 
     /**
@@ -74,12 +80,12 @@ public final class HilGps {
 
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-     * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+     * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 8,
-            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+            description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
     )
     public final BigInteger timeUsec() {
         return this.timeUsec;
@@ -138,24 +144,24 @@ public final class HilGps {
     }
 
     /**
-     * GPS HDOP horizontal dilution of position. If unknown, set to: 65535 
+     * GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX 
      */
     @MavlinkFieldInfo(
             position = 6,
             unitSize = 2,
-            description = "GPS HDOP horizontal dilution of position. If unknown, set to: 65535"
+            description = "GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX"
     )
     public final int eph() {
         return this.eph;
     }
 
     /**
-     * GPS VDOP vertical dilution of position. If unknown, set to: 65535 
+     * GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX 
      */
     @MavlinkFieldInfo(
             position = 7,
             unitSize = 2,
-            description = "GPS VDOP vertical dilution of position. If unknown, set to: 65535"
+            description = "GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX"
     )
     public final int epv() {
         return this.epv;
@@ -174,39 +180,39 @@ public final class HilGps {
     }
 
     /**
-     * GPS velocity in NORTH direction in earth-fixed NED frame 
+     * GPS velocity in north direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 9,
             unitSize = 2,
             signed = true,
-            description = "GPS velocity in NORTH direction in earth-fixed NED frame"
+            description = "GPS velocity in north direction in earth-fixed NED frame"
     )
     public final int vn() {
         return this.vn;
     }
 
     /**
-     * GPS velocity in EAST direction in earth-fixed NED frame 
+     * GPS velocity in east direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 10,
             unitSize = 2,
             signed = true,
-            description = "GPS velocity in EAST direction in earth-fixed NED frame"
+            description = "GPS velocity in east direction in earth-fixed NED frame"
     )
     public final int ve() {
         return this.ve;
     }
 
     /**
-     * GPS velocity in DOWN direction in earth-fixed NED frame 
+     * GPS velocity in down direction in earth-fixed NED frame 
      */
     @MavlinkFieldInfo(
             position = 11,
             unitSize = 2,
             signed = true,
-            description = "GPS velocity in DOWN direction in earth-fixed NED frame"
+            description = "GPS velocity in down direction in earth-fixed NED frame"
     )
     public final int vd() {
         return this.vd;
@@ -237,6 +243,32 @@ public final class HilGps {
         return this.satellitesVisible;
     }
 
+    /**
+     * GPS ID (zero indexed). Used for multiple GPS inputs 
+     */
+    @MavlinkFieldInfo(
+            position = 15,
+            unitSize = 1,
+            extension = true,
+            description = "GPS ID (zero indexed). Used for multiple GPS inputs"
+    )
+    public final int id() {
+        return this.id;
+    }
+
+    /**
+     * Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
+     */
+    @MavlinkFieldInfo(
+            position = 16,
+            unitSize = 2,
+            extension = true,
+            description = "Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north"
+    )
+    public final int yaw() {
+        return this.yaw;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -255,6 +287,8 @@ public final class HilGps {
         if (!Objects.deepEquals(vd, other.vd)) return false;
         if (!Objects.deepEquals(cog, other.cog)) return false;
         if (!Objects.deepEquals(satellitesVisible, other.satellitesVisible)) return false;
+        if (!Objects.deepEquals(id, other.id)) return false;
+        if (!Objects.deepEquals(yaw, other.yaw)) return false;
         return true;
     }
 
@@ -274,6 +308,8 @@ public final class HilGps {
         result = 31 * result + Objects.hashCode(vd);
         result = 31 * result + Objects.hashCode(cog);
         result = 31 * result + Objects.hashCode(satellitesVisible);
+        result = 31 * result + Objects.hashCode(id);
+        result = 31 * result + Objects.hashCode(yaw);
         return result;
     }
 
@@ -291,7 +327,9 @@ public final class HilGps {
                  + ", ve=" + ve
                  + ", vd=" + vd
                  + ", cog=" + cog
-                 + ", satellitesVisible=" + satellitesVisible + "}";
+                 + ", satellitesVisible=" + satellitesVisible
+                 + ", id=" + id
+                 + ", yaw=" + yaw + "}";
     }
 
     public static final class Builder {
@@ -321,14 +359,18 @@ public final class HilGps {
 
         private int satellitesVisible;
 
+        private int id;
+
+        private int yaw;
+
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
-         * format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
+         * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 8,
-                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number."
+                description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
         )
         public final Builder timeUsec(BigInteger timeUsec) {
             this.timeUsec = timeUsec;
@@ -392,12 +434,12 @@ public final class HilGps {
         }
 
         /**
-         * GPS HDOP horizontal dilution of position. If unknown, set to: 65535 
+         * GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX 
          */
         @MavlinkFieldInfo(
                 position = 6,
                 unitSize = 2,
-                description = "GPS HDOP horizontal dilution of position. If unknown, set to: 65535"
+                description = "GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX"
         )
         public final Builder eph(int eph) {
             this.eph = eph;
@@ -405,12 +447,12 @@ public final class HilGps {
         }
 
         /**
-         * GPS VDOP vertical dilution of position. If unknown, set to: 65535 
+         * GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX 
          */
         @MavlinkFieldInfo(
                 position = 7,
                 unitSize = 2,
-                description = "GPS VDOP vertical dilution of position. If unknown, set to: 65535"
+                description = "GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX"
         )
         public final Builder epv(int epv) {
             this.epv = epv;
@@ -431,13 +473,13 @@ public final class HilGps {
         }
 
         /**
-         * GPS velocity in NORTH direction in earth-fixed NED frame 
+         * GPS velocity in north direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 9,
                 unitSize = 2,
                 signed = true,
-                description = "GPS velocity in NORTH direction in earth-fixed NED frame"
+                description = "GPS velocity in north direction in earth-fixed NED frame"
         )
         public final Builder vn(int vn) {
             this.vn = vn;
@@ -445,13 +487,13 @@ public final class HilGps {
         }
 
         /**
-         * GPS velocity in EAST direction in earth-fixed NED frame 
+         * GPS velocity in east direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 10,
                 unitSize = 2,
                 signed = true,
-                description = "GPS velocity in EAST direction in earth-fixed NED frame"
+                description = "GPS velocity in east direction in earth-fixed NED frame"
         )
         public final Builder ve(int ve) {
             this.ve = ve;
@@ -459,13 +501,13 @@ public final class HilGps {
         }
 
         /**
-         * GPS velocity in DOWN direction in earth-fixed NED frame 
+         * GPS velocity in down direction in earth-fixed NED frame 
          */
         @MavlinkFieldInfo(
                 position = 11,
                 unitSize = 2,
                 signed = true,
-                description = "GPS velocity in DOWN direction in earth-fixed NED frame"
+                description = "GPS velocity in down direction in earth-fixed NED frame"
         )
         public final Builder vd(int vd) {
             this.vd = vd;
@@ -499,8 +541,36 @@ public final class HilGps {
             return this;
         }
 
+        /**
+         * GPS ID (zero indexed). Used for multiple GPS inputs 
+         */
+        @MavlinkFieldInfo(
+                position = 15,
+                unitSize = 1,
+                extension = true,
+                description = "GPS ID (zero indexed). Used for multiple GPS inputs"
+        )
+        public final Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
+        /**
+         * Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
+         */
+        @MavlinkFieldInfo(
+                position = 16,
+                unitSize = 2,
+                extension = true,
+                description = "Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north"
+        )
+        public final Builder yaw(int yaw) {
+            this.yaw = yaw;
+            return this;
+        }
+
         public final HilGps build() {
-            return new HilGps(timeUsec, fixType, lat, lon, alt, eph, epv, vel, vn, ve, vd, cog, satellitesVisible);
+            return new HilGps(timeUsec, fixType, lat, lon, alt, eph, epv, vel, vn, ve, vd, cog, satellitesVisible, id, yaw);
         }
     }
 }

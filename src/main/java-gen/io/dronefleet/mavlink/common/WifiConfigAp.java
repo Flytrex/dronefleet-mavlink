@@ -9,12 +9,13 @@ import java.lang.String;
 import java.util.Objects;
 
 /**
- * Configure AP SSID and Password. 
+ * Configure WiFi AP SSID, password, and mode. This message is re-emitted as an acknowledgement 
+ * by the AP. The message may also be explicitly requested using MAV_CMD_REQUEST_MESSAGE 
  */
 @MavlinkMessageInfo(
         id = 299,
         crc = 19,
-        description = "Configure AP SSID and Password."
+        description = "Configure WiFi AP SSID, password, and mode. This message is re-emitted as an acknowledgement by the AP. The message may also be explicitly requested using MAV_CMD_REQUEST_MESSAGE"
 )
 public final class WifiConfigAp {
     private final String ssid;
@@ -35,26 +36,27 @@ public final class WifiConfigAp {
     }
 
     /**
-     * Name of Wi-Fi network (SSID). Leave it blank to leave it unchanged. 
+     * Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent 
+     * back as a response. 
      */
     @MavlinkFieldInfo(
             position = 1,
             unitSize = 1,
             arraySize = 32,
-            description = "Name of Wi-Fi network (SSID). Leave it blank to leave it unchanged."
+            description = "Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent back as a response."
     )
     public final String ssid() {
         return this.ssid;
     }
 
     /**
-     * Password. Leave it blank for an open AP. 
+     * Password. Blank for an open AP. MD5 hash when message is sent back as a response. 
      */
     @MavlinkFieldInfo(
             position = 2,
             unitSize = 1,
             arraySize = 64,
-            description = "Password. Leave it blank for an open AP."
+            description = "Password. Blank for an open AP. MD5 hash when message is sent back as a response."
     )
     public final String password() {
         return this.password;
@@ -90,13 +92,14 @@ public final class WifiConfigAp {
         private String password;
 
         /**
-         * Name of Wi-Fi network (SSID). Leave it blank to leave it unchanged. 
+         * Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent 
+         * back as a response. 
          */
         @MavlinkFieldInfo(
                 position = 1,
                 unitSize = 1,
                 arraySize = 32,
-                description = "Name of Wi-Fi network (SSID). Leave it blank to leave it unchanged."
+                description = "Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent back as a response."
         )
         public final Builder ssid(String ssid) {
             this.ssid = ssid;
@@ -104,13 +107,13 @@ public final class WifiConfigAp {
         }
 
         /**
-         * Password. Leave it blank for an open AP. 
+         * Password. Blank for an open AP. MD5 hash when message is sent back as a response. 
          */
         @MavlinkFieldInfo(
                 position = 2,
                 unitSize = 1,
                 arraySize = 64,
-                description = "Password. Leave it blank for an open AP."
+                description = "Password. Blank for an open AP. MD5 hash when message is sent back as a response."
         )
         public final Builder password(String password) {
             this.password = password;

@@ -12,12 +12,12 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Settings of a camera, can be requested using MAV_CMD_REQUEST_CAMERA_SETTINGS. 
+ * Settings of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command. 
  */
 @MavlinkMessageInfo(
         id = 260,
         crc = 146,
-        description = "Settings of a camera, can be requested using MAV_CMD_REQUEST_CAMERA_SETTINGS."
+        description = "Settings of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command."
 )
 public final class CameraSettings {
     private final long timeBootMs;

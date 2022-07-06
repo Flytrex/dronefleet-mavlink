@@ -17,7 +17,7 @@ public enum MavFrame {
     MAV_FRAME_GLOBAL,
 
     /**
-     * Local coordinate frame, Z-down (x: north, y: east, z: down). 
+     * Local coordinate frame, Z-down (x: North, y: East, z: Down). 
      */
     @MavlinkEntryInfo(1)
     MAV_FRAME_LOCAL_NED,
@@ -37,7 +37,7 @@ public enum MavFrame {
     MAV_FRAME_GLOBAL_RELATIVE_ALT,
 
     /**
-     * Local coordinate frame, Z-up (x: east, y: north, z: up). 
+     * Local coordinate frame, Z-up (x: East, y: North, z: Up). 
      */
     @MavlinkEntryInfo(4)
     MAV_FRAME_LOCAL_ENU,
@@ -100,70 +100,72 @@ public enum MavFrame {
     MAV_FRAME_GLOBAL_TERRAIN_ALT_INT,
 
     /**
-     * Body fixed frame of reference, Z-down (x: forward, y: right, z: down). 
+     * Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down). 
      */
     @MavlinkEntryInfo(12)
     MAV_FRAME_BODY_FRD,
 
     /**
-     * Body fixed frame of reference, Z-up (x: forward, y: left, z: up). 
+     * MAV_FRAME_BODY_FLU - Body fixed frame of reference, Z-up (x: Forward, y: Left, z: Up). 
+     * @deprecated Since 2019-04, replaced by . 
      */
     @MavlinkEntryInfo(13)
-    MAV_FRAME_BODY_FLU,
+    @Deprecated
+    MAV_FRAME_RESERVED_13,
 
     /**
-     * Odometry local coordinate frame of data given by a motion capture system, Z-down (x: north, y: 
-     * east, z: down). 
-     * @deprecated Since 2019-08, replaced by MAV_FRAME_LOCAL_FRD. 
+     * MAV_FRAME_MOCAP_NED - Odometry local coordinate frame of data given by a motion capture 
+     * system, Z-down (x: North, y: East, z: Down). 
+     * @deprecated Since 2019-04, replaced by MAV_FRAME_LOCAL_FRD. 
      */
     @MavlinkEntryInfo(14)
     @Deprecated
-    MAV_FRAME_MOCAP_NED,
+    MAV_FRAME_RESERVED_14,
 
     /**
-     * Odometry local coordinate frame of data given by a motion capture system, Z-up (x: east, y: 
-     * north, z: up). 
-     * @deprecated Since 2019-08, replaced by MAV_FRAME_LOCAL_FLU. 
+     * MAV_FRAME_MOCAP_ENU - Odometry local coordinate frame of data given by a motion capture 
+     * system, Z-up (x: East, y: North, z: Up). 
+     * @deprecated Since 2019-04, replaced by MAV_FRAME_LOCAL_FLU. 
      */
     @MavlinkEntryInfo(15)
     @Deprecated
-    MAV_FRAME_MOCAP_ENU,
+    MAV_FRAME_RESERVED_15,
 
     /**
-     * Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: north, 
-     * y: east, z: down). 
-     * @deprecated Since 2019-08, replaced by MAV_FRAME_LOCAL_FRD. 
+     * MAV_FRAME_VISION_NED - Odometry local coordinate frame of data given by a vision estimation 
+     * system, Z-down (x: North, y: East, z: Down). 
+     * @deprecated Since 2019-04, replaced by MAV_FRAME_LOCAL_FRD. 
      */
     @MavlinkEntryInfo(16)
     @Deprecated
-    MAV_FRAME_VISION_NED,
+    MAV_FRAME_RESERVED_16,
 
     /**
-     * Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: east, y: 
-     * north, z: up). 
-     * @deprecated Since 2019-08, replaced by MAV_FRAME_LOCAL_FLU. 
+     * MAV_FRAME_VISION_ENU - Odometry local coordinate frame of data given by a vision estimation 
+     * system, Z-up (x: East, y: North, z: Up). 
+     * @deprecated Since 2019-04, replaced by MAV_FRAME_LOCAL_FLU. 
      */
     @MavlinkEntryInfo(17)
     @Deprecated
-    MAV_FRAME_VISION_ENU,
+    MAV_FRAME_RESERVED_17,
 
     /**
-     * Odometry local coordinate frame of data given by an estimator running onboard the vehicle, 
-     * Z-down (x: north, y: east, z: down). 
-     * @deprecated Since 2019-08, replaced by MAV_FRAME_LOCAL_FRD. 
+     * MAV_FRAME_ESTIM_NED - Odometry local coordinate frame of data given by an estimator running 
+     * onboard the vehicle, Z-down (x: North, y: East, z: Down). 
+     * @deprecated Since 2019-04, replaced by MAV_FRAME_LOCAL_FRD. 
      */
     @MavlinkEntryInfo(18)
     @Deprecated
-    MAV_FRAME_ESTIM_NED,
+    MAV_FRAME_RESERVED_18,
 
     /**
-     * Odometry local coordinate frame of data given by an estimator running onboard the vehicle, 
-     * Z-up (x: east, y: noth, z: up). 
-     * @deprecated Since 2019-08, replaced by MAV_FRAME_LOCAL_FLU. 
+     * MAV_FRAME_ESTIM_ENU - Odometry local coordinate frame of data given by an estimator running 
+     * onboard the vehicle, Z-up (x: East, y: North, z: Up). 
+     * @deprecated Since 2019-04, replaced by MAV_FRAME_LOCAL_FLU. 
      */
     @MavlinkEntryInfo(19)
     @Deprecated
-    MAV_FRAME_ESTIM_ENU,
+    MAV_FRAME_RESERVED_19,
 
     /**
      * Forward, Right, Down coordinate frame. This is a local frame with Z-down and arbitrary F/R 

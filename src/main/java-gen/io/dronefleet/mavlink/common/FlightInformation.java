@@ -3,7 +3,6 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
-import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -12,18 +11,12 @@ import java.util.Objects;
 
 /**
  * Information about flight since last arming. 
- * @deprecated This message is a work in progress. It may be modified in a non backward-compatible 
- * way in a future release without any warning. This version of the message may not even work with 
- * autopilots that support this message due to discrepancies between dialect versions. Unless 
- * you completely understand the risks of doing so, don't use it. 
  */
 @MavlinkMessageInfo(
         id = 264,
         crc = 49,
-        description = "Information about flight since last arming.",
-        workInProgress = true
+        description = "Information about flight since last arming."
 )
-@Deprecated
 public final class FlightInformation {
     private final long timeBootMs;
 
@@ -53,7 +46,7 @@ public final class FlightInformation {
      * Timestamp (time since system boot). 
      */
     @MavlinkFieldInfo(
-            position = 2,
+            position = 1,
             unitSize = 4,
             description = "Timestamp (time since system boot)."
     )
@@ -65,7 +58,7 @@ public final class FlightInformation {
      * Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown 
      */
     @MavlinkFieldInfo(
-            position = 3,
+            position = 2,
             unitSize = 8,
             description = "Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown"
     )
@@ -77,7 +70,7 @@ public final class FlightInformation {
      * Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown 
      */
     @MavlinkFieldInfo(
-            position = 4,
+            position = 3,
             unitSize = 8,
             description = "Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown"
     )
@@ -89,7 +82,7 @@ public final class FlightInformation {
      * Universally unique identifier (UUID) of flight, should correspond to name of log files 
      */
     @MavlinkFieldInfo(
-            position = 5,
+            position = 4,
             unitSize = 8,
             description = "Universally unique identifier (UUID) of flight, should correspond to name of log files"
     )
@@ -140,7 +133,7 @@ public final class FlightInformation {
          * Timestamp (time since system boot). 
          */
         @MavlinkFieldInfo(
-                position = 2,
+                position = 1,
                 unitSize = 4,
                 description = "Timestamp (time since system boot)."
         )
@@ -153,7 +146,7 @@ public final class FlightInformation {
          * Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown 
          */
         @MavlinkFieldInfo(
-                position = 3,
+                position = 2,
                 unitSize = 8,
                 description = "Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown"
         )
@@ -166,7 +159,7 @@ public final class FlightInformation {
          * Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown 
          */
         @MavlinkFieldInfo(
-                position = 4,
+                position = 3,
                 unitSize = 8,
                 description = "Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown"
         )
@@ -179,7 +172,7 @@ public final class FlightInformation {
          * Universally unique identifier (UUID) of flight, should correspond to name of log files 
          */
         @MavlinkFieldInfo(
-                position = 5,
+                position = 4,
                 unitSize = 8,
                 description = "Universally unique identifier (UUID) of flight, should correspond to name of log files"
         )

@@ -3,10 +3,13 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
+import io.dronefleet.mavlink.util.EnumValue;
+import java.lang.Enum;
 import java.lang.Float;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,7 +29,7 @@ public final class SetAttitudeTarget {
 
     private final int targetComponent;
 
-    private final int typeMask;
+    private final EnumValue<AttitudeTargetTypemask> typeMask;
 
     private final List<Float> q;
 
@@ -38,9 +41,9 @@ public final class SetAttitudeTarget {
 
     private final float thrust;
 
-    private SetAttitudeTarget(long timeBootMs, int targetSystem, int targetComponent, int typeMask,
-            List<Float> q, float bodyRollRate, float bodyPitchRate, float bodyYawRate,
-            float thrust) {
+    private SetAttitudeTarget(long timeBootMs, int targetSystem, int targetComponent,
+            EnumValue<AttitudeTargetTypemask> typeMask, List<Float> q, float bodyRollRate,
+            float bodyPitchRate, float bodyYawRate, float thrust) {
         this.timeBootMs = timeBootMs;
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
@@ -97,16 +100,15 @@ public final class SetAttitudeTarget {
     }
 
     /**
-     * Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body 
-     * roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, 
-     * bit 8: attitude 
+     * Bitmap to indicate which dimensions should be ignored by the vehicle. 
      */
     @MavlinkFieldInfo(
             position = 4,
             unitSize = 1,
-            description = "Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, bit 8: attitude"
+            enumType = AttitudeTargetTypemask.class,
+            description = "Bitmap to indicate which dimensions should be ignored by the vehicle."
     )
-    public final int typeMask() {
+    public final EnumValue<AttitudeTargetTypemask> typeMask() {
         return this.typeMask;
     }
 
@@ -223,7 +225,7 @@ public final class SetAttitudeTarget {
 
         private int targetComponent;
 
-        private int typeMask;
+        private EnumValue<AttitudeTargetTypemask> typeMask;
 
         private List<Float> q;
 
@@ -275,18 +277,38 @@ public final class SetAttitudeTarget {
         }
 
         /**
-         * Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body 
-         * roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, 
-         * bit 8: attitude 
+         * Bitmap to indicate which dimensions should be ignored by the vehicle. 
          */
         @MavlinkFieldInfo(
                 position = 4,
                 unitSize = 1,
-                description = "Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, bit 8: attitude"
+                enumType = AttitudeTargetTypemask.class,
+                description = "Bitmap to indicate which dimensions should be ignored by the vehicle."
         )
-        public final Builder typeMask(int typeMask) {
+        public final Builder typeMask(EnumValue<AttitudeTargetTypemask> typeMask) {
             this.typeMask = typeMask;
             return this;
+        }
+
+        /**
+         * Bitmap to indicate which dimensions should be ignored by the vehicle. 
+         */
+        public final Builder typeMask(AttitudeTargetTypemask entry) {
+            return typeMask(EnumValue.of(entry));
+        }
+
+        /**
+         * Bitmap to indicate which dimensions should be ignored by the vehicle. 
+         */
+        public final Builder typeMask(Enum... flags) {
+            return typeMask(EnumValue.create(flags));
+        }
+
+        /**
+         * Bitmap to indicate which dimensions should be ignored by the vehicle. 
+         */
+        public final Builder typeMask(Collection<Enum> flags) {
+            return typeMask(EnumValue.create(flags));
         }
 
         /**
