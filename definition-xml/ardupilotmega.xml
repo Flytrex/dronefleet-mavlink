@@ -1726,6 +1726,12 @@
       <field type="uint32_t" name="time_utc" units="s">UTC timestamp of log since 1970, or 0 if not available</field>
       <field type="uint32_t" name="size" units="bytes">Size of the log (may be approximate)</field>
     </message>
+    <message id="12200" name="PLAY_TONE">
+      <description>Play a tone (buzzer) for a duration (in ms)</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <field type="uint32_t" name="duration">Duration (in milliseconds) to play the tone for</field>
+    </message>
     <message id="11033" name="OSD_PARAM_CONFIG">
       <description>Configure an OSD parameter slot.</description>
       <field type="uint8_t" name="target_system">System ID.</field>

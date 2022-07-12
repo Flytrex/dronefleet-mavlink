@@ -89,6 +89,7 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
             .put(12101, LogRequestDataByLabel.class)
             .put(12102, LogRequestLabelList.class)
             .put(12103, LogLabel.class)
+            .put(12200, PlayTone.class)
             .put(11033, OsdParamConfig.class)
             .put(11034, OsdParamConfigReply.class)
             .put(11035, OsdParamShowConfig.class)
