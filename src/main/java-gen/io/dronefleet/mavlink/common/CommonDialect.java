@@ -190,6 +190,14 @@ public final class CommonDialect extends AbstractMavlinkDialect {
             .put(375, ActuatorOutputStatus.class)
             .put(9000, WheelDistance.class)
             .put(9005, WinchStatus.class)
+            .put(12900, OpenDroneIdBasicId.class)
+            .put(12901, OpenDroneIdLocation.class)
+            .put(12902, OpenDroneIdAuthentication.class)
+            .put(12903, OpenDroneIdSelfId.class)
+            .put(12904, OpenDroneIdSystem.class)
+            .put(12905, OpenDroneIdOperatorId.class)
+            .put(12918, OpenDroneIdArmStatus.class)
+            .put(12919, OpenDroneIdSystemUpdate.class)
             .build();
 
     public CommonDialect() {
