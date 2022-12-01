@@ -26,11 +26,14 @@ public final class MissionRequestList {
 
     private final EnumValue<MavMissionType> missionType;
 
+    private final int tid;
+
     private MissionRequestList(int targetSystem, int targetComponent,
-            EnumValue<MavMissionType> missionType) {
+            EnumValue<MavMissionType> missionType, int tid) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.missionType = missionType;
+        this.tid = tid;
     }
 
     /**
@@ -79,6 +82,19 @@ public final class MissionRequestList {
         return this.missionType;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 5,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,6 +103,7 @@ public final class MissionRequestList {
         if (!Objects.deepEquals(targetSystem, other.targetSystem)) return false;
         if (!Objects.deepEquals(targetComponent, other.targetComponent)) return false;
         if (!Objects.deepEquals(missionType, other.missionType)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -96,6 +113,7 @@ public final class MissionRequestList {
         result = 31 * result + Objects.hashCode(targetSystem);
         result = 31 * result + Objects.hashCode(targetComponent);
         result = 31 * result + Objects.hashCode(missionType);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
@@ -103,7 +121,8 @@ public final class MissionRequestList {
     public String toString() {
         return "MissionRequestList{targetSystem=" + targetSystem
                  + ", targetComponent=" + targetComponent
-                 + ", missionType=" + missionType + "}";
+                 + ", missionType=" + missionType
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
@@ -112,6 +131,8 @@ public final class MissionRequestList {
         private int targetComponent;
 
         private EnumValue<MavMissionType> missionType;
+
+        private int tid;
 
         /**
          * System ID 
@@ -175,8 +196,22 @@ public final class MissionRequestList {
             return missionType(EnumValue.create(flags));
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 5,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final MissionRequestList build() {
-            return new MissionRequestList(targetSystem, targetComponent, missionType);
+            return new MissionRequestList(targetSystem, targetComponent, missionType, tid);
         }
     }
 }

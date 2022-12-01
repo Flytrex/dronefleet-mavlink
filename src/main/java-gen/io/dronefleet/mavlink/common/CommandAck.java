@@ -25,9 +25,12 @@ public final class CommandAck {
 
     private final EnumValue<MavResult> result;
 
-    private CommandAck(EnumValue<MavCmd> command, EnumValue<MavResult> result) {
+    private final int tid;
+
+    private CommandAck(EnumValue<MavCmd> command, EnumValue<MavResult> result, int tid) {
         this.command = command;
         this.result = result;
+        this.tid = tid;
     }
 
     /**
@@ -64,6 +67,19 @@ public final class CommandAck {
         return this.result;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 4,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,6 +87,7 @@ public final class CommandAck {
         CommandAck other = (CommandAck)o;
         if (!Objects.deepEquals(command, other.command)) return false;
         if (!Objects.deepEquals(result, other.result)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -79,19 +96,23 @@ public final class CommandAck {
         int result = 0;
         result = 31 * result + Objects.hashCode(command);
         result = 31 * result + Objects.hashCode(result);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
     @Override
     public String toString() {
         return "CommandAck{command=" + command
-                 + ", result=" + result + "}";
+                 + ", result=" + result
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
         private EnumValue<MavCmd> command;
 
         private EnumValue<MavResult> result;
+
+        private int tid;
 
         /**
          * Command ID (of acknowledged command). 
@@ -163,8 +184,22 @@ public final class CommandAck {
             return result(EnumValue.create(flags));
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 4,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final CommandAck build() {
-            return new CommandAck(command, result);
+            return new CommandAck(command, result, tid);
         }
     }
 }

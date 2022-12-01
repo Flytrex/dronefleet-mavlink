@@ -31,10 +31,13 @@ public final class SetMode {
 
     private final long customMode;
 
-    private SetMode(int targetSystem, EnumValue<MavMode> baseMode, long customMode) {
+    private final int tid;
+
+    private SetMode(int targetSystem, EnumValue<MavMode> baseMode, long customMode, int tid) {
         this.targetSystem = targetSystem;
         this.baseMode = baseMode;
         this.customMode = customMode;
+        this.tid = tid;
     }
 
     /**
@@ -82,6 +85,19 @@ public final class SetMode {
         return this.customMode;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 6,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,6 +106,7 @@ public final class SetMode {
         if (!Objects.deepEquals(targetSystem, other.targetSystem)) return false;
         if (!Objects.deepEquals(baseMode, other.baseMode)) return false;
         if (!Objects.deepEquals(customMode, other.customMode)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -99,6 +116,7 @@ public final class SetMode {
         result = 31 * result + Objects.hashCode(targetSystem);
         result = 31 * result + Objects.hashCode(baseMode);
         result = 31 * result + Objects.hashCode(customMode);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
@@ -106,7 +124,8 @@ public final class SetMode {
     public String toString() {
         return "SetMode{targetSystem=" + targetSystem
                  + ", baseMode=" + baseMode
-                 + ", customMode=" + customMode + "}";
+                 + ", customMode=" + customMode
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
@@ -115,6 +134,8 @@ public final class SetMode {
         private EnumValue<MavMode> baseMode;
 
         private long customMode;
+
+        private int tid;
 
         /**
          * The system setting the mode 
@@ -177,8 +198,22 @@ public final class SetMode {
             return this;
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 6,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final SetMode build() {
-            return new SetMode(targetSystem, baseMode, customMode);
+            return new SetMode(targetSystem, baseMode, customMode, tid);
         }
     }
 }

@@ -43,9 +43,11 @@ public final class CommandLong {
 
     private final float param7;
 
+    private final int tid;
+
     private CommandLong(int targetSystem, int targetComponent, EnumValue<MavCmd> command,
             int confirmation, float param1, float param2, float param3, float param4, float param5,
-            float param6, float param7) {
+            float param6, float param7, int tid) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.command = command;
@@ -57,6 +59,7 @@ public final class CommandLong {
         this.param5 = param5;
         this.param6 = param6;
         this.param7 = param7;
+        this.tid = tid;
     }
 
     /**
@@ -201,6 +204,19 @@ public final class CommandLong {
         return this.param7;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 13,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -217,6 +233,7 @@ public final class CommandLong {
         if (!Objects.deepEquals(param5, other.param5)) return false;
         if (!Objects.deepEquals(param6, other.param6)) return false;
         if (!Objects.deepEquals(param7, other.param7)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -234,6 +251,7 @@ public final class CommandLong {
         result = 31 * result + Objects.hashCode(param5);
         result = 31 * result + Objects.hashCode(param6);
         result = 31 * result + Objects.hashCode(param7);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
@@ -249,7 +267,8 @@ public final class CommandLong {
                  + ", param4=" + param4
                  + ", param5=" + param5
                  + ", param6=" + param6
-                 + ", param7=" + param7 + "}";
+                 + ", param7=" + param7
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
@@ -274,6 +293,8 @@ public final class CommandLong {
         private float param6;
 
         private float param7;
+
+        private int tid;
 
         /**
          * System which should execute the command 
@@ -441,8 +462,22 @@ public final class CommandLong {
             return this;
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 13,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final CommandLong build() {
-            return new CommandLong(targetSystem, targetComponent, command, confirmation, param1, param2, param3, param4, param5, param6, param7);
+            return new CommandLong(targetSystem, targetComponent, command, confirmation, param1, param2, param3, param4, param5, param6, param7, tid);
         }
     }
 }

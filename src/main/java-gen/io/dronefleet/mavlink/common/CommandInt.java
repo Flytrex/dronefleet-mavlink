@@ -48,9 +48,11 @@ public final class CommandInt {
 
     private final float z;
 
+    private final int tid;
+
     private CommandInt(int targetSystem, int targetComponent, EnumValue<MavFrame> frame,
             EnumValue<MavCmd> command, int current, int autocontinue, float param1, float param2,
-            float param3, float param4, int x, int y, float z) {
+            float param3, float param4, int x, int y, float z, int tid) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.frame = frame;
@@ -64,6 +66,7 @@ public final class CommandInt {
         this.x = x;
         this.y = y;
         this.z = z;
+        this.tid = tid;
     }
 
     /**
@@ -234,6 +237,19 @@ public final class CommandInt {
         return this.z;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 15,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -252,6 +268,7 @@ public final class CommandInt {
         if (!Objects.deepEquals(x, other.x)) return false;
         if (!Objects.deepEquals(y, other.y)) return false;
         if (!Objects.deepEquals(z, other.z)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -271,6 +288,7 @@ public final class CommandInt {
         result = 31 * result + Objects.hashCode(x);
         result = 31 * result + Objects.hashCode(y);
         result = 31 * result + Objects.hashCode(z);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
@@ -288,7 +306,8 @@ public final class CommandInt {
                  + ", param4=" + param4
                  + ", x=" + x
                  + ", y=" + y
-                 + ", z=" + z + "}";
+                 + ", z=" + z
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
@@ -317,6 +336,8 @@ public final class CommandInt {
         private int y;
 
         private float z;
+
+        private int tid;
 
         /**
          * System ID 
@@ -533,8 +554,22 @@ public final class CommandInt {
             return this;
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 15,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final CommandInt build() {
-            return new CommandInt(targetSystem, targetComponent, frame, command, current, autocontinue, param1, param2, param3, param4, x, y, z);
+            return new CommandInt(targetSystem, targetComponent, frame, command, current, autocontinue, param1, param2, param3, param4, x, y, z, tid);
         }
     }
 }
