@@ -32,13 +32,16 @@ public final class MissionWritePartialList {
 
     private final EnumValue<MavMissionType> missionType;
 
+    private final int tid;
+
     private MissionWritePartialList(int targetSystem, int targetComponent, int startIndex,
-            int endIndex, EnumValue<MavMissionType> missionType) {
+            int endIndex, EnumValue<MavMissionType> missionType, int tid) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.startIndex = startIndex;
         this.endIndex = endIndex;
         this.missionType = missionType;
+        this.tid = tid;
     }
 
     /**
@@ -113,6 +116,19 @@ public final class MissionWritePartialList {
         return this.missionType;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 7,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,6 +139,7 @@ public final class MissionWritePartialList {
         if (!Objects.deepEquals(startIndex, other.startIndex)) return false;
         if (!Objects.deepEquals(endIndex, other.endIndex)) return false;
         if (!Objects.deepEquals(missionType, other.missionType)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -134,6 +151,7 @@ public final class MissionWritePartialList {
         result = 31 * result + Objects.hashCode(startIndex);
         result = 31 * result + Objects.hashCode(endIndex);
         result = 31 * result + Objects.hashCode(missionType);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
@@ -143,7 +161,8 @@ public final class MissionWritePartialList {
                  + ", targetComponent=" + targetComponent
                  + ", startIndex=" + startIndex
                  + ", endIndex=" + endIndex
-                 + ", missionType=" + missionType + "}";
+                 + ", missionType=" + missionType
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
@@ -156,6 +175,8 @@ public final class MissionWritePartialList {
         private int endIndex;
 
         private EnumValue<MavMissionType> missionType;
+
+        private int tid;
 
         /**
          * System ID 
@@ -247,8 +268,22 @@ public final class MissionWritePartialList {
             return missionType(EnumValue.create(flags));
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 7,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final MissionWritePartialList build() {
-            return new MissionWritePartialList(targetSystem, targetComponent, startIndex, endIndex, missionType);
+            return new MissionWritePartialList(targetSystem, targetComponent, startIndex, endIndex, missionType, tid);
         }
     }
 }

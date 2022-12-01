@@ -31,8 +31,10 @@ public final class ManualSetpoint {
 
     private final int manualOverrideSwitch;
 
+    private final int tid;
+
     private ManualSetpoint(long timeBootMs, float roll, float pitch, float yaw, float thrust,
-            int modeSwitch, int manualOverrideSwitch) {
+            int modeSwitch, int manualOverrideSwitch, int tid) {
         this.timeBootMs = timeBootMs;
         this.roll = roll;
         this.pitch = pitch;
@@ -40,6 +42,7 @@ public final class ManualSetpoint {
         this.thrust = thrust;
         this.modeSwitch = modeSwitch;
         this.manualOverrideSwitch = manualOverrideSwitch;
+        this.tid = tid;
     }
 
     /**
@@ -134,6 +137,19 @@ public final class ManualSetpoint {
         return this.manualOverrideSwitch;
     }
 
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 9,
+            unitSize = 1,
+            extension = true,
+            description = "Transmission id."
+    )
+    public final int tid() {
+        return this.tid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -146,6 +162,7 @@ public final class ManualSetpoint {
         if (!Objects.deepEquals(thrust, other.thrust)) return false;
         if (!Objects.deepEquals(modeSwitch, other.modeSwitch)) return false;
         if (!Objects.deepEquals(manualOverrideSwitch, other.manualOverrideSwitch)) return false;
+        if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
 
@@ -159,6 +176,7 @@ public final class ManualSetpoint {
         result = 31 * result + Objects.hashCode(thrust);
         result = 31 * result + Objects.hashCode(modeSwitch);
         result = 31 * result + Objects.hashCode(manualOverrideSwitch);
+        result = 31 * result + Objects.hashCode(tid);
         return result;
     }
 
@@ -170,7 +188,8 @@ public final class ManualSetpoint {
                  + ", yaw=" + yaw
                  + ", thrust=" + thrust
                  + ", modeSwitch=" + modeSwitch
-                 + ", manualOverrideSwitch=" + manualOverrideSwitch + "}";
+                 + ", manualOverrideSwitch=" + manualOverrideSwitch
+                 + ", tid=" + tid + "}";
     }
 
     public static final class Builder {
@@ -187,6 +206,8 @@ public final class ManualSetpoint {
         private int modeSwitch;
 
         private int manualOverrideSwitch;
+
+        private int tid;
 
         /**
          * Timestamp (time since system boot). 
@@ -279,8 +300,22 @@ public final class ManualSetpoint {
             return this;
         }
 
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 9,
+                unitSize = 1,
+                extension = true,
+                description = "Transmission id."
+        )
+        public final Builder tid(int tid) {
+            this.tid = tid;
+            return this;
+        }
+
         public final ManualSetpoint build() {
-            return new ManualSetpoint(timeBootMs, roll, pitch, yaw, thrust, modeSwitch, manualOverrideSwitch);
+            return new ManualSetpoint(timeBootMs, roll, pitch, yaw, thrust, modeSwitch, manualOverrideSwitch, tid);
         }
     }
 }
