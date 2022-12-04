@@ -49,6 +49,16 @@ public final class GpsStatus {
         return new Builder();
     }
 
+    public static Builder builder(GpsStatus msg) {
+        return builder()
+                .satellitesVisible(msg.satellitesVisible)
+                .satellitePrn(msg.satellitePrn)
+                .satelliteUsed(msg.satelliteUsed)
+                .satelliteElevation(msg.satelliteElevation)
+                .satelliteAzimuth(msg.satelliteAzimuth)
+                .satelliteSnr(msg.satelliteSnr);
+    }
+
     /**
      * Number of satellites visible 
      */

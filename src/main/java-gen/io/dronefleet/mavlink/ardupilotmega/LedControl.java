@@ -47,6 +47,16 @@ public final class LedControl {
         return new Builder();
     }
 
+    public static Builder builder(LedControl msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .instance(msg.instance)
+                .pattern(msg.pattern)
+                .customLen(msg.customLen)
+                .customBytes(msg.customBytes);
+    }
+
     /**
      * System ID. 
      */

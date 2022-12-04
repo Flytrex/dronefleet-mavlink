@@ -69,6 +69,19 @@ public final class ObstacleDistance3d {
         return new Builder();
     }
 
+    public static Builder builder(ObstacleDistance3d msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .sensorType(msg.sensorType)
+                .frame(msg.frame)
+                .obstacleId(msg.obstacleId)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .minDistance(msg.minDistance)
+                .maxDistance(msg.maxDistance);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

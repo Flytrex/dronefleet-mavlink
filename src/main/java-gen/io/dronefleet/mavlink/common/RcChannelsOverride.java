@@ -94,6 +94,30 @@ public final class RcChannelsOverride {
         return new Builder();
     }
 
+    public static Builder builder(RcChannelsOverride msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .chan1Raw(msg.chan1Raw)
+                .chan2Raw(msg.chan2Raw)
+                .chan3Raw(msg.chan3Raw)
+                .chan4Raw(msg.chan4Raw)
+                .chan5Raw(msg.chan5Raw)
+                .chan6Raw(msg.chan6Raw)
+                .chan7Raw(msg.chan7Raw)
+                .chan8Raw(msg.chan8Raw)
+                .chan9Raw(msg.chan9Raw)
+                .chan10Raw(msg.chan10Raw)
+                .chan11Raw(msg.chan11Raw)
+                .chan12Raw(msg.chan12Raw)
+                .chan13Raw(msg.chan13Raw)
+                .chan14Raw(msg.chan14Raw)
+                .chan15Raw(msg.chan15Raw)
+                .chan16Raw(msg.chan16Raw)
+                .chan17Raw(msg.chan17Raw)
+                .chan18Raw(msg.chan18Raw);
+    }
+
     /**
      * System ID 
      */

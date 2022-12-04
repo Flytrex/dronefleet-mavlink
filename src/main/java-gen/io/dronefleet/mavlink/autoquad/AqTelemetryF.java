@@ -94,6 +94,31 @@ public final class AqTelemetryF {
         return new Builder();
     }
 
+    public static Builder builder(AqTelemetryF msg) {
+        return builder()
+                .index(msg.index)
+                .value1(msg.value1)
+                .value2(msg.value2)
+                .value3(msg.value3)
+                .value4(msg.value4)
+                .value5(msg.value5)
+                .value6(msg.value6)
+                .value7(msg.value7)
+                .value8(msg.value8)
+                .value9(msg.value9)
+                .value10(msg.value10)
+                .value11(msg.value11)
+                .value12(msg.value12)
+                .value13(msg.value13)
+                .value14(msg.value14)
+                .value15(msg.value15)
+                .value16(msg.value16)
+                .value17(msg.value17)
+                .value18(msg.value18)
+                .value19(msg.value19)
+                .value20(msg.value20);
+    }
+
     /**
      * Index of message 
      */

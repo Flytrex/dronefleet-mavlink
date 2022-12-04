@@ -36,6 +36,12 @@ public final class SystemTime {
         return new Builder();
     }
 
+    public static Builder builder(SystemTime msg) {
+        return builder()
+                .timeUnixUsec(msg.timeUnixUsec)
+                .timeBootMs(msg.timeBootMs);
+    }
+
     /**
      * Timestamp (UNIX epoch time). 
      */

@@ -70,6 +70,22 @@ public final class VideoStreamInformation {
         return new Builder();
     }
 
+    public static Builder builder(VideoStreamInformation msg) {
+        return builder()
+                .streamId(msg.streamId)
+                .count(msg.count)
+                .type(msg.type)
+                .flags(msg.flags)
+                .framerate(msg.framerate)
+                .resolutionH(msg.resolutionH)
+                .resolutionV(msg.resolutionV)
+                .bitrate(msg.bitrate)
+                .rotation(msg.rotation)
+                .hfov(msg.hfov)
+                .name(msg.name)
+                .uri(msg.uri);
+    }
+
     /**
      * Video Stream ID (1 for first, 2 for second, etc.) 
      */

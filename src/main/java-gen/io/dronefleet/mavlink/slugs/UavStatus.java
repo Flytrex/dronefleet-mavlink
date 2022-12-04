@@ -47,6 +47,16 @@ public final class UavStatus {
         return new Builder();
     }
 
+    public static Builder builder(UavStatus msg) {
+        return builder()
+                .target(msg.target)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitude(msg.altitude)
+                .speed(msg.speed)
+                .course(msg.course);
+    }
+
     /**
      * The ID system reporting the action 
      */

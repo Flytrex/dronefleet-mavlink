@@ -75,6 +75,24 @@ public final class HilRcInputsRaw {
         return new Builder();
     }
 
+    public static Builder builder(HilRcInputsRaw msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .chan1Raw(msg.chan1Raw)
+                .chan2Raw(msg.chan2Raw)
+                .chan3Raw(msg.chan3Raw)
+                .chan4Raw(msg.chan4Raw)
+                .chan5Raw(msg.chan5Raw)
+                .chan6Raw(msg.chan6Raw)
+                .chan7Raw(msg.chan7Raw)
+                .chan8Raw(msg.chan8Raw)
+                .chan9Raw(msg.chan9Raw)
+                .chan10Raw(msg.chan10Raw)
+                .chan11Raw(msg.chan11Raw)
+                .chan12Raw(msg.chan12Raw)
+                .rssi(msg.rssi);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

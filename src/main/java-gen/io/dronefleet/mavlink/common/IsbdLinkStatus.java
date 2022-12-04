@@ -55,6 +55,18 @@ public final class IsbdLinkStatus {
         return new Builder();
     }
 
+    public static Builder builder(IsbdLinkStatus msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .lastHeartbeat(msg.lastHeartbeat)
+                .failedSessions(msg.failedSessions)
+                .successfulSessions(msg.successfulSessions)
+                .signalQuality(msg.signalQuality)
+                .ringPending(msg.ringPending)
+                .txSessionPending(msg.txSessionPending)
+                .rxSessionPending(msg.rxSessionPending);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

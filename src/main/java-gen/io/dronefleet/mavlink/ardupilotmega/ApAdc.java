@@ -46,6 +46,16 @@ public final class ApAdc {
         return new Builder();
     }
 
+    public static Builder builder(ApAdc msg) {
+        return builder()
+                .adc1(msg.adc1)
+                .adc2(msg.adc2)
+                .adc3(msg.adc3)
+                .adc4(msg.adc4)
+                .adc5(msg.adc5)
+                .adc6(msg.adc6);
+    }
+
     /**
      * ADC output 1. 
      */

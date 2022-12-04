@@ -62,6 +62,21 @@ public final class AslctrlDebug {
         return new Builder();
     }
 
+    public static Builder builder(AslctrlDebug msg) {
+        return builder()
+                .i321(msg.i321)
+                .i81(msg.i81)
+                .i82(msg.i82)
+                .f1(msg.f1)
+                .f2(msg.f2)
+                .f3(msg.f3)
+                .f4(msg.f4)
+                .f5(msg.f5)
+                .f6(msg.f6)
+                .f7(msg.f7)
+                .f8(msg.f8);
+    }
+
     /**
      * Debug data 
      */

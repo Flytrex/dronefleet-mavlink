@@ -37,6 +37,13 @@ public final class CpuLoad {
         return new Builder();
     }
 
+    public static Builder builder(CpuLoad msg) {
+        return builder()
+                .sensload(msg.sensload)
+                .ctrlload(msg.ctrlload)
+                .batvolt(msg.batvolt);
+    }
+
     /**
      * Sensor DSC Load 
      */

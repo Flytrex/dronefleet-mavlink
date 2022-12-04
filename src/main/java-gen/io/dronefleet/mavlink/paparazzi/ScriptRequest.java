@@ -38,6 +38,13 @@ public final class ScriptRequest {
         return new Builder();
     }
 
+    public static Builder builder(ScriptRequest msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .seq(msg.seq);
+    }
+
     /**
      * System ID 
      */

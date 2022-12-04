@@ -60,6 +60,20 @@ public final class DigicamControl {
         return new Builder();
     }
 
+    public static Builder builder(DigicamControl msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .session(msg.session)
+                .zoomPos(msg.zoomPos)
+                .zoomStep(msg.zoomStep)
+                .focusLock(msg.focusLock)
+                .shot(msg.shot)
+                .commandId(msg.commandId)
+                .extraParam(msg.extraParam)
+                .extraValue(msg.extraValue);
+    }
+
     /**
      * System ID. 
      */

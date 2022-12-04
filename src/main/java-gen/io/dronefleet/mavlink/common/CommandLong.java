@@ -70,6 +70,22 @@ public final class CommandLong {
         return new Builder();
     }
 
+    public static Builder builder(CommandLong msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .command(msg.command)
+                .confirmation(msg.confirmation)
+                .param1(msg.param1)
+                .param2(msg.param2)
+                .param3(msg.param3)
+                .param4(msg.param4)
+                .param5(msg.param5)
+                .param6(msg.param6)
+                .param7(msg.param7)
+                .tid(msg.tid);
+    }
+
     /**
      * System which should execute the command 
      */

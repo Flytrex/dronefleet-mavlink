@@ -47,6 +47,15 @@ public final class SetMagOffsets {
         return new Builder();
     }
 
+    public static Builder builder(SetMagOffsets msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .magOfsX(msg.magOfsX)
+                .magOfsY(msg.magOfsY)
+                .magOfsZ(msg.magOfsZ);
+    }
+
     /**
      * System ID. 
      */

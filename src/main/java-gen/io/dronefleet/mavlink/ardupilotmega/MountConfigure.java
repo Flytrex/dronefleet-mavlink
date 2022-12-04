@@ -51,6 +51,16 @@ public final class MountConfigure {
         return new Builder();
     }
 
+    public static Builder builder(MountConfigure msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .mountMode(msg.mountMode)
+                .stabRoll(msg.stabRoll)
+                .stabPitch(msg.stabPitch)
+                .stabYaw(msg.stabYaw);
+    }
+
     /**
      * System ID. 
      */

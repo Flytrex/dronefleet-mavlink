@@ -50,6 +50,15 @@ public final class ParamValue {
         return new Builder();
     }
 
+    public static Builder builder(ParamValue msg) {
+        return builder()
+                .paramId(msg.paramId)
+                .paramValue(msg.paramValue)
+                .paramType(msg.paramType)
+                .paramCount(msg.paramCount)
+                .paramIndex(msg.paramIndex);
+    }
+
     /**
      * Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and 
      * WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to 

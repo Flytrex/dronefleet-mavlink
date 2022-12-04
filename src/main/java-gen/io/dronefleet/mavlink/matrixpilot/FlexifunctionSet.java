@@ -34,6 +34,12 @@ public final class FlexifunctionSet {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionSet msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID 
      */

@@ -61,6 +61,19 @@ public final class MagCalProgress {
         return new Builder();
     }
 
+    public static Builder builder(MagCalProgress msg) {
+        return builder()
+                .compassId(msg.compassId)
+                .calMask(msg.calMask)
+                .calStatus(msg.calStatus)
+                .attempt(msg.attempt)
+                .completionPct(msg.completionPct)
+                .completionMask(msg.completionMask)
+                .directionX(msg.directionX)
+                .directionY(msg.directionY)
+                .directionZ(msg.directionZ);
+    }
+
     /**
      * Compass being calibrated. 
      */

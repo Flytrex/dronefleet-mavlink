@@ -90,6 +90,27 @@ public final class Odometry {
         return new Builder();
     }
 
+    public static Builder builder(Odometry msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .frameId(msg.frameId)
+                .childFrameId(msg.childFrameId)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .q(msg.q)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .rollspeed(msg.rollspeed)
+                .pitchspeed(msg.pitchspeed)
+                .yawspeed(msg.yawspeed)
+                .poseCovariance(msg.poseCovariance)
+                .velocityCovariance(msg.velocityCovariance)
+                .resetCounter(msg.resetCounter)
+                .estimatorType(msg.estimatorType);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

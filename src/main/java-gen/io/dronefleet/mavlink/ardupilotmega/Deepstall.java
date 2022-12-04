@@ -63,6 +63,20 @@ public final class Deepstall {
         return new Builder();
     }
 
+    public static Builder builder(Deepstall msg) {
+        return builder()
+                .landingLat(msg.landingLat)
+                .landingLon(msg.landingLon)
+                .pathLat(msg.pathLat)
+                .pathLon(msg.pathLon)
+                .arcEntryLat(msg.arcEntryLat)
+                .arcEntryLon(msg.arcEntryLon)
+                .altitude(msg.altitude)
+                .expectedTravelDistance(msg.expectedTravelDistance)
+                .crossTrackError(msg.crossTrackError)
+                .stage(msg.stage);
+    }
+
     /**
      * Landing latitude. 
      */

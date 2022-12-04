@@ -43,6 +43,15 @@ public final class LogEntry {
         return new Builder();
     }
 
+    public static Builder builder(LogEntry msg) {
+        return builder()
+                .id(msg.id)
+                .numLogs(msg.numLogs)
+                .lastLogNum(msg.lastLogNum)
+                .timeUtc(msg.timeUtc)
+                .size(msg.size);
+    }
+
     /**
      * Log id 
      */

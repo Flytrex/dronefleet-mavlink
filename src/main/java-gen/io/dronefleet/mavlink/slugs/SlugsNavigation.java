@@ -59,6 +59,20 @@ public final class SlugsNavigation {
         return new Builder();
     }
 
+    public static Builder builder(SlugsNavigation msg) {
+        return builder()
+                .uM(msg.uM)
+                .phiC(msg.phiC)
+                .thetaC(msg.thetaC)
+                .psidotC(msg.psidotC)
+                .ayBody(msg.ayBody)
+                .totaldist(msg.totaldist)
+                .dist2go(msg.dist2go)
+                .fromwp(msg.fromwp)
+                .towp(msg.towp)
+                .hC(msg.hC);
+    }
+
     /**
      * Measured Airspeed prior to the nav filter 
      */

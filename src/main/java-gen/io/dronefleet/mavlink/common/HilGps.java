@@ -78,6 +78,25 @@ public final class HilGps {
         return new Builder();
     }
 
+    public static Builder builder(HilGps msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .fixType(msg.fixType)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .eph(msg.eph)
+                .epv(msg.epv)
+                .vel(msg.vel)
+                .vn(msg.vn)
+                .ve(msg.ve)
+                .vd(msg.vd)
+                .cog(msg.cog)
+                .satellitesVisible(msg.satellitesVisible)
+                .id(msg.id)
+                .yaw(msg.yaw);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

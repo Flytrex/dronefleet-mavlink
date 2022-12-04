@@ -41,6 +41,14 @@ public final class MemoryVect {
         return new Builder();
     }
 
+    public static Builder builder(MemoryVect msg) {
+        return builder()
+                .address(msg.address)
+                .ver(msg.ver)
+                .type(msg.type)
+                .value(msg.value);
+    }
+
     /**
      * Starting address of the debug variables 
      */

@@ -70,6 +70,23 @@ public final class SensMppt {
         return new Builder();
     }
 
+    public static Builder builder(SensMppt msg) {
+        return builder()
+                .mpptTimestamp(msg.mpptTimestamp)
+                .mppt1Volt(msg.mppt1Volt)
+                .mppt1Amp(msg.mppt1Amp)
+                .mppt1Pwm(msg.mppt1Pwm)
+                .mppt1Status(msg.mppt1Status)
+                .mppt2Volt(msg.mppt2Volt)
+                .mppt2Amp(msg.mppt2Amp)
+                .mppt2Pwm(msg.mppt2Pwm)
+                .mppt2Status(msg.mppt2Status)
+                .mppt3Volt(msg.mppt3Volt)
+                .mppt3Amp(msg.mppt3Amp)
+                .mppt3Pwm(msg.mppt3Pwm)
+                .mppt3Status(msg.mppt3Status);
+    }
+
     /**
      * MPPT last timestamp 
      */

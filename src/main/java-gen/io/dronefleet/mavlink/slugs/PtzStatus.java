@@ -37,6 +37,13 @@ public final class PtzStatus {
         return new Builder();
     }
 
+    public static Builder builder(PtzStatus msg) {
+        return builder()
+                .zoom(msg.zoom)
+                .pan(msg.pan)
+                .tilt(msg.tilt);
+    }
+
     /**
      * The actual Zoom Value 
      */

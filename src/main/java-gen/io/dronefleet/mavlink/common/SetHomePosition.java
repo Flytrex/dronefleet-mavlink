@@ -75,6 +75,22 @@ public final class SetHomePosition {
         return new Builder();
     }
 
+    public static Builder builder(SetHomePosition msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitude(msg.altitude)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .q(msg.q)
+                .approachX(msg.approachX)
+                .approachY(msg.approachY)
+                .approachZ(msg.approachZ)
+                .timeUsec(msg.timeUsec);
+    }
+
     /**
      * System ID. 
      */

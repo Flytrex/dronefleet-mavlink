@@ -87,6 +87,28 @@ public final class ServoOutputRaw {
         return new Builder();
     }
 
+    public static Builder builder(ServoOutputRaw msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .port(msg.port)
+                .servo1Raw(msg.servo1Raw)
+                .servo2Raw(msg.servo2Raw)
+                .servo3Raw(msg.servo3Raw)
+                .servo4Raw(msg.servo4Raw)
+                .servo5Raw(msg.servo5Raw)
+                .servo6Raw(msg.servo6Raw)
+                .servo7Raw(msg.servo7Raw)
+                .servo8Raw(msg.servo8Raw)
+                .servo9Raw(msg.servo9Raw)
+                .servo10Raw(msg.servo10Raw)
+                .servo11Raw(msg.servo11Raw)
+                .servo12Raw(msg.servo12Raw)
+                .servo13Raw(msg.servo13Raw)
+                .servo14Raw(msg.servo14Raw)
+                .servo15Raw(msg.servo15Raw)
+                .servo16Raw(msg.servo16Raw);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

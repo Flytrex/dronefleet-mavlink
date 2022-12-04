@@ -35,6 +35,12 @@ public final class WifiConfigAp {
         return new Builder();
     }
 
+    public static Builder builder(WifiConfigAp msg) {
+        return builder()
+                .ssid(msg.ssid)
+                .password(msg.password);
+    }
+
     /**
      * Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent 
      * back as a response. 

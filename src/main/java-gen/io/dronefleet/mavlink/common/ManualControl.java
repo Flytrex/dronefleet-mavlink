@@ -48,6 +48,16 @@ public final class ManualControl {
         return new Builder();
     }
 
+    public static Builder builder(ManualControl msg) {
+        return builder()
+                .target(msg.target)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .r(msg.r)
+                .buttons(msg.buttons);
+    }
+
     /**
      * The system to be controlled. 
      */

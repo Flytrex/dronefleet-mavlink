@@ -38,6 +38,13 @@ public final class ScriptCount {
         return new Builder();
     }
 
+    public static Builder builder(ScriptCount msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .count(msg.count);
+    }
+
     /**
      * System ID 
      */

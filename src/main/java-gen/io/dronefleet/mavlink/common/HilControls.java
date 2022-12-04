@@ -67,6 +67,21 @@ public final class HilControls {
         return new Builder();
     }
 
+    public static Builder builder(HilControls msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .rollAilerons(msg.rollAilerons)
+                .pitchElevator(msg.pitchElevator)
+                .yawRudder(msg.yawRudder)
+                .throttle(msg.throttle)
+                .aux1(msg.aux1)
+                .aux2(msg.aux2)
+                .aux3(msg.aux3)
+                .aux4(msg.aux4)
+                .mode(msg.mode)
+                .navMode(msg.navMode);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

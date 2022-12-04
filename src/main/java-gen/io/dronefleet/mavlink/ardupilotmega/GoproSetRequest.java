@@ -44,6 +44,14 @@ public final class GoproSetRequest {
         return new Builder();
     }
 
+    public static Builder builder(GoproSetRequest msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .cmdId(msg.cmdId)
+                .value(msg.value);
+    }
+
     /**
      * System ID. 
      */

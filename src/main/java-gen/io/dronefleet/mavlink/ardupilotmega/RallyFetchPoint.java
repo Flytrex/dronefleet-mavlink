@@ -38,6 +38,13 @@ public final class RallyFetchPoint {
         return new Builder();
     }
 
+    public static Builder builder(RallyFetchPoint msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idx(msg.idx);
+    }
+
     /**
      * System ID. 
      */

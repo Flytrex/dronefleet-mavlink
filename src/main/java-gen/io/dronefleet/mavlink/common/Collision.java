@@ -54,6 +54,17 @@ public final class Collision {
         return new Builder();
     }
 
+    public static Builder builder(Collision msg) {
+        return builder()
+                .src(msg.src)
+                .id(msg.id)
+                .action(msg.action)
+                .threatLevel(msg.threatLevel)
+                .timeToMinimumDelta(msg.timeToMinimumDelta)
+                .altitudeMinimumDelta(msg.altitudeMinimumDelta)
+                .horizontalMinimumDelta(msg.horizontalMinimumDelta);
+    }
+
     /**
      * Collision data source 
      */

@@ -68,6 +68,22 @@ public final class RawImu {
         return new Builder();
     }
 
+    public static Builder builder(RawImu msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .xacc(msg.xacc)
+                .yacc(msg.yacc)
+                .zacc(msg.zacc)
+                .xgyro(msg.xgyro)
+                .ygyro(msg.ygyro)
+                .zgyro(msg.zgyro)
+                .xmag(msg.xmag)
+                .ymag(msg.ymag)
+                .zmag(msg.zmag)
+                .id(msg.id)
+                .temperature(msg.temperature);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

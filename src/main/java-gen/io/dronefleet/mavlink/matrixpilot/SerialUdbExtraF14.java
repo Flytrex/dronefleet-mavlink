@@ -63,6 +63,21 @@ public final class SerialUdbExtraF14 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF14 msg) {
+        return builder()
+                .sueWindEstimation(msg.sueWindEstimation)
+                .sueGpsType(msg.sueGpsType)
+                .sueDr(msg.sueDr)
+                .sueBoardType(msg.sueBoardType)
+                .sueAirframe(msg.sueAirframe)
+                .sueRcon(msg.sueRcon)
+                .sueTrapFlags(msg.sueTrapFlags)
+                .sueTrapSource(msg.sueTrapSource)
+                .sueOscFailCount(msg.sueOscFailCount)
+                .sueClockConfig(msg.sueClockConfig)
+                .sueFlightPlanType(msg.sueFlightPlanType);
+    }
+
     /**
      * Serial UDB Extra Wind Estimation Enabled 
      */

@@ -94,6 +94,31 @@ public final class SimState {
         return new Builder();
     }
 
+    public static Builder builder(SimState msg) {
+        return builder()
+                .q1(msg.q1)
+                .q2(msg.q2)
+                .q3(msg.q3)
+                .q4(msg.q4)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .xacc(msg.xacc)
+                .yacc(msg.yacc)
+                .zacc(msg.zacc)
+                .xgyro(msg.xgyro)
+                .ygyro(msg.ygyro)
+                .zgyro(msg.zgyro)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .stdDevHorz(msg.stdDevHorz)
+                .stdDevVert(msg.stdDevVert)
+                .vn(msg.vn)
+                .ve(msg.ve)
+                .vd(msg.vd);
+    }
+
     /**
      * True attitude quaternion component 1, w (1 in null-rotation) 
      */

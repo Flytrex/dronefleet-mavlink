@@ -37,6 +37,13 @@ public final class SetLogLabel {
         return new Builder();
     }
 
+    public static Builder builder(SetLogLabel msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .label(msg.label);
+    }
+
     /**
      * System ID 
      */

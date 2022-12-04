@@ -53,6 +53,16 @@ public final class SerialControl {
         return new Builder();
     }
 
+    public static Builder builder(SerialControl msg) {
+        return builder()
+                .device(msg.device)
+                .flags(msg.flags)
+                .timeout(msg.timeout)
+                .baudrate(msg.baudrate)
+                .count(msg.count)
+                .data(msg.data);
+    }
+
     /**
      * Serial control device type. 
      */

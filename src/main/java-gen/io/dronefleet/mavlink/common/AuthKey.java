@@ -32,6 +32,11 @@ public final class AuthKey {
         return new Builder();
     }
 
+    public static Builder builder(AuthKey msg) {
+        return builder()
+                .key(msg.key);
+    }
+
     /**
      * key 
      */

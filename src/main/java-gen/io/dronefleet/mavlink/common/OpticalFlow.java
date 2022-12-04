@@ -60,6 +60,20 @@ public final class OpticalFlow {
         return new Builder();
     }
 
+    public static Builder builder(OpticalFlow msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .sensorId(msg.sensorId)
+                .flowX(msg.flowX)
+                .flowY(msg.flowY)
+                .flowCompMX(msg.flowCompMX)
+                .flowCompMY(msg.flowCompMY)
+                .quality(msg.quality)
+                .groundDistance(msg.groundDistance)
+                .flowRateX(msg.flowRateX)
+                .flowRateY(msg.flowRateY);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

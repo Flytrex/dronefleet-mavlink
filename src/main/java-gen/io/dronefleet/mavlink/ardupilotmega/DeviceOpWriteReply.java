@@ -34,6 +34,12 @@ public final class DeviceOpWriteReply {
         return new Builder();
     }
 
+    public static Builder builder(DeviceOpWriteReply msg) {
+        return builder()
+                .requestId(msg.requestId)
+                .result(msg.result);
+    }
+
     /**
      * Request ID - copied from request. 
      */

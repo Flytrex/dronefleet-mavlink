@@ -34,6 +34,12 @@ public final class LogErase {
         return new Builder();
     }
 
+    public static Builder builder(LogErase msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID 
      */

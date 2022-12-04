@@ -41,6 +41,14 @@ public final class FlexifunctionBufferFunctionAck {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionBufferFunctionAck msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .funcIndex(msg.funcIndex)
+                .result(msg.result);
+    }
+
     /**
      * System ID 
      */

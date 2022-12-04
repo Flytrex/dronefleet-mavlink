@@ -47,6 +47,16 @@ public final class EscTelemetry1To4 {
         return new Builder();
     }
 
+    public static Builder builder(EscTelemetry1To4 msg) {
+        return builder()
+                .temperature(msg.temperature)
+                .voltage(msg.voltage)
+                .current(msg.current)
+                .totalcurrent(msg.totalcurrent)
+                .rpm(msg.rpm)
+                .count(msg.count);
+    }
+
     /**
      * Temperature. 
      */

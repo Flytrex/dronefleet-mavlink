@@ -72,6 +72,20 @@ public final class EstimatorStatus {
         return new Builder();
     }
 
+    public static Builder builder(EstimatorStatus msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .flags(msg.flags)
+                .velRatio(msg.velRatio)
+                .posHorizRatio(msg.posHorizRatio)
+                .posVertRatio(msg.posVertRatio)
+                .magRatio(msg.magRatio)
+                .haglRatio(msg.haglRatio)
+                .tasRatio(msg.tasRatio)
+                .posHorizAccuracy(msg.posHorizAccuracy)
+                .posVertAccuracy(msg.posVertAccuracy);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

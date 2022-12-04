@@ -49,6 +49,15 @@ public final class MissionRequestPartialList {
         return new Builder();
     }
 
+    public static Builder builder(MissionRequestPartialList msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .startIndex(msg.startIndex)
+                .endIndex(msg.endIndex)
+                .missionType(msg.missionType);
+    }
+
     /**
      * System ID 
      */

@@ -50,6 +50,17 @@ public final class NovatelDiag {
         return new Builder();
     }
 
+    public static Builder builder(NovatelDiag msg) {
+        return builder()
+                .timestatus(msg.timestatus)
+                .receiverstatus(msg.receiverstatus)
+                .solstatus(msg.solstatus)
+                .postype(msg.postype)
+                .veltype(msg.veltype)
+                .possolage(msg.possolage)
+                .csfails(msg.csfails);
+    }
+
     /**
      * The Time Status. See Table 8 page 27 Novatel OEMStar Manual 
      */

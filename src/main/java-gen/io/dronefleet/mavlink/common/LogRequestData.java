@@ -43,6 +43,15 @@ public final class LogRequestData {
         return new Builder();
     }
 
+    public static Builder builder(LogRequestData msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .id(msg.id)
+                .ofs(msg.ofs)
+                .count(msg.count);
+    }
+
     /**
      * System ID 
      */

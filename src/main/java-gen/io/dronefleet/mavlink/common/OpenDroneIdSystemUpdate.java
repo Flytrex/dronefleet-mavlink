@@ -51,6 +51,16 @@ public final class OpenDroneIdSystemUpdate {
         return new Builder();
     }
 
+    public static Builder builder(OpenDroneIdSystemUpdate msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .operatorLatitude(msg.operatorLatitude)
+                .operatorLongitude(msg.operatorLongitude)
+                .operatorAltitudeGeo(msg.operatorAltitudeGeo)
+                .timestamp(msg.timestamp);
+    }
+
     /**
      * System ID (0 for broadcast). 
      */

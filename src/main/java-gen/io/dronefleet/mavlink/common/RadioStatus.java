@@ -50,6 +50,17 @@ public final class RadioStatus {
         return new Builder();
     }
 
+    public static Builder builder(RadioStatus msg) {
+        return builder()
+                .rssi(msg.rssi)
+                .remrssi(msg.remrssi)
+                .txbuf(msg.txbuf)
+                .noise(msg.noise)
+                .remnoise(msg.remnoise)
+                .rxerrors(msg.rxerrors)
+                .fixed(msg.fixed);
+    }
+
     /**
      * Local (message sender) recieved signal strength indication in device-dependent 
      * units/scale. Values: [0-254], 255: invalid/unknown. 

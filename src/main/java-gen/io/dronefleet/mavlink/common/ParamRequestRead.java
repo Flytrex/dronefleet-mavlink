@@ -46,6 +46,14 @@ public final class ParamRequestRead {
         return new Builder();
     }
 
+    public static Builder builder(ParamRequestRead msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .paramId(msg.paramId)
+                .paramIndex(msg.paramIndex);
+    }
+
     /**
      * System ID 
      */

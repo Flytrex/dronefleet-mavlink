@@ -47,6 +47,16 @@ public final class SerialUdbExtraF21 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF21 msg) {
+        return builder()
+                .sueAccelXOffset(msg.sueAccelXOffset)
+                .sueAccelYOffset(msg.sueAccelYOffset)
+                .sueAccelZOffset(msg.sueAccelZOffset)
+                .sueGyroXOffset(msg.sueGyroXOffset)
+                .sueGyroYOffset(msg.sueGyroYOffset)
+                .sueGyroZOffset(msg.sueGyroZOffset);
+    }
+
     /**
      * SUE X accelerometer offset 
      */

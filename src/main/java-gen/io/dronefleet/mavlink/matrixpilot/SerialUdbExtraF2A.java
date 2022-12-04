@@ -114,6 +114,37 @@ public final class SerialUdbExtraF2A {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF2A msg) {
+        return builder()
+                .sueTime(msg.sueTime)
+                .sueStatus(msg.sueStatus)
+                .sueLatitude(msg.sueLatitude)
+                .sueLongitude(msg.sueLongitude)
+                .sueAltitude(msg.sueAltitude)
+                .sueWaypointIndex(msg.sueWaypointIndex)
+                .sueRmat0(msg.sueRmat0)
+                .sueRmat1(msg.sueRmat1)
+                .sueRmat2(msg.sueRmat2)
+                .sueRmat3(msg.sueRmat3)
+                .sueRmat4(msg.sueRmat4)
+                .sueRmat5(msg.sueRmat5)
+                .sueRmat6(msg.sueRmat6)
+                .sueRmat7(msg.sueRmat7)
+                .sueRmat8(msg.sueRmat8)
+                .sueCog(msg.sueCog)
+                .sueSog(msg.sueSog)
+                .sueCpuLoad(msg.sueCpuLoad)
+                .sueAirSpeed3dimu(msg.sueAirSpeed3dimu)
+                .sueEstimatedWind0(msg.sueEstimatedWind0)
+                .sueEstimatedWind1(msg.sueEstimatedWind1)
+                .sueEstimatedWind2(msg.sueEstimatedWind2)
+                .sueMagfieldearth0(msg.sueMagfieldearth0)
+                .sueMagfieldearth1(msg.sueMagfieldearth1)
+                .sueMagfieldearth2(msg.sueMagfieldearth2)
+                .sueSvs(msg.sueSvs)
+                .sueHdop(msg.sueHdop);
+    }
+
     /**
      * Serial UDB Extra Time 
      */

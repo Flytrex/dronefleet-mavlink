@@ -34,6 +34,12 @@ public final class Timesync {
         return new Builder();
     }
 
+    public static Builder builder(Timesync msg) {
+        return builder()
+                .tc1(msg.tc1)
+                .ts1(msg.ts1);
+    }
+
     /**
      * Time sync timestamp 1 
      */

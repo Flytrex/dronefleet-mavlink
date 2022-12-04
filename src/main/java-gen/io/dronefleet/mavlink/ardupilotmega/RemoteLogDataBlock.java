@@ -44,6 +44,14 @@ public final class RemoteLogDataBlock {
         return new Builder();
     }
 
+    public static Builder builder(RemoteLogDataBlock msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .seqno(msg.seqno)
+                .data(msg.data);
+    }
+
     /**
      * System ID. 
      */

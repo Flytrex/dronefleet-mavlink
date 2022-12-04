@@ -38,6 +38,13 @@ public final class SlugsMobileLocation {
         return new Builder();
     }
 
+    public static Builder builder(SlugsMobileLocation msg) {
+        return builder()
+                .target(msg.target)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude);
+    }
+
     /**
      * The system reporting the action 
      */

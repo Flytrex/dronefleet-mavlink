@@ -108,6 +108,35 @@ public final class AslctrlData {
         return new Builder();
     }
 
+    public static Builder builder(AslctrlData msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .aslctrlMode(msg.aslctrlMode)
+                .h(msg.h)
+                .href(msg.href)
+                .hrefT(msg.hrefT)
+                .pitchangle(msg.pitchangle)
+                .pitchangleref(msg.pitchangleref)
+                .q(msg.q)
+                .qref(msg.qref)
+                .uelev(msg.uelev)
+                .uthrot(msg.uthrot)
+                .uthrot2(msg.uthrot2)
+                .nz(msg.nz)
+                .airspeedref(msg.airspeedref)
+                .spoilersengaged(msg.spoilersengaged)
+                .yawangle(msg.yawangle)
+                .yawangleref(msg.yawangleref)
+                .rollangle(msg.rollangle)
+                .rollangleref(msg.rollangleref)
+                .p(msg.p)
+                .pref(msg.pref)
+                .r(msg.r)
+                .rref(msg.rref)
+                .uail(msg.uail)
+                .urud(msg.urud);
+    }
+
     /**
      * Timestamp 
      */

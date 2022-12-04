@@ -47,6 +47,16 @@ public final class SensorBias {
         return new Builder();
     }
 
+    public static Builder builder(SensorBias msg) {
+        return builder()
+                .axbias(msg.axbias)
+                .aybias(msg.aybias)
+                .azbias(msg.azbias)
+                .gxbias(msg.gxbias)
+                .gybias(msg.gybias)
+                .gzbias(msg.gzbias);
+    }
+
     /**
      * Accelerometer X bias 
      */

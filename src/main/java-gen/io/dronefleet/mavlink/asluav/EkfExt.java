@@ -51,6 +51,17 @@ public final class EkfExt {
         return new Builder();
     }
 
+    public static Builder builder(EkfExt msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .windspeed(msg.windspeed)
+                .winddir(msg.winddir)
+                .windz(msg.windz)
+                .airspeed(msg.airspeed)
+                .beta(msg.beta)
+                .alpha(msg.alpha);
+    }
+
     /**
      * Time since system start 
      */

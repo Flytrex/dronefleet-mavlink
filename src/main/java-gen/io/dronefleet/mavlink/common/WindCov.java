@@ -57,6 +57,19 @@ public final class WindCov {
         return new Builder();
     }
 
+    public static Builder builder(WindCov msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .windX(msg.windX)
+                .windY(msg.windY)
+                .windZ(msg.windZ)
+                .varHoriz(msg.varHoriz)
+                .varVert(msg.varVert)
+                .windAlt(msg.windAlt)
+                .horizAccuracy(msg.horizAccuracy)
+                .vertAccuracy(msg.vertAccuracy);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

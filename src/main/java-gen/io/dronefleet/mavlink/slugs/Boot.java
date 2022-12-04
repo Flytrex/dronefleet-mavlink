@@ -33,6 +33,11 @@ public final class Boot {
         return new Builder();
     }
 
+    public static Builder builder(Boot msg) {
+        return builder()
+                .version(msg.version);
+    }
+
     /**
      * The onboard software version 
      */

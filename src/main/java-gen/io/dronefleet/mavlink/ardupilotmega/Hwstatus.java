@@ -34,6 +34,12 @@ public final class Hwstatus {
         return new Builder();
     }
 
+    public static Builder builder(Hwstatus msg) {
+        return builder()
+                .vcc(msg.vcc)
+                .i2cerr(msg.i2cerr);
+    }
+
     /**
      * Board voltage. 
      */

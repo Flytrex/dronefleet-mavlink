@@ -47,6 +47,16 @@ public final class SerialUdbExtraF7 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF7 msg) {
+        return builder()
+                .sueYawkpRudder(msg.sueYawkpRudder)
+                .sueYawkdRudder(msg.sueYawkdRudder)
+                .sueRollkpRudder(msg.sueRollkpRudder)
+                .sueRollkdRudder(msg.sueRollkdRudder)
+                .sueRudderBoost(msg.sueRudderBoost)
+                .sueRtlPitchDown(msg.sueRtlPitchDown);
+    }
+
     /**
      * Serial UDB YAWKP_RUDDER Gain for Proporional control of navigation 
      */

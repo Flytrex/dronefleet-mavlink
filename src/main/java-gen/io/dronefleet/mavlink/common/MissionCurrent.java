@@ -32,6 +32,11 @@ public final class MissionCurrent {
         return new Builder();
     }
 
+    public static Builder builder(MissionCurrent msg) {
+        return builder()
+                .seq(msg.seq);
+    }
+
     /**
      * Sequence 
      */

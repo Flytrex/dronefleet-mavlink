@@ -41,6 +41,14 @@ public final class FileTransferProtocol {
         return new Builder();
     }
 
+    public static Builder builder(FileTransferProtocol msg) {
+        return builder()
+                .targetNetwork(msg.targetNetwork)
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .payload(msg.payload);
+    }
+
     /**
      * Network ID (0 for broadcast) 
      */

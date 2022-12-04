@@ -41,6 +41,13 @@ public final class CommandAck {
         return new Builder();
     }
 
+    public static Builder builder(CommandAck msg) {
+        return builder()
+                .command(msg.command)
+                .result(msg.result)
+                .tid(msg.tid);
+    }
+
     /**
      * Command ID (of acknowledged command). 
      */

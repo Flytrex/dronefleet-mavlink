@@ -92,6 +92,27 @@ public final class AisVessel {
         return new Builder();
     }
 
+    public static Builder builder(AisVessel msg) {
+        return builder()
+                .mmsi(msg.mmsi)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .cog(msg.cog)
+                .heading(msg.heading)
+                .velocity(msg.velocity)
+                .turnRate(msg.turnRate)
+                .navigationalStatus(msg.navigationalStatus)
+                .type(msg.type)
+                .dimensionBow(msg.dimensionBow)
+                .dimensionStern(msg.dimensionStern)
+                .dimensionPort(msg.dimensionPort)
+                .dimensionStarboard(msg.dimensionStarboard)
+                .callsign(msg.callsign)
+                .name(msg.name)
+                .tslc(msg.tslc)
+                .flags(msg.flags);
+    }
+
     /**
      * Mobile Marine Service Identifier, 9 decimal digits 
      */

@@ -53,6 +53,17 @@ public final class PidTuning {
         return new Builder();
     }
 
+    public static Builder builder(PidTuning msg) {
+        return builder()
+                .axis(msg.axis)
+                .desired(msg.desired)
+                .achieved(msg.achieved)
+                .ff(msg.ff)
+                .p(msg.p)
+                .i(msg.i)
+                .d(msg.d);
+    }
+
     /**
      * Axis. 
      */

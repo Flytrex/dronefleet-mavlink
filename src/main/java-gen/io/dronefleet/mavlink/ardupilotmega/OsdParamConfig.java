@@ -63,6 +63,20 @@ public final class OsdParamConfig {
         return new Builder();
     }
 
+    public static Builder builder(OsdParamConfig msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .requestId(msg.requestId)
+                .osdScreen(msg.osdScreen)
+                .osdIndex(msg.osdIndex)
+                .paramId(msg.paramId)
+                .configType(msg.configType)
+                .minValue(msg.minValue)
+                .maxValue(msg.maxValue)
+                .increment(msg.increment);
+    }
+
     /**
      * System ID. 
      */

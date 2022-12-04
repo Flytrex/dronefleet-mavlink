@@ -89,6 +89,28 @@ public final class MagCalReport {
         return new Builder();
     }
 
+    public static Builder builder(MagCalReport msg) {
+        return builder()
+                .compassId(msg.compassId)
+                .calMask(msg.calMask)
+                .calStatus(msg.calStatus)
+                .autosaved(msg.autosaved)
+                .fitness(msg.fitness)
+                .ofsX(msg.ofsX)
+                .ofsY(msg.ofsY)
+                .ofsZ(msg.ofsZ)
+                .diagX(msg.diagX)
+                .diagY(msg.diagY)
+                .diagZ(msg.diagZ)
+                .offdiagX(msg.offdiagX)
+                .offdiagY(msg.offdiagY)
+                .offdiagZ(msg.offdiagZ)
+                .orientationConfidence(msg.orientationConfidence)
+                .oldOrientation(msg.oldOrientation)
+                .newOrientation(msg.newOrientation)
+                .scaleFactor(msg.scaleFactor);
+    }
+
     /**
      * Compass being calibrated. 
      */

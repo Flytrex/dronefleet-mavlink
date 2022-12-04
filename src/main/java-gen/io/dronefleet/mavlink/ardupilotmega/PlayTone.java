@@ -37,6 +37,13 @@ public final class PlayTone {
         return new Builder();
     }
 
+    public static Builder builder(PlayTone msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .duration(msg.duration);
+    }
+
     /**
      * System ID 
      */

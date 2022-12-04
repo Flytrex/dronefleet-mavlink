@@ -51,6 +51,16 @@ public final class AttitudeQuaternionCov {
         return new Builder();
     }
 
+    public static Builder builder(AttitudeQuaternionCov msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .q(msg.q)
+                .rollspeed(msg.rollspeed)
+                .pitchspeed(msg.pitchspeed)
+                .yawspeed(msg.yawspeed)
+                .covariance(msg.covariance);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

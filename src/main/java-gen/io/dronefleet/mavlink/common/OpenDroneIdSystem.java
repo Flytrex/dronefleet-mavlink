@@ -90,6 +90,25 @@ public final class OpenDroneIdSystem {
         return new Builder();
     }
 
+    public static Builder builder(OpenDroneIdSystem msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idOrMac(msg.idOrMac)
+                .operatorLocationType(msg.operatorLocationType)
+                .classificationType(msg.classificationType)
+                .operatorLatitude(msg.operatorLatitude)
+                .operatorLongitude(msg.operatorLongitude)
+                .areaCount(msg.areaCount)
+                .areaRadius(msg.areaRadius)
+                .areaCeiling(msg.areaCeiling)
+                .areaFloor(msg.areaFloor)
+                .categoryEu(msg.categoryEu)
+                .classEu(msg.classEu)
+                .operatorAltitudeGeo(msg.operatorAltitudeGeo)
+                .timestamp(msg.timestamp);
+    }
+
     /**
      * System ID (0 for broadcast). 
      */

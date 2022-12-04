@@ -41,6 +41,14 @@ public final class SensPower {
         return new Builder();
     }
 
+    public static Builder builder(SensPower msg) {
+        return builder()
+                .adc121VspbVolt(msg.adc121VspbVolt)
+                .adc121CspbAmp(msg.adc121CspbAmp)
+                .adc121Cs1Amp(msg.adc121Cs1Amp)
+                .adc121Cs2Amp(msg.adc121Cs2Amp);
+    }
+
     /**
      * Power board voltage sensor reading 
      */

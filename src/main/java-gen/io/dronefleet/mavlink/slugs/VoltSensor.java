@@ -37,6 +37,13 @@ public final class VoltSensor {
         return new Builder();
     }
 
+    public static Builder builder(VoltSensor msg) {
+        return builder()
+                .r2type(msg.r2type)
+                .voltage(msg.voltage)
+                .reading2(msg.reading2);
+    }
+
     /**
      * It is the value of reading 2: 0 - Current, 1 - Foreward Sonar, 2 - Back Sonar, 3 - RPM 
      */

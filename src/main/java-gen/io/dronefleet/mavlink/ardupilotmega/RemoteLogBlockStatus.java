@@ -44,6 +44,14 @@ public final class RemoteLogBlockStatus {
         return new Builder();
     }
 
+    public static Builder builder(RemoteLogBlockStatus msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .seqno(msg.seqno)
+                .status(msg.status);
+    }
+
     /**
      * System ID. 
      */

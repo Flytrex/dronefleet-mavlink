@@ -48,6 +48,16 @@ public final class SerialUdbExtraF22 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF22 msg) {
+        return builder()
+                .sueAccelXAtCalibration(msg.sueAccelXAtCalibration)
+                .sueAccelYAtCalibration(msg.sueAccelYAtCalibration)
+                .sueAccelZAtCalibration(msg.sueAccelZAtCalibration)
+                .sueGyroXAtCalibration(msg.sueGyroXAtCalibration)
+                .sueGyroYAtCalibration(msg.sueGyroYAtCalibration)
+                .sueGyroZAtCalibration(msg.sueGyroZAtCalibration);
+    }
+
     /**
      * SUE X accelerometer at calibration time 
      */

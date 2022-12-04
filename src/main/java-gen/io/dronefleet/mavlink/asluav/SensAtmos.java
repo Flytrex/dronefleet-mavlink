@@ -38,6 +38,13 @@ public final class SensAtmos {
         return new Builder();
     }
 
+    public static Builder builder(SensAtmos msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .tempambient(msg.tempambient)
+                .humidity(msg.humidity);
+    }
+
     /**
      * Time since system boot 
      */

@@ -52,6 +52,16 @@ public final class MissionWritePartialList {
         return new Builder();
     }
 
+    public static Builder builder(MissionWritePartialList msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .startIndex(msg.startIndex)
+                .endIndex(msg.endIndex)
+                .missionType(msg.missionType)
+                .tid(msg.tid);
+    }
+
     /**
      * System ID 
      */

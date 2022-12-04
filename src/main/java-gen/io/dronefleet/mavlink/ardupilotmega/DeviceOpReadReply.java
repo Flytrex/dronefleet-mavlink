@@ -47,6 +47,16 @@ public final class DeviceOpReadReply {
         return new Builder();
     }
 
+    public static Builder builder(DeviceOpReadReply msg) {
+        return builder()
+                .requestId(msg.requestId)
+                .result(msg.result)
+                .regstart(msg.regstart)
+                .count(msg.count)
+                .data(msg.data)
+                .bank(msg.bank);
+    }
+
     /**
      * Request ID - copied from request. 
      */

@@ -53,6 +53,18 @@ public final class NavControllerOutput {
         return new Builder();
     }
 
+    public static Builder builder(NavControllerOutput msg) {
+        return builder()
+                .navRoll(msg.navRoll)
+                .navPitch(msg.navPitch)
+                .navBearing(msg.navBearing)
+                .targetBearing(msg.targetBearing)
+                .wpDist(msg.wpDist)
+                .altError(msg.altError)
+                .aspdError(msg.aspdError)
+                .xtrackError(msg.xtrackError);
+    }
+
     /**
      * Current desired roll 
      */

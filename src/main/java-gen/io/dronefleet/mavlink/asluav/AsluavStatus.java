@@ -40,6 +40,14 @@ public final class AsluavStatus {
         return new Builder();
     }
 
+    public static Builder builder(AsluavStatus msg) {
+        return builder()
+                .ledStatus(msg.ledStatus)
+                .satcomStatus(msg.satcomStatus)
+                .servoStatus(msg.servoStatus)
+                .motorRpm(msg.motorRpm);
+    }
+
     /**
      * Status of the position-indicator LEDs 
      */

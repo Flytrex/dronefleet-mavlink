@@ -49,6 +49,15 @@ public final class MissionCount {
         return new Builder();
     }
 
+    public static Builder builder(MissionCount msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .count(msg.count)
+                .missionType(msg.missionType)
+                .tid(msg.tid);
+    }
+
     /**
      * System ID 
      */

@@ -55,6 +55,16 @@ public final class Heartbeat {
         return new Builder();
     }
 
+    public static Builder builder(Heartbeat msg) {
+        return builder()
+                .type(msg.type)
+                .autopilot(msg.autopilot)
+                .baseMode(msg.baseMode)
+                .customMode(msg.customMode)
+                .systemStatus(msg.systemStatus)
+                .mavlinkVersion(msg.mavlinkVersion);
+    }
+
     /**
      * Vehicle or component type. For a flight controller component the vehicle type (quadrotor, 
      * helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This 

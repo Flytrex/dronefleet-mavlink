@@ -67,6 +67,21 @@ public final class GeneratorStatus {
         return new Builder();
     }
 
+    public static Builder builder(GeneratorStatus msg) {
+        return builder()
+                .status(msg.status)
+                .generatorSpeed(msg.generatorSpeed)
+                .batteryCurrent(msg.batteryCurrent)
+                .loadCurrent(msg.loadCurrent)
+                .powerGenerated(msg.powerGenerated)
+                .busVoltage(msg.busVoltage)
+                .rectifierTemperature(msg.rectifierTemperature)
+                .batCurrentSetpoint(msg.batCurrentSetpoint)
+                .generatorTemperature(msg.generatorTemperature)
+                .runtime(msg.runtime)
+                .timeUntilMaintenance(msg.timeUntilMaintenance);
+    }
+
     /**
      * Status flags. 
      */

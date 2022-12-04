@@ -37,6 +37,13 @@ public final class Data96 {
         return new Builder();
     }
 
+    public static Builder builder(Data96 msg) {
+        return builder()
+                .type(msg.type)
+                .len(msg.len)
+                .data(msg.data);
+    }
+
     /**
      * Data type. 
      */

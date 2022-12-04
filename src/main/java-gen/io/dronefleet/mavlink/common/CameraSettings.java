@@ -44,6 +44,14 @@ public final class CameraSettings {
         return new Builder();
     }
 
+    public static Builder builder(CameraSettings msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .modeId(msg.modeId)
+                .zoomlevel(msg.zoomlevel)
+                .focuslevel(msg.focuslevel);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

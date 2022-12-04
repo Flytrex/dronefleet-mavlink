@@ -84,6 +84,26 @@ public final class HilState {
         return new Builder();
     }
 
+    public static Builder builder(HilState msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .rollspeed(msg.rollspeed)
+                .pitchspeed(msg.pitchspeed)
+                .yawspeed(msg.yawspeed)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .xacc(msg.xacc)
+                .yacc(msg.yacc)
+                .zacc(msg.zacc);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

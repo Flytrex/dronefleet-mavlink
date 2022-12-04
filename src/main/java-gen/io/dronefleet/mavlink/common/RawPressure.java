@@ -46,6 +46,15 @@ public final class RawPressure {
         return new Builder();
     }
 
+    public static Builder builder(RawPressure msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .pressAbs(msg.pressAbs)
+                .pressDiff1(msg.pressDiff1)
+                .pressDiff2(msg.pressDiff2)
+                .temperature(msg.temperature);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

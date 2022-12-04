@@ -37,6 +37,12 @@ public final class Battery2 {
         return new Builder();
     }
 
+    public static Builder builder(Battery2 msg) {
+        return builder()
+                .voltage(msg.voltage)
+                .currentBattery(msg.currentBattery);
+    }
+
     /**
      * Voltage. 
      */

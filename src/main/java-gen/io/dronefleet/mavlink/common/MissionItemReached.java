@@ -32,6 +32,11 @@ public final class MissionItemReached {
         return new Builder();
     }
 
+    public static Builder builder(MissionItemReached msg) {
+        return builder()
+                .seq(msg.seq);
+    }
+
     /**
      * Sequence 
      */

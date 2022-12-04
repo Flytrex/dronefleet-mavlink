@@ -36,6 +36,12 @@ public final class MessageInterval {
         return new Builder();
     }
 
+    public static Builder builder(MessageInterval msg) {
+        return builder()
+                .messageId(msg.messageId)
+                .intervalUs(msg.intervalUs);
+    }
+
     /**
      * The ID of the requested MAVLink message. v1.0 is limited to 254 messages. 
      */

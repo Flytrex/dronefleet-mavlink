@@ -54,6 +54,17 @@ public final class GsmLinkStatus {
         return new Builder();
     }
 
+    public static Builder builder(GsmLinkStatus msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .gsmModemType(msg.gsmModemType)
+                .gsmLinkType(msg.gsmLinkType)
+                .rssi(msg.rssi)
+                .rsrpRscp(msg.rsrpRscp)
+                .sinrEcio(msg.sinrEcio)
+                .rsrq(msg.rsrq);
+    }
+
     /**
      * Timestamp (of OBC) 
      */

@@ -63,6 +63,21 @@ public final class ScaledImu3 {
         return new Builder();
     }
 
+    public static Builder builder(ScaledImu3 msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .xacc(msg.xacc)
+                .yacc(msg.yacc)
+                .zacc(msg.zacc)
+                .xgyro(msg.xgyro)
+                .ygyro(msg.ygyro)
+                .zgyro(msg.zgyro)
+                .xmag(msg.xmag)
+                .ymag(msg.ymag)
+                .zmag(msg.zmag)
+                .temperature(msg.temperature);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

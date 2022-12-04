@@ -46,6 +46,16 @@ public final class DataLog {
         return new Builder();
     }
 
+    public static Builder builder(DataLog msg) {
+        return builder()
+                .fl1(msg.fl1)
+                .fl2(msg.fl2)
+                .fl3(msg.fl3)
+                .fl4(msg.fl4)
+                .fl5(msg.fl5)
+                .fl6(msg.fl6);
+    }
+
     /**
      * Log value 1 
      */

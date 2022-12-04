@@ -41,6 +41,12 @@ public final class RawRpm {
         return new Builder();
     }
 
+    public static Builder builder(RawRpm msg) {
+        return builder()
+                .index(msg.index)
+                .frequency(msg.frequency);
+    }
+
     /**
      * Index of this RPM sensor (0-indexed) 
      */

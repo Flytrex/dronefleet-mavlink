@@ -37,6 +37,12 @@ public final class OsdParamConfigReply {
         return new Builder();
     }
 
+    public static Builder builder(OsdParamConfigReply msg) {
+        return builder()
+                .requestId(msg.requestId)
+                .result(msg.result);
+    }
+
     /**
      * Request ID - copied from request. 
      */

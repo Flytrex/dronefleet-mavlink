@@ -63,6 +63,19 @@ public final class SetAttitudeTarget {
         return new Builder();
     }
 
+    public static Builder builder(SetAttitudeTarget msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .typeMask(msg.typeMask)
+                .q(msg.q)
+                .bodyRollRate(msg.bodyRollRate)
+                .bodyPitchRate(msg.bodyPitchRate)
+                .bodyYawRate(msg.bodyYawRate)
+                .thrust(msg.thrust);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

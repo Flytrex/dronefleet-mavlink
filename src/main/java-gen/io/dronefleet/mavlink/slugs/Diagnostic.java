@@ -47,6 +47,16 @@ public final class Diagnostic {
         return new Builder();
     }
 
+    public static Builder builder(Diagnostic msg) {
+        return builder()
+                .diagfl1(msg.diagfl1)
+                .diagfl2(msg.diagfl2)
+                .diagfl3(msg.diagfl3)
+                .diagsh1(msg.diagsh1)
+                .diagsh2(msg.diagsh2)
+                .diagsh3(msg.diagsh3);
+    }
+
     /**
      * Diagnostic float 1 
      */

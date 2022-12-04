@@ -34,6 +34,11 @@ public final class IcarousHeartbeat {
         return new Builder();
     }
 
+    public static Builder builder(IcarousHeartbeat msg) {
+        return builder()
+                .status(msg.status);
+    }
+
     /**
      * See the FMS_STATE enum. 
      */

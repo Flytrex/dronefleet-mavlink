@@ -42,6 +42,14 @@ public final class TerrainRequest {
         return new Builder();
     }
 
+    public static Builder builder(TerrainRequest msg) {
+        return builder()
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .gridSpacing(msg.gridSpacing)
+                .mask(msg.mask);
+    }
+
     /**
      * Latitude of SW corner of first grid 
      */

@@ -59,6 +59,19 @@ public final class GlobalPositionInt {
         return new Builder();
     }
 
+    public static Builder builder(GlobalPositionInt msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .relativeAlt(msg.relativeAlt)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .hdg(msg.hdg);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

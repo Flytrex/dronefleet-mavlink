@@ -38,6 +38,13 @@ public final class Debug {
         return new Builder();
     }
 
+    public static Builder builder(Debug msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .ind(msg.ind)
+                .value(msg.value);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

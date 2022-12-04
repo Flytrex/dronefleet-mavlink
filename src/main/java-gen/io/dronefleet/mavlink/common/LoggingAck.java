@@ -37,6 +37,13 @@ public final class LoggingAck {
         return new Builder();
     }
 
+    public static Builder builder(LoggingAck msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .sequence(msg.sequence);
+    }
+
     /**
      * system ID of the target 
      */

@@ -42,6 +42,14 @@ public final class LogRequestList {
         return new Builder();
     }
 
+    public static Builder builder(LogRequestList msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .start(msg.start)
+                .end(msg.end);
+    }
+
     /**
      * System ID 
      */

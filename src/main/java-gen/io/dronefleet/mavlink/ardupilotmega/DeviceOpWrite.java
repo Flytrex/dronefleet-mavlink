@@ -66,6 +66,21 @@ public final class DeviceOpWrite {
         return new Builder();
     }
 
+    public static Builder builder(DeviceOpWrite msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .requestId(msg.requestId)
+                .bustype(msg.bustype)
+                .bus(msg.bus)
+                .address(msg.address)
+                .busname(msg.busname)
+                .regstart(msg.regstart)
+                .count(msg.count)
+                .data(msg.data)
+                .bank(msg.bank);
+    }
+
     /**
      * System ID. 
      */

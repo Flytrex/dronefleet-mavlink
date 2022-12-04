@@ -77,6 +77,25 @@ public final class SensBatmon {
         return new Builder();
     }
 
+    public static Builder builder(SensBatmon msg) {
+        return builder()
+                .batmonTimestamp(msg.batmonTimestamp)
+                .temperature(msg.temperature)
+                .voltage(msg.voltage)
+                .current(msg.current)
+                .soc(msg.soc)
+                .batterystatus(msg.batterystatus)
+                .serialnumber(msg.serialnumber)
+                .safetystatus(msg.safetystatus)
+                .operationstatus(msg.operationstatus)
+                .cellvoltage1(msg.cellvoltage1)
+                .cellvoltage2(msg.cellvoltage2)
+                .cellvoltage3(msg.cellvoltage3)
+                .cellvoltage4(msg.cellvoltage4)
+                .cellvoltage5(msg.cellvoltage5)
+                .cellvoltage6(msg.cellvoltage6);
+    }
+
     /**
      * Time since system start 
      */

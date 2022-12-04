@@ -60,6 +60,19 @@ public final class LimitsStatus {
         return new Builder();
     }
 
+    public static Builder builder(LimitsStatus msg) {
+        return builder()
+                .limitsState(msg.limitsState)
+                .lastTrigger(msg.lastTrigger)
+                .lastAction(msg.lastAction)
+                .lastRecovery(msg.lastRecovery)
+                .lastClear(msg.lastClear)
+                .breachCount(msg.breachCount)
+                .modsEnabled(msg.modsEnabled)
+                .modsRequired(msg.modsRequired)
+                .modsTriggered(msg.modsTriggered);
+    }
+
     /**
      * State of AP_Limits. 
      */

@@ -63,6 +63,19 @@ public final class StorageInformation {
         return new Builder();
     }
 
+    public static Builder builder(StorageInformation msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .storageId(msg.storageId)
+                .storageCount(msg.storageCount)
+                .status(msg.status)
+                .totalCapacity(msg.totalCapacity)
+                .usedCapacity(msg.usedCapacity)
+                .availableCapacity(msg.availableCapacity)
+                .readSpeed(msg.readSpeed)
+                .writeSpeed(msg.writeSpeed);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

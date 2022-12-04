@@ -51,6 +51,17 @@ public final class SerialUdbExtraF8 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF8 msg) {
+        return builder()
+                .sueHeightTargetMax(msg.sueHeightTargetMax)
+                .sueHeightTargetMin(msg.sueHeightTargetMin)
+                .sueAltHoldThrottleMin(msg.sueAltHoldThrottleMin)
+                .sueAltHoldThrottleMax(msg.sueAltHoldThrottleMax)
+                .sueAltHoldPitchMin(msg.sueAltHoldPitchMin)
+                .sueAltHoldPitchMax(msg.sueAltHoldPitchMax)
+                .sueAltHoldPitchHigh(msg.sueAltHoldPitchHigh);
+    }
+
     /**
      * Serial UDB Extra HEIGHT_TARGET_MAX 
      */

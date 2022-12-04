@@ -72,6 +72,23 @@ public final class AdapTuning {
         return new Builder();
     }
 
+    public static Builder builder(AdapTuning msg) {
+        return builder()
+                .axis(msg.axis)
+                .desired(msg.desired)
+                .achieved(msg.achieved)
+                .error(msg.error)
+                .theta(msg.theta)
+                .omega(msg.omega)
+                .sigma(msg.sigma)
+                .thetaDot(msg.thetaDot)
+                .omegaDot(msg.omegaDot)
+                .sigmaDot(msg.sigmaDot)
+                .f(msg.f)
+                .fDot(msg.fDot)
+                .u(msg.u);
+    }
+
     /**
      * Axis. 
      */

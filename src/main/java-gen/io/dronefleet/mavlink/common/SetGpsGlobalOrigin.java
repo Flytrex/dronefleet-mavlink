@@ -49,6 +49,15 @@ public final class SetGpsGlobalOrigin {
         return new Builder();
     }
 
+    public static Builder builder(SetGpsGlobalOrigin msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitude(msg.altitude)
+                .timeUsec(msg.timeUsec);
+    }
+
     /**
      * System ID 
      */

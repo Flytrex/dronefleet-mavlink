@@ -41,6 +41,14 @@ public final class SerialUdbExtraF5 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF5 msg) {
+        return builder()
+                .sueYawkpAileron(msg.sueYawkpAileron)
+                .sueYawkdAileron(msg.sueYawkdAileron)
+                .sueRollkp(msg.sueRollkp)
+                .sueRollkd(msg.sueRollkd);
+    }
+
     /**
      * Serial UDB YAWKP_AILERON Gain for Proporional control of navigation 
      */

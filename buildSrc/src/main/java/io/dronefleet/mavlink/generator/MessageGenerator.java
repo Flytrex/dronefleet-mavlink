@@ -141,7 +141,6 @@ public class MessageGenerator {
                         .returns(className)
                         .build())
                 .build();
-
     }
 
     public MethodSpec generateEquals() {
@@ -202,6 +201,16 @@ public class MessageGenerator {
                         .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                         .addStatement("return new $T()", builderClassName())
                         .returns(builderClassName())
+                        .build())
+                .addMethod(MethodSpec.methodBuilder("builder")
+                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                        .returns(builderClassName())
+                        .addParameter(className, "msg")
+                        .addStatement("return builder()\n" +
+                                fields.stream()
+                                        .map(field -> "." + field.getNameCamelCase() + "(msg." + field.getNameCamelCase() + ")")
+                                        .collect(Collectors.joining("\n"))
+                        )
                         .build())
                 .addFields(fields.stream()
                         .map(FieldGenerator::generateImmutableMember)

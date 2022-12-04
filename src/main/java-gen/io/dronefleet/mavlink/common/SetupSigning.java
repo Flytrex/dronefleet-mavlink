@@ -43,6 +43,14 @@ public final class SetupSigning {
         return new Builder();
     }
 
+    public static Builder builder(SetupSigning msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .secretKey(msg.secretKey)
+                .initialTimestamp(msg.initialTimestamp);
+    }
+
     /**
      * system id of the target 
      */

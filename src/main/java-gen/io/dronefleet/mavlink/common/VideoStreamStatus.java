@@ -58,6 +58,18 @@ public final class VideoStreamStatus {
         return new Builder();
     }
 
+    public static Builder builder(VideoStreamStatus msg) {
+        return builder()
+                .streamId(msg.streamId)
+                .flags(msg.flags)
+                .framerate(msg.framerate)
+                .resolutionH(msg.resolutionH)
+                .resolutionV(msg.resolutionV)
+                .bitrate(msg.bitrate)
+                .rotation(msg.rotation)
+                .hfov(msg.hfov);
+    }
+
     /**
      * Video Stream ID (1 for first, 2 for second, etc.) 
      */

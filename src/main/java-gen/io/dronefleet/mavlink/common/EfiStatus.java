@@ -83,6 +83,27 @@ public final class EfiStatus {
         return new Builder();
     }
 
+    public static Builder builder(EfiStatus msg) {
+        return builder()
+                .health(msg.health)
+                .ecuIndex(msg.ecuIndex)
+                .rpm(msg.rpm)
+                .fuelConsumed(msg.fuelConsumed)
+                .fuelFlow(msg.fuelFlow)
+                .engineLoad(msg.engineLoad)
+                .throttlePosition(msg.throttlePosition)
+                .sparkDwellTime(msg.sparkDwellTime)
+                .barometricPressure(msg.barometricPressure)
+                .intakeManifoldPressure(msg.intakeManifoldPressure)
+                .intakeManifoldTemperature(msg.intakeManifoldTemperature)
+                .cylinderHeadTemperature(msg.cylinderHeadTemperature)
+                .ignitionTiming(msg.ignitionTiming)
+                .injectionTime(msg.injectionTime)
+                .exhaustGasTemperature(msg.exhaustGasTemperature)
+                .throttleOut(msg.throttleOut)
+                .ptCompensation(msg.ptCompensation);
+    }
+
     /**
      * EFI health status 
      */

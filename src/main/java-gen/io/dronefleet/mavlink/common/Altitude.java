@@ -52,6 +52,17 @@ public final class Altitude {
         return new Builder();
     }
 
+    public static Builder builder(Altitude msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .altitudeMonotonic(msg.altitudeMonotonic)
+                .altitudeAmsl(msg.altitudeAmsl)
+                .altitudeLocal(msg.altitudeLocal)
+                .altitudeRelative(msg.altitudeRelative)
+                .altitudeTerrain(msg.altitudeTerrain)
+                .bottomClearance(msg.bottomClearance);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

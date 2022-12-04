@@ -51,6 +51,17 @@ public final class NavFilterBias {
         return new Builder();
     }
 
+    public static Builder builder(NavFilterBias msg) {
+        return builder()
+                .usec(msg.usec)
+                .accel0(msg.accel0)
+                .accel1(msg.accel1)
+                .accel2(msg.accel2)
+                .gyro0(msg.gyro0)
+                .gyro1(msg.gyro1)
+                .gyro2(msg.gyro2);
+    }
+
     /**
      * Timestamp (microseconds) 
      */

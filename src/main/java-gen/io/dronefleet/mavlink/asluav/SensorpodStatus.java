@@ -55,6 +55,18 @@ public final class SensorpodStatus {
         return new Builder();
     }
 
+    public static Builder builder(SensorpodStatus msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .visensorRate1(msg.visensorRate1)
+                .visensorRate2(msg.visensorRate2)
+                .visensorRate3(msg.visensorRate3)
+                .visensorRate4(msg.visensorRate4)
+                .recordingNodesCount(msg.recordingNodesCount)
+                .cpuTemp(msg.cpuTemp)
+                .freeSpace(msg.freeSpace);
+    }
+
     /**
      * Timestamp in linuxtime (since 1.1.1970) 
      */

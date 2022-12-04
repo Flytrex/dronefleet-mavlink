@@ -77,6 +77,24 @@ public final class PositionTargetLocalNed {
         return new Builder();
     }
 
+    public static Builder builder(PositionTargetLocalNed msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .coordinateFrame(msg.coordinateFrame)
+                .typeMask(msg.typeMask)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .afx(msg.afx)
+                .afy(msg.afy)
+                .afz(msg.afz)
+                .yaw(msg.yaw)
+                .yawRate(msg.yawRate);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

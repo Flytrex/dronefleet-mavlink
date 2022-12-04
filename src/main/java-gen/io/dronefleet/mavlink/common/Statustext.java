@@ -46,6 +46,14 @@ public final class Statustext {
         return new Builder();
     }
 
+    public static Builder builder(Statustext msg) {
+        return builder()
+                .severity(msg.severity)
+                .text(msg.text)
+                .id(msg.id)
+                .chunkSeq(msg.chunkSeq);
+    }
+
     /**
      * Severity of status. Relies on the definitions within RFC-5424. 
      */

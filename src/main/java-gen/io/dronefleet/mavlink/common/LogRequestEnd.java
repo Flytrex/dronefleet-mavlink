@@ -34,6 +34,12 @@ public final class LogRequestEnd {
         return new Builder();
     }
 
+    public static Builder builder(LogRequestEnd msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID 
      */

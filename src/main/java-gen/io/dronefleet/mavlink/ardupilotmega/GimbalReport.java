@@ -66,6 +66,22 @@ public final class GimbalReport {
         return new Builder();
     }
 
+    public static Builder builder(GimbalReport msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .deltaTime(msg.deltaTime)
+                .deltaAngleX(msg.deltaAngleX)
+                .deltaAngleY(msg.deltaAngleY)
+                .deltaAngleZ(msg.deltaAngleZ)
+                .deltaVelocityX(msg.deltaVelocityX)
+                .deltaVelocityY(msg.deltaVelocityY)
+                .deltaVelocityZ(msg.deltaVelocityZ)
+                .jointRoll(msg.jointRoll)
+                .jointEl(msg.jointEl)
+                .jointAz(msg.jointAz);
+    }
+
     /**
      * System ID. 
      */

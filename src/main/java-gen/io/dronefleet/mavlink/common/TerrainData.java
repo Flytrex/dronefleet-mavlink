@@ -45,6 +45,15 @@ public final class TerrainData {
         return new Builder();
     }
 
+    public static Builder builder(TerrainData msg) {
+        return builder()
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .gridSpacing(msg.gridSpacing)
+                .gridbit(msg.gridbit)
+                .data(msg.data);
+    }
+
     /**
      * Latitude of SW corner of first grid 
      */

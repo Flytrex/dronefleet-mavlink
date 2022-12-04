@@ -53,6 +53,17 @@ public final class SafetyAllowedArea {
         return new Builder();
     }
 
+    public static Builder builder(SafetyAllowedArea msg) {
+        return builder()
+                .frame(msg.frame)
+                .p1x(msg.p1x)
+                .p1y(msg.p1y)
+                .p1z(msg.p1z)
+                .p2x(msg.p2x)
+                .p2y(msg.p2y)
+                .p2z(msg.p2z);
+    }
+
     /**
      * Coordinate frame. Can be either global, GPS, right-handed with Z axis up or local, right 
      * handed, Z axis down. 

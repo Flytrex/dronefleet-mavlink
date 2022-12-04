@@ -50,6 +50,16 @@ public final class VisionSpeedEstimate {
         return new Builder();
     }
 
+    public static Builder builder(VisionSpeedEstimate msg) {
+        return builder()
+                .usec(msg.usec)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .covariance(msg.covariance)
+                .resetCounter(msg.resetCounter);
+    }
+
     /**
      * Timestamp (UNIX time or time since system boot) 
      */

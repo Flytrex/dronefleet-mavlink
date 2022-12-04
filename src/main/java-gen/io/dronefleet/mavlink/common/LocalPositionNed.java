@@ -51,6 +51,17 @@ public final class LocalPositionNed {
         return new Builder();
     }
 
+    public static Builder builder(LocalPositionNed msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

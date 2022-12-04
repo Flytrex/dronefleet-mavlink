@@ -41,6 +41,14 @@ public final class MidLvlCmds {
         return new Builder();
     }
 
+    public static Builder builder(MidLvlCmds msg) {
+        return builder()
+                .target(msg.target)
+                .hcommand(msg.hcommand)
+                .ucommand(msg.ucommand)
+                .rcommand(msg.rcommand);
+    }
+
     /**
      * The system setting the commands 
      */

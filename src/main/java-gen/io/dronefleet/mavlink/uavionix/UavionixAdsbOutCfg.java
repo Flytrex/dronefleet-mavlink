@@ -61,6 +61,18 @@ public final class UavionixAdsbOutCfg {
         return new Builder();
     }
 
+    public static Builder builder(UavionixAdsbOutCfg msg) {
+        return builder()
+                .icao(msg.icao)
+                .callsign(msg.callsign)
+                .emittertype(msg.emittertype)
+                .aircraftsize(msg.aircraftsize)
+                .gpsoffsetlat(msg.gpsoffsetlat)
+                .gpsoffsetlon(msg.gpsoffsetlon)
+                .stallspeed(msg.stallspeed)
+                .rfselect(msg.rfselect);
+    }
+
     /**
      * Vehicle address (24 bit) 
      */

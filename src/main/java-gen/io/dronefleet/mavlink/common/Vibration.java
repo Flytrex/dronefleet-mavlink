@@ -51,6 +51,17 @@ public final class Vibration {
         return new Builder();
     }
 
+    public static Builder builder(Vibration msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .vibrationX(msg.vibrationX)
+                .vibrationY(msg.vibrationY)
+                .vibrationZ(msg.vibrationZ)
+                .clipping0(msg.clipping0)
+                .clipping1(msg.clipping1)
+                .clipping2(msg.clipping2);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

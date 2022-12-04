@@ -50,6 +50,17 @@ public final class StatusGps {
         return new Builder();
     }
 
+    public static Builder builder(StatusGps msg) {
+        return builder()
+                .csfails(msg.csfails)
+                .gpsquality(msg.gpsquality)
+                .msgstype(msg.msgstype)
+                .posstatus(msg.posstatus)
+                .magvar(msg.magvar)
+                .magdir(msg.magdir)
+                .modeind(msg.modeind);
+    }
+
     /**
      * Number of times checksum has failed 
      */

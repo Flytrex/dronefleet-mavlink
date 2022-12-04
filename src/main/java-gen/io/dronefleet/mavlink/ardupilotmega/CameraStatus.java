@@ -60,6 +60,19 @@ public final class CameraStatus {
         return new Builder();
     }
 
+    public static Builder builder(CameraStatus msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .targetSystem(msg.targetSystem)
+                .camIdx(msg.camIdx)
+                .imgIdx(msg.imgIdx)
+                .eventId(msg.eventId)
+                .p1(msg.p1)
+                .p2(msg.p2)
+                .p3(msg.p3)
+                .p4(msg.p4);
+    }
+
     /**
      * Image timestamp (since UNIX epoch, according to camera clock). 
      */

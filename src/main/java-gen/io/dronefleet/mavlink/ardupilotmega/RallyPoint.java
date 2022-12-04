@@ -62,6 +62,20 @@ public final class RallyPoint {
         return new Builder();
     }
 
+    public static Builder builder(RallyPoint msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idx(msg.idx)
+                .count(msg.count)
+                .lat(msg.lat)
+                .lng(msg.lng)
+                .alt(msg.alt)
+                .breakAlt(msg.breakAlt)
+                .landDir(msg.landDir)
+                .flags(msg.flags);
+    }
+
     /**
      * System ID. 
      */

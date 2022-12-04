@@ -50,6 +50,17 @@ public final class Ahrs {
         return new Builder();
     }
 
+    public static Builder builder(Ahrs msg) {
+        return builder()
+                .omegaix(msg.omegaix)
+                .omegaiy(msg.omegaiy)
+                .omegaiz(msg.omegaiz)
+                .accelWeight(msg.accelWeight)
+                .renormVal(msg.renormVal)
+                .errorRp(msg.errorRp)
+                .errorYaw(msg.errorYaw);
+    }
+
     /**
      * X gyro drift estimate. 
      */

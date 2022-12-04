@@ -44,6 +44,14 @@ public final class MissionClearAll {
         return new Builder();
     }
 
+    public static Builder builder(MissionClearAll msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .missionType(msg.missionType)
+                .tid(msg.tid);
+    }
+
     /**
      * System ID 
      */

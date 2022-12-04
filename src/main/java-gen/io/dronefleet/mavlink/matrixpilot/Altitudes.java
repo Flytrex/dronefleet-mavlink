@@ -50,6 +50,17 @@ public final class Altitudes {
         return new Builder();
     }
 
+    public static Builder builder(Altitudes msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .altGps(msg.altGps)
+                .altImu(msg.altImu)
+                .altBarometric(msg.altBarometric)
+                .altOpticalFlow(msg.altOpticalFlow)
+                .altRangeFinder(msg.altRangeFinder)
+                .altExtra(msg.altExtra);
+    }
+
     /**
      * Timestamp (milliseconds since system boot) 
      */
