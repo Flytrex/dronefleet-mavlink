@@ -52,6 +52,17 @@ public final class TerrainReport {
         return new Builder();
     }
 
+    public static Builder builder(TerrainReport msg) {
+        return builder()
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .spacing(msg.spacing)
+                .terrainHeight(msg.terrainHeight)
+                .currentHeight(msg.currentHeight)
+                .pending(msg.pending)
+                .loaded(msg.loaded);
+    }
+
     /**
      * Latitude 
      */

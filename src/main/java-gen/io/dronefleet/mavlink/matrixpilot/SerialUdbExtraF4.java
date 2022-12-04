@@ -61,6 +61,20 @@ public final class SerialUdbExtraF4 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF4 msg) {
+        return builder()
+                .sueRollStabilizationAilerons(msg.sueRollStabilizationAilerons)
+                .sueRollStabilizationRudder(msg.sueRollStabilizationRudder)
+                .suePitchStabilization(msg.suePitchStabilization)
+                .sueYawStabilizationRudder(msg.sueYawStabilizationRudder)
+                .sueYawStabilizationAileron(msg.sueYawStabilizationAileron)
+                .sueAileronNavigation(msg.sueAileronNavigation)
+                .sueRudderNavigation(msg.sueRudderNavigation)
+                .sueAltitudeholdStabilized(msg.sueAltitudeholdStabilized)
+                .sueAltitudeholdWaypoint(msg.sueAltitudeholdWaypoint)
+                .sueRacingMode(msg.sueRacingMode);
+    }
+
     /**
      * Serial UDB Extra Roll Stabilization with Ailerons Enabled 
      */

@@ -68,6 +68,21 @@ public final class CameraImageCaptured {
         return new Builder();
     }
 
+    public static Builder builder(CameraImageCaptured msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .timeUtc(msg.timeUtc)
+                .cameraId(msg.cameraId)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .relativeAlt(msg.relativeAlt)
+                .q(msg.q)
+                .imageIndex(msg.imageIndex)
+                .captureResult(msg.captureResult)
+                .fileUrl(msg.fileUrl);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

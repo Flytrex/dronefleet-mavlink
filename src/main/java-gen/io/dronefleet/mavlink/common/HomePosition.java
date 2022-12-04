@@ -72,6 +72,21 @@ public final class HomePosition {
         return new Builder();
     }
 
+    public static Builder builder(HomePosition msg) {
+        return builder()
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitude(msg.altitude)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .q(msg.q)
+                .approachX(msg.approachX)
+                .approachY(msg.approachY)
+                .approachZ(msg.approachZ)
+                .timeUsec(msg.timeUsec);
+    }
+
     /**
      * Latitude (WGS84) 
      */

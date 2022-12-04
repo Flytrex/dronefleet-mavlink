@@ -41,6 +41,13 @@ public final class GoproGetResponse {
         return new Builder();
     }
 
+    public static Builder builder(GoproGetResponse msg) {
+        return builder()
+                .cmdId(msg.cmdId)
+                .status(msg.status)
+                .value(msg.value);
+    }
+
     /**
      * Command ID. 
      */

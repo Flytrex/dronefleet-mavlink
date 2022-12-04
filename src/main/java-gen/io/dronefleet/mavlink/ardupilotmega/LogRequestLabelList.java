@@ -35,6 +35,12 @@ public final class LogRequestLabelList {
         return new Builder();
     }
 
+    public static Builder builder(LogRequestLabelList msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID 
      */

@@ -40,6 +40,14 @@ public final class PlayTune {
         return new Builder();
     }
 
+    public static Builder builder(PlayTune msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .tune(msg.tune)
+                .tune2(msg.tune2);
+    }
+
     /**
      * System ID 
      */

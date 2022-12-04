@@ -44,6 +44,15 @@ public final class SerialUdbExtraF6 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF6 msg) {
+        return builder()
+                .suePitchgain(msg.suePitchgain)
+                .suePitchkd(msg.suePitchkd)
+                .sueRudderElevMix(msg.sueRudderElevMix)
+                .sueRollElevMix(msg.sueRollElevMix)
+                .sueElevatorBoost(msg.sueElevatorBoost);
+    }
+
     /**
      * Serial UDB Extra PITCHGAIN Proportional Control 
      */

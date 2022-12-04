@@ -47,6 +47,15 @@ public final class VisionPositionDelta {
         return new Builder();
     }
 
+    public static Builder builder(VisionPositionDelta msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .timeDeltaUsec(msg.timeDeltaUsec)
+                .angleDelta(msg.angleDelta)
+                .positionDelta(msg.positionDelta)
+                .confidence(msg.confidence);
+    }
+
     /**
      * Timestamp (synced to UNIX time or since system boot). 
      */

@@ -77,6 +77,24 @@ public final class CommandInt {
         return new Builder();
     }
 
+    public static Builder builder(CommandInt msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .frame(msg.frame)
+                .command(msg.command)
+                .current(msg.current)
+                .autocontinue(msg.autocontinue)
+                .param1(msg.param1)
+                .param2(msg.param2)
+                .param3(msg.param3)
+                .param4(msg.param4)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .tid(msg.tid);
+    }
+
     /**
      * System ID 
      */

@@ -35,6 +35,12 @@ public final class TerrainCheck {
         return new Builder();
     }
 
+    public static Builder builder(TerrainCheck msg) {
+        return builder()
+                .lat(msg.lat)
+                .lon(msg.lon);
+    }
+
     /**
      * Latitude 
      */

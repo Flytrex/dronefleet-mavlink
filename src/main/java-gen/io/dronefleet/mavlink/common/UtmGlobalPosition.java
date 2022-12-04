@@ -89,6 +89,28 @@ public final class UtmGlobalPosition {
         return new Builder();
     }
 
+    public static Builder builder(UtmGlobalPosition msg) {
+        return builder()
+                .time(msg.time)
+                .uasId(msg.uasId)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .relativeAlt(msg.relativeAlt)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .hAcc(msg.hAcc)
+                .vAcc(msg.vAcc)
+                .velAcc(msg.velAcc)
+                .nextLat(msg.nextLat)
+                .nextLon(msg.nextLon)
+                .nextAlt(msg.nextAlt)
+                .updateRate(msg.updateRate)
+                .flightState(msg.flightState)
+                .flags(msg.flags);
+    }
+
     /**
      * Time of applicability of position (microseconds since UNIX epoch). 
      */

@@ -53,6 +53,18 @@ public final class ManualSetpoint {
         return new Builder();
     }
 
+    public static Builder builder(ManualSetpoint msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .thrust(msg.thrust)
+                .modeSwitch(msg.modeSwitch)
+                .manualOverrideSwitch(msg.manualOverrideSwitch)
+                .tid(msg.tid);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

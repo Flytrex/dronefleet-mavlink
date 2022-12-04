@@ -40,6 +40,14 @@ public final class GpsInjectData {
         return new Builder();
     }
 
+    public static Builder builder(GpsInjectData msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .len(msg.len)
+                .data(msg.data);
+    }
+
     /**
      * System ID 
      */

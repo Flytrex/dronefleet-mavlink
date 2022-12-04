@@ -70,6 +70,22 @@ public final class BatteryStatus {
         return new Builder();
     }
 
+    public static Builder builder(BatteryStatus msg) {
+        return builder()
+                .id(msg.id)
+                .batteryFunction(msg.batteryFunction)
+                .type(msg.type)
+                .temperature(msg.temperature)
+                .voltages(msg.voltages)
+                .currentBattery(msg.currentBattery)
+                .currentConsumed(msg.currentConsumed)
+                .energyConsumed(msg.energyConsumed)
+                .batteryRemaining(msg.batteryRemaining)
+                .timeRemaining(msg.timeRemaining)
+                .chargeState(msg.chargeState)
+                .voltagesExt(msg.voltagesExt);
+    }
+
     /**
      * Battery ID 
      */

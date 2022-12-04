@@ -77,6 +77,24 @@ public final class PositionTargetGlobalInt {
         return new Builder();
     }
 
+    public static Builder builder(PositionTargetGlobalInt msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .coordinateFrame(msg.coordinateFrame)
+                .typeMask(msg.typeMask)
+                .latInt(msg.latInt)
+                .lonInt(msg.lonInt)
+                .alt(msg.alt)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .afx(msg.afx)
+                .afy(msg.afy)
+                .afz(msg.afz)
+                .yaw(msg.yaw)
+                .yawRate(msg.yawRate);
+    }
+
     /**
      * Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow 
      * the system to compensate for the transport delay of the setpoint. This allows the system to 

@@ -34,6 +34,12 @@ public final class SerialUdbExtraF15 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF15 msg) {
+        return builder()
+                .sueIdVehicleModelName(msg.sueIdVehicleModelName)
+                .sueIdVehicleRegistration(msg.sueIdVehicleRegistration);
+    }
+
     /**
      * Serial UDB Extra Model Name Of Vehicle 
      */

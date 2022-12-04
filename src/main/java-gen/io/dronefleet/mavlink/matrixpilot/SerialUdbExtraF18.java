@@ -44,6 +44,15 @@ public final class SerialUdbExtraF18 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF18 msg) {
+        return builder()
+                .angleOfAttackNormal(msg.angleOfAttackNormal)
+                .angleOfAttackInverted(msg.angleOfAttackInverted)
+                .elevatorTrimNormal(msg.elevatorTrimNormal)
+                .elevatorTrimInverted(msg.elevatorTrimInverted)
+                .referenceSpeed(msg.referenceSpeed);
+    }
+
     /**
      * SUE Angle of Attack Normal 
      */

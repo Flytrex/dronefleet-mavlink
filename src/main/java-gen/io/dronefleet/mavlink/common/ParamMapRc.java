@@ -57,6 +57,19 @@ public final class ParamMapRc {
         return new Builder();
     }
 
+    public static Builder builder(ParamMapRc msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .paramId(msg.paramId)
+                .paramIndex(msg.paramIndex)
+                .parameterRcChannelIndex(msg.parameterRcChannelIndex)
+                .paramValue0(msg.paramValue0)
+                .scale(msg.scale)
+                .paramValueMin(msg.paramValueMin)
+                .paramValueMax(msg.paramValueMax);
+    }
+
     /**
      * System ID 
      */

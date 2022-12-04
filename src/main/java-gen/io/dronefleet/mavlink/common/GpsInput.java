@@ -93,6 +93,29 @@ public final class GpsInput {
         return new Builder();
     }
 
+    public static Builder builder(GpsInput msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .gpsId(msg.gpsId)
+                .ignoreFlags(msg.ignoreFlags)
+                .timeWeekMs(msg.timeWeekMs)
+                .timeWeek(msg.timeWeek)
+                .fixType(msg.fixType)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .hdop(msg.hdop)
+                .vdop(msg.vdop)
+                .vn(msg.vn)
+                .ve(msg.ve)
+                .vd(msg.vd)
+                .speedAccuracy(msg.speedAccuracy)
+                .horizAccuracy(msg.horizAccuracy)
+                .vertAccuracy(msg.vertAccuracy)
+                .satellitesVisible(msg.satellitesVisible)
+                .yaw(msg.yaw);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

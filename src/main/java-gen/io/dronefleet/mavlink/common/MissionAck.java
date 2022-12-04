@@ -48,6 +48,15 @@ public final class MissionAck {
         return new Builder();
     }
 
+    public static Builder builder(MissionAck msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .type(msg.type)
+                .missionType(msg.missionType)
+                .tid(msg.tid);
+    }
+
     /**
      * System ID 
      */

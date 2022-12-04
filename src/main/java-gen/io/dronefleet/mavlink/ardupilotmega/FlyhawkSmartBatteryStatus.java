@@ -72,6 +72,24 @@ public final class FlyhawkSmartBatteryStatus {
         return new Builder();
     }
 
+    public static Builder builder(FlyhawkSmartBatteryStatus msg) {
+        return builder()
+                .id(msg.id)
+                .temperature(msg.temperature)
+                .overallVoltage(msg.overallVoltage)
+                .voltages(msg.voltages)
+                .current1(msg.current1)
+                .current2(msg.current2)
+                .capacityRemaining(msg.capacityRemaining)
+                .isShuttingDown(msg.isShuttingDown)
+                .isOn(msg.isOn)
+                .unk1(msg.unk1)
+                .unk2(msg.unk2)
+                .unk3(msg.unk3)
+                .unk4(msg.unk4)
+                .unk5(msg.unk5);
+    }
+
     /**
      * Battery ID 
      */

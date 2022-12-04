@@ -64,6 +64,21 @@ public final class RcChannelsScaled {
         return new Builder();
     }
 
+    public static Builder builder(RcChannelsScaled msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .port(msg.port)
+                .chan1Scaled(msg.chan1Scaled)
+                .chan2Scaled(msg.chan2Scaled)
+                .chan3Scaled(msg.chan3Scaled)
+                .chan4Scaled(msg.chan4Scaled)
+                .chan5Scaled(msg.chan5Scaled)
+                .chan6Scaled(msg.chan6Scaled)
+                .chan7Scaled(msg.chan7Scaled)
+                .chan8Scaled(msg.chan8Scaled)
+                .rssi(msg.rssi);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

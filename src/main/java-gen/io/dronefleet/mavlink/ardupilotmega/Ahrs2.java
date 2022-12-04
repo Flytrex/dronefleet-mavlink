@@ -46,6 +46,16 @@ public final class Ahrs2 {
         return new Builder();
     }
 
+    public static Builder builder(Ahrs2 msg) {
+        return builder()
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .altitude(msg.altitude)
+                .lat(msg.lat)
+                .lng(msg.lng);
+    }
+
     /**
      * Roll angle. 
      */

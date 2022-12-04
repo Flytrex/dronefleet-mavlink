@@ -44,6 +44,15 @@ public final class GimbalControl {
         return new Builder();
     }
 
+    public static Builder builder(GimbalControl msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .demandedRateX(msg.demandedRateX)
+                .demandedRateY(msg.demandedRateY)
+                .demandedRateZ(msg.demandedRateZ);
+    }
+
     /**
      * System ID. 
      */

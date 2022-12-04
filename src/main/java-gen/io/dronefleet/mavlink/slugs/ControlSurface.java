@@ -40,6 +40,14 @@ public final class ControlSurface {
         return new Builder();
     }
 
+    public static Builder builder(ControlSurface msg) {
+        return builder()
+                .target(msg.target)
+                .idsurface(msg.idsurface)
+                .mcontrol(msg.mcontrol)
+                .bcontrol(msg.bcontrol);
+    }
+
     /**
      * The system setting the commands 
      */

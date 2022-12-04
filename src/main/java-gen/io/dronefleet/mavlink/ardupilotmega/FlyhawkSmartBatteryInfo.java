@@ -82,6 +82,27 @@ public final class FlyhawkSmartBatteryInfo {
         return new Builder();
     }
 
+    public static Builder builder(FlyhawkSmartBatteryInfo msg) {
+        return builder()
+                .id(msg.id)
+                .capacityFullSpecification(msg.capacityFullSpecification)
+                .capacityFull(msg.capacityFull)
+                .cycleCount(msg.cycleCount)
+                .serialNumber(msg.serialNumber)
+                .deviceName(msg.deviceName)
+                .firmwareId(msg.firmwareId)
+                .lifetime(msg.lifetime)
+                .madeYear(msg.madeYear)
+                .infoUnk1(msg.infoUnk1)
+                .infoUnk2(msg.infoUnk2)
+                .infoUnk3(msg.infoUnk3)
+                .infoSerial(msg.infoSerial)
+                .infoUnk4(msg.infoUnk4)
+                .infoUnk5(msg.infoUnk5)
+                .versionUnk1(msg.versionUnk1)
+                .versionUnk2(msg.versionUnk2);
+    }
+
     /**
      * Battery ID 
      */

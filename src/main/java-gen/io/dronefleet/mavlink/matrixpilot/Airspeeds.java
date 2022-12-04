@@ -50,6 +50,17 @@ public final class Airspeeds {
         return new Builder();
     }
 
+    public static Builder builder(Airspeeds msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .airspeedImu(msg.airspeedImu)
+                .airspeedPitot(msg.airspeedPitot)
+                .airspeedHotWire(msg.airspeedHotWire)
+                .airspeedUltrasonic(msg.airspeedUltrasonic)
+                .aoa(msg.aoa)
+                .aoy(msg.aoy);
+    }
+
     /**
      * Timestamp (milliseconds since system boot) 
      */

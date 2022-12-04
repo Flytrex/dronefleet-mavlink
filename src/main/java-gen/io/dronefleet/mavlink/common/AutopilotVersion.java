@@ -72,6 +72,22 @@ public final class AutopilotVersion {
         return new Builder();
     }
 
+    public static Builder builder(AutopilotVersion msg) {
+        return builder()
+                .capabilities(msg.capabilities)
+                .flightSwVersion(msg.flightSwVersion)
+                .middlewareSwVersion(msg.middlewareSwVersion)
+                .osSwVersion(msg.osSwVersion)
+                .boardVersion(msg.boardVersion)
+                .flightCustomVersion(msg.flightCustomVersion)
+                .middlewareCustomVersion(msg.middlewareCustomVersion)
+                .osCustomVersion(msg.osCustomVersion)
+                .vendorId(msg.vendorId)
+                .productId(msg.productId)
+                .uid(msg.uid)
+                .uid2(msg.uid2);
+    }
+
     /**
      * Bitmap of capabilities 
      */

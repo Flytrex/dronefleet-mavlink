@@ -47,6 +47,16 @@ public final class VfrHud {
         return new Builder();
     }
 
+    public static Builder builder(VfrHud msg) {
+        return builder()
+                .airspeed(msg.airspeed)
+                .groundspeed(msg.groundspeed)
+                .heading(msg.heading)
+                .throttle(msg.throttle)
+                .alt(msg.alt)
+                .climb(msg.climb);
+    }
+
     /**
      * Vehicle speed in form appropriate for vehicle type. For standard aircraft this is typically 
      * calibrated airspeed (CAS) or indicated airspeed (IAS) - either of which can be used by a pilot to 

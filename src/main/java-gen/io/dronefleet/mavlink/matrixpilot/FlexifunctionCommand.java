@@ -37,6 +37,13 @@ public final class FlexifunctionCommand {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionCommand msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .commandType(msg.commandType);
+    }
+
     /**
      * System ID 
      */

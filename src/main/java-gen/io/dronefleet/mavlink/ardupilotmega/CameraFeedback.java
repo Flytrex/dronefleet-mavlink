@@ -76,6 +76,24 @@ public final class CameraFeedback {
         return new Builder();
     }
 
+    public static Builder builder(CameraFeedback msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .targetSystem(msg.targetSystem)
+                .camIdx(msg.camIdx)
+                .imgIdx(msg.imgIdx)
+                .lat(msg.lat)
+                .lng(msg.lng)
+                .altMsl(msg.altMsl)
+                .altRel(msg.altRel)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .focLen(msg.focLen)
+                .flags(msg.flags)
+                .completedCaptures(msg.completedCaptures);
+    }
+
     /**
      * Image timestamp (since UNIX epoch), as passed in by {@link io.dronefleet.mavlink.ardupilotmega.CameraStatus CAMERA_STATUS} message (or autopilot if no 
      * CCB). 

@@ -34,6 +34,12 @@ public final class ScriptRequestList {
         return new Builder();
     }
 
+    public static Builder builder(ScriptRequestList msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID 
      */

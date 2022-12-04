@@ -66,6 +66,22 @@ public final class AirspeedAutocal {
         return new Builder();
     }
 
+    public static Builder builder(AirspeedAutocal msg) {
+        return builder()
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .diffPressure(msg.diffPressure)
+                .eas2tas(msg.eas2tas)
+                .ratio(msg.ratio)
+                .stateX(msg.stateX)
+                .stateY(msg.stateY)
+                .stateZ(msg.stateZ)
+                .pax(msg.pax)
+                .pby(msg.pby)
+                .pcz(msg.pcz);
+    }
+
     /**
      * GPS velocity north. 
      */

@@ -59,6 +59,19 @@ public final class GlobalVisionPositionEstimate {
         return new Builder();
     }
 
+    public static Builder builder(GlobalVisionPositionEstimate msg) {
+        return builder()
+                .usec(msg.usec)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .covariance(msg.covariance)
+                .resetCounter(msg.resetCounter);
+    }
+
     /**
      * Timestamp (UNIX time or since system boot) 
      */

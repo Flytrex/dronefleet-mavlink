@@ -37,6 +37,13 @@ public final class SlugsConfigurationCamera {
         return new Builder();
     }
 
+    public static Builder builder(SlugsConfigurationCamera msg) {
+        return builder()
+                .target(msg.target)
+                .idorder(msg.idorder)
+                .order(msg.order);
+    }
+
     /**
      * The system setting the commands 
      */

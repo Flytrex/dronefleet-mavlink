@@ -41,6 +41,13 @@ public final class GoproHeartbeat {
         return new Builder();
     }
 
+    public static Builder builder(GoproHeartbeat msg) {
+        return builder()
+                .status(msg.status)
+                .captureMode(msg.captureMode)
+                .flags(msg.flags);
+    }
+
     /**
      * Status. 
      */

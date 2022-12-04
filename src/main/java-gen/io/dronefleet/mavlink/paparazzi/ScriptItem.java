@@ -41,6 +41,14 @@ public final class ScriptItem {
         return new Builder();
     }
 
+    public static Builder builder(ScriptItem msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .seq(msg.seq)
+                .name(msg.name);
+    }
+
     /**
      * System ID 
      */

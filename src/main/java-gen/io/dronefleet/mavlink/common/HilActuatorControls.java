@@ -49,6 +49,14 @@ public final class HilActuatorControls {
         return new Builder();
     }
 
+    public static Builder builder(HilActuatorControls msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .controls(msg.controls)
+                .mode(msg.mode)
+                .flags(msg.flags);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

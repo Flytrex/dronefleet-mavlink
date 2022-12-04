@@ -47,6 +47,16 @@ public final class FlexifunctionDirectoryAck {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionDirectoryAck msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .directoryType(msg.directoryType)
+                .startIndex(msg.startIndex)
+                .count(msg.count)
+                .result(msg.result);
+    }
+
     /**
      * System ID 
      */

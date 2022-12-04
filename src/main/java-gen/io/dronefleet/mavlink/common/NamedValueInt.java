@@ -38,6 +38,13 @@ public final class NamedValueInt {
         return new Builder();
     }
 
+    public static Builder builder(NamedValueInt msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .name(msg.name)
+                .value(msg.value);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

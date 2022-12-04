@@ -51,6 +51,17 @@ public final class CameraCaptureStatus {
         return new Builder();
     }
 
+    public static Builder builder(CameraCaptureStatus msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .imageStatus(msg.imageStatus)
+                .videoStatus(msg.videoStatus)
+                .imageInterval(msg.imageInterval)
+                .recordingTimeMs(msg.recordingTimeMs)
+                .availableCapacity(msg.availableCapacity)
+                .imageCount(msg.imageCount);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

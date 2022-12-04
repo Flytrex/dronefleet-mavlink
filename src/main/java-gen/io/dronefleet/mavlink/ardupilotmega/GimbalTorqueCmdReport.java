@@ -44,6 +44,15 @@ public final class GimbalTorqueCmdReport {
         return new Builder();
     }
 
+    public static Builder builder(GimbalTorqueCmdReport msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .rlTorqueCmd(msg.rlTorqueCmd)
+                .elTorqueCmd(msg.elTorqueCmd)
+                .azTorqueCmd(msg.azTorqueCmd);
+    }
+
     /**
      * System ID. 
      */

@@ -62,6 +62,21 @@ public final class WaterDepth {
         return new Builder();
     }
 
+    public static Builder builder(WaterDepth msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .id(msg.id)
+                .healthy(msg.healthy)
+                .lat(msg.lat)
+                .lng(msg.lng)
+                .alt(msg.alt)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .distance(msg.distance)
+                .temperature(msg.temperature);
+    }
+
     /**
      * Timestamp (time since system boot) 
      */

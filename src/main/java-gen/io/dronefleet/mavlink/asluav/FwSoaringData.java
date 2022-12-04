@@ -109,6 +109,35 @@ public final class FwSoaringData {
         return new Builder();
     }
 
+    public static Builder builder(FwSoaringData msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .timestampmodechanged(msg.timestampmodechanged)
+                .xw(msg.xw)
+                .xr(msg.xr)
+                .xlat(msg.xlat)
+                .xlon(msg.xlon)
+                .varw(msg.varw)
+                .varr(msg.varr)
+                .varlat(msg.varlat)
+                .varlon(msg.varlon)
+                .loiterradius(msg.loiterradius)
+                .loiterdirection(msg.loiterdirection)
+                .disttosoarpoint(msg.disttosoarpoint)
+                .vsinkexp(msg.vsinkexp)
+                .z1Localupdraftspeed(msg.z1Localupdraftspeed)
+                .z2Deltaroll(msg.z2Deltaroll)
+                .z1Exp(msg.z1Exp)
+                .z2Exp(msg.z2Exp)
+                .thermalgsnorth(msg.thermalgsnorth)
+                .thermalgseast(msg.thermalgseast)
+                .tseDot(msg.tseDot)
+                .debugvar1(msg.debugvar1)
+                .debugvar2(msg.debugvar2)
+                .controlmode(msg.controlmode)
+                .valid(msg.valid);
+    }
+
     /**
      * Timestamp 
      */

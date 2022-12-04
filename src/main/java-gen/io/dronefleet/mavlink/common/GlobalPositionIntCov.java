@@ -70,6 +70,20 @@ public final class GlobalPositionIntCov {
         return new Builder();
     }
 
+    public static Builder builder(GlobalPositionIntCov msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .estimatorType(msg.estimatorType)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .relativeAlt(msg.relativeAlt)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .covariance(msg.covariance);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

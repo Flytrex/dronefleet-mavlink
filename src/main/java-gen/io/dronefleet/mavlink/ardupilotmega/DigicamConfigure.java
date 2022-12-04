@@ -63,6 +63,21 @@ public final class DigicamConfigure {
         return new Builder();
     }
 
+    public static Builder builder(DigicamConfigure msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .mode(msg.mode)
+                .shutterSpeed(msg.shutterSpeed)
+                .aperture(msg.aperture)
+                .iso(msg.iso)
+                .exposureType(msg.exposureType)
+                .commandId(msg.commandId)
+                .engineCutOff(msg.engineCutOff)
+                .extraParam(msg.extraParam)
+                .extraValue(msg.extraValue);
+    }
+
     /**
      * System ID. 
      */

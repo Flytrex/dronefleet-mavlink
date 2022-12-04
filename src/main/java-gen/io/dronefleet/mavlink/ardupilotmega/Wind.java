@@ -37,6 +37,13 @@ public final class Wind {
         return new Builder();
     }
 
+    public static Builder builder(Wind msg) {
+        return builder()
+                .direction(msg.direction)
+                .speed(msg.speed)
+                .speedZ(msg.speedZ);
+    }
+
     /**
      * Wind direction (that wind is coming from). 
      */

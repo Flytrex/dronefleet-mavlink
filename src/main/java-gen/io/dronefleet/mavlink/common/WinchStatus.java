@@ -64,6 +64,18 @@ public final class WinchStatus {
         return new Builder();
     }
 
+    public static Builder builder(WinchStatus msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .lineLength(msg.lineLength)
+                .speed(msg.speed)
+                .tension(msg.tension)
+                .voltage(msg.voltage)
+                .current(msg.current)
+                .temperature(msg.temperature)
+                .status(msg.status);
+    }
+
     /**
      * Timestamp (synced to UNIX time or since system boot). 
      */

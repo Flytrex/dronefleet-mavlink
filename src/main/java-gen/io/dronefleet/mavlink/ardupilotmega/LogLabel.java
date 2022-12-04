@@ -47,6 +47,16 @@ public final class LogLabel {
         return new Builder();
     }
 
+    public static Builder builder(LogLabel msg) {
+        return builder()
+                .labelIndex(msg.labelIndex)
+                .label(msg.label)
+                .numLogs(msg.numLogs)
+                .logNum(msg.logNum)
+                .timeUtc(msg.timeUtc)
+                .size(msg.size);
+    }
+
     /**
      * Log index within the list of {@link io.dronefleet.mavlink.ardupilotmega.LogLabel LOG_LABEL} messages been sent in a batch 
      */

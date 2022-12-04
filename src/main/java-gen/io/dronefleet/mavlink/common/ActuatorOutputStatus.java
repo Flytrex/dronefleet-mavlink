@@ -41,6 +41,13 @@ public final class ActuatorOutputStatus {
         return new Builder();
     }
 
+    public static Builder builder(ActuatorOutputStatus msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .active(msg.active)
+                .actuator(msg.actuator);
+    }
+
     /**
      * Timestamp (since system boot). 
      */

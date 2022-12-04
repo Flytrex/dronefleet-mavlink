@@ -66,6 +66,21 @@ public final class FollowTarget {
         return new Builder();
     }
 
+    public static Builder builder(FollowTarget msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .estCapabilities(msg.estCapabilities)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .vel(msg.vel)
+                .acc(msg.acc)
+                .attitudeQ(msg.attitudeQ)
+                .rates(msg.rates)
+                .positionCov(msg.positionCov)
+                .customState(msg.customState);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

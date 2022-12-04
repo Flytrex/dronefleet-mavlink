@@ -88,6 +88,28 @@ public final class Gps2Raw {
         return new Builder();
     }
 
+    public static Builder builder(Gps2Raw msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .fixType(msg.fixType)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .alt(msg.alt)
+                .eph(msg.eph)
+                .epv(msg.epv)
+                .vel(msg.vel)
+                .cog(msg.cog)
+                .satellitesVisible(msg.satellitesVisible)
+                .dgpsNumch(msg.dgpsNumch)
+                .dgpsAge(msg.dgpsAge)
+                .yaw(msg.yaw)
+                .altEllipsoid(msg.altEllipsoid)
+                .hAcc(msg.hAcc)
+                .vAcc(msg.vAcc)
+                .velAcc(msg.velAcc)
+                .hdgAcc(msg.hdgAcc);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

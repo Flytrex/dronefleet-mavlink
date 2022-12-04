@@ -54,6 +54,17 @@ public final class OsdParamShowConfigReply {
         return new Builder();
     }
 
+    public static Builder builder(OsdParamShowConfigReply msg) {
+        return builder()
+                .requestId(msg.requestId)
+                .result(msg.result)
+                .paramId(msg.paramId)
+                .configType(msg.configType)
+                .minValue(msg.minValue)
+                .maxValue(msg.maxValue)
+                .increment(msg.increment);
+    }
+
     /**
      * Request ID - copied from request. 
      */

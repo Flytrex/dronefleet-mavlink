@@ -50,6 +50,16 @@ public final class AttPosMocap {
         return new Builder();
     }
 
+    public static Builder builder(AttPosMocap msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .q(msg.q)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .covariance(msg.covariance);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

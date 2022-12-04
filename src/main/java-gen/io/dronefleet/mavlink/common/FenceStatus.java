@@ -47,6 +47,15 @@ public final class FenceStatus {
         return new Builder();
     }
 
+    public static Builder builder(FenceStatus msg) {
+        return builder()
+                .breachStatus(msg.breachStatus)
+                .breachCount(msg.breachCount)
+                .breachType(msg.breachType)
+                .breachTime(msg.breachTime)
+                .breachMitigation(msg.breachMitigation);
+    }
+
     /**
      * Breach status (0 if currently inside fence, 1 if outside). 
      */

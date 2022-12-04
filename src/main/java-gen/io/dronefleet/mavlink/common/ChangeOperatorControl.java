@@ -41,6 +41,14 @@ public final class ChangeOperatorControl {
         return new Builder();
     }
 
+    public static Builder builder(ChangeOperatorControl msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .controlRequest(msg.controlRequest)
+                .version(msg.version)
+                .passkey(msg.passkey);
+    }
+
     /**
      * System the GCS requests control for 
      */

@@ -45,6 +45,15 @@ public final class ScaledPressure {
         return new Builder();
     }
 
+    public static Builder builder(ScaledPressure msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .pressAbs(msg.pressAbs)
+                .pressDiff(msg.pressDiff)
+                .temperature(msg.temperature)
+                .temperaturePressDiff(msg.temperaturePressDiff);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

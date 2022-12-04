@@ -70,6 +70,19 @@ public final class AqEscTelemetry {
         return new Builder();
     }
 
+    public static Builder builder(AqEscTelemetry msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .seq(msg.seq)
+                .numMotors(msg.numMotors)
+                .numInSeq(msg.numInSeq)
+                .escid(msg.escid)
+                .statusAge(msg.statusAge)
+                .dataVersion(msg.dataVersion)
+                .data0(msg.data0)
+                .data1(msg.data1);
+    }
+
     /**
      * Timestamp of the component clock since boot time in ms. 
      */

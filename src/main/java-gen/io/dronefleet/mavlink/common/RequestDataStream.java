@@ -44,6 +44,15 @@ public final class RequestDataStream {
         return new Builder();
     }
 
+    public static Builder builder(RequestDataStream msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .reqStreamId(msg.reqStreamId)
+                .reqMessageRate(msg.reqMessageRate)
+                .startStop(msg.startStop);
+    }
+
     /**
      * The target requested to send the message stream. 
      */

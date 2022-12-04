@@ -64,6 +64,19 @@ public final class UavcanNodeInfo {
         return new Builder();
     }
 
+    public static Builder builder(UavcanNodeInfo msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .uptimeSec(msg.uptimeSec)
+                .name(msg.name)
+                .hwVersionMajor(msg.hwVersionMajor)
+                .hwVersionMinor(msg.hwVersionMinor)
+                .hwUniqueId(msg.hwUniqueId)
+                .swVersionMajor(msg.swVersionMajor)
+                .swVersionMinor(msg.swVersionMinor)
+                .swVcsCommit(msg.swVcsCommit);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

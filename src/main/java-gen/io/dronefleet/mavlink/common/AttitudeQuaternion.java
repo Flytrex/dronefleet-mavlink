@@ -59,6 +59,19 @@ public final class AttitudeQuaternion {
         return new Builder();
     }
 
+    public static Builder builder(AttitudeQuaternion msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .q1(msg.q1)
+                .q2(msg.q2)
+                .q3(msg.q3)
+                .q4(msg.q4)
+                .rollspeed(msg.rollspeed)
+                .pitchspeed(msg.pitchspeed)
+                .yawspeed(msg.yawspeed)
+                .reprOffsetQ(msg.reprOffsetQ);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

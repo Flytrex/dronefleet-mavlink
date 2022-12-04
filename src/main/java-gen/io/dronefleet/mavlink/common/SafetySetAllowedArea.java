@@ -61,6 +61,19 @@ public final class SafetySetAllowedArea {
         return new Builder();
     }
 
+    public static Builder builder(SafetySetAllowedArea msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .frame(msg.frame)
+                .p1x(msg.p1x)
+                .p1y(msg.p1y)
+                .p1z(msg.p1z)
+                .p2x(msg.p2x)
+                .p2y(msg.p2y)
+                .p2z(msg.p2z);
+    }
+
     /**
      * System ID 
      */

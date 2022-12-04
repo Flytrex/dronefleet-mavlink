@@ -50,6 +50,17 @@ public final class FlexifunctionBufferFunction {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionBufferFunction msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .funcIndex(msg.funcIndex)
+                .funcCount(msg.funcCount)
+                .dataAddress(msg.dataAddress)
+                .dataSize(msg.dataSize)
+                .data(msg.data);
+    }
+
     /**
      * System ID 
      */

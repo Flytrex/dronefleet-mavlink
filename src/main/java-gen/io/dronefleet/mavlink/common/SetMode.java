@@ -48,6 +48,14 @@ public final class SetMode {
         return new Builder();
     }
 
+    public static Builder builder(SetMode msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .baseMode(msg.baseMode)
+                .customMode(msg.customMode)
+                .tid(msg.tid);
+    }
+
     /**
      * The system setting the mode 
      */

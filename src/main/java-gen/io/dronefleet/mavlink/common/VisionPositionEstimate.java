@@ -59,6 +59,19 @@ public final class VisionPositionEstimate {
         return new Builder();
     }
 
+    public static Builder builder(VisionPositionEstimate msg) {
+        return builder()
+                .usec(msg.usec)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .covariance(msg.covariance)
+                .resetCounter(msg.resetCounter);
+    }
+
     /**
      * Timestamp (UNIX time or time since system boot) 
      */

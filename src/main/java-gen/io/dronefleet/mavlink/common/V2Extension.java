@@ -44,6 +44,15 @@ public final class V2Extension {
         return new Builder();
     }
 
+    public static Builder builder(V2Extension msg) {
+        return builder()
+                .targetNetwork(msg.targetNetwork)
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .messageType(msg.messageType)
+                .payload(msg.payload);
+    }
+
     /**
      * Network ID (0 for broadcast) 
      */

@@ -45,6 +45,14 @@ public final class DebugFloatArray {
         return new Builder();
     }
 
+    public static Builder builder(DebugFloatArray msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .name(msg.name)
+                .arrayId(msg.arrayId)
+                .data(msg.data);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

@@ -41,6 +41,14 @@ public final class FlexifunctionReadReq {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionReadReq msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .readReqType(msg.readReqType)
+                .dataIndex(msg.dataIndex);
+    }
+
     /**
      * System ID 
      */

@@ -73,6 +73,23 @@ public final class Gps2Rtk {
         return new Builder();
     }
 
+    public static Builder builder(Gps2Rtk msg) {
+        return builder()
+                .timeLastBaselineMs(msg.timeLastBaselineMs)
+                .rtkReceiverId(msg.rtkReceiverId)
+                .wn(msg.wn)
+                .tow(msg.tow)
+                .rtkHealth(msg.rtkHealth)
+                .rtkRate(msg.rtkRate)
+                .nsats(msg.nsats)
+                .baselineCoordsType(msg.baselineCoordsType)
+                .baselineAMm(msg.baselineAMm)
+                .baselineBMm(msg.baselineBMm)
+                .baselineCMm(msg.baselineCMm)
+                .accuracy(msg.accuracy)
+                .iarNumHypotheses(msg.iarNumHypotheses);
+    }
+
     /**
      * Time since boot of last baseline message received. 
      */

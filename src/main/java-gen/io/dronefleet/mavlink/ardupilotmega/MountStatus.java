@@ -44,6 +44,15 @@ public final class MountStatus {
         return new Builder();
     }
 
+    public static Builder builder(MountStatus msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .pointingA(msg.pointingA)
+                .pointingB(msg.pointingB)
+                .pointingC(msg.pointingC);
+    }
+
     /**
      * System ID. 
      */

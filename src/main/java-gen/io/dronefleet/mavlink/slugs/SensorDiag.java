@@ -40,6 +40,14 @@ public final class SensorDiag {
         return new Builder();
     }
 
+    public static Builder builder(SensorDiag msg) {
+        return builder()
+                .float1(msg.float1)
+                .float2(msg.float2)
+                .int1(msg.int1)
+                .char1(msg.char1);
+    }
+
     /**
      * Float field 1 
      */

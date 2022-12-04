@@ -37,6 +37,13 @@ public final class Data32 {
         return new Builder();
     }
 
+    public static Builder builder(Data32 msg) {
+        return builder()
+                .type(msg.type)
+                .len(msg.len)
+                .data(msg.data);
+    }
+
     /**
      * Data type. 
      */

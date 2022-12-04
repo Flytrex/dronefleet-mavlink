@@ -35,6 +35,12 @@ public final class ParamRequestList {
         return new Builder();
     }
 
+    public static Builder builder(ParamRequestList msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID 
      */

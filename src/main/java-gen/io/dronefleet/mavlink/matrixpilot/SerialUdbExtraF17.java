@@ -37,6 +37,13 @@ public final class SerialUdbExtraF17 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF17 msg) {
+        return builder()
+                .sueFeedForward(msg.sueFeedForward)
+                .sueTurnRateNav(msg.sueTurnRateNav)
+                .sueTurnRateFbw(msg.sueTurnRateFbw);
+    }
+
     /**
      * SUE Feed Forward Gain 
      */

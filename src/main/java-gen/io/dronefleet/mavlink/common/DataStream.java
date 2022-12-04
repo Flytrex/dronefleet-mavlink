@@ -37,6 +37,13 @@ public final class DataStream {
         return new Builder();
     }
 
+    public static Builder builder(DataStream msg) {
+        return builder()
+                .streamId(msg.streamId)
+                .messageRate(msg.messageRate)
+                .onOff(msg.onOff);
+    }
+
     /**
      * The ID of the requested data stream 
      */

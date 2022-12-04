@@ -71,6 +71,23 @@ public final class SerialUdbExtraF20 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF20 msg) {
+        return builder()
+                .sueNumberOfInputs(msg.sueNumberOfInputs)
+                .sueTrimValueInput1(msg.sueTrimValueInput1)
+                .sueTrimValueInput2(msg.sueTrimValueInput2)
+                .sueTrimValueInput3(msg.sueTrimValueInput3)
+                .sueTrimValueInput4(msg.sueTrimValueInput4)
+                .sueTrimValueInput5(msg.sueTrimValueInput5)
+                .sueTrimValueInput6(msg.sueTrimValueInput6)
+                .sueTrimValueInput7(msg.sueTrimValueInput7)
+                .sueTrimValueInput8(msg.sueTrimValueInput8)
+                .sueTrimValueInput9(msg.sueTrimValueInput9)
+                .sueTrimValueInput10(msg.sueTrimValueInput10)
+                .sueTrimValueInput11(msg.sueTrimValueInput11)
+                .sueTrimValueInput12(msg.sueTrimValueInput12);
+    }
+
     /**
      * SUE Number of Input Channels 
      */

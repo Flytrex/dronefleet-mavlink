@@ -62,6 +62,16 @@ public final class OpenDroneIdBasicId {
         return new Builder();
     }
 
+    public static Builder builder(OpenDroneIdBasicId msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idOrMac(msg.idOrMac)
+                .idType(msg.idType)
+                .uaType(msg.uaType)
+                .uasId(msg.uasId);
+    }
+
     /**
      * System ID (0 for broadcast). 
      */

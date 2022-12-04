@@ -67,6 +67,22 @@ public final class SensorOffsets {
         return new Builder();
     }
 
+    public static Builder builder(SensorOffsets msg) {
+        return builder()
+                .magOfsX(msg.magOfsX)
+                .magOfsY(msg.magOfsY)
+                .magOfsZ(msg.magOfsZ)
+                .magDeclination(msg.magDeclination)
+                .rawPress(msg.rawPress)
+                .rawTemp(msg.rawTemp)
+                .gyroCalX(msg.gyroCalX)
+                .gyroCalY(msg.gyroCalY)
+                .gyroCalZ(msg.gyroCalZ)
+                .accelCalX(msg.accelCalX)
+                .accelCalY(msg.accelCalY)
+                .accelCalZ(msg.accelCalZ);
+    }
+
     /**
      * Magnetometer X offset. 
      */

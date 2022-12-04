@@ -37,6 +37,13 @@ public final class GpsRtcmData {
         return new Builder();
     }
 
+    public static Builder builder(GpsRtcmData msg) {
+        return builder()
+                .flags(msg.flags)
+                .len(msg.len)
+                .data(msg.data);
+    }
+
     /**
      * LSB: 1 means message is fragmented, next 2 bits are the fragment ID, the remaining 5 bits are used 
      * for the sequence ID. Messages are only to be flushed to the GPS when the entire message has been 

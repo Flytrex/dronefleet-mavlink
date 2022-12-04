@@ -72,6 +72,22 @@ public final class DistanceSensor {
         return new Builder();
     }
 
+    public static Builder builder(DistanceSensor msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .minDistance(msg.minDistance)
+                .maxDistance(msg.maxDistance)
+                .currentDistance(msg.currentDistance)
+                .type(msg.type)
+                .id(msg.id)
+                .orientation(msg.orientation)
+                .covariance(msg.covariance)
+                .horizontalFov(msg.horizontalFov)
+                .verticalFov(msg.verticalFov)
+                .quaternion(msg.quaternion)
+                .signalQuality(msg.signalQuality);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

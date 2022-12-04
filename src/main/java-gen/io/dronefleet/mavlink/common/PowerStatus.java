@@ -40,6 +40,13 @@ public final class PowerStatus {
         return new Builder();
     }
 
+    public static Builder builder(PowerStatus msg) {
+        return builder()
+                .vcc(msg.vcc)
+                .vservo(msg.vservo)
+                .flags(msg.flags);
+    }
+
     /**
      * 5V rail voltage. 
      */

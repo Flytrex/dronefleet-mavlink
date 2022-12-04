@@ -47,6 +47,16 @@ public final class FencePoint {
         return new Builder();
     }
 
+    public static Builder builder(FencePoint msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idx(msg.idx)
+                .count(msg.count)
+                .lat(msg.lat)
+                .lng(msg.lng);
+    }
+
     /**
      * System ID. 
      */

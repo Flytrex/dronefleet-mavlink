@@ -44,6 +44,15 @@ public final class DebugVect {
         return new Builder();
     }
 
+    public static Builder builder(DebugVect msg) {
+        return builder()
+                .name(msg.name)
+                .timeUsec(msg.timeUsec)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z);
+    }
+
     /**
      * Name 
      */

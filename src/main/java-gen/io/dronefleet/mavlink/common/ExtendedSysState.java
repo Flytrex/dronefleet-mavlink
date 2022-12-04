@@ -38,6 +38,12 @@ public final class ExtendedSysState {
         return new Builder();
     }
 
+    public static Builder builder(ExtendedSysState msg) {
+        return builder()
+                .vtolState(msg.vtolState)
+                .landedState(msg.landedState);
+    }
+
     /**
      * The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL 
      * configuration. 

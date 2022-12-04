@@ -88,6 +88,27 @@ public final class SmartBatteryInfo {
         return new Builder();
     }
 
+    public static Builder builder(SmartBatteryInfo msg) {
+        return builder()
+                .id(msg.id)
+                .batteryFunction(msg.batteryFunction)
+                .type(msg.type)
+                .capacityFullSpecification(msg.capacityFullSpecification)
+                .capacityFull(msg.capacityFull)
+                .cycleCount(msg.cycleCount)
+                .serialNumber(msg.serialNumber)
+                .deviceName(msg.deviceName)
+                .weight(msg.weight)
+                .dischargeMinimumVoltage(msg.dischargeMinimumVoltage)
+                .chargingMinimumVoltage(msg.chargingMinimumVoltage)
+                .restingMinimumVoltage(msg.restingMinimumVoltage)
+                .chargingMaximumVoltage(msg.chargingMaximumVoltage)
+                .cellsInSeries(msg.cellsInSeries)
+                .dischargeMaximumCurrent(msg.dischargeMaximumCurrent)
+                .dischargeMaximumBurstCurrent(msg.dischargeMaximumBurstCurrent)
+                .manufactureDate(msg.manufactureDate);
+    }
+
     /**
      * Battery ID 
      */

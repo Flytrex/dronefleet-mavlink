@@ -50,6 +50,17 @@ public final class Attitude {
         return new Builder();
     }
 
+    public static Builder builder(Attitude msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .rollspeed(msg.rollspeed)
+                .pitchspeed(msg.pitchspeed)
+                .yawspeed(msg.yawspeed);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

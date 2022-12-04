@@ -54,6 +54,17 @@ public final class DataTransmissionHandshake {
         return new Builder();
     }
 
+    public static Builder builder(DataTransmissionHandshake msg) {
+        return builder()
+                .type(msg.type)
+                .size(msg.size)
+                .width(msg.width)
+                .height(msg.height)
+                .packets(msg.packets)
+                .payload(msg.payload)
+                .jpgQuality(msg.jpgQuality);
+    }
+
     /**
      * Type of requested/acknowledged data. 
      */

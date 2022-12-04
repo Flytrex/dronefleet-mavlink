@@ -44,6 +44,15 @@ public final class ResourceRequest {
         return new Builder();
     }
 
+    public static Builder builder(ResourceRequest msg) {
+        return builder()
+                .requestId(msg.requestId)
+                .uriType(msg.uriType)
+                .uri(msg.uri)
+                .transferType(msg.transferType)
+                .storage(msg.storage);
+    }
+
     /**
      * Request ID. This ID should be re-used when sending back URI contents 
      */

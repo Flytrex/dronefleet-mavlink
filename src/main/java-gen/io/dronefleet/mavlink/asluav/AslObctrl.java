@@ -54,6 +54,18 @@ public final class AslObctrl {
         return new Builder();
     }
 
+    public static Builder builder(AslObctrl msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .uelev(msg.uelev)
+                .uthrot(msg.uthrot)
+                .uthrot2(msg.uthrot2)
+                .uaill(msg.uaill)
+                .uailr(msg.uailr)
+                .urud(msg.urud)
+                .obctrlStatus(msg.obctrlStatus);
+    }
+
     /**
      * Time since system start 
      */

@@ -99,6 +99,27 @@ public final class SysStatus {
         return new Builder();
     }
 
+    public static Builder builder(SysStatus msg) {
+        return builder()
+                .onboardControlSensorsPresent(msg.onboardControlSensorsPresent)
+                .onboardControlSensorsEnabled(msg.onboardControlSensorsEnabled)
+                .onboardControlSensorsHealth(msg.onboardControlSensorsHealth)
+                .load(msg.load)
+                .voltageBattery(msg.voltageBattery)
+                .currentBattery(msg.currentBattery)
+                .batteryRemaining(msg.batteryRemaining)
+                .dropRateComm(msg.dropRateComm)
+                .errorsComm(msg.errorsComm)
+                .errorsCount1(msg.errorsCount1)
+                .errorsCount2(msg.errorsCount2)
+                .errorsCount3(msg.errorsCount3)
+                .errorsCount4(msg.errorsCount4)
+                .failsafe(msg.failsafe)
+                .onboardControlSensorsExtensionPresent(msg.onboardControlSensorsExtensionPresent)
+                .onboardControlSensorsExtensionEnabled(msg.onboardControlSensorsExtensionEnabled)
+                .onboardControlSensorsExtensionHealth(msg.onboardControlSensorsExtensionHealth);
+    }
+
     /**
      * Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. 
      * Value of 1: present. 

@@ -35,6 +35,12 @@ public final class CameraTrigger {
         return new Builder();
     }
 
+    public static Builder builder(CameraTrigger msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .seq(msg.seq);
+    }
+
     /**
      * Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can 
      * infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of 

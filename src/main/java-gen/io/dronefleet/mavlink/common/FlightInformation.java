@@ -42,6 +42,14 @@ public final class FlightInformation {
         return new Builder();
     }
 
+    public static Builder builder(FlightInformation msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .armingTimeUtc(msg.armingTimeUtc)
+                .takeoffTimeUtc(msg.takeoffTimeUtc)
+                .flightUuid(msg.flightUuid);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

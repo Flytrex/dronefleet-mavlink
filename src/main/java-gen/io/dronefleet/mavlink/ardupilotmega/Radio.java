@@ -50,6 +50,17 @@ public final class Radio {
         return new Builder();
     }
 
+    public static Builder builder(Radio msg) {
+        return builder()
+                .rssi(msg.rssi)
+                .remrssi(msg.remrssi)
+                .txbuf(msg.txbuf)
+                .noise(msg.noise)
+                .remnoise(msg.remnoise)
+                .rxerrors(msg.rxerrors)
+                .fixed(msg.fixed);
+    }
+
     /**
      * Local signal strength. 
      */

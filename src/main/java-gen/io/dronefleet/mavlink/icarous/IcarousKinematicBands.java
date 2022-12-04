@@ -83,6 +83,26 @@ public final class IcarousKinematicBands {
         return new Builder();
     }
 
+    public static Builder builder(IcarousKinematicBands msg) {
+        return builder()
+                .numbands(msg.numbands)
+                .type1(msg.type1)
+                .min1(msg.min1)
+                .max1(msg.max1)
+                .type2(msg.type2)
+                .min2(msg.min2)
+                .max2(msg.max2)
+                .type3(msg.type3)
+                .min3(msg.min3)
+                .max3(msg.max3)
+                .type4(msg.type4)
+                .min4(msg.min4)
+                .max4(msg.max4)
+                .type5(msg.type5)
+                .min5(msg.min5)
+                .max5(msg.max5);
+    }
+
     /**
      * Number of track bands 
      */

@@ -73,6 +73,23 @@ public final class CameraInformation {
         return new Builder();
     }
 
+    public static Builder builder(CameraInformation msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .vendorName(msg.vendorName)
+                .modelName(msg.modelName)
+                .firmwareVersion(msg.firmwareVersion)
+                .focalLength(msg.focalLength)
+                .sensorSizeH(msg.sensorSizeH)
+                .sensorSizeV(msg.sensorSizeV)
+                .resolutionH(msg.resolutionH)
+                .resolutionV(msg.resolutionV)
+                .lensId(msg.lensId)
+                .flags(msg.flags)
+                .camDefinitionVersion(msg.camDefinitionVersion)
+                .camDefinitionUri(msg.camDefinitionUri);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

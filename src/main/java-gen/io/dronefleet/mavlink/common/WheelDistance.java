@@ -40,6 +40,13 @@ public final class WheelDistance {
         return new Builder();
     }
 
+    public static Builder builder(WheelDistance msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .count(msg.count)
+                .distance(msg.distance);
+    }
+
     /**
      * Timestamp (synced to UNIX time or since system boot). 
      */

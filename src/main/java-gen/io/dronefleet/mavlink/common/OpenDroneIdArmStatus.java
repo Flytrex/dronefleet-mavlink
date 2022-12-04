@@ -38,6 +38,12 @@ public final class OpenDroneIdArmStatus {
         return new Builder();
     }
 
+    public static Builder builder(OpenDroneIdArmStatus msg) {
+        return builder()
+                .status(msg.status)
+                .error(msg.error);
+    }
+
     /**
      * Status level indicating if arming is allowed. 
      */

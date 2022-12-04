@@ -52,6 +52,17 @@ public final class LocalPositionNedSystemGlobalOffset {
         return new Builder();
     }
 
+    public static Builder builder(LocalPositionNedSystemGlobalOffset msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

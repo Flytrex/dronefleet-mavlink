@@ -34,6 +34,12 @@ public final class SerialUdbExtraF16 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF16 msg) {
+        return builder()
+                .sueIdLeadPilot(msg.sueIdLeadPilot)
+                .sueIdDiyDronesUrl(msg.sueIdDiyDronesUrl);
+    }
+
     /**
      * Serial UDB Extra Name of Expected Lead Pilot 
      */

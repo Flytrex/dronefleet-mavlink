@@ -43,6 +43,14 @@ public final class GpsGlobalOrigin {
         return new Builder();
     }
 
+    public static Builder builder(GpsGlobalOrigin msg) {
+        return builder()
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitude(msg.altitude)
+                .timeUsec(msg.timeUsec);
+    }
+
     /**
      * Latitude (WGS84) 
      */

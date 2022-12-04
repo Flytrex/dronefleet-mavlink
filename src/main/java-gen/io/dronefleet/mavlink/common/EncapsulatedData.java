@@ -35,6 +35,12 @@ public final class EncapsulatedData {
         return new Builder();
     }
 
+    public static Builder builder(EncapsulatedData msg) {
+        return builder()
+                .seqnr(msg.seqnr)
+                .data(msg.data);
+    }
+
     /**
      * sequence number (starting with 0 on every transmission) 
      */

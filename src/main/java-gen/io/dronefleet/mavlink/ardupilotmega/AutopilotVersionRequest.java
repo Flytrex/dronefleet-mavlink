@@ -34,6 +34,12 @@ public final class AutopilotVersionRequest {
         return new Builder();
     }
 
+    public static Builder builder(AutopilotVersionRequest msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent);
+    }
+
     /**
      * System ID. 
      */

@@ -40,6 +40,14 @@ public final class LogData {
         return new Builder();
     }
 
+    public static Builder builder(LogData msg) {
+        return builder()
+                .id(msg.id)
+                .ofs(msg.ofs)
+                .count(msg.count)
+                .data(msg.data);
+    }
+
     /**
      * Log id (from {@link io.dronefleet.mavlink.common.LogEntry LOG_ENTRY} reply) 
      */

@@ -37,6 +37,13 @@ public final class Meminfo {
         return new Builder();
     }
 
+    public static Builder builder(Meminfo msg) {
+        return builder()
+                .brkval(msg.brkval)
+                .freemem(msg.freemem)
+                .freemem32(msg.freemem32);
+    }
+
     /**
      * Heap top. 
      */

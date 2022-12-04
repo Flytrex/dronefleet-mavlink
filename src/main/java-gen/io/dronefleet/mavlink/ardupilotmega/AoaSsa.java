@@ -38,6 +38,13 @@ public final class AoaSsa {
         return new Builder();
     }
 
+    public static Builder builder(AoaSsa msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .aoa(msg.aoa)
+                .ssa(msg.ssa);
+    }
+
     /**
      * Timestamp (since boot or Unix epoch). 
      */

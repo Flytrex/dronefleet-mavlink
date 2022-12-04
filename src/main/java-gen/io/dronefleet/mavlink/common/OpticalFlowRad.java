@@ -68,6 +68,22 @@ public final class OpticalFlowRad {
         return new Builder();
     }
 
+    public static Builder builder(OpticalFlowRad msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .sensorId(msg.sensorId)
+                .integrationTimeUs(msg.integrationTimeUs)
+                .integratedX(msg.integratedX)
+                .integratedY(msg.integratedY)
+                .integratedXgyro(msg.integratedXgyro)
+                .integratedYgyro(msg.integratedYgyro)
+                .integratedZgyro(msg.integratedZgyro)
+                .temperature(msg.temperature)
+                .quality(msg.quality)
+                .timeDeltaDistanceUs(msg.timeDeltaDistanceUs)
+                .distance(msg.distance);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

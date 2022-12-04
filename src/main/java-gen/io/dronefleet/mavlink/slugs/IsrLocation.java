@@ -50,6 +50,17 @@ public final class IsrLocation {
         return new Builder();
     }
 
+    public static Builder builder(IsrLocation msg) {
+        return builder()
+                .target(msg.target)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .height(msg.height)
+                .option1(msg.option1)
+                .option2(msg.option2)
+                .option3(msg.option3);
+    }
+
     /**
      * The system reporting the action 
      */

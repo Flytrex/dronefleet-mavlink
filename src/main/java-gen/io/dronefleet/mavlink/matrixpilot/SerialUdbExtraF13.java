@@ -40,6 +40,14 @@ public final class SerialUdbExtraF13 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF13 msg) {
+        return builder()
+                .sueWeekNo(msg.sueWeekNo)
+                .sueLatOrigin(msg.sueLatOrigin)
+                .sueLonOrigin(msg.sueLonOrigin)
+                .sueAltOrigin(msg.sueAltOrigin);
+    }
+
     /**
      * Serial UDB Extra GPS Week Number 
      */

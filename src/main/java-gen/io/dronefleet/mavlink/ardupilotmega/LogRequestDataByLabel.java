@@ -44,6 +44,15 @@ public final class LogRequestDataByLabel {
         return new Builder();
     }
 
+    public static Builder builder(LogRequestDataByLabel msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .label(msg.label)
+                .ofs(msg.ofs)
+                .count(msg.count);
+    }
+
     /**
      * System ID 
      */

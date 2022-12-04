@@ -102,6 +102,29 @@ public final class OpenDroneIdLocation {
         return new Builder();
     }
 
+    public static Builder builder(OpenDroneIdLocation msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idOrMac(msg.idOrMac)
+                .status(msg.status)
+                .direction(msg.direction)
+                .speedHorizontal(msg.speedHorizontal)
+                .speedVertical(msg.speedVertical)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitudeBarometric(msg.altitudeBarometric)
+                .altitudeGeodetic(msg.altitudeGeodetic)
+                .heightReference(msg.heightReference)
+                .height(msg.height)
+                .horizontalAccuracy(msg.horizontalAccuracy)
+                .verticalAccuracy(msg.verticalAccuracy)
+                .barometerAccuracy(msg.barometerAccuracy)
+                .speedAccuracy(msg.speedAccuracy)
+                .timestamp(msg.timestamp)
+                .timestampAccuracy(msg.timestampAccuracy);
+    }
+
     /**
      * System ID (0 for broadcast). 
      */

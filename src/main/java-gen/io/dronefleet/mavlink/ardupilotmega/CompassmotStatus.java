@@ -47,6 +47,16 @@ public final class CompassmotStatus {
         return new Builder();
     }
 
+    public static Builder builder(CompassmotStatus msg) {
+        return builder()
+                .throttle(msg.throttle)
+                .current(msg.current)
+                .interference(msg.interference)
+                .compensationx(msg.compensationx)
+                .compensationy(msg.compensationy)
+                .compensationz(msg.compensationz);
+    }
+
     /**
      * Throttle. 
      */

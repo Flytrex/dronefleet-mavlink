@@ -31,6 +31,11 @@ public final class ScriptCurrent {
         return new Builder();
     }
 
+    public static Builder builder(ScriptCurrent msg) {
+        return builder()
+                .seq(msg.seq);
+    }
+
     /**
      * Active Sequence 
      */

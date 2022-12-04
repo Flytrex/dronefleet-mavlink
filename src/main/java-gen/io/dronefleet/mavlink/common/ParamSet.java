@@ -53,6 +53,15 @@ public final class ParamSet {
         return new Builder();
     }
 
+    public static Builder builder(ParamSet msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .paramId(msg.paramId)
+                .paramValue(msg.paramValue)
+                .paramType(msg.paramType);
+    }
+
     /**
      * System ID 
      */

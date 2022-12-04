@@ -79,6 +79,26 @@ public final class HilSensor {
         return new Builder();
     }
 
+    public static Builder builder(HilSensor msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .xacc(msg.xacc)
+                .yacc(msg.yacc)
+                .zacc(msg.zacc)
+                .xgyro(msg.xgyro)
+                .ygyro(msg.ygyro)
+                .zgyro(msg.zgyro)
+                .xmag(msg.xmag)
+                .ymag(msg.ymag)
+                .zmag(msg.zmag)
+                .absPressure(msg.absPressure)
+                .diffPressure(msg.diffPressure)
+                .pressureAlt(msg.pressureAlt)
+                .temperature(msg.temperature)
+                .fieldsUpdated(msg.fieldsUpdated)
+                .id(msg.id);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

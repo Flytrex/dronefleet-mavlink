@@ -58,6 +58,17 @@ public final class AttitudeTarget {
         return new Builder();
     }
 
+    public static Builder builder(AttitudeTarget msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .typeMask(msg.typeMask)
+                .q(msg.q)
+                .bodyRollRate(msg.bodyRollRate)
+                .bodyPitchRate(msg.bodyPitchRate)
+                .bodyYawRate(msg.bodyYawRate)
+                .thrust(msg.thrust);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

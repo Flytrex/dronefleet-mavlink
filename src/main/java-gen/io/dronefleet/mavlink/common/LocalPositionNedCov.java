@@ -73,6 +73,22 @@ public final class LocalPositionNedCov {
         return new Builder();
     }
 
+    public static Builder builder(LocalPositionNedCov msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .estimatorType(msg.estimatorType)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .vx(msg.vx)
+                .vy(msg.vy)
+                .vz(msg.vz)
+                .ax(msg.ax)
+                .ay(msg.ay)
+                .az(msg.az)
+                .covariance(msg.covariance);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

@@ -34,6 +34,12 @@ public final class Rpm {
         return new Builder();
     }
 
+    public static Builder builder(Rpm msg) {
+        return builder()
+                .rpm1(msg.rpm1)
+                .rpm2(msg.rpm2);
+    }
+
     /**
      * {@link io.dronefleet.mavlink.ardupilotmega.Rpm RPM} Sensor1. 
      */

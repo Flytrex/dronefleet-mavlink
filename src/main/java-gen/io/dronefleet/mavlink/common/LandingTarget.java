@@ -79,6 +79,24 @@ public final class LandingTarget {
         return new Builder();
     }
 
+    public static Builder builder(LandingTarget msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .targetNum(msg.targetNum)
+                .frame(msg.frame)
+                .angleX(msg.angleX)
+                .angleY(msg.angleY)
+                .distance(msg.distance)
+                .sizeX(msg.sizeX)
+                .sizeY(msg.sizeY)
+                .x(msg.x)
+                .y(msg.y)
+                .z(msg.z)
+                .q(msg.q)
+                .type(msg.type)
+                .positionValid(msg.positionValid);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

@@ -54,6 +54,17 @@ public final class EkfStatusReport {
         return new Builder();
     }
 
+    public static Builder builder(EkfStatusReport msg) {
+        return builder()
+                .flags(msg.flags)
+                .velocityVariance(msg.velocityVariance)
+                .posHorizVariance(msg.posHorizVariance)
+                .posVertVariance(msg.posVertVariance)
+                .compassVariance(msg.compassVariance)
+                .terrainAltVariance(msg.terrainAltVariance)
+                .airspeedVariance(msg.airspeedVariance);
+    }
+
     /**
      * Flags. 
      */

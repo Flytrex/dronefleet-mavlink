@@ -68,6 +68,22 @@ public final class SensPowerBoard {
         return new Builder();
     }
 
+    public static Builder builder(SensPowerBoard msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .pwrBrdStatus(msg.pwrBrdStatus)
+                .pwrBrdLedStatus(msg.pwrBrdLedStatus)
+                .pwrBrdSystemVolt(msg.pwrBrdSystemVolt)
+                .pwrBrdServoVolt(msg.pwrBrdServoVolt)
+                .pwrBrdDigitalVolt(msg.pwrBrdDigitalVolt)
+                .pwrBrdMotLAmp(msg.pwrBrdMotLAmp)
+                .pwrBrdMotRAmp(msg.pwrBrdMotRAmp)
+                .pwrBrdAnalogAmp(msg.pwrBrdAnalogAmp)
+                .pwrBrdDigitalAmp(msg.pwrBrdDigitalAmp)
+                .pwrBrdExtAmp(msg.pwrBrdExtAmp)
+                .pwrBrdAuxAmp(msg.pwrBrdAuxAmp);
+    }
+
     /**
      * Timestamp 
      */

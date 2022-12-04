@@ -47,6 +47,16 @@ public final class FlexifunctionDirectory {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionDirectory msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .directoryType(msg.directoryType)
+                .startIndex(msg.startIndex)
+                .count(msg.count)
+                .directoryData(msg.directoryData);
+    }
+
     /**
      * System ID 
      */

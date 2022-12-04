@@ -112,6 +112,34 @@ public final class HighLatency {
         return new Builder();
     }
 
+    public static Builder builder(HighLatency msg) {
+        return builder()
+                .baseMode(msg.baseMode)
+                .customMode(msg.customMode)
+                .landedState(msg.landedState)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .heading(msg.heading)
+                .throttle(msg.throttle)
+                .headingSp(msg.headingSp)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitudeAmsl(msg.altitudeAmsl)
+                .altitudeSp(msg.altitudeSp)
+                .airspeed(msg.airspeed)
+                .airspeedSp(msg.airspeedSp)
+                .groundspeed(msg.groundspeed)
+                .climbRate(msg.climbRate)
+                .gpsNsat(msg.gpsNsat)
+                .gpsFixType(msg.gpsFixType)
+                .batteryRemaining(msg.batteryRemaining)
+                .temperature(msg.temperature)
+                .temperatureAir(msg.temperatureAir)
+                .failsafe(msg.failsafe)
+                .wpNum(msg.wpNum)
+                .wpDistance(msg.wpDistance);
+    }
+
     /**
      * Bitmap of enabled system modes. 
      */

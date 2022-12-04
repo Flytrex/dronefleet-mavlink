@@ -119,6 +119,37 @@ public final class HighLatency2 {
         return new Builder();
     }
 
+    public static Builder builder(HighLatency2 msg) {
+        return builder()
+                .timestamp(msg.timestamp)
+                .type(msg.type)
+                .autopilot(msg.autopilot)
+                .customMode(msg.customMode)
+                .latitude(msg.latitude)
+                .longitude(msg.longitude)
+                .altitude(msg.altitude)
+                .targetAltitude(msg.targetAltitude)
+                .heading(msg.heading)
+                .targetHeading(msg.targetHeading)
+                .targetDistance(msg.targetDistance)
+                .throttle(msg.throttle)
+                .airspeed(msg.airspeed)
+                .airspeedSp(msg.airspeedSp)
+                .groundspeed(msg.groundspeed)
+                .windspeed(msg.windspeed)
+                .windHeading(msg.windHeading)
+                .eph(msg.eph)
+                .epv(msg.epv)
+                .temperatureAir(msg.temperatureAir)
+                .climbRate(msg.climbRate)
+                .battery(msg.battery)
+                .wpNum(msg.wpNum)
+                .failureFlags(msg.failureFlags)
+                .custom0(msg.custom0)
+                .custom1(msg.custom1)
+                .custom2(msg.custom2);
+    }
+
     /**
      * Timestamp (milliseconds since boot or Unix epoch) 
      */

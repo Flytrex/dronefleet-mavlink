@@ -37,6 +37,12 @@ public final class GoproSetResponse {
         return new Builder();
     }
 
+    public static Builder builder(GoproSetResponse msg) {
+        return builder()
+                .cmdId(msg.cmdId)
+                .status(msg.status);
+    }
+
     /**
      * Command ID. 
      */

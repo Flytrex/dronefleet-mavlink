@@ -44,6 +44,15 @@ public final class MountOrientation {
         return new Builder();
     }
 
+    public static Builder builder(MountOrientation msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .yawAbsolute(msg.yawAbsolute);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

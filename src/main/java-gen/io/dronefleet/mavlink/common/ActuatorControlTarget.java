@@ -40,6 +40,13 @@ public final class ActuatorControlTarget {
         return new Builder();
     }
 
+    public static Builder builder(ActuatorControlTarget msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .groupMlx(msg.groupMlx)
+                .controls(msg.controls);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

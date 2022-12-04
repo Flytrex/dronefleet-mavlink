@@ -44,6 +44,15 @@ public final class OsdParamShowConfig {
         return new Builder();
     }
 
+    public static Builder builder(OsdParamShowConfig msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .requestId(msg.requestId)
+                .osdScreen(msg.osdScreen)
+                .osdIndex(msg.osdIndex);
+    }
+
     /**
      * System ID. 
      */

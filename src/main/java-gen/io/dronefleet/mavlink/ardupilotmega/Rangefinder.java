@@ -34,6 +34,12 @@ public final class Rangefinder {
         return new Builder();
     }
 
+    public static Builder builder(Rangefinder msg) {
+        return builder()
+                .distance(msg.distance)
+                .voltage(msg.voltage);
+    }
+
     /**
      * Distance. 
      */

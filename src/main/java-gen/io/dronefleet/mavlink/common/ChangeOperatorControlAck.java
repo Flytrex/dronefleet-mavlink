@@ -37,6 +37,13 @@ public final class ChangeOperatorControlAck {
         return new Builder();
     }
 
+    public static Builder builder(ChangeOperatorControlAck msg) {
+        return builder()
+                .gcsSystemId(msg.gcsSystemId)
+                .controlRequest(msg.controlRequest)
+                .ack(msg.ack);
+    }
+
     /**
      * ID of the GCS this message 
      */

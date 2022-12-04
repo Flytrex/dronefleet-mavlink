@@ -63,6 +63,20 @@ public final class DeviceOpRead {
         return new Builder();
     }
 
+    public static Builder builder(DeviceOpRead msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .requestId(msg.requestId)
+                .bustype(msg.bustype)
+                .bus(msg.bus)
+                .address(msg.address)
+                .busname(msg.busname)
+                .regstart(msg.regstart)
+                .count(msg.count)
+                .bank(msg.bank);
+    }
+
     /**
      * System ID. 
      */

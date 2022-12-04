@@ -38,6 +38,13 @@ public final class NamedValueFloat {
         return new Builder();
     }
 
+    public static Builder builder(NamedValueFloat msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .name(msg.name)
+                .value(msg.value);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

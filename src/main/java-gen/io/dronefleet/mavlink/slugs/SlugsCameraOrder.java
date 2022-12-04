@@ -43,6 +43,15 @@ public final class SlugsCameraOrder {
         return new Builder();
     }
 
+    public static Builder builder(SlugsCameraOrder msg) {
+        return builder()
+                .target(msg.target)
+                .pan(msg.pan)
+                .tilt(msg.tilt)
+                .zoom(msg.zoom)
+                .movehome(msg.movehome);
+    }
+
     /**
      * The system reporting the action 
      */

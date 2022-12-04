@@ -73,6 +73,23 @@ public final class AdsbVehicle {
         return new Builder();
     }
 
+    public static Builder builder(AdsbVehicle msg) {
+        return builder()
+                .icaoAddress(msg.icaoAddress)
+                .lat(msg.lat)
+                .lon(msg.lon)
+                .altitudeType(msg.altitudeType)
+                .altitude(msg.altitude)
+                .heading(msg.heading)
+                .horVelocity(msg.horVelocity)
+                .verVelocity(msg.verVelocity)
+                .callsign(msg.callsign)
+                .emitterType(msg.emitterType)
+                .tslc(msg.tslc)
+                .flags(msg.flags)
+                .squawk(msg.squawk);
+    }
+
     /**
      * ICAO address 
      */

@@ -47,6 +47,16 @@ public final class MountControl {
         return new Builder();
     }
 
+    public static Builder builder(MountControl msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .inputA(msg.inputA)
+                .inputB(msg.inputB)
+                .inputC(msg.inputC)
+                .savePosition(msg.savePosition);
+    }
+
     /**
      * System ID. 
      */

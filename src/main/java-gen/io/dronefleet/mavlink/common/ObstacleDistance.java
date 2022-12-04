@@ -62,6 +62,19 @@ public final class ObstacleDistance {
         return new Builder();
     }
 
+    public static Builder builder(ObstacleDistance msg) {
+        return builder()
+                .timeUsec(msg.timeUsec)
+                .sensorType(msg.sensorType)
+                .distances(msg.distances)
+                .increment(msg.increment)
+                .minDistance(msg.minDistance)
+                .maxDistance(msg.maxDistance)
+                .incrementF(msg.incrementF)
+                .angleOffset(msg.angleOffset)
+                .frame(msg.frame);
+    }
+
     /**
      * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 

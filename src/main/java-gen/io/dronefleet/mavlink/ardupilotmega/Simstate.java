@@ -62,6 +62,21 @@ public final class Simstate {
         return new Builder();
     }
 
+    public static Builder builder(Simstate msg) {
+        return builder()
+                .roll(msg.roll)
+                .pitch(msg.pitch)
+                .yaw(msg.yaw)
+                .xacc(msg.xacc)
+                .yacc(msg.yacc)
+                .zacc(msg.zacc)
+                .xgyro(msg.xgyro)
+                .ygyro(msg.ygyro)
+                .zgyro(msg.zgyro)
+                .lat(msg.lat)
+                .lng(msg.lng);
+    }
+
     /**
      * Roll angle. 
      */

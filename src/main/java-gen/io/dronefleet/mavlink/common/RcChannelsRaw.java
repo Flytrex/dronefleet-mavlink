@@ -64,6 +64,21 @@ public final class RcChannelsRaw {
         return new Builder();
     }
 
+    public static Builder builder(RcChannelsRaw msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .port(msg.port)
+                .chan1Raw(msg.chan1Raw)
+                .chan2Raw(msg.chan2Raw)
+                .chan3Raw(msg.chan3Raw)
+                .chan4Raw(msg.chan4Raw)
+                .chan5Raw(msg.chan5Raw)
+                .chan6Raw(msg.chan6Raw)
+                .chan7Raw(msg.chan7Raw)
+                .chan8Raw(msg.chan8Raw)
+                .rssi(msg.rssi);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

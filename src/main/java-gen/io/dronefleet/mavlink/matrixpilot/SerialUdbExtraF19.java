@@ -54,6 +54,18 @@ public final class SerialUdbExtraF19 {
         return new Builder();
     }
 
+    public static Builder builder(SerialUdbExtraF19 msg) {
+        return builder()
+                .sueAileronOutputChannel(msg.sueAileronOutputChannel)
+                .sueAileronReversed(msg.sueAileronReversed)
+                .sueElevatorOutputChannel(msg.sueElevatorOutputChannel)
+                .sueElevatorReversed(msg.sueElevatorReversed)
+                .sueThrottleOutputChannel(msg.sueThrottleOutputChannel)
+                .sueThrottleReversed(msg.sueThrottleReversed)
+                .sueRudderOutputChannel(msg.sueRudderOutputChannel)
+                .sueRudderReversed(msg.sueRudderReversed);
+    }
+
     /**
      * SUE aileron output channel 
      */

@@ -47,6 +47,16 @@ public final class LoggingDataAcked {
         return new Builder();
     }
 
+    public static Builder builder(LoggingDataAcked msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .sequence(msg.sequence)
+                .length(msg.length)
+                .firstMessageOffset(msg.firstMessageOffset)
+                .data(msg.data);
+    }
+
     /**
      * system ID of the target 
      */

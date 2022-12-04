@@ -65,6 +65,22 @@ public final class GpsDateTime {
         return new Builder();
     }
 
+    public static Builder builder(GpsDateTime msg) {
+        return builder()
+                .year(msg.year)
+                .month(msg.month)
+                .day(msg.day)
+                .hour(msg.hour)
+                .min(msg.min)
+                .sec(msg.sec)
+                .clockstat(msg.clockstat)
+                .vissat(msg.vissat)
+                .usesat(msg.usesat)
+                .gppgl(msg.gppgl)
+                .sigusedmask(msg.sigusedmask)
+                .percentused(msg.percentused);
+    }
+
     /**
      * Year reported by Gps 
      */

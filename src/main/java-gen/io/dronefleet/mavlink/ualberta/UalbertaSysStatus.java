@@ -37,6 +37,13 @@ public final class UalbertaSysStatus {
         return new Builder();
     }
 
+    public static Builder builder(UalbertaSysStatus msg) {
+        return builder()
+                .mode(msg.mode)
+                .navMode(msg.navMode)
+                .pilot(msg.pilot);
+    }
+
     /**
      * System mode, see {@link io.dronefleet.mavlink.ualberta.UalbertaAutopilotMode UALBERTA_AUTOPILOT_MODE} ENUM 
      */

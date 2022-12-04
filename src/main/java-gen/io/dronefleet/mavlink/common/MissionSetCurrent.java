@@ -39,6 +39,13 @@ public final class MissionSetCurrent {
         return new Builder();
     }
 
+    public static Builder builder(MissionSetCurrent msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .seq(msg.seq);
+    }
+
     /**
      * System ID 
      */

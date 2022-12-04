@@ -72,6 +72,19 @@ public final class OpenDroneIdAuthentication {
         return new Builder();
     }
 
+    public static Builder builder(OpenDroneIdAuthentication msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .idOrMac(msg.idOrMac)
+                .authenticationType(msg.authenticationType)
+                .dataPage(msg.dataPage)
+                .lastPageIndex(msg.lastPageIndex)
+                .length(msg.length)
+                .timestamp(msg.timestamp)
+                .authenticationData(msg.authenticationData);
+    }
+
     /**
      * System ID (0 for broadcast). 
      */

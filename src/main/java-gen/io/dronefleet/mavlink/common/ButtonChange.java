@@ -37,6 +37,13 @@ public final class ButtonChange {
         return new Builder();
     }
 
+    public static Builder builder(ButtonChange msg) {
+        return builder()
+                .timeBootMs(msg.timeBootMs)
+                .lastChangeMs(msg.lastChangeMs)
+                .state(msg.state);
+    }
+
     /**
      * Timestamp (time since system boot). 
      */

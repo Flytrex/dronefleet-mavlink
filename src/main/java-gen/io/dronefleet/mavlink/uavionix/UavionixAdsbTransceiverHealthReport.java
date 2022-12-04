@@ -34,6 +34,11 @@ public final class UavionixAdsbTransceiverHealthReport {
         return new Builder();
     }
 
+    public static Builder builder(UavionixAdsbTransceiverHealthReport msg) {
+        return builder()
+                .rfhealth(msg.rfhealth);
+    }
+
     /**
      * ADS-B transponder messages 
      */

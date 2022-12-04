@@ -47,6 +47,16 @@ public final class RadioCalibration {
         return new Builder();
     }
 
+    public static Builder builder(RadioCalibration msg) {
+        return builder()
+                .aileron(msg.aileron)
+                .elevator(msg.elevator)
+                .rudder(msg.rudder)
+                .gyro(msg.gyro)
+                .pitch(msg.pitch)
+                .throttle(msg.throttle);
+    }
+
     /**
      * Aileron setpoints: left, center, right 
      */

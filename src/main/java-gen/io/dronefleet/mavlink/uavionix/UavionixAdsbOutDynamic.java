@@ -83,6 +83,26 @@ public final class UavionixAdsbOutDynamic {
         return new Builder();
     }
 
+    public static Builder builder(UavionixAdsbOutDynamic msg) {
+        return builder()
+                .utctime(msg.utctime)
+                .gpslat(msg.gpslat)
+                .gpslon(msg.gpslon)
+                .gpsalt(msg.gpsalt)
+                .gpsfix(msg.gpsfix)
+                .numsats(msg.numsats)
+                .baroaltmsl(msg.baroaltmsl)
+                .accuracyhor(msg.accuracyhor)
+                .accuracyvert(msg.accuracyvert)
+                .accuracyvel(msg.accuracyvel)
+                .velvert(msg.velvert)
+                .velns(msg.velns)
+                .velew(msg.velew)
+                .emergencystatus(msg.emergencystatus)
+                .state(msg.state)
+                .squawk(msg.squawk);
+    }
+
     /**
      * UTC time in seconds since GPS epoch (Jan 6, 1980). If unknown set to UINT32_MAX 
      */

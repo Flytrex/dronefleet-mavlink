@@ -49,6 +49,15 @@ public final class MissionRequestInt {
         return new Builder();
     }
 
+    public static Builder builder(MissionRequestInt msg) {
+        return builder()
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
+                .seq(msg.seq)
+                .missionType(msg.missionType)
+                .tid(msg.tid);
+    }
+
     /**
      * System ID 
      */

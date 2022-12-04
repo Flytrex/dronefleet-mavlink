@@ -34,6 +34,12 @@ public final class FlexifunctionCommandAck {
         return new Builder();
     }
 
+    public static Builder builder(FlexifunctionCommandAck msg) {
+        return builder()
+                .commandType(msg.commandType)
+                .result(msg.result);
+    }
+
     /**
      * Command acknowledged 
      */

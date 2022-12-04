@@ -37,6 +37,12 @@ public final class CtrlSrfcPt {
         return new Builder();
     }
 
+    public static Builder builder(CtrlSrfcPt msg) {
+        return builder()
+                .target(msg.target)
+                .bitfieldpt(msg.bitfieldpt);
+    }
+
     /**
      * The system setting the commands 
      */
