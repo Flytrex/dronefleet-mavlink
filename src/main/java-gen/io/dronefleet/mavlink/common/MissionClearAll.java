@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -19,7 +20,7 @@ import java.util.Objects;
         crc = 232,
         description = "Delete all mission items at once."
 )
-public final class MissionClearAll {
+public final class MissionClearAll implements HasTransmissionId<MissionClearAll> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -131,6 +132,11 @@ public final class MissionClearAll {
                  + ", targetComponent=" + targetComponent
                  + ", missionType=" + missionType
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public MissionClearAll withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

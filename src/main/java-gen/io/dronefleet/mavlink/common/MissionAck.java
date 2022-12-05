@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -20,7 +21,7 @@ import java.util.Objects;
         crc = 153,
         description = "Acknowledgment message during waypoint handling. The type field states if this message is a positive ack (type=0) or if an error happened (type=non-zero)."
 )
-public final class MissionAck {
+public final class MissionAck implements HasTransmissionId<MissionAck> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -152,6 +153,11 @@ public final class MissionAck {
                  + ", type=" + type
                  + ", missionType=" + missionType
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public MissionAck withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

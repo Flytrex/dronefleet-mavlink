@@ -18,6 +18,10 @@ public class MessageGenerator {
             "io.dronefleet.mavlink.annotations",
             "MavlinkMessageBuilder");
 
+    private static final ClassName HAS_TRANSMISSION_ID = ClassName.get(
+            "io.dronefleet.mavlink",
+            "HasTransmissionId");
+
     private final PackageGenerator parentPackage;
     private final int id;
     private final String name;
@@ -103,7 +107,7 @@ public class MessageGenerator {
         }
 
         if (workInProgress) {
-            annotation.addMember("workInProgress", "$L", workInProgress);
+            annotation.addMember("workInProgress", "$L", true);
         }
 
         return annotation.build();
@@ -190,7 +194,7 @@ public class MessageGenerator {
     }
 
     public TypeSpec generate() {
-        return TypeSpec.classBuilder(className)
+        TypeSpec.Builder builder = TypeSpec.classBuilder(className)
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addJavadoc(javadoc())
                 .addAnnotations(annotations())
@@ -231,7 +235,23 @@ public class MessageGenerator {
                         .build())
                 .addMethod(generateEquals())
                 .addMethod(generateHashCode())
-                .addMethod(generateToString())
-                .build();
+                .addMethod(generateToString());
+
+        boolean hasTransmissionId = fields.stream()
+                .anyMatch(field -> "tid".equals(field.getName()) && "uint8_t".equals(field.getType()));
+        if (hasTransmissionId){
+            builder.addSuperinterface(ParameterizedTypeName.get(HAS_TRANSMISSION_ID, className));
+            builder.addMethod(MethodSpec
+                    .methodBuilder("withTransmissionId")
+                    .returns(className)
+                    .addModifiers(Modifier.PUBLIC)
+                    .addAnnotation(Override.class)
+                    .addParameter(ParameterSpec.builder(TypeName.INT, "tid").build())
+                    .addStatement("return builder(this).tid(tid).build()")
+                    .build()
+            );
+        }
+
+        return builder.build();
     }
 }

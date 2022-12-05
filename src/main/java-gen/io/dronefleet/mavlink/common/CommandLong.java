@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -20,7 +21,7 @@ import java.util.Objects;
         crc = 152,
         description = "Send a command with up to seven parameters to the MAV. The command microservice is documented at https://mavlink.io/en/services/command.html"
 )
-public final class CommandLong {
+public final class CommandLong implements HasTransmissionId<CommandLong> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -285,6 +286,11 @@ public final class CommandLong {
                  + ", param6=" + param6
                  + ", param7=" + param7
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public CommandLong withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -16,7 +17,7 @@ import java.util.Objects;
         crc = 106,
         description = "Setpoint in roll, pitch, yaw and thrust from the operator"
 )
-public final class ManualSetpoint {
+public final class ManualSetpoint implements HasTransmissionId<ManualSetpoint> {
     private final long timeBootMs;
 
     private final float roll;
@@ -202,6 +203,11 @@ public final class ManualSetpoint {
                  + ", modeSwitch=" + modeSwitch
                  + ", manualOverrideSwitch=" + manualOverrideSwitch
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public ManualSetpoint withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -21,7 +22,7 @@ import java.util.Objects;
         crc = 158,
         description = "Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. The command microservice is documented at https://mavlink.io/en/services/command.html"
 )
-public final class CommandInt {
+public final class CommandInt implements HasTransmissionId<CommandInt> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -326,6 +327,11 @@ public final class CommandInt {
                  + ", y=" + y
                  + ", z=" + z
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public CommandInt withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {
