@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -21,7 +22,7 @@ import java.util.Objects;
         crc = 221,
         description = "This message is emitted as response to MISSION_REQUEST_LIST by the MAV and to initiate a write transaction. The GCS can then request the individual mission item based on the knowledge of the total number of waypoints."
 )
-public final class MissionCount {
+public final class MissionCount implements HasTransmissionId<MissionCount> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -152,6 +153,11 @@ public final class MissionCount {
                  + ", count=" + count
                  + ", missionType=" + missionType
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public MissionCount withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

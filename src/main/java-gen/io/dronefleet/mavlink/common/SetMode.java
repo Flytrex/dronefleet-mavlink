@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -24,7 +25,7 @@ import java.util.Objects;
         description = "Set the system mode, as defined by enum MAV_MODE. There is no target component id as the mode is by definition for the overall aircraft, not only for one component."
 )
 @Deprecated
-public final class SetMode {
+public final class SetMode implements HasTransmissionId<SetMode> {
     private final int targetSystem;
 
     private final EnumValue<MavMode> baseMode;
@@ -134,6 +135,11 @@ public final class SetMode {
                  + ", baseMode=" + baseMode
                  + ", customMode=" + customMode
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public SetMode withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

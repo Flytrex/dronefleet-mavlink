@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -21,7 +22,7 @@ import java.util.Objects;
         crc = 196,
         description = "Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. https://mavlink.io/en/services/mission.html"
 )
-public final class MissionRequestInt {
+public final class MissionRequestInt implements HasTransmissionId<MissionRequestInt> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -152,6 +153,11 @@ public final class MissionRequestInt {
                  + ", seq=" + seq
                  + ", missionType=" + missionType
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public MissionRequestInt withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

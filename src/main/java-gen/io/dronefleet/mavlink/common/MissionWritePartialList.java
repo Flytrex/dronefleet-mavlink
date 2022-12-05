@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -21,7 +22,7 @@ import java.util.Objects;
         crc = 9,
         description = "This message is sent to the MAV to write a partial list. If start index == end index, only one item will be transmitted / updated. If the start index is NOT 0 and above the current list size, this request should be REJECTED!"
 )
-public final class MissionWritePartialList {
+public final class MissionWritePartialList implements HasTransmissionId<MissionWritePartialList> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -173,6 +174,11 @@ public final class MissionWritePartialList {
                  + ", endIndex=" + endIndex
                  + ", missionType=" + missionType
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public MissionWritePartialList withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

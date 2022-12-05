@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -19,7 +20,7 @@ import java.util.Objects;
         crc = 132,
         description = "Request the overall list of mission items from the system/component."
 )
-public final class MissionRequestList {
+public final class MissionRequestList implements HasTransmissionId<MissionRequestList> {
     private final int targetSystem;
 
     private final int targetComponent;
@@ -131,6 +132,11 @@ public final class MissionRequestList {
                  + ", targetComponent=" + targetComponent
                  + ", missionType=" + missionType
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public MissionRequestList withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {

@@ -1,5 +1,6 @@
 package io.dronefleet.mavlink.common;
 
+import io.dronefleet.mavlink.HasTransmissionId;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
@@ -20,7 +21,7 @@ import java.util.Objects;
         crc = 143,
         description = "Report status of a command. Includes feedback whether the command was executed. The command microservice is documented at https://mavlink.io/en/services/command.html"
 )
-public final class CommandAck {
+public final class CommandAck implements HasTransmissionId<CommandAck> {
     private final EnumValue<MavCmd> command;
 
     private final EnumValue<MavResult> result;
@@ -112,6 +113,11 @@ public final class CommandAck {
         return "CommandAck{command=" + command
                  + ", result=" + result
                  + ", tid=" + tid + "}";
+    }
+
+    @Override
+    public CommandAck withTransmissionId(int tid) {
+        return builder(this).tid(tid).build();
     }
 
     public static final class Builder {
