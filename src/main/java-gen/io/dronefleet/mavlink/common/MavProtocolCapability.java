@@ -45,7 +45,8 @@ public enum MavProtocolCapability {
     MAV_PROTOCOL_CAPABILITY_PARAM_UNION,
 
     /**
-     * Autopilot supports the new {@link io.dronefleet.mavlink.common.FileTransferProtocol FILE_TRANSFER_PROTOCOL} message type. 
+     * Autopilot supports the File Transfer Protocol v1: 
+     * https://mavlink.io/en/services/ftp.html. 
      */
     @MavlinkEntryInfo(32)
     MAV_PROTOCOL_CAPABILITY_FTP,
@@ -81,7 +82,7 @@ public enum MavProtocolCapability {
     MAV_PROTOCOL_CAPABILITY_SET_ACTUATOR_TARGET,
 
     /**
-     * Autopilot supports the flight termination command. 
+     * Autopilot supports the MAV_CMD_DO_FLIGHTTERMINATION command (flight termination). 
      */
     @MavlinkEntryInfo(2048)
     MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION,

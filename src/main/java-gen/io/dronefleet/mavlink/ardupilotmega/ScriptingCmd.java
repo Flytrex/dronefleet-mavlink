@@ -18,5 +18,17 @@ public enum ScriptingCmd {
      * End a REPL session. 
      */
     @MavlinkEntryInfo(1)
-    SCRIPTING_CMD_REPL_STOP
+    SCRIPTING_CMD_REPL_STOP,
+
+    /**
+     * Stop execution of scripts. 
+     */
+    @MavlinkEntryInfo(2)
+    SCRIPTING_CMD_STOP,
+
+    /**
+     * Stop execution of scripts and restart. 
+     */
+    @MavlinkEntryInfo(3)
+    SCRIPTING_CMD_STOP_AND_RESTART
 }

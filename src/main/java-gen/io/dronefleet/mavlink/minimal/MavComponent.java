@@ -724,6 +724,12 @@ public enum MavComponent {
     MAV_COMP_ID_FLARM,
 
     /**
+     * Parachute component. 
+     */
+    @MavlinkEntryInfo(161)
+    MAV_COMP_ID_PARACHUTE,
+
+    /**
      * Gimbal #2. 
      */
     @MavlinkEntryInfo(171)
@@ -754,6 +760,24 @@ public enum MavComponent {
     MAV_COMP_ID_GIMBAL6,
 
     /**
+     * Battery #1. 
+     */
+    @MavlinkEntryInfo(180)
+    MAV_COMP_ID_BATTERY,
+
+    /**
+     * Battery #2. 
+     */
+    @MavlinkEntryInfo(181)
+    MAV_COMP_ID_BATTERY2,
+
+    /**
+     * CAN over MAVLink client. 
+     */
+    @MavlinkEntryInfo(189)
+    MAV_COMP_ID_MAVCAN,
+
+    /**
      * Component that can generate/supply a mission flight plan (e.g. GCS or developer API). 
      */
     @MavlinkEntryInfo(190)
@@ -766,6 +790,30 @@ public enum MavComponent {
      */
     @MavlinkEntryInfo(191)
     MAV_COMP_ID_ONBOARD_COMPUTER,
+
+    /**
+     * Component that lives on the onboard computer (companion computer) and has some generic 
+     * functionalities, such as settings system parameters and monitoring the status of some 
+     * processes that don't directly speak mavlink and so on. 
+     */
+    @MavlinkEntryInfo(192)
+    MAV_COMP_ID_ONBOARD_COMPUTER2,
+
+    /**
+     * Component that lives on the onboard computer (companion computer) and has some generic 
+     * functionalities, such as settings system parameters and monitoring the status of some 
+     * processes that don't directly speak mavlink and so on. 
+     */
+    @MavlinkEntryInfo(193)
+    MAV_COMP_ID_ONBOARD_COMPUTER3,
+
+    /**
+     * Component that lives on the onboard computer (companion computer) and has some generic 
+     * functionalities, such as settings system parameters and monitoring the status of some 
+     * processes that don't directly speak mavlink and so on. 
+     */
+    @MavlinkEntryInfo(194)
+    MAV_COMP_ID_ONBOARD_COMPUTER4,
 
     /**
      * Component that finds an optimal path between points based on a certain constraint (e.g. 

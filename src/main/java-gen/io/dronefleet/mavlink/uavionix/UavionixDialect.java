@@ -24,6 +24,11 @@ public final class UavionixDialect extends AbstractMavlinkDialect {
             .put(10001, UavionixAdsbOutCfg.class)
             .put(10002, UavionixAdsbOutDynamic.class)
             .put(10003, UavionixAdsbTransceiverHealthReport.class)
+            .put(10004, UavionixAdsbOutCfgRegistration.class)
+            .put(10005, UavionixAdsbOutCfgFlightid.class)
+            .put(10006, UavionixAdsbGet.class)
+            .put(10007, UavionixAdsbOutControl.class)
+            .put(10008, UavionixAdsbOutStatus.class)
             .build();
 
     public UavionixDialect() {

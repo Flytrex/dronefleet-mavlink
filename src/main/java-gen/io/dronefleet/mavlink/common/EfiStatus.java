@@ -51,11 +51,14 @@ public final class EfiStatus {
 
     private final float ptCompensation;
 
+    private final float ignitionVoltage;
+
     private EfiStatus(int health, float ecuIndex, float rpm, float fuelConsumed, float fuelFlow,
             float engineLoad, float throttlePosition, float sparkDwellTime,
             float barometricPressure, float intakeManifoldPressure, float intakeManifoldTemperature,
             float cylinderHeadTemperature, float ignitionTiming, float injectionTime,
-            float exhaustGasTemperature, float throttleOut, float ptCompensation) {
+            float exhaustGasTemperature, float throttleOut, float ptCompensation,
+            float ignitionVoltage) {
         this.health = health;
         this.ecuIndex = ecuIndex;
         this.rpm = rpm;
@@ -73,6 +76,7 @@ public final class EfiStatus {
         this.exhaustGasTemperature = exhaustGasTemperature;
         this.throttleOut = throttleOut;
         this.ptCompensation = ptCompensation;
+        this.ignitionVoltage = ignitionVoltage;
     }
 
     /**
@@ -101,7 +105,8 @@ public final class EfiStatus {
                 .injectionTime(msg.injectionTime)
                 .exhaustGasTemperature(msg.exhaustGasTemperature)
                 .throttleOut(msg.throttleOut)
-                .ptCompensation(msg.ptCompensation);
+                .ptCompensation(msg.ptCompensation)
+                .ignitionVoltage(msg.ignitionVoltage);
     }
 
     /**
@@ -308,6 +313,20 @@ public final class EfiStatus {
         return this.ptCompensation;
     }
 
+    /**
+     * Supply voltage to EFI sparking system. Zero in this value means "unknown", so if the supply 
+     * voltage really is zero volts use 0.0001 instead. 
+     */
+    @MavlinkFieldInfo(
+            position = 19,
+            unitSize = 4,
+            extension = true,
+            description = "Supply voltage to EFI sparking system.  Zero in this value means \"unknown\", so if the supply voltage really is zero volts use 0.0001 instead."
+    )
+    public final float ignitionVoltage() {
+        return this.ignitionVoltage;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -330,6 +349,7 @@ public final class EfiStatus {
         if (!Objects.deepEquals(exhaustGasTemperature, other.exhaustGasTemperature)) return false;
         if (!Objects.deepEquals(throttleOut, other.throttleOut)) return false;
         if (!Objects.deepEquals(ptCompensation, other.ptCompensation)) return false;
+        if (!Objects.deepEquals(ignitionVoltage, other.ignitionVoltage)) return false;
         return true;
     }
 
@@ -353,6 +373,7 @@ public final class EfiStatus {
         result = 31 * result + Objects.hashCode(exhaustGasTemperature);
         result = 31 * result + Objects.hashCode(throttleOut);
         result = 31 * result + Objects.hashCode(ptCompensation);
+        result = 31 * result + Objects.hashCode(ignitionVoltage);
         return result;
     }
 
@@ -374,7 +395,8 @@ public final class EfiStatus {
                  + ", injectionTime=" + injectionTime
                  + ", exhaustGasTemperature=" + exhaustGasTemperature
                  + ", throttleOut=" + throttleOut
-                 + ", ptCompensation=" + ptCompensation + "}";
+                 + ", ptCompensation=" + ptCompensation
+                 + ", ignitionVoltage=" + ignitionVoltage + "}";
     }
 
     public static final class Builder {
@@ -411,6 +433,8 @@ public final class EfiStatus {
         private float throttleOut;
 
         private float ptCompensation;
+
+        private float ignitionVoltage;
 
         /**
          * EFI health status 
@@ -633,8 +657,23 @@ public final class EfiStatus {
             return this;
         }
 
+        /**
+         * Supply voltage to EFI sparking system. Zero in this value means "unknown", so if the supply 
+         * voltage really is zero volts use 0.0001 instead. 
+         */
+        @MavlinkFieldInfo(
+                position = 19,
+                unitSize = 4,
+                extension = true,
+                description = "Supply voltage to EFI sparking system.  Zero in this value means \"unknown\", so if the supply voltage really is zero volts use 0.0001 instead."
+        )
+        public final Builder ignitionVoltage(float ignitionVoltage) {
+            this.ignitionVoltage = ignitionVoltage;
+            return this;
+        }
+
         public final EfiStatus build() {
-            return new EfiStatus(health, ecuIndex, rpm, fuelConsumed, fuelFlow, engineLoad, throttlePosition, sparkDwellTime, barometricPressure, intakeManifoldPressure, intakeManifoldTemperature, cylinderHeadTemperature, ignitionTiming, injectionTime, exhaustGasTemperature, throttleOut, ptCompensation);
+            return new EfiStatus(health, ecuIndex, rpm, fuelConsumed, fuelFlow, engineLoad, throttlePosition, sparkDwellTime, barometricPressure, intakeManifoldPressure, intakeManifoldTemperature, cylinderHeadTemperature, ignitionTiming, injectionTime, exhaustGasTemperature, throttleOut, ptCompensation, ignitionVoltage);
         }
     }
 }

@@ -4,7 +4,6 @@ import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
 import io.dronefleet.mavlink.util.EnumValue;
-import java.lang.Deprecated;
 import java.lang.Enum;
 import java.lang.Object;
 import java.lang.Override;
@@ -15,18 +14,12 @@ import java.util.Objects;
 
 /**
  * Winch status. 
- * @deprecated This message is a work in progress. It may be modified in a non backward-compatible 
- * way in a future release without any warning. This version of the message may not even work with 
- * autopilots that support this message due to discrepancies between dialect versions. Unless 
- * you completely understand the risks of doing so, don't use it. 
  */
 @MavlinkMessageInfo(
         id = 9005,
         crc = 117,
-        description = "Winch status.",
-        workInProgress = true
+        description = "Winch status."
 )
-@Deprecated
 public final class WinchStatus {
     private final BigInteger timeUsec;
 
@@ -80,7 +73,7 @@ public final class WinchStatus {
      * Timestamp (synced to UNIX time or since system boot). 
      */
     @MavlinkFieldInfo(
-            position = 2,
+            position = 1,
             unitSize = 8,
             description = "Timestamp (synced to UNIX time or since system boot)."
     )
@@ -92,7 +85,7 @@ public final class WinchStatus {
      * Length of line released. NaN if unknown 
      */
     @MavlinkFieldInfo(
-            position = 3,
+            position = 2,
             unitSize = 4,
             description = "Length of line released. NaN if unknown"
     )
@@ -105,7 +98,7 @@ public final class WinchStatus {
      * if being retracted, NaN if unknown 
      */
     @MavlinkFieldInfo(
-            position = 4,
+            position = 3,
             unitSize = 4,
             description = "Speed line is being released or retracted. Positive values if being released, negative values if being retracted, NaN if unknown"
     )
@@ -117,7 +110,7 @@ public final class WinchStatus {
      * Tension on the line. NaN if unknown 
      */
     @MavlinkFieldInfo(
-            position = 5,
+            position = 4,
             unitSize = 4,
             description = "Tension on the line. NaN if unknown"
     )
@@ -129,7 +122,7 @@ public final class WinchStatus {
      * Voltage of the battery supplying the winch. NaN if unknown 
      */
     @MavlinkFieldInfo(
-            position = 6,
+            position = 5,
             unitSize = 4,
             description = "Voltage of the battery supplying the winch. NaN if unknown"
     )
@@ -141,7 +134,7 @@ public final class WinchStatus {
      * Current draw from the winch. NaN if unknown 
      */
     @MavlinkFieldInfo(
-            position = 7,
+            position = 6,
             unitSize = 4,
             description = "Current draw from the winch. NaN if unknown"
     )
@@ -153,7 +146,7 @@ public final class WinchStatus {
      * Temperature of the motor. INT16_MAX if unknown 
      */
     @MavlinkFieldInfo(
-            position = 8,
+            position = 7,
             unitSize = 2,
             signed = true,
             description = "Temperature of the motor. INT16_MAX if unknown"
@@ -166,7 +159,7 @@ public final class WinchStatus {
      * Status flags 
      */
     @MavlinkFieldInfo(
-            position = 9,
+            position = 8,
             unitSize = 4,
             enumType = MavWinchStatusFlag.class,
             description = "Status flags"
@@ -238,7 +231,7 @@ public final class WinchStatus {
          * Timestamp (synced to UNIX time or since system boot). 
          */
         @MavlinkFieldInfo(
-                position = 2,
+                position = 1,
                 unitSize = 8,
                 description = "Timestamp (synced to UNIX time or since system boot)."
         )
@@ -251,7 +244,7 @@ public final class WinchStatus {
          * Length of line released. NaN if unknown 
          */
         @MavlinkFieldInfo(
-                position = 3,
+                position = 2,
                 unitSize = 4,
                 description = "Length of line released. NaN if unknown"
         )
@@ -265,7 +258,7 @@ public final class WinchStatus {
          * if being retracted, NaN if unknown 
          */
         @MavlinkFieldInfo(
-                position = 4,
+                position = 3,
                 unitSize = 4,
                 description = "Speed line is being released or retracted. Positive values if being released, negative values if being retracted, NaN if unknown"
         )
@@ -278,7 +271,7 @@ public final class WinchStatus {
          * Tension on the line. NaN if unknown 
          */
         @MavlinkFieldInfo(
-                position = 5,
+                position = 4,
                 unitSize = 4,
                 description = "Tension on the line. NaN if unknown"
         )
@@ -291,7 +284,7 @@ public final class WinchStatus {
          * Voltage of the battery supplying the winch. NaN if unknown 
          */
         @MavlinkFieldInfo(
-                position = 6,
+                position = 5,
                 unitSize = 4,
                 description = "Voltage of the battery supplying the winch. NaN if unknown"
         )
@@ -304,7 +297,7 @@ public final class WinchStatus {
          * Current draw from the winch. NaN if unknown 
          */
         @MavlinkFieldInfo(
-                position = 7,
+                position = 6,
                 unitSize = 4,
                 description = "Current draw from the winch. NaN if unknown"
         )
@@ -317,7 +310,7 @@ public final class WinchStatus {
          * Temperature of the motor. INT16_MAX if unknown 
          */
         @MavlinkFieldInfo(
-                position = 8,
+                position = 7,
                 unitSize = 2,
                 signed = true,
                 description = "Temperature of the motor. INT16_MAX if unknown"
@@ -331,7 +324,7 @@ public final class WinchStatus {
          * Status flags 
          */
         @MavlinkFieldInfo(
-                position = 9,
+                position = 8,
                 unitSize = 4,
                 enumType = MavWinchStatusFlag.class,
                 description = "Status flags"

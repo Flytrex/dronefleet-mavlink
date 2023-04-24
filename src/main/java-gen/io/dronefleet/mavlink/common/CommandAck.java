@@ -26,11 +26,24 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
 
     private final EnumValue<MavResult> result;
 
+    private final int progress;
+
+    private final int resultParam2;
+
+    private final int targetSystem;
+
+    private final int targetComponent;
+
     private final int tid;
 
-    private CommandAck(EnumValue<MavCmd> command, EnumValue<MavResult> result, int tid) {
+    private CommandAck(EnumValue<MavCmd> command, EnumValue<MavResult> result, int progress,
+            int resultParam2, int targetSystem, int targetComponent, int tid) {
         this.command = command;
         this.result = result;
+        this.progress = progress;
+        this.resultParam2 = resultParam2;
+        this.targetSystem = targetSystem;
+        this.targetComponent = targetComponent;
         this.tid = tid;
     }
 
@@ -46,6 +59,10 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
         return builder()
                 .command(msg.command)
                 .result(msg.result)
+                .progress(msg.progress)
+                .resultParam2(msg.resultParam2)
+                .targetSystem(msg.targetSystem)
+                .targetComponent(msg.targetComponent)
                 .tid(msg.tid);
     }
 
@@ -76,10 +93,66 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
     }
 
     /**
-     * Transmission id. 
+     * Also used as result_param1, it can be set with a enum containing the errors reasons of why the 
+     * command was denied or the progress percentage or 255 if unknown the progress when result is 
+     * MAV_RESULT_IN_PROGRESS. 
      */
     @MavlinkFieldInfo(
             position = 4,
+            unitSize = 1,
+            extension = true,
+            description = "Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS."
+    )
+    public final int progress() {
+        return this.progress;
+    }
+
+    /**
+     * Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT 
+     * caused it to be denied. 
+     */
+    @MavlinkFieldInfo(
+            position = 5,
+            unitSize = 4,
+            signed = true,
+            extension = true,
+            description = "Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT caused it to be denied."
+    )
+    public final int resultParam2() {
+        return this.resultParam2;
+    }
+
+    /**
+     * System which requested the command to be executed 
+     */
+    @MavlinkFieldInfo(
+            position = 6,
+            unitSize = 1,
+            extension = true,
+            description = "System which requested the command to be executed"
+    )
+    public final int targetSystem() {
+        return this.targetSystem;
+    }
+
+    /**
+     * Component which requested the command to be executed 
+     */
+    @MavlinkFieldInfo(
+            position = 7,
+            unitSize = 1,
+            extension = true,
+            description = "Component which requested the command to be executed"
+    )
+    public final int targetComponent() {
+        return this.targetComponent;
+    }
+
+    /**
+     * Transmission id. 
+     */
+    @MavlinkFieldInfo(
+            position = 8,
             unitSize = 1,
             extension = true,
             description = "Transmission id."
@@ -95,6 +168,10 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
         CommandAck other = (CommandAck)o;
         if (!Objects.deepEquals(command, other.command)) return false;
         if (!Objects.deepEquals(result, other.result)) return false;
+        if (!Objects.deepEquals(progress, other.progress)) return false;
+        if (!Objects.deepEquals(resultParam2, other.resultParam2)) return false;
+        if (!Objects.deepEquals(targetSystem, other.targetSystem)) return false;
+        if (!Objects.deepEquals(targetComponent, other.targetComponent)) return false;
         if (!Objects.deepEquals(tid, other.tid)) return false;
         return true;
     }
@@ -104,6 +181,10 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
         int result = 0;
         result = 31 * result + Objects.hashCode(command);
         result = 31 * result + Objects.hashCode(result);
+        result = 31 * result + Objects.hashCode(progress);
+        result = 31 * result + Objects.hashCode(resultParam2);
+        result = 31 * result + Objects.hashCode(targetSystem);
+        result = 31 * result + Objects.hashCode(targetComponent);
         result = 31 * result + Objects.hashCode(tid);
         return result;
     }
@@ -112,6 +193,10 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
     public String toString() {
         return "CommandAck{command=" + command
                  + ", result=" + result
+                 + ", progress=" + progress
+                 + ", resultParam2=" + resultParam2
+                 + ", targetSystem=" + targetSystem
+                 + ", targetComponent=" + targetComponent
                  + ", tid=" + tid + "}";
     }
 
@@ -124,6 +209,14 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
         private EnumValue<MavCmd> command;
 
         private EnumValue<MavResult> result;
+
+        private int progress;
+
+        private int resultParam2;
+
+        private int targetSystem;
+
+        private int targetComponent;
 
         private int tid;
 
@@ -198,10 +291,70 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
         }
 
         /**
-         * Transmission id. 
+         * Also used as result_param1, it can be set with a enum containing the errors reasons of why the 
+         * command was denied or the progress percentage or 255 if unknown the progress when result is 
+         * MAV_RESULT_IN_PROGRESS. 
          */
         @MavlinkFieldInfo(
                 position = 4,
+                unitSize = 1,
+                extension = true,
+                description = "Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS."
+        )
+        public final Builder progress(int progress) {
+            this.progress = progress;
+            return this;
+        }
+
+        /**
+         * Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT 
+         * caused it to be denied. 
+         */
+        @MavlinkFieldInfo(
+                position = 5,
+                unitSize = 4,
+                signed = true,
+                extension = true,
+                description = "Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT caused it to be denied."
+        )
+        public final Builder resultParam2(int resultParam2) {
+            this.resultParam2 = resultParam2;
+            return this;
+        }
+
+        /**
+         * System which requested the command to be executed 
+         */
+        @MavlinkFieldInfo(
+                position = 6,
+                unitSize = 1,
+                extension = true,
+                description = "System which requested the command to be executed"
+        )
+        public final Builder targetSystem(int targetSystem) {
+            this.targetSystem = targetSystem;
+            return this;
+        }
+
+        /**
+         * Component which requested the command to be executed 
+         */
+        @MavlinkFieldInfo(
+                position = 7,
+                unitSize = 1,
+                extension = true,
+                description = "Component which requested the command to be executed"
+        )
+        public final Builder targetComponent(int targetComponent) {
+            this.targetComponent = targetComponent;
+            return this;
+        }
+
+        /**
+         * Transmission id. 
+         */
+        @MavlinkFieldInfo(
+                position = 8,
                 unitSize = 1,
                 extension = true,
                 description = "Transmission id."
@@ -212,7 +365,7 @@ public final class CommandAck implements HasTransmissionId<CommandAck> {
         }
 
         public final CommandAck build() {
-            return new CommandAck(command, result, tid);
+            return new CommandAck(command, result, progress, resultParam2, targetSystem, targetComponent, tid);
         }
     }
 }
