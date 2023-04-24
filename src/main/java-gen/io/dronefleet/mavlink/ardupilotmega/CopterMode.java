@@ -150,5 +150,11 @@ public enum CopterMode {
      *  
      */
     @MavlinkEntryInfo(26)
-    COPTER_MODE_AUTOROTATE
+    COPTER_MODE_AUTOROTATE,
+
+    /**
+     *  
+     */
+    @MavlinkEntryInfo(27)
+    COPTER_MODE_AUTO_RTL
 }

@@ -4,6 +4,7 @@ import io.dronefleet.mavlink.AbstractMavlinkDialect;
 import io.dronefleet.mavlink.MavlinkDialect;
 import io.dronefleet.mavlink.common.CommonDialect;
 import io.dronefleet.mavlink.icarous.IcarousDialect;
+import io.dronefleet.mavlink.loweheiser.LoweheiserDialect;
 import io.dronefleet.mavlink.uavionix.UavionixDialect;
 import io.dronefleet.mavlink.util.UnmodifiableMapBuilder;
 import java.lang.Class;
@@ -19,7 +20,8 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
     private static final List<MavlinkDialect> dependencies = Arrays.asList(
             new CommonDialect(),
             new UavionixDialect(),
-            new IcarousDialect());
+            new IcarousDialect(),
+            new LoweheiserDialect());
 
     /**
      * A list of all message types supported by this dialect.
@@ -90,12 +92,21 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
             .put(12102, LogRequestLabelList.class)
             .put(12103, LogLabel.class)
             .put(12200, PlayTone.class)
+            .put(12300, GpsRtkCount.class)
+            .put(12301, GpsRtkData.class)
+            .put(12302, GpsRtkAck.class)
             .put(11033, OsdParamConfig.class)
             .put(11034, OsdParamConfigReply.class)
             .put(11035, OsdParamShowConfig.class)
             .put(11036, OsdParamShowConfigReply.class)
             .put(11037, ObstacleDistance3d.class)
             .put(11038, WaterDepth.class)
+            .put(11039, McuStatus.class)
+            .put(11040, EscTelemetry13To16.class)
+            .put(11041, EscTelemetry17To20.class)
+            .put(11042, EscTelemetry21To24.class)
+            .put(11043, EscTelemetry25To28.class)
+            .put(11044, EscTelemetry29To32.class)
             .build();
 
     public ArdupilotmegaDialect() {

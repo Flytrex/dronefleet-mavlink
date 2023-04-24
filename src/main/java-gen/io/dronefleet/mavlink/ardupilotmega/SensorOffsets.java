@@ -3,6 +3,7 @@ package io.dronefleet.mavlink.ardupilotmega;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
+import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -11,12 +12,15 @@ import java.util.Objects;
 /**
  * Offsets and calibrations values for hardware sensors. This makes it easier to debug the 
  * calibration process. 
+ * @deprecated Since 2022-02, replaced by {@link io.dronefleet.mavlink.common.MagCalReport MAG_CAL_REPORT}, Accel Parameters, and Gyro 
+ * Parameters. 
  */
 @MavlinkMessageInfo(
         id = 150,
         crc = 134,
         description = "Offsets and calibrations values for hardware sensors. This makes it easier to debug the calibration process."
 )
+@Deprecated
 public final class SensorOffsets {
     private final int magOfsX;
 
@@ -87,7 +91,7 @@ public final class SensorOffsets {
      * Magnetometer X offset. 
      */
     @MavlinkFieldInfo(
-            position = 1,
+            position = 2,
             unitSize = 2,
             signed = true,
             description = "Magnetometer X offset."
@@ -100,7 +104,7 @@ public final class SensorOffsets {
      * Magnetometer Y offset. 
      */
     @MavlinkFieldInfo(
-            position = 2,
+            position = 3,
             unitSize = 2,
             signed = true,
             description = "Magnetometer Y offset."
@@ -113,7 +117,7 @@ public final class SensorOffsets {
      * Magnetometer Z offset. 
      */
     @MavlinkFieldInfo(
-            position = 3,
+            position = 4,
             unitSize = 2,
             signed = true,
             description = "Magnetometer Z offset."
@@ -126,7 +130,7 @@ public final class SensorOffsets {
      * Magnetic declination. 
      */
     @MavlinkFieldInfo(
-            position = 4,
+            position = 5,
             unitSize = 4,
             description = "Magnetic declination."
     )
@@ -138,7 +142,7 @@ public final class SensorOffsets {
      * Raw pressure from barometer. 
      */
     @MavlinkFieldInfo(
-            position = 5,
+            position = 6,
             unitSize = 4,
             signed = true,
             description = "Raw pressure from barometer."
@@ -151,7 +155,7 @@ public final class SensorOffsets {
      * Raw temperature from barometer. 
      */
     @MavlinkFieldInfo(
-            position = 6,
+            position = 7,
             unitSize = 4,
             signed = true,
             description = "Raw temperature from barometer."
@@ -164,7 +168,7 @@ public final class SensorOffsets {
      * Gyro X calibration. 
      */
     @MavlinkFieldInfo(
-            position = 7,
+            position = 8,
             unitSize = 4,
             description = "Gyro X calibration."
     )
@@ -176,7 +180,7 @@ public final class SensorOffsets {
      * Gyro Y calibration. 
      */
     @MavlinkFieldInfo(
-            position = 8,
+            position = 9,
             unitSize = 4,
             description = "Gyro Y calibration."
     )
@@ -188,7 +192,7 @@ public final class SensorOffsets {
      * Gyro Z calibration. 
      */
     @MavlinkFieldInfo(
-            position = 9,
+            position = 10,
             unitSize = 4,
             description = "Gyro Z calibration."
     )
@@ -200,7 +204,7 @@ public final class SensorOffsets {
      * Accel X calibration. 
      */
     @MavlinkFieldInfo(
-            position = 10,
+            position = 11,
             unitSize = 4,
             description = "Accel X calibration."
     )
@@ -212,7 +216,7 @@ public final class SensorOffsets {
      * Accel Y calibration. 
      */
     @MavlinkFieldInfo(
-            position = 11,
+            position = 12,
             unitSize = 4,
             description = "Accel Y calibration."
     )
@@ -224,7 +228,7 @@ public final class SensorOffsets {
      * Accel Z calibration. 
      */
     @MavlinkFieldInfo(
-            position = 12,
+            position = 13,
             unitSize = 4,
             description = "Accel Z calibration."
     )
@@ -315,7 +319,7 @@ public final class SensorOffsets {
          * Magnetometer X offset. 
          */
         @MavlinkFieldInfo(
-                position = 1,
+                position = 2,
                 unitSize = 2,
                 signed = true,
                 description = "Magnetometer X offset."
@@ -329,7 +333,7 @@ public final class SensorOffsets {
          * Magnetometer Y offset. 
          */
         @MavlinkFieldInfo(
-                position = 2,
+                position = 3,
                 unitSize = 2,
                 signed = true,
                 description = "Magnetometer Y offset."
@@ -343,7 +347,7 @@ public final class SensorOffsets {
          * Magnetometer Z offset. 
          */
         @MavlinkFieldInfo(
-                position = 3,
+                position = 4,
                 unitSize = 2,
                 signed = true,
                 description = "Magnetometer Z offset."
@@ -357,7 +361,7 @@ public final class SensorOffsets {
          * Magnetic declination. 
          */
         @MavlinkFieldInfo(
-                position = 4,
+                position = 5,
                 unitSize = 4,
                 description = "Magnetic declination."
         )
@@ -370,7 +374,7 @@ public final class SensorOffsets {
          * Raw pressure from barometer. 
          */
         @MavlinkFieldInfo(
-                position = 5,
+                position = 6,
                 unitSize = 4,
                 signed = true,
                 description = "Raw pressure from barometer."
@@ -384,7 +388,7 @@ public final class SensorOffsets {
          * Raw temperature from barometer. 
          */
         @MavlinkFieldInfo(
-                position = 6,
+                position = 7,
                 unitSize = 4,
                 signed = true,
                 description = "Raw temperature from barometer."
@@ -398,7 +402,7 @@ public final class SensorOffsets {
          * Gyro X calibration. 
          */
         @MavlinkFieldInfo(
-                position = 7,
+                position = 8,
                 unitSize = 4,
                 description = "Gyro X calibration."
         )
@@ -411,7 +415,7 @@ public final class SensorOffsets {
          * Gyro Y calibration. 
          */
         @MavlinkFieldInfo(
-                position = 8,
+                position = 9,
                 unitSize = 4,
                 description = "Gyro Y calibration."
         )
@@ -424,7 +428,7 @@ public final class SensorOffsets {
          * Gyro Z calibration. 
          */
         @MavlinkFieldInfo(
-                position = 9,
+                position = 10,
                 unitSize = 4,
                 description = "Gyro Z calibration."
         )
@@ -437,7 +441,7 @@ public final class SensorOffsets {
          * Accel X calibration. 
          */
         @MavlinkFieldInfo(
-                position = 10,
+                position = 11,
                 unitSize = 4,
                 description = "Accel X calibration."
         )
@@ -450,7 +454,7 @@ public final class SensorOffsets {
          * Accel Y calibration. 
          */
         @MavlinkFieldInfo(
-                position = 11,
+                position = 12,
                 unitSize = 4,
                 description = "Accel Y calibration."
         )
@@ -463,7 +467,7 @@ public final class SensorOffsets {
          * Accel Z calibration. 
          */
         @MavlinkFieldInfo(
-                position = 12,
+                position = 13,
                 unitSize = 4,
                 description = "Accel Z calibration."
         )

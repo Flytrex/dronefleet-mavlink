@@ -354,8 +354,9 @@ public enum MavCmd {
      *   <dd>Heading Required (0 = False)</dd>
      *
      *   <dt>param2</dt>
-     *   <dd>Radius. If positive loiter clockwise, negative counter-clockwise, 0 means no change to 
-     * standard loiter.</dd>
+     *   <dd>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If 
+     * positive loiter clockwise, negative counter-clockwise, 0 means no change to standard 
+     * loiter.</dd>
      *
      *   <dt>param3</dt>
      *   <dd>Empty</dd>
@@ -528,6 +529,8 @@ public enum MavCmd {
 
     /**
      * Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. 
+     * The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight 
+     * (multicopters, boats,etc.). 
      * <dl>
      *   <dt>param1</dt>
      *   <dd>Empty</dd>
@@ -559,7 +562,7 @@ public enum MavCmd {
      * Land using VTOL mode 
      * <dl>
      *   <dt>param1</dt>
-     *   <dd>Empty</dd>
+     *   <dd>See {@link io.dronefleet.mavlink.common.NavVtolLandOptions NAV_VTOL_LAND_OPTIONS} enum</dd>
      *
      *   <dt>param2</dt>
      *   <dd>Empty</dd>
@@ -1253,7 +1256,8 @@ public enum MavCmd {
      *   <dd>Bitmask of option flags.</dd>
      *
      *   <dt>param3</dt>
-     *   <dd>Reserved</dd>
+     *   <dd>Loiter radius for planes. Positive values only, direction is controlled by Yaw value. A value 
+     * of zero or NaN is ignored.</dd>
      *
      *   <dt>param4</dt>
      *   <dd>Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw 
@@ -1785,7 +1789,7 @@ public enum MavCmd {
      *   <dd>Enable (1: enable, 0:disable).</dd>
      *
      *   <dt>param2</dt>
-     *   <dd>Empty.</dd>
+     *   <dd>Specify which axes are autotuned. 0 indicates autopilot default settings.</dd>
      *
      *   <dt>param3</dt>
      *   <dd>Empty.</dd>
@@ -2635,6 +2639,38 @@ public enum MavCmd {
     MAV_CMD_DO_JUMP_TAG,
 
     /**
+     * High level setpoint to be sent to a gimbal manager to set a gimbal attitude. It is possible to set 
+     * combinations of the values below. E.g. an angle as well as a desired angular rate can be used to 
+     * get to this angle at a certain angular rate, or an angular rate only will result in continuous 
+     * turning. NaN is to be used to signal unset. Note: a gimbal is never to react to this command but 
+     * only the gimbal manager. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world 
+     * horizon for LOCK mode).</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North 
+     * for LOCK mode).</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Pitch rate (positive to pitch up).</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Yaw rate (positive to yaw to the right).</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Gimbal manager flags to use.</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal 
+     * device components. Send command multiple times for more than one gimbal (but not all gimbals).</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(1000)
+    MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW,
+
+    /**
      * Start image capture sequence. Sends {@link io.dronefleet.mavlink.common.CameraImageCaptured CAMERA_IMAGE_CAPTURED} after each capture. Use NaN for 
      * reserved values. 
      * <dl>
@@ -3201,6 +3237,36 @@ public enum MavCmd {
     MAV_CMD_UAVCAN_GET_NODE_INFO,
 
     /**
+     * Trigger the start of an ADSB-out IDENT. This should only be used when requested to do so by an Air 
+     * Traffic Controller in controlled airspace. This starts the IDENT which is then typically held 
+     * for 18 seconds by the hardware per the Mode A, C, and S transponder spec. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Reserved (set to 0)</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10001)
+    MAV_CMD_DO_ADSB_OUT_IDENT,
+
+    /**
      * Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required 
      * release position and velocity. 
      * <dl>
@@ -3754,6 +3820,35 @@ public enum MavCmd {
     MAV_CMD_USER_5,
 
     /**
+     * Request forwarding of CAN packets from the given CAN bus to this interface. CAN Frames are sent 
+     * using {@link io.dronefleet.mavlink.common.CanFrame CAN_FRAME} and {@link io.dronefleet.mavlink.common.CanfdFrame CANFD_FRAME} messages 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Bus number (0 to disable forwarding, 1 for first bus, 2 for 2nd bus, 3 for 3rd bus).</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty.</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(32000)
+    MAV_CMD_CAN_FORWARD,
+
+    /**
      * Set the distance to be repeated on mission resume 
      * <dl>
      *   <dt>param1</dt>
@@ -4064,6 +4159,34 @@ public enum MavCmd {
      */
     @MavlinkEntryInfo(42005)
     MAV_CMD_FIXED_MAG_CAL_FIELD,
+
+    /**
+     * Set EKF sensor source set. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Source Set Id.</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty.</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty.</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(42007)
+    MAV_CMD_SET_EKF_SOURCE_SET,
 
     /**
      * Initiate a magnetometer calibration. 
@@ -4428,6 +4551,62 @@ public enum MavCmd {
     MAV_CMD_SCRIPTING,
 
     /**
+     * Scripting command as NAV command with wait for completion. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>integer command number (0 to 255)</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>timeout for operation in seconds. Zero means no timeout (0 to 255)</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>argument1.</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>argument2.</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(42702)
+    MAV_CMD_NAV_SCRIPT_TIME,
+
+    /**
+     * Maintain an attitude for a specified time. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Time to maintain specified attitude and climb rate</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>Roll angle in degrees (positive is lean right, negative is lean left)</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>Pitch angle in degrees (positive is lean back, negative is lean forward)</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>Yaw angle</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>Climb rate</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>Empty</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>Empty</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(42703)
+    MAV_CMD_NAV_ATTITUDE_TIME,
+
+    /**
      * Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's 
      * previous speed and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these 
      * commands. Designed for onboard companion-computer command-and-control, not normally 
@@ -4520,61 +4699,6 @@ public enum MavCmd {
      */
     @MavlinkEntryInfo(43002)
     MAV_CMD_GUIDED_CHANGE_HEADING,
-
-    /**
-     * Does nothing. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>1 to arm, 0 to disarm</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10001)
-    MAV_CMD_DO_NOTHING,
-
-    /**
-     * Return vehicle to base. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>0: return to base, 1: track mobile base</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10011)
-    MAV_CMD_RETURN_TO_BASE,
-
-    /**
-     * Stops the vehicle from returning to base and resumes flight. 
-     */
-    @MavlinkEntryInfo(10012)
-    MAV_CMD_STOP_RETURN_TO_BASE,
-
-    /**
-     * Turns the vehicle's visible or infrared lights on or off. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>0: visible lights, 1: infrared lights</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>0: turn on, 1: turn off</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10013)
-    MAV_CMD_TURN_LIGHT,
-
-    /**
-     * Requests vehicle to send current mid-level commands to ground station. 
-     */
-    @MavlinkEntryInfo(10014)
-    MAV_CMD_GET_MID_LEVEL_COMMANDS,
-
-    /**
-     * Requests storage of mid-level commands. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10015)
-    MAV_CMD_MIDLEVEL_STORAGE,
 
     /**
      * Mission command to reset Maximum Power Point Tracker (MPPT) 
@@ -4718,6 +4842,202 @@ public enum MavCmd {
     MAV_CMD_AQ_REQUEST_VERSION,
 
     /**
+     * AVSS defined command. Set PRS arm statuses. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>PRS arm statuses</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60050)
+    MAV_CMD_PRS_SET_ARM,
+
+    /**
+     * AVSS defined command. Gets PRS arm statuses 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60051)
+    MAV_CMD_PRS_GET_ARM,
+
+    /**
+     * AVSS defined command. Get the PRS battery voltage in millivolts 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60052)
+    MAV_CMD_PRS_GET_BATTERY,
+
+    /**
+     * AVSS defined command. Get the PRS error statuses. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60053)
+    MAV_CMD_PRS_GET_ERR,
+
+    /**
+     * AVSS defined command. Set the ATS arming altitude in meters. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>ATS arming altitude</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60070)
+    MAV_CMD_PRS_SET_ARM_ALTI,
+
+    /**
+     * AVSS defined command. Get the ATS arming altitude in meters. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60071)
+    MAV_CMD_PRS_GET_ARM_ALTI,
+
+    /**
+     * AVSS defined command. Shuts down the PRS system. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60072)
+    MAV_CMD_PRS_SHUTDOWN,
+
+    /**
      * Request storage of different parameter values and logs. This command will be only accepted if 
      * in pre-flight mode. 
      * <dl>
@@ -4744,5 +5064,60 @@ public enum MavCmd {
      * </dl>
      */
     @MavlinkEntryInfo(0)
-    MAV_CMD_PREFLIGHT_STORAGE_ADVANCED
+    MAV_CMD_PREFLIGHT_STORAGE_ADVANCED,
+
+    /**
+     * Does nothing. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>1 to arm, 0 to disarm</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10001)
+    MAV_CMD_DO_NOTHING,
+
+    /**
+     * Return vehicle to base. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>0: return to base, 1: track mobile base</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10011)
+    MAV_CMD_RETURN_TO_BASE,
+
+    /**
+     * Stops the vehicle from returning to base and resumes flight. 
+     */
+    @MavlinkEntryInfo(10012)
+    MAV_CMD_STOP_RETURN_TO_BASE,
+
+    /**
+     * Turns the vehicle's visible or infrared lights on or off. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>0: visible lights, 1: infrared lights</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>0: turn on, 1: turn off</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10013)
+    MAV_CMD_TURN_LIGHT,
+
+    /**
+     * Requests vehicle to send current mid-level commands to ground station. 
+     */
+    @MavlinkEntryInfo(10014)
+    MAV_CMD_GET_MID_LEVEL_COMMANDS,
+
+    /**
+     * Requests storage of mid-level commands. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10015)
+    MAV_CMD_MIDLEVEL_STORAGE
 }

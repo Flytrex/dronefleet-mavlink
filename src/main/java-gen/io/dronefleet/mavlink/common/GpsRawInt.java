@@ -54,15 +54,15 @@ public final class GpsRawInt {
 
     private final long hdgAcc;
 
+    private final int yaw;
+
     private final int id;
 
     private final int isPrimary;
 
-    private final int yaw;
-
     private GpsRawInt(BigInteger timeUsec, EnumValue<GpsFixType> fixType, int lat, int lon, int alt,
             int eph, int epv, int vel, int cog, int satellitesVisible, int altEllipsoid, long hAcc,
-            long vAcc, long velAcc, long hdgAcc, int id, int isPrimary, int yaw) {
+            long vAcc, long velAcc, long hdgAcc, int yaw, int id, int isPrimary) {
         this.timeUsec = timeUsec;
         this.fixType = fixType;
         this.lat = lat;
@@ -78,9 +78,9 @@ public final class GpsRawInt {
         this.vAcc = vAcc;
         this.velAcc = velAcc;
         this.hdgAcc = hdgAcc;
+        this.yaw = yaw;
         this.id = id;
         this.isPrimary = isPrimary;
-        this.yaw = yaw;
     }
 
     /**
@@ -108,9 +108,9 @@ public final class GpsRawInt {
                 .vAcc(msg.vAcc)
                 .velAcc(msg.velAcc)
                 .hdgAcc(msg.hdgAcc)
+                .yaw(msg.yaw)
                 .id(msg.id)
-                .isPrimary(msg.isPrimary)
-                .yaw(msg.yaw);
+                .isPrimary(msg.isPrimary);
     }
 
     /**
@@ -307,10 +307,24 @@ public final class GpsRawInt {
     }
 
     /**
-     * GPS ID. 
+     * Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is 
+     * configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
      */
     @MavlinkFieldInfo(
             position = 17,
+            unitSize = 2,
+            extension = true,
+            description = "Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north."
+    )
+    public final int yaw() {
+        return this.yaw;
+    }
+
+    /**
+     * GPS ID. 
+     */
+    @MavlinkFieldInfo(
+            position = 18,
             unitSize = 1,
             extension = true,
             description = "GPS ID."
@@ -324,27 +338,13 @@ public final class GpsRawInt {
      * (primary: 1, not primary: 0). 
      */
     @MavlinkFieldInfo(
-            position = 18,
+            position = 19,
             unitSize = 1,
             extension = true,
             description = "Boolean indicating whether this GPS is primary (currently used for navigation) or not (primary: 1, not primary: 0)."
     )
     public final int isPrimary() {
         return this.isPrimary;
-    }
-
-    /**
-     * Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is 
-     * configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
-     */
-    @MavlinkFieldInfo(
-            position = 19,
-            unitSize = 2,
-            extension = true,
-            description = "Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north."
-    )
-    public final int yaw() {
-        return this.yaw;
     }
 
     @Override
@@ -367,9 +367,9 @@ public final class GpsRawInt {
         if (!Objects.deepEquals(vAcc, other.vAcc)) return false;
         if (!Objects.deepEquals(velAcc, other.velAcc)) return false;
         if (!Objects.deepEquals(hdgAcc, other.hdgAcc)) return false;
+        if (!Objects.deepEquals(yaw, other.yaw)) return false;
         if (!Objects.deepEquals(id, other.id)) return false;
         if (!Objects.deepEquals(isPrimary, other.isPrimary)) return false;
-        if (!Objects.deepEquals(yaw, other.yaw)) return false;
         return true;
     }
 
@@ -391,9 +391,9 @@ public final class GpsRawInt {
         result = 31 * result + Objects.hashCode(vAcc);
         result = 31 * result + Objects.hashCode(velAcc);
         result = 31 * result + Objects.hashCode(hdgAcc);
+        result = 31 * result + Objects.hashCode(yaw);
         result = 31 * result + Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(isPrimary);
-        result = 31 * result + Objects.hashCode(yaw);
         return result;
     }
 
@@ -414,9 +414,9 @@ public final class GpsRawInt {
                  + ", vAcc=" + vAcc
                  + ", velAcc=" + velAcc
                  + ", hdgAcc=" + hdgAcc
+                 + ", yaw=" + yaw
                  + ", id=" + id
-                 + ", isPrimary=" + isPrimary
-                 + ", yaw=" + yaw + "}";
+                 + ", isPrimary=" + isPrimary + "}";
     }
 
     public static final class Builder {
@@ -450,11 +450,11 @@ public final class GpsRawInt {
 
         private long hdgAcc;
 
+        private int yaw;
+
         private int id;
 
         private int isPrimary;
-
-        private int yaw;
 
         /**
          * Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp 
@@ -686,10 +686,25 @@ public final class GpsRawInt {
         }
 
         /**
-         * GPS ID. 
+         * Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is 
+         * configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
          */
         @MavlinkFieldInfo(
                 position = 17,
+                unitSize = 2,
+                extension = true,
+                description = "Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north."
+        )
+        public final Builder yaw(int yaw) {
+            this.yaw = yaw;
+            return this;
+        }
+
+        /**
+         * GPS ID. 
+         */
+        @MavlinkFieldInfo(
+                position = 18,
                 unitSize = 1,
                 extension = true,
                 description = "GPS ID."
@@ -704,7 +719,7 @@ public final class GpsRawInt {
          * (primary: 1, not primary: 0). 
          */
         @MavlinkFieldInfo(
-                position = 18,
+                position = 19,
                 unitSize = 1,
                 extension = true,
                 description = "Boolean indicating whether this GPS is primary (currently used for navigation) or not (primary: 1, not primary: 0)."
@@ -714,23 +729,8 @@ public final class GpsRawInt {
             return this;
         }
 
-        /**
-         * Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is 
-         * configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
-         */
-        @MavlinkFieldInfo(
-                position = 19,
-                unitSize = 2,
-                extension = true,
-                description = "Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north."
-        )
-        public final Builder yaw(int yaw) {
-            this.yaw = yaw;
-            return this;
-        }
-
         public final GpsRawInt build() {
-            return new GpsRawInt(timeUsec, fixType, lat, lon, alt, eph, epv, vel, cog, satellitesVisible, altEllipsoid, hAcc, vAcc, velAcc, hdgAcc, id, isPrimary, yaw);
+            return new GpsRawInt(timeUsec, fixType, lat, lon, alt, eph, epv, vel, cog, satellitesVisible, altEllipsoid, hAcc, vAcc, velAcc, hdgAcc, yaw, id, isPrimary);
         }
     }
 }

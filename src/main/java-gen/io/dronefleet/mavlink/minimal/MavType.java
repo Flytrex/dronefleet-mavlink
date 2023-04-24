@@ -227,8 +227,50 @@ public enum MavType {
     MAV_TYPE_DECAROTOR,
 
     /**
-     * Flight Termination System 
+     * Battery 
+     */
+    @MavlinkEntryInfo(36)
+    MAV_TYPE_BATTERY,
+
+    /**
+     * Parachute 
+     */
+    @MavlinkEntryInfo(37)
+    MAV_TYPE_PARACHUTE,
+
+    /**
+     * Log 
+     */
+    @MavlinkEntryInfo(38)
+    MAV_TYPE_LOG,
+
+    /**
+     * OSD 
+     */
+    @MavlinkEntryInfo(39)
+    MAV_TYPE_OSD,
+
+    /**
+     * IMU 
      */
     @MavlinkEntryInfo(40)
+    MAV_TYPE_IMU,
+
+    /**
+     * GPS 
+     */
+    @MavlinkEntryInfo(41)
+    MAV_TYPE_GPS,
+
+    /**
+     * Winch 
+     */
+    @MavlinkEntryInfo(42)
+    MAV_TYPE_WINCH,
+
+    /**
+     * Winch 
+     */
+    @MavlinkEntryInfo(43)
     MAV_TYPE_FTS
 }

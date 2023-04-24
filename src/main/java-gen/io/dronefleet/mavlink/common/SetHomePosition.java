@@ -3,6 +3,7 @@ package io.dronefleet.mavlink.common;
 import io.dronefleet.mavlink.annotations.MavlinkFieldInfo;
 import io.dronefleet.mavlink.annotations.MavlinkMessageBuilder;
 import io.dronefleet.mavlink.annotations.MavlinkMessageInfo;
+import java.lang.Deprecated;
 import java.lang.Float;
 import java.lang.Object;
 import java.lang.Override;
@@ -19,12 +20,16 @@ import java.util.Objects;
  * heading and terrain slope, which can be used by the aircraft to adjust the approach. The 
  * approach 3D vector describes the point to which the system should fly in normal flight mode and 
  * then perform a landing sequence along the vector. 
+ * @deprecated Since 2022-02, replaced by MAV_CMD_DO_SET_HOME. This message is being 
+ * superseded by MAV_CMD_DO_SET_HOME. Using the command protocols allows a GCS to detect 
+ * setting of the home position has failed. 
  */
 @MavlinkMessageInfo(
         id = 243,
         crc = 85,
         description = "The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector."
 )
+@Deprecated
 public final class SetHomePosition {
     private final int targetSystem;
 
@@ -95,7 +100,7 @@ public final class SetHomePosition {
      * System ID. 
      */
     @MavlinkFieldInfo(
-            position = 1,
+            position = 2,
             unitSize = 1,
             description = "System ID."
     )
@@ -107,7 +112,7 @@ public final class SetHomePosition {
      * Latitude (WGS84) 
      */
     @MavlinkFieldInfo(
-            position = 2,
+            position = 3,
             unitSize = 4,
             signed = true,
             description = "Latitude (WGS84)"
@@ -120,7 +125,7 @@ public final class SetHomePosition {
      * Longitude (WGS84) 
      */
     @MavlinkFieldInfo(
-            position = 3,
+            position = 4,
             unitSize = 4,
             signed = true,
             description = "Longitude (WGS84)"
@@ -133,7 +138,7 @@ public final class SetHomePosition {
      * Altitude (MSL). Positive for up. 
      */
     @MavlinkFieldInfo(
-            position = 4,
+            position = 5,
             unitSize = 4,
             signed = true,
             description = "Altitude (MSL). Positive for up."
@@ -146,7 +151,7 @@ public final class SetHomePosition {
      * Local X position of this position in the local coordinate frame 
      */
     @MavlinkFieldInfo(
-            position = 5,
+            position = 6,
             unitSize = 4,
             description = "Local X position of this position in the local coordinate frame"
     )
@@ -158,7 +163,7 @@ public final class SetHomePosition {
      * Local Y position of this position in the local coordinate frame 
      */
     @MavlinkFieldInfo(
-            position = 6,
+            position = 7,
             unitSize = 4,
             description = "Local Y position of this position in the local coordinate frame"
     )
@@ -170,7 +175,7 @@ public final class SetHomePosition {
      * Local Z position of this position in the local coordinate frame 
      */
     @MavlinkFieldInfo(
-            position = 7,
+            position = 8,
             unitSize = 4,
             description = "Local Z position of this position in the local coordinate frame"
     )
@@ -183,7 +188,7 @@ public final class SetHomePosition {
      * the heading and slope of the ground 
      */
     @MavlinkFieldInfo(
-            position = 8,
+            position = 9,
             unitSize = 4,
             arraySize = 4,
             description = "World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground"
@@ -199,7 +204,7 @@ public final class SetHomePosition {
      * the takeoff, assuming the takeoff happened from the threshold / touchdown zone. 
      */
     @MavlinkFieldInfo(
-            position = 9,
+            position = 10,
             unitSize = 4,
             description = "Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone."
     )
@@ -214,7 +219,7 @@ public final class SetHomePosition {
      * the takeoff, assuming the takeoff happened from the threshold / touchdown zone. 
      */
     @MavlinkFieldInfo(
-            position = 10,
+            position = 11,
             unitSize = 4,
             description = "Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone."
     )
@@ -229,7 +234,7 @@ public final class SetHomePosition {
      * the takeoff, assuming the takeoff happened from the threshold / touchdown zone. 
      */
     @MavlinkFieldInfo(
-            position = 11,
+            position = 12,
             unitSize = 4,
             description = "Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone."
     )
@@ -242,7 +247,7 @@ public final class SetHomePosition {
      * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
      */
     @MavlinkFieldInfo(
-            position = 13,
+            position = 14,
             unitSize = 8,
             extension = true,
             description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."
@@ -334,7 +339,7 @@ public final class SetHomePosition {
          * System ID. 
          */
         @MavlinkFieldInfo(
-                position = 1,
+                position = 2,
                 unitSize = 1,
                 description = "System ID."
         )
@@ -347,7 +352,7 @@ public final class SetHomePosition {
          * Latitude (WGS84) 
          */
         @MavlinkFieldInfo(
-                position = 2,
+                position = 3,
                 unitSize = 4,
                 signed = true,
                 description = "Latitude (WGS84)"
@@ -361,7 +366,7 @@ public final class SetHomePosition {
          * Longitude (WGS84) 
          */
         @MavlinkFieldInfo(
-                position = 3,
+                position = 4,
                 unitSize = 4,
                 signed = true,
                 description = "Longitude (WGS84)"
@@ -375,7 +380,7 @@ public final class SetHomePosition {
          * Altitude (MSL). Positive for up. 
          */
         @MavlinkFieldInfo(
-                position = 4,
+                position = 5,
                 unitSize = 4,
                 signed = true,
                 description = "Altitude (MSL). Positive for up."
@@ -389,7 +394,7 @@ public final class SetHomePosition {
          * Local X position of this position in the local coordinate frame 
          */
         @MavlinkFieldInfo(
-                position = 5,
+                position = 6,
                 unitSize = 4,
                 description = "Local X position of this position in the local coordinate frame"
         )
@@ -402,7 +407,7 @@ public final class SetHomePosition {
          * Local Y position of this position in the local coordinate frame 
          */
         @MavlinkFieldInfo(
-                position = 6,
+                position = 7,
                 unitSize = 4,
                 description = "Local Y position of this position in the local coordinate frame"
         )
@@ -415,7 +420,7 @@ public final class SetHomePosition {
          * Local Z position of this position in the local coordinate frame 
          */
         @MavlinkFieldInfo(
-                position = 7,
+                position = 8,
                 unitSize = 4,
                 description = "Local Z position of this position in the local coordinate frame"
         )
@@ -429,7 +434,7 @@ public final class SetHomePosition {
          * the heading and slope of the ground 
          */
         @MavlinkFieldInfo(
-                position = 8,
+                position = 9,
                 unitSize = 4,
                 arraySize = 4,
                 description = "World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground"
@@ -446,7 +451,7 @@ public final class SetHomePosition {
          * the takeoff, assuming the takeoff happened from the threshold / touchdown zone. 
          */
         @MavlinkFieldInfo(
-                position = 9,
+                position = 10,
                 unitSize = 4,
                 description = "Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone."
         )
@@ -462,7 +467,7 @@ public final class SetHomePosition {
          * the takeoff, assuming the takeoff happened from the threshold / touchdown zone. 
          */
         @MavlinkFieldInfo(
-                position = 10,
+                position = 11,
                 unitSize = 4,
                 description = "Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone."
         )
@@ -478,7 +483,7 @@ public final class SetHomePosition {
          * the takeoff, assuming the takeoff happened from the threshold / touchdown zone. 
          */
         @MavlinkFieldInfo(
-                position = 11,
+                position = 12,
                 unitSize = 4,
                 description = "Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone."
         )
@@ -492,7 +497,7 @@ public final class SetHomePosition {
          * format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
          */
         @MavlinkFieldInfo(
-                position = 13,
+                position = 14,
                 unitSize = 8,
                 extension = true,
                 description = "Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number."

@@ -126,5 +126,11 @@ public enum MavAutopilot {
      * AirRails - http://uaventure.com 
      */
     @MavlinkEntryInfo(19)
-    MAV_AUTOPILOT_AIRRAILS
+    MAV_AUTOPILOT_AIRRAILS,
+
+    /**
+     * Fusion Reflex - https://fusion.engineering 
+     */
+    @MavlinkEntryInfo(20)
+    MAV_AUTOPILOT_REFLEX
 }
