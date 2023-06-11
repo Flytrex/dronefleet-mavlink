@@ -3849,6 +3849,202 @@ public enum MavCmd {
     MAV_CMD_CAN_FORWARD,
 
     /**
+     * AVSS defined command. Set PRS arm statuses. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>PRS arm statuses</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60050)
+    MAV_CMD_PRS_SET_ARM,
+
+    /**
+     * AVSS defined command. Gets PRS arm statuses 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60051)
+    MAV_CMD_PRS_GET_ARM,
+
+    /**
+     * AVSS defined command. Get the PRS battery voltage in millivolts 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60052)
+    MAV_CMD_PRS_GET_BATTERY,
+
+    /**
+     * AVSS defined command. Get the PRS error statuses. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60053)
+    MAV_CMD_PRS_GET_ERR,
+
+    /**
+     * AVSS defined command. Set the ATS arming altitude in meters. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>ATS arming altitude</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60070)
+    MAV_CMD_PRS_SET_ARM_ALTI,
+
+    /**
+     * AVSS defined command. Get the ATS arming altitude in meters. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60071)
+    MAV_CMD_PRS_GET_ARM_ALTI,
+
+    /**
+     * AVSS defined command. Shuts down the PRS system. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param3</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param4</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param5</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param6</dt>
+     *   <dd>User defined</dd>
+     *
+     *   <dt>param7</dt>
+     *   <dd>User defined</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(60072)
+    MAV_CMD_PRS_SHUTDOWN,
+
+    /**
      * Set the distance to be repeated on mission resume 
      * <dl>
      *   <dt>param1</dt>
@@ -4701,6 +4897,61 @@ public enum MavCmd {
     MAV_CMD_GUIDED_CHANGE_HEADING,
 
     /**
+     * Does nothing. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>1 to arm, 0 to disarm</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10001)
+    MAV_CMD_DO_NOTHING,
+
+    /**
+     * Return vehicle to base. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>0: return to base, 1: track mobile base</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10011)
+    MAV_CMD_RETURN_TO_BASE,
+
+    /**
+     * Stops the vehicle from returning to base and resumes flight. 
+     */
+    @MavlinkEntryInfo(10012)
+    MAV_CMD_STOP_RETURN_TO_BASE,
+
+    /**
+     * Turns the vehicle's visible or infrared lights on or off. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>0: visible lights, 1: infrared lights</dd>
+     *
+     *   <dt>param2</dt>
+     *   <dd>0: turn on, 1: turn off</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10013)
+    MAV_CMD_TURN_LIGHT,
+
+    /**
+     * Requests vehicle to send current mid-level commands to ground station. 
+     */
+    @MavlinkEntryInfo(10014)
+    MAV_CMD_GET_MID_LEVEL_COMMANDS,
+
+    /**
+     * Requests storage of mid-level commands. 
+     * <dl>
+     *   <dt>param1</dt>
+     *   <dd>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</dd>
+     * </dl>
+     */
+    @MavlinkEntryInfo(10015)
+    MAV_CMD_MIDLEVEL_STORAGE,
+
+    /**
      * Mission command to reset Maximum Power Point Tracker (MPPT) 
      * <dl>
      *   <dt>param1</dt>
@@ -4842,202 +5093,6 @@ public enum MavCmd {
     MAV_CMD_AQ_REQUEST_VERSION,
 
     /**
-     * AVSS defined command. Set PRS arm statuses. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>PRS arm statuses</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60050)
-    MAV_CMD_PRS_SET_ARM,
-
-    /**
-     * AVSS defined command. Gets PRS arm statuses 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60051)
-    MAV_CMD_PRS_GET_ARM,
-
-    /**
-     * AVSS defined command. Get the PRS battery voltage in millivolts 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60052)
-    MAV_CMD_PRS_GET_BATTERY,
-
-    /**
-     * AVSS defined command. Get the PRS error statuses. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60053)
-    MAV_CMD_PRS_GET_ERR,
-
-    /**
-     * AVSS defined command. Set the ATS arming altitude in meters. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>ATS arming altitude</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60070)
-    MAV_CMD_PRS_SET_ARM_ALTI,
-
-    /**
-     * AVSS defined command. Get the ATS arming altitude in meters. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60071)
-    MAV_CMD_PRS_GET_ARM_ALTI,
-
-    /**
-     * AVSS defined command. Shuts down the PRS system. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param3</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param4</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param5</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param6</dt>
-     *   <dd>User defined</dd>
-     *
-     *   <dt>param7</dt>
-     *   <dd>User defined</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(60072)
-    MAV_CMD_PRS_SHUTDOWN,
-
-    /**
      * Request storage of different parameter values and logs. This command will be only accepted if 
      * in pre-flight mode. 
      * <dl>
@@ -5064,60 +5119,5 @@ public enum MavCmd {
      * </dl>
      */
     @MavlinkEntryInfo(0)
-    MAV_CMD_PREFLIGHT_STORAGE_ADVANCED,
-
-    /**
-     * Does nothing. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>1 to arm, 0 to disarm</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10001)
-    MAV_CMD_DO_NOTHING,
-
-    /**
-     * Return vehicle to base. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>0: return to base, 1: track mobile base</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10011)
-    MAV_CMD_RETURN_TO_BASE,
-
-    /**
-     * Stops the vehicle from returning to base and resumes flight. 
-     */
-    @MavlinkEntryInfo(10012)
-    MAV_CMD_STOP_RETURN_TO_BASE,
-
-    /**
-     * Turns the vehicle's visible or infrared lights on or off. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>0: visible lights, 1: infrared lights</dd>
-     *
-     *   <dt>param2</dt>
-     *   <dd>0: turn on, 1: turn off</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10013)
-    MAV_CMD_TURN_LIGHT,
-
-    /**
-     * Requests vehicle to send current mid-level commands to ground station. 
-     */
-    @MavlinkEntryInfo(10014)
-    MAV_CMD_GET_MID_LEVEL_COMMANDS,
-
-    /**
-     * Requests storage of mid-level commands. 
-     * <dl>
-     *   <dt>param1</dt>
-     *   <dd>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</dd>
-     * </dl>
-     */
-    @MavlinkEntryInfo(10015)
-    MAV_CMD_MIDLEVEL_STORAGE
+    MAV_CMD_PREFLIGHT_STORAGE_ADVANCED
 }
