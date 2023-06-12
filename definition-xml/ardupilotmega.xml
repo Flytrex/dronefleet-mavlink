@@ -1143,6 +1143,14 @@
         <description>Ready for RTK fragments receiving</description>
       </entry>
     </enum>
+    <enum name="GPS_ACCURACY_LEVEL">
+      <description>Accuracy level of the GPS units.</description>
+      <entry value="0" name="GPS_ACCURACY_LEVEL_GOOD"/>
+      <entry value="1" name="GPS_ACCURACY_LEVEL_REDUCED"/>
+      <entry value="2" name="GPS_ACCURACY_LEVEL_PARTIAL"/>
+      <entry value="3" name="GPS_ACCURACY_LEVEL_BAD"/>
+      <entry value="4" name="GPS_ACCURACY_LEVEL_UNRELIABLE"/>
+    </enum>
   </enums>
   <messages>
     <message id="150" name="SENSOR_OFFSETS">
@@ -1759,6 +1767,10 @@
       <field type="uint8_t[5]" name="info_unk5">Unknown field 5 in info message</field>
       <field type="uint16_t" name="version_unk1">Unknown field 1 in version message</field>
       <field type="uint8_t[6]" name="version_unk2">Unknown field 2 in version message</field>
+    </message>
+    <message id="12010" name="COMPONENT_HEALTH_STATUS">
+      <description>Health status of different components</description>
+      <field type="uint8_t" name="gps_accuracy_level" enum="GPS_ACCURACY_LEVEL">Accuracy level of the GPS units.</field>
     </message>
     <message id="12100" name="SET_LOG_LABEL">
       <description>Mark the current log with a specific label</description>

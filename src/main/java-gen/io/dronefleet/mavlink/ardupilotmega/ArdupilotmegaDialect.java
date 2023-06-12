@@ -87,6 +87,7 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
             .put(11032, EscTelemetry9To12.class)
             .put(12000, FlyhawkSmartBatteryStatus.class)
             .put(12001, FlyhawkSmartBatteryInfo.class)
+            .put(12010, ComponentHealthStatus.class)
             .put(12100, SetLogLabel.class)
             .put(12101, LogRequestDataByLabel.class)
             .put(12102, LogRequestLabelList.class)
