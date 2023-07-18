@@ -27,13 +27,16 @@ public final class LogRequestDataByLabel {
 
     private final long count;
 
+    private final int extendedData;
+
     private LogRequestDataByLabel(int targetSystem, int targetComponent, String label, long ofs,
-            long count) {
+            long count, int extendedData) {
         this.targetSystem = targetSystem;
         this.targetComponent = targetComponent;
         this.label = label;
         this.ofs = ofs;
         this.count = count;
+        this.extendedData = extendedData;
     }
 
     /**
@@ -50,7 +53,8 @@ public final class LogRequestDataByLabel {
                 .targetComponent(msg.targetComponent)
                 .label(msg.label)
                 .ofs(msg.ofs)
-                .count(msg.count);
+                .count(msg.count)
+                .extendedData(msg.extendedData);
     }
 
     /**
@@ -114,6 +118,21 @@ public final class LogRequestDataByLabel {
         return this.count;
     }
 
+    /**
+     * Boolean indicating Whether to send the log on {@link io.dronefleet.mavlink.ardupilotmega.LogDataExtended LOG_DATA_EXTENDED} payload (if true) or {@link io.dronefleet.mavlink.common.LogData LOG_DATA} 
+     * (if false) 
+     */
+    @MavlinkFieldInfo(
+            position = 7,
+            unitSize = 1,
+            signed = true,
+            extension = true,
+            description = "Boolean indicating Whether to send the log on LOG_DATA_EXTENDED payload (if true) or LOG_DATA (if false)"
+    )
+    public final int extendedData() {
+        return this.extendedData;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -124,6 +143,7 @@ public final class LogRequestDataByLabel {
         if (!Objects.deepEquals(label, other.label)) return false;
         if (!Objects.deepEquals(ofs, other.ofs)) return false;
         if (!Objects.deepEquals(count, other.count)) return false;
+        if (!Objects.deepEquals(extendedData, other.extendedData)) return false;
         return true;
     }
 
@@ -135,6 +155,7 @@ public final class LogRequestDataByLabel {
         result = 31 * result + Objects.hashCode(label);
         result = 31 * result + Objects.hashCode(ofs);
         result = 31 * result + Objects.hashCode(count);
+        result = 31 * result + Objects.hashCode(extendedData);
         return result;
     }
 
@@ -144,7 +165,8 @@ public final class LogRequestDataByLabel {
                  + ", targetComponent=" + targetComponent
                  + ", label=" + label
                  + ", ofs=" + ofs
-                 + ", count=" + count + "}";
+                 + ", count=" + count
+                 + ", extendedData=" + extendedData + "}";
     }
 
     public static final class Builder {
@@ -157,6 +179,8 @@ public final class LogRequestDataByLabel {
         private long ofs;
 
         private long count;
+
+        private int extendedData;
 
         /**
          * System ID 
@@ -224,8 +248,24 @@ public final class LogRequestDataByLabel {
             return this;
         }
 
+        /**
+         * Boolean indicating Whether to send the log on {@link io.dronefleet.mavlink.ardupilotmega.LogDataExtended LOG_DATA_EXTENDED} payload (if true) or {@link io.dronefleet.mavlink.common.LogData LOG_DATA} 
+         * (if false) 
+         */
+        @MavlinkFieldInfo(
+                position = 7,
+                unitSize = 1,
+                signed = true,
+                extension = true,
+                description = "Boolean indicating Whether to send the log on LOG_DATA_EXTENDED payload (if true) or LOG_DATA (if false)"
+        )
+        public final Builder extendedData(int extendedData) {
+            this.extendedData = extendedData;
+            return this;
+        }
+
         public final LogRequestDataByLabel build() {
-            return new LogRequestDataByLabel(targetSystem, targetComponent, label, ofs, count);
+            return new LogRequestDataByLabel(targetSystem, targetComponent, label, ofs, count, extendedData);
         }
     }
 }

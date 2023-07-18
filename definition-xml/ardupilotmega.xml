@@ -1785,6 +1785,8 @@
       <field type="char[50]" name="label">Log label (preset with SET_LOG_LABEL), NULL terminated</field>
       <field type="uint32_t" name="ofs">Offset into the log</field>
       <field type="uint32_t" name="count" units="bytes">Number of bytes</field>
+      <extensions/>
+      <field type="int8_t" name="extended_data" units="">Boolean indicating Whether to send the log on LOG_DATA_EXTENDED payload (if true) or LOG_DATA (if false)</field>
     </message>
     <message id="12102" name="LOG_REQUEST_LABEL_LIST">
       <description>Request a list of available logs, by label. On some systems calling this may stop on-board logging until LOG_REQUEST_END is called.</description>
@@ -1799,6 +1801,13 @@
       <field type="uint16_t" name="log_num">Log num</field>
       <field type="uint32_t" name="time_utc" units="s">UTC timestamp of log since 1970, or 0 if not available</field>
       <field type="uint32_t" name="size" units="bytes">Size of the log (may be approximate)</field>
+    </message>
+    <message id="12104" name="LOG_DATA_EXTENDED">
+      <description>Reply to LOG_REQUEST_DATA</description>
+      <field type="uint16_t" name="id">Log id (from LOG_ENTRY reply)</field>
+      <field type="uint32_t" name="ofs">Offset into the log</field>
+      <field type="uint8_t" name="count" units="bytes">Number of bytes (zero for end of log)</field>
+      <field type="uint8_t[248]" name="data">log data</field>
     </message>
     <message id="12200" name="PLAY_TONE">
       <description>Play a tone (buzzer) for a duration (in ms)</description>
