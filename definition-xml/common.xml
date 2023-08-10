@@ -229,6 +229,9 @@
       <entry value="8" name="MAV_SYS_STATUS_VIBRATIONS">
         <description>0x08 low vibrations</description>
       </entry>
+      <entry value="16" name="MAV_SYS_STATUS_ADSB">
+        <description>0x0A ADS-B Receiver</description>
+      </entry>
     </enum>
     <enum name="MAV_FRAME">
       <description>Co-ordinate frames used by MAVLink. Not all frames are supported by all commands, messages, or vehicles.
