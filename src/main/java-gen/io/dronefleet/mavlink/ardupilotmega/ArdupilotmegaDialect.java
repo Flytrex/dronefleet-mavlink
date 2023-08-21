@@ -92,6 +92,7 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
             .put(12101, LogRequestDataByLabel.class)
             .put(12102, LogRequestLabelList.class)
             .put(12103, LogLabel.class)
+            .put(12104, LogDataExtended.class)
             .put(12200, PlayTone.class)
             .put(12300, GpsRtkCount.class)
             .put(12301, GpsRtkData.class)
