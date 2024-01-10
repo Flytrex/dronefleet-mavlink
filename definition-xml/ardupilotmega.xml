@@ -1809,6 +1809,11 @@
       <field type="uint8_t" name="count" units="bytes">Number of bytes (zero for end of log)</field>
       <field type="uint8_t[248]" name="data">log data</field>
     </message>
+    <message id="12105" name="LOG_START_NEW">
+      <description>Start a new log</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+    </message>
     <message id="12200" name="PLAY_TONE">
       <description>Play a tone (buzzer) for a duration (in ms)</description>
       <field type="uint8_t" name="target_system">System ID</field>

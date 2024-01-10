@@ -30,5 +30,11 @@ public enum MavSysStatusSensorExtension {
      * 0x08 low vibrations 
      */
     @MavlinkEntryInfo(8)
-    MAV_SYS_STATUS_VIBRATIONS
+    MAV_SYS_STATUS_VIBRATIONS,
+
+    /**
+     * 0x0A ADS-B Receiver 
+     */
+    @MavlinkEntryInfo(16)
+    MAV_SYS_STATUS_ADSB
 }
