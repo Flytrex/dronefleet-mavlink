@@ -79,6 +79,8 @@ public final class ArdupilotmegaDialect extends AbstractMavlinkDialect {
             .put(11001, DeviceOpReadReply.class)
             .put(11002, DeviceOpWrite.class)
             .put(11003, DeviceOpWriteReply.class)
+            .put(11004, SecureCommand.class)
+            .put(11005, SecureCommandReply.class)
             .put(11010, AdapTuning.class)
             .put(11011, VisionPositionDelta.class)
             .put(11020, AoaSsa.class)
