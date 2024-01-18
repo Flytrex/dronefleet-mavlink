@@ -230,7 +230,7 @@
         <description>0x08 low vibrations</description>
       </entry>
       <entry value="16" name="MAV_SYS_STATUS_ADSB">
-        <description>0x0A ADS-B Receiver</description>
+        <description>0x10 ADS-B Receiver</description>
       </entry>
     </enum>
     <enum name="MAV_FRAME">
@@ -3406,7 +3406,7 @@
       </entry>
       <entry value="3" name="MAV_ODID_STATUS_EMERGENCY">
         <description>The UA is having an emergency.</description>
-      </entry>
+	</entry>
       <entry value="4" name="MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE">
         <description>The remote ID system is failing or unreliable in some way.</description>
       </entry>
@@ -3573,6 +3573,12 @@
     <enum name="MAV_ODID_DESC_TYPE">
       <entry value="0" name="MAV_ODID_DESC_TYPE_TEXT">
         <description>Free-form text description of the purpose of the flight.</description>
+      </entry>
+      <entry value="1" name="MAV_ODID_DESC_TYPE_EMERGENCY">
+        <description>Optional additional clarification when status == MAV_ODID_STATUS_EMERGENCY.</description>
+      </entry>
+      <entry value="2" name="MAV_ODID_DESC_TYPE_EXTENDED_STATUS">
+        <description>Optional additional clarification when status != MAV_ODID_STATUS_EMERGENCY.</description>
       </entry>
     </enum>
     <enum name="MAV_ODID_OPERATOR_LOCATION_TYPE">
@@ -5589,6 +5595,9 @@
       <field type="float" name="available_capacity" units="MiB">Available storage capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</field>
       <field type="float" name="read_speed" units="MiB/s">Read speed.</field>
       <field type="float" name="write_speed" units="MiB/s">Write speed.</field>
+      <extensions/>
+      <field type="uint8_t" name="type">Type of storage</field>
+      <field type="char[32]" name="name">Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user.</field>
     </message>
     <message id="262" name="CAMERA_CAPTURE_STATUS">
       <description>Information about the status of a capture. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</description>

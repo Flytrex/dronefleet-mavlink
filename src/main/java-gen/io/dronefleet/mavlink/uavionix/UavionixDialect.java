@@ -23,6 +23,7 @@ public final class UavionixDialect extends AbstractMavlinkDialect {
     private static final Map<Integer, Class> messages = new UnmodifiableMapBuilder<Integer, Class>()
             .put(10001, UavionixAdsbOutCfg.class)
             .put(10002, UavionixAdsbOutDynamic.class)
+            .put(202, UavionixAdsbOutDynamicOwnship29.class)
             .put(10003, UavionixAdsbTransceiverHealthReport.class)
             .put(10004, UavionixAdsbOutCfgRegistration.class)
             .put(10005, UavionixAdsbOutCfgFlightid.class)

@@ -41,9 +41,13 @@ public final class StorageInformation {
 
     private final float writeSpeed;
 
+    private final int type;
+
+    private final String name;
+
     private StorageInformation(long timeBootMs, int storageId, int storageCount,
             EnumValue<StorageStatus> status, float totalCapacity, float usedCapacity,
-            float availableCapacity, float readSpeed, float writeSpeed) {
+            float availableCapacity, float readSpeed, float writeSpeed, int type, String name) {
         this.timeBootMs = timeBootMs;
         this.storageId = storageId;
         this.storageCount = storageCount;
@@ -53,6 +57,8 @@ public final class StorageInformation {
         this.availableCapacity = availableCapacity;
         this.readSpeed = readSpeed;
         this.writeSpeed = writeSpeed;
+        this.type = type;
+        this.name = name;
     }
 
     /**
@@ -73,7 +79,9 @@ public final class StorageInformation {
                 .usedCapacity(msg.usedCapacity)
                 .availableCapacity(msg.availableCapacity)
                 .readSpeed(msg.readSpeed)
-                .writeSpeed(msg.writeSpeed);
+                .writeSpeed(msg.writeSpeed)
+                .type(msg.type)
+                .name(msg.name);
     }
 
     /**
@@ -186,6 +194,35 @@ public final class StorageInformation {
         return this.writeSpeed;
     }
 
+    /**
+     * Type of storage 
+     */
+    @MavlinkFieldInfo(
+            position = 11,
+            unitSize = 1,
+            extension = true,
+            description = "Type of storage"
+    )
+    public final int type() {
+        return this.type;
+    }
+
+    /**
+     * Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL 
+     * terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string 
+     * is empty, the generic type is shown to the user. 
+     */
+    @MavlinkFieldInfo(
+            position = 12,
+            unitSize = 1,
+            arraySize = 32,
+            extension = true,
+            description = "Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user."
+    )
+    public final String name() {
+        return this.name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -200,6 +237,8 @@ public final class StorageInformation {
         if (!Objects.deepEquals(availableCapacity, other.availableCapacity)) return false;
         if (!Objects.deepEquals(readSpeed, other.readSpeed)) return false;
         if (!Objects.deepEquals(writeSpeed, other.writeSpeed)) return false;
+        if (!Objects.deepEquals(type, other.type)) return false;
+        if (!Objects.deepEquals(name, other.name)) return false;
         return true;
     }
 
@@ -215,6 +254,8 @@ public final class StorageInformation {
         result = 31 * result + Objects.hashCode(availableCapacity);
         result = 31 * result + Objects.hashCode(readSpeed);
         result = 31 * result + Objects.hashCode(writeSpeed);
+        result = 31 * result + Objects.hashCode(type);
+        result = 31 * result + Objects.hashCode(name);
         return result;
     }
 
@@ -228,7 +269,9 @@ public final class StorageInformation {
                  + ", usedCapacity=" + usedCapacity
                  + ", availableCapacity=" + availableCapacity
                  + ", readSpeed=" + readSpeed
-                 + ", writeSpeed=" + writeSpeed + "}";
+                 + ", writeSpeed=" + writeSpeed
+                 + ", type=" + type
+                 + ", name=" + name + "}";
     }
 
     public static final class Builder {
@@ -249,6 +292,10 @@ public final class StorageInformation {
         private float readSpeed;
 
         private float writeSpeed;
+
+        private int type;
+
+        private String name;
 
         /**
          * Timestamp (time since system boot). 
@@ -390,8 +437,39 @@ public final class StorageInformation {
             return this;
         }
 
+        /**
+         * Type of storage 
+         */
+        @MavlinkFieldInfo(
+                position = 11,
+                unitSize = 1,
+                extension = true,
+                description = "Type of storage"
+        )
+        public final Builder type(int type) {
+            this.type = type;
+            return this;
+        }
+
+        /**
+         * Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL 
+         * terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string 
+         * is empty, the generic type is shown to the user. 
+         */
+        @MavlinkFieldInfo(
+                position = 12,
+                unitSize = 1,
+                arraySize = 32,
+                extension = true,
+                description = "Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user."
+        )
+        public final Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
         public final StorageInformation build() {
-            return new StorageInformation(timeBootMs, storageId, storageCount, status, totalCapacity, usedCapacity, availableCapacity, readSpeed, writeSpeed);
+            return new StorageInformation(timeBootMs, storageId, storageCount, status, totalCapacity, usedCapacity, availableCapacity, readSpeed, writeSpeed, type, name);
         }
     }
 }
