@@ -215,7 +215,7 @@
         <description>0x40000000 propulsion (actuator, esc, motor or propellor)</description>
       </entry>
     </enum>
-    <enum name="MAV_SYS_STATUS_SENSOR_EXTENSION">
+    <enum name="MAV_SYS_STATUS_SENSOR_EXTENSION" bitmask="true">
     <description>These encode the sensors whose status is sent as part of the SYS_STATUS message.</description>
       <entry value="1" name="MAV_SYS_STATUS_SENSOR_GPS2">
         <description>0x01 2nd GPS</description>
@@ -231,6 +231,9 @@
       </entry>
       <entry value="16" name="MAV_SYS_STATUS_ADSB">
         <description>0x10 ADS-B Receiver</description>
+      </entry>
+      <entry value="32" name="MAV_SYS_STATUS_SYSTEM_TEMPERATURE">
+        <description>0x20 system temperature</description>
       </entry>
     </enum>
     <enum name="MAV_FRAME">
@@ -3406,7 +3409,7 @@
       </entry>
       <entry value="3" name="MAV_ODID_STATUS_EMERGENCY">
         <description>The UA is having an emergency.</description>
-	</entry>
+      </entry>
       <entry value="4" name="MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE">
         <description>The remote ID system is failing or unreliable in some way.</description>
       </entry>
