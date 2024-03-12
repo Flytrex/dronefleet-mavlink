@@ -36,5 +36,11 @@ public enum MavSysStatusSensorExtension {
      * 0x10 ADS-B Receiver 
      */
     @MavlinkEntryInfo(16)
-    MAV_SYS_STATUS_ADSB
+    MAV_SYS_STATUS_ADSB,
+
+    /**
+     * 0x20 system temperature 
+     */
+    @MavlinkEntryInfo(32)
+    MAV_SYS_STATUS_SYSTEM_TEMPERATURE
 }
